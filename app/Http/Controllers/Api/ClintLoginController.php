@@ -34,34 +34,29 @@ class ClintLoginController extends Controller
 
     public function login(Request $request){
 
-        $user = User::get();
-        $user->tokens()->where('id', 3)->delete();
-
-
-        Auth::user()->currentAccessToken()->delete();    
-
-        return "oky";
-    $data = ["user is :" => Auth::user()];
-        return response()->json($data, 200);
-
-
         $request->validate([
-            'email' => 'required|email',
+            //'email' => 'required|email',
             'phone' => 'required',
             'device_name' => 'required',
         ]);
     
-        $user = User::where('email', $request->email)->first();
+        $user = User::where('phone', $request->phone)->first();
     
-        if (! $user || ! Hash::check($request->password, $user->password)) {
+        if (! $user ){//|| ! Hash::check($request->password, $user->password)) {
             throw ValidationException::withMessages([
-                'email' => ['The provided credentials are incorrect.'],
+                'phone' => ['The provided phone number are incorrect.'],
             ]);
         }
     
         return $user->createToken($request->device_name)->plainTextToken;
     
 
+    }
+
+    public function logout(){
+        Auth::user()->currentAccessToken()->delete();
+        $data ="We will miss you, don't be late to me !!";
+        return response()->json($data, 200);
     }
 
 }

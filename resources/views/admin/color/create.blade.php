@@ -28,7 +28,7 @@
 <div class="form-group">
     {!! Form::label('name',trans('admin.name'),['class'=>'col-md-3 control-label']) !!}
     <div class="col-md-9">
-        {!! Form::text('name',old('name'),['class'=>'form-control','placeholder'=>trans('admin.name')]) !!}
+        {!! Form::color('name',old('name'),['class'=>'form-control','placeholder'=>trans('admin.name')]) !!}
     </div>
 </div>
 <br>

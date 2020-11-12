@@ -11,7 +11,12 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            AdminDataInfo::class,
+            ColorSeeder::class,
+            SizeSeeder::class,
+            CategoriesSeeder::class,
+          // AdminDataInfo::class,
+           UserSeeder::class,
+            ProduactSeeder::class,
         ]);
     }
 }
