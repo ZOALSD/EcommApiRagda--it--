@@ -45,7 +45,8 @@
                         <ul class="nav navbar-nav pull-right">
                             <li class="separator hide"> </li>
 
-<li class="dropdown dropdown-extended dropdown-notification" id="cog_list">
+
+{{--<li class="dropdown dropdown-extended dropdown-notification" id="cog_list">
     <a href="javascript:;"  class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
         <i class="fa fa-paint-brush"></i>
     </a>
@@ -63,7 +64,7 @@
             <i class="fa fa-paint-brush"></i> {{trans('admin.theme3')}} </a>
         </li>
     </ul>
-</li>
+</li>--}
 
 <li class="dropdown dropdown-extended dropdown-notification" id="lang_list">
     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
@@ -77,7 +78,7 @@
         </li>
         @endforeach
     </ul>
-</li>
+</li>--}}
 
                             <!-- BEGIN NOTIFICATION DROPDOWN -->
                             <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->

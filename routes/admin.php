@@ -18,7 +18,8 @@ app()->singleton('admin', function () {
 \L::Panel(app('admin'));/// Set Lang redirect to admin
 \L::LangNonymous();// Run Route Lang 'namespace' => 'Admin',
 
-Route::group(['prefix' => app('admin'), 'middleware' => 'Lang'], function () {
+//Route::group(['prefix' => app('admin'), 'middleware' => 'Lang'], function () {
+	Route::group(['middleware' => 'Lang'], function () {
 
 		Route::get('theme/{id}', 'Admin\Dashboard@theme');
 		Route::group(['middleware' => 'admin_guest'], function () {
