@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
             ColorSeeder::class,
             SizeSeeder::class,
             CategoriesSeeder::class,
-          // AdminDataInfo::class,
+             AdminDataInfo::class,
            UserSeeder::class,
             ProduactSeeder::class,
         ]);
