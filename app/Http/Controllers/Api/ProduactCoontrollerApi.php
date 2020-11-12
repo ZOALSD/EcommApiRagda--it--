@@ -24,7 +24,7 @@ class ProduactCoontrollerApi extends Controller
             {
                return response()->json([
                "status"=>true,
-               "data"=>Produact::orderBy('id','desc')->paginate(15)
+               "data"=>Produact::orderBy('id','desc')->get()//paginate(15)
                ]);
             }
 
@@ -84,8 +84,11 @@ class ProduactCoontrollerApi extends Controller
              */
             public function show($id)
             {
-                $show =  Produact::find($id);
-                 return response()->json([
+            
+            $p = Produact::where('id',$id)->value('request') + 1;
+             Produact::where('id',$id)->update('request',$p);
+              $show =  Produact::find($id);
+              return response()->json([
               "status"=>true,
               "data"=> $show
               ]);  ;
