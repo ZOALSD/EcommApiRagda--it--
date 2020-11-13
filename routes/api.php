@@ -19,6 +19,7 @@ Route::post('register','Api\ClintLoginController@Register');
 Route::get('login','Api\ClintLoginController@login');
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
+    Route::get('categorise','Api\CategoriesControllerApi@index');
     Route::get('logout','Api\ClintLoginController@logout');
     Route::get('produact','Api\ProduactCoontrollerApi@index');
     Route::get('produact\{id}','Api\ProduactCoontrollerApi@show');

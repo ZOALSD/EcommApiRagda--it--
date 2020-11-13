@@ -25,7 +25,8 @@
 																		<h4 class="modal-title">{{trans('admin.delete')}}؟</h4>
 																</div>
 																<div class="modal-body">
-																		<i class="fa fa-exclamation-triangle"></i>   {{trans('admin.ask_del')}} {{trans('admin.id')}} ({{$categories->id}}) ؟
+																		<i class="fa fa-exclamation-triangle"></i>   
+																		{{trans('admin.ask_del')}} {{trans('admin.id')}} ({{$categories->id}}) ؟
 																</div>
 																<div class="modal-footer">
 																		{!! Form::open([
@@ -67,6 +68,22 @@
     </div>
 </div>
 <br>
+
+
+
+
+<div class="form-group">
+    {!! Form::label('صورة التصنيف',trans('admin.image_cate'),['class'=>'col-md-3 control-label']) !!}
+    <div class="col-md-9">
+        {!! Form::file('image_cate',['class'=>'form-control','placeholder'=>trans('admin.image_cate')]) !!}
+        @if(!empty($CategoriesImage->image_cate))
+        <img src="{{it()->url($CategoriesImage->image_cate)}}" style="width:150px;height:150px;" />
+        @endif
+    </div>
+</div>
+
+
+
 
 <div class="form-actions">
     <div class="row">

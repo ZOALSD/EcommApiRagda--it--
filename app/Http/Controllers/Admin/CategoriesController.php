@@ -47,19 +47,25 @@ class CategoriesController extends Controller
               $rules = [
              'Parent_id'=>'numeric|nullable',
              'name'=>'required|string',
+             'image_cate'=>''.it()->image().'|nullable|sometimes',//
 
                    ];
               $data = $this->validate(request(),$rules,[],[
              'Parent_id'=>trans('admin.Parent_id'),
              'name'=>trans('admin.name'),
+             'image_cate' =>trans('admin.image_cate'),
 
               ]);
 		
               $data['admin_id'] = admin()->user()->id; 
+              if(request()->hasFile('image_cate')){
+                $data['image_cate'] = it()->upload('image_cate','CategoriesImage');
+                }
               Categories::create($data); 
 
               session()->flash('success',trans('admin.added'));
               return redirect(aurl('categories'));
+
             }
 
             /**
@@ -98,13 +104,21 @@ class CategoriesController extends Controller
                 $rules = [
              'Parent_id'=>'numeric|nullable',
              'name'=>'required|string',
+             'image_cate'=>''.it()->image().'|nullable|sometimes',//
 
                          ];
              $data = $this->validate(request(),$rules,[],[
              'Parent_id'=>trans('admin.Parent_id'),
              'name'=>trans('admin.name'),
+             'image_cate'=>trans('admin.image_cate'),
                    ]);
               $data['admin_id'] = admin()->user()->id; 
+              
+              if(request()->hasFile('image_cate')){
+                it()->delete(Categories::find($id)->image_cate);
+                $data['image_cate'] = it()->upload('image_cate','CategoriesImage');
+                 }
+
               Categories::where('id',$id)->update($data);
 
               session()->flash('success',trans('admin.updated'));

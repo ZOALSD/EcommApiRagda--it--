@@ -1,10 +1,10 @@
-@if(!empty($cate_image))
-                <a href="#" data-toggle="modal" data-target="#img{{ $id }}"><img src="{{ it()->url($cate_image) }}" style="width:32px;height:32px" /></a>
+@if(!empty($image_cate))
+                <a href="#" data-toggle="modal" data-target="#img{{ $id }}"><img src="{{ it()->url($image_cate) }}" style="width:32px;height:32px" /></a>
 <div id="img{{ $id }}" class="modal fade" role="dialog">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-body">
-        <img src="{{ it()->url($cate_image) }}" style="width:100%;height:500px" />
+        <img src="{{ it()->url($image_cate) }}" style="width:100%;height:500px" />
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">{{ trans("admin.close") }}</button>

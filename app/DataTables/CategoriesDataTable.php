@@ -26,10 +26,11 @@ class CategoriesDataTable extends DataTable
     {
         return datatables($query)
             ->addColumn('actions', 'admin.categories.buttons.actions')
+            ->addColumn('image_cate', 'admin.categories.buttons.image_cate')//
 
             ->addColumn('checkbox', '<label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
 			<input type="checkbox" class="selected_data" name="selected_data[]" value="{{ $id }}"> <span></span></label>')
-            ->rawColumns(['checkbox','actions',]);
+            ->rawColumns(['checkbox','actions','image_cate']);
     }
   
 
@@ -40,7 +41,9 @@ class CategoriesDataTable extends DataTable
      */
 	public function query()
     {
-        return Categories::query()->select("categories.*");
+        //return Tree::query()->with(['parent'])->select("trees.*")->OrderBy('id','asc');
+
+        return Categories::query()->with(['Parent'])->select("categories.*")->OrderBy('id','desc');
 
     }
     	
@@ -88,7 +91,7 @@ class CategoriesDataTable extends DataTable
                 });
             });
             }",
-                'order' => [[1, 'desc']],
+                //'order' => [[, 'desc']],
 
                     'language' => [
                        'sProcessing' => trans('admin.sProcessing'),
@@ -148,15 +151,21 @@ class CategoriesDataTable extends DataTable
 
 	        
 				[
-                 'name'=>'Parent_id',
-                 'data'=>'Parent_id',
+                 'name'=>'Parent.name',
+                 'data'=>'Parent.name',
                  'title'=>trans('admin.Parent_id'),
 		    ],
 				[
                  'name'=>'name',
                  'data'=>'name',
                  'title'=>trans('admin.name'),
-		    ],
+            ],
+            [
+                'name'=>'image_cate',
+                'data'=>'image_cate',
+                'title'=>'صورة التصنيف',
+           ],
+
             [
 	                'name' => 'actions',
 	                'data' => 'actions',

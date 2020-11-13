@@ -28,7 +28,7 @@
 <div class="form-group">
     {!! Form::label('Parent_id',trans('admin.Parent_id'),['class'=>'col-md-3 control-label']) !!}
     <div class="col-md-9">
-        {!! Form::text('Parent_id',old('Parent_id'),['class'=>'form-control','placeholder'=>trans('admin.Parent_id')]) !!}
+		{!! Form::select('Parent_id',App\Model\Categories::pluck("name","id"),old('Parent_id'),['class'=>'form-control','placeholder'=>trans('admin.Parent_id')]) !!}
     </div>
 </div>
 <br>
@@ -39,6 +39,14 @@
     </div>
 </div>
 <br>
+
+
+<div class="form-group">
+    {!! Form::label('name','صورة التصنيف',['class'=>'col-md-3 control-label']) !!}
+    <div class="col-md-9">
+        {!! Form::file('image_cate',old('image_cate'),['class'=>'form-control','placeholder'=>'صورة التصنيف']) !!}
+    </div>
+</div>
 
 <div class="form-actions">
     <div class="row">

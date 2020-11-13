@@ -20,8 +20,10 @@ class CreateCategoriesTable extends Migration
             $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');
             $table->bigInteger('Parent_id')->nullable();
             $table->string('name');
+            $table->string('image_cate')->nullable();
 			$table->softDeletes();
-			$table->timestamps();
+
+			$table->timestamps();
         });
     }
 
