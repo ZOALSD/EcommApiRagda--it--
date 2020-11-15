@@ -35,14 +35,14 @@ class ClintLoginController extends Controller
     public function login(Request $request){
 
         $request->validate([
-            //'email' => 'required|email',
+            'password' => 'required',
             'phone' => 'required',
             'device_name' => 'required',
         ]);
     
         $user = User::where('phone', $request->phone)->first();
     
-        if (! $user ){//|| ! Hash::check($request->password, $user->password)) {
+        if (! $user || ! Hash::check($request->password, $user->password)) {
             throw ValidationException::withMessages([
                 'phone' => ['The provided phone number are incorrect.'],
             ]);

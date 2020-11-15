@@ -20,6 +20,16 @@ class ProduactCoontrollerApi extends Controller
              * Display a listing of the resource. Api
              * @return \Illuminate\Http\Response
              */
+
+             public function search(Request $request){
+                 
+               //$Produact = Produact::get();
+                $Produact = Produact::search($request->get('search'))->get();	
+
+                return $Produact;
+
+             }
+
             public function index()
             {
                return response()->json([
