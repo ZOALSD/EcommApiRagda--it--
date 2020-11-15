@@ -1,20 +1,20 @@
 <?php
 namespace App\Http\Controllers\Api;
-use App\Http\Controllers\Controller;
+use Up;
 
-use Illuminate\Http\Request;
+use Set;
+use Form;
+use Validator;
 use Carbon\Carbon;
 use App\Model\Categories;
-use Validator;
-use Set;
-use Up;
-use Form;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\CategoriseResources;
 // Auto Controller Maker By Baboon Script
 // Baboon Maker has been Created And Developed By  [It V 1.2 | https://it.phpanonymous.com]
 // Copyright Reserved  [It V 1.2 | https://it.phpanonymous.com]
 class CategoriesControllerApi extends Controller
 {
-
             /**
              * Baboon Script By [It V 1.2 | https://it.phpanonymous.com]
              * Display a listing of the resource. Api
@@ -22,10 +22,14 @@ class CategoriesControllerApi extends Controller
              */
             public function index()
             {
-               return response()->json([
-               "status"=>true,
-               "data"=>Categories::orderBy('id','desc')->paginate(15)
-               ]);
+              $data =Categories::get();//:orderBy('id','desc')->paginate(15);
+                return  CategoriseResources::collection($data);
+            //    return response()->json([
+            //    "status"=>true,
+            //    "data"=>Categories::orderBy('id','desc')->paginate(15)
+            //    ]);
+
+
             }
 
 

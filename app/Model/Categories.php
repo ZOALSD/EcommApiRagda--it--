@@ -15,7 +15,7 @@ protected $table    = 'categories';
 protected $fillable = [
 		'id',
 		'admin_id',
-		      'Parent_id',
+		'Parent_id',
         'name',
         'image_cate',
          'created_at',
@@ -29,6 +29,8 @@ protected $fillable = [
 	{
 		return $this->belongsTo('App\Model\Categories', 'Parent_id');
 	}
-	
 
+
+	 protected $hidden = ['updated_at , deleted_at , admin_id'];
+	
 }
