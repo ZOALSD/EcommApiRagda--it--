@@ -24,7 +24,7 @@ app()->singleton('admin', function () {
 		Route::get('theme/{id}', 'Admin\Dashboard@theme');
 		Route::group(['middleware' => 'admin_guest'], function () {
 
-				Route::post('login', 'Admin\AdminAuthenticated@login_page');
+				Route::get('login', 'Admin\AdminAuthenticated@login_page');
 
 				Route::post('reset/password', 'Admin\AdminAuthenticated@reset_password');
 				Route::get('password/reset/{token}', 'Admin\AdminAuthenticated@reset_password_final');

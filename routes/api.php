@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('register','Api\ClintLoginController@Register');
 
-Route::get('login','Api\ClintLoginController@login');
+Route::post('login','Api\ClintLoginController@login');
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
     
