@@ -48,7 +48,7 @@ class ProduactCoontrollerApi extends Controller
     public function store()
     {
         $rules = [
-                         'cate_name'=>'required|string',
+             'cate_name'=>'required|string',
              'color_id'=>'numeric|nullable|sometimes',
              'quantity'=>'numeric|nullable|sometimes',
              'size_id'=>'numeric|nullable|sometimes',

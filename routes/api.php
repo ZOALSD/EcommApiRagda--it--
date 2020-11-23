@@ -29,6 +29,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('logout','Api\ClintLoginController@logout');
     Route::get('produact','Api\ProduactCoontrollerApi@index');
     Route::get('produact\{id}','Api\ProduactCoontrollerApi@show');
+    Route::put('produact\{id}','Api\ProduactCoontrollerApi@update');
+    Route::delete('produact\{id}','Api\ProduactCoontrollerApi@destroy');
 
 
 
