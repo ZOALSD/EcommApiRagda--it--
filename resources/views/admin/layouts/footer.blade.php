@@ -577,6 +577,13 @@
                                 <i class="fa fa-arrow-up"></i>
                             </div>
                         </div>
+
+
+
+                        <script src="{{ asset('js/app.js') }}" defer></script>
+                        @livewireScripts
+
+
                         <script src="{{url('design/admin_panel')}}/assets/global/plugins/moment.min.js" type="text/javascript"></script>
                         <script src="{{url('design/admin_panel')}}/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.js" type="text/javascript"></script>
                         <script src="{{url('design/admin_panel')}}/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
@@ -615,9 +622,10 @@
                         <script src="{{url("design/admin_panel/assets/global/plugins/datatables/js/selecta_all_checkbtn.js")}}"></script>
                         <script src="{{url("design/admin_panel/assets/global/plugins/datatables/js/buttons.server-side.js")}}"></script>
                         <script src="{{url("design/admin_panel/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js")}}"></script>
-                        <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+                        <!--script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script-->
                         <script src="https://cdn.ckeditor.com/4.10.0/full/ckeditor.js"></script>
-                        <script>
+
+<script>
                         CKEDITOR.replaceClass = 'ckeditor';
                         </script>
                         <script type="text/javascript">
@@ -667,6 +675,7 @@
                         </script>
 
                         @stack('js')
+
 
                         <!-- END THEME LAYOUT SCRIPTS -->
                     </body>

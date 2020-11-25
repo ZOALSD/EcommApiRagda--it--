@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
-use App\DataTables\CategoriesDataTable;
+//use App\DataTables\CategoriesDataTable;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Model\Categories;
@@ -20,10 +20,16 @@ class CategoriesController extends Controller
              * Display a listing of the resource.
              * @return \Illuminate\Http\Response
              */
-            public function index(CategoriesDataTable $categories)
+            public function index()
             {
-               return $categories->render('admin.categories.index',['title'=>trans('admin.categories')]);
+              $parentCategories = Categories::where('parent_id',NULL)->get();
+
+              //  return $categories->render('admin.categories.index',
+              //  ['title'=>trans('admin.categories')],compact('parentCategories'));
+               return \view('admin.categories.index',['title'=>trans('admin.categories')]);
             }
+
+
 
 
             /**

@@ -41,10 +41,11 @@ class CategoriesDataTable extends DataTable
      */
 	public function query()
     {
-        //return Tree::query()->with(['parent'])->select("trees.*")->OrderBy('id','asc');
 
-        return Categories::query()->with(['Parent'])->select("categories.*")->OrderBy('id','desc');
+        return Categories::query()->with('Parent_i')->select("categories.*");
 
+//        return Categories::query()->with(['Parent'])->select("categories.*")->OrderBy('id','desc');
+       // return Categories::with('parent')->get();
     }
     	
 
@@ -119,7 +120,7 @@ class CategoriesDataTable extends DataTable
                     ]
                 ]);
 
-        return $html;
+      //  return $html;
 
 	    }
 
@@ -133,7 +134,7 @@ class CategoriesDataTable extends DataTable
 
 	    protected function getColumns()
 	    {
-	        return [
+	    return [
 	        [
                 'name' => 'checkbox',
                 'data' => 'checkbox',
@@ -150,11 +151,11 @@ class CategoriesDataTable extends DataTable
 
 
 	        
-				[
-                 'name'=>'Parent.name',
-                 'data'=>'Parent.name',
+            [
+                'name'=>'Parent_i',
+                 'data'=>'Parent_i',
                  'title'=>trans('admin.Parent_id'),
-		    ],
+            ],
 				[
                  'name'=>'name',
                  'data'=>'name',

@@ -58,6 +58,10 @@ Route::post('color/multi_delete','Admin\ColorController@multi_delete');
 Route::post('size/multi_delete','Admin\SizeController@multi_delete'); 
 				Route::resource('produactcoontroller','Admin\ProduactCoontroller'); 
 Route::post('produactcoontroller/multi_delete','Admin\ProduactCoontroller@multi_delete'); 
+
+Route::any('category',function(){
+	return view('livewire.categorise');
+});
 				//////// Admin Routes /* End */ //////////////
 			});
 
