@@ -28,10 +28,17 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('categorise','Api\CategoriesControllerApi@index');
     Route::get('logout','Api\ClintLoginController@logout');
     Route::get('produact','Api\ProduactCoontrollerApi@index');
+    
+   
     Route::get('produact\{id}','Api\ProduactCoontrollerApi@show');
-    Route::put('UpdatePro\{id}','Api\ProduactCoontrollerApi@update');
     Route::delete('deletePro\{id}','Api\ProduactCoontrollerApi@destroy');
+     // update Produact
+    Route::put('UpdatePro\{id}','Api\ProduactCoontrollerApi@update');
 
+    //For التاجر
+    Route::get('ProEcomm','Api\ProduactCoontrollerApi@ProEcomm');
+    Route::delete('ProEcommDelete\{id}','Api\ProduactCoontrollerApi@destroy');
+    Route::post('AddProduact','Api\ProduactCoontrollerApi@store');
 
 
 

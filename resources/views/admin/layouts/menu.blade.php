@@ -108,3 +108,27 @@
         </li> 
     </ul> 
 </li>
+<li class="nav-item start {{active_link('ads','active open')}} ">
+    <a href="javascript:;" class="nav-link nav-toggle">
+        <i class="fa fa-photo"></i>
+        <span class="title">{{trans('admin.ads')}} </span>
+        <span class="selected"></span>
+        <span class="arrow {{active_link('ads','open')}}"></span>
+    </a>
+    <ul class="sub-menu" style="{{active_link('','block')}}"> 
+        <li class="nav-item start {{active_link('ads','active open')}}  "> 
+            <a href="{{aurl('ads')}}" class="nav-link "> 
+                <i class="fa fa-photo"></i>
+                <span class="title">{{trans('admin.ads')}}  </span>
+                <span class="selected"></span>
+            </a>
+        </li> 
+        <li class="nav-item start"> 
+            <a href="{{ aurl('ads/create') }}" class="nav-link "> 
+                <i class="fa fa-plus"></i> 
+                <span class="title"> {{trans('admin.create')}}  </span> 
+                <span class="selected"></span> 
+            </a> 
+        </li> 
+    </ul> 
+</li>

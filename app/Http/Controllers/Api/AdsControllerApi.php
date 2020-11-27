@@ -4,7 +4,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-use App\Model\Produact;
+use App\Model\Ads;
 use Validator;
 use Set;
 use Up;
@@ -12,7 +12,7 @@ use Form;
 // Auto Controller Maker By Baboon Script
 // Baboon Maker has been Created And Developed By  [It V 1.2 | https://it.phpanonymous.com]
 // Copyright Reserved  [It V 1.2 | https://it.phpanonymous.com]
-class ProduactCoontrollerApi extends Controller
+class AdsControllerApi extends Controller
 {
 
             /**
@@ -20,35 +20,11 @@ class ProduactCoontrollerApi extends Controller
              * Display a listing of the resource. Api
              * @return \Illuminate\Http\Response
              */
-
-             public function search(Request $request){
-                 
-               //$Produact = Produact::get();
-                $Produact = Produact::search($request->get('search'))->get();	
-
-                return $Produact;
-
-             }
-             public function ProEcommSearch(){
-                $Produact = Produact::search($request->get('search'))->get();	
-
-                return $Produact;
-
-             }
-
-             public function ProEcomm(){
-                 $id = auth()->user()->id; 
-                $Produact = Produact::where('user_id',$id)->get();	
-
-                return $Produact;
-
-             }
-
             public function index()
             {
                return response()->json([
                "status"=>true,
-               "data"=>Produact::orderBy('id','desc')->get()//paginate(15)
+               "data"=>Ads::orderBy('id','desc')->get()
                ]);
             }
 
@@ -62,22 +38,10 @@ class ProduactCoontrollerApi extends Controller
     public function store()
     {
         $rules = [
-             'cate_name'=>'required|string',
-             'color_id'=>'numeric|nullable|sometimes',
-             'quantity'=>'numeric|nullable|sometimes',
-             'size_id'=>'numeric|nullable|sometimes',
-             'cate_image'=>''.it()->image().'|nullable|sometimes',
-             'cate_disc'=>'nullable|sometimes|string',
-             'cate_id'=>'',
+                         'ad_image'=>'required|'.it()->image().'',
         ];
         $data = Validator::make(request()->all(),$rules,[],[
-             'cate_name'=>trans('admin.cate_name'),
-             'color_id'=>trans('admin.color_id'),
-             'quantity'=>trans('admin.quantity'),
-             'size_id'=>trans('admin.size_id'),
-             'cate_image'=>trans('admin.cate_image'),
-             'cate_disc'=>trans('admin.cate_disc'),
-             'cate_id'=>trans('admin.cate_id'),
+                         'ad_image'=>trans('admin.ad_image'),
         ]);
 		
         if($data->fails()){
@@ -88,10 +52,10 @@ class ProduactCoontrollerApi extends Controller
              }
         $data = request()->except(["_token"]);
               $data['user_id'] = auth()->user()->id; 
-               if(request()->hasFile('cate_image')){
-              $data['cate_image'] = it()->upload('cate_image','produactcoontroller');
+               if(request()->hasFile('ad_image')){
+              $data['ad_image'] = it()->upload('ad_image','ads');
               }
-        $create = Produact::create($data); 
+        $create = Ads::create($data); 
 
         return response()->json([
             "status"=>true,
@@ -108,11 +72,8 @@ class ProduactCoontrollerApi extends Controller
              */
             public function show($id)
             {
-            
-            $p = Produact::where('id',$id)->value('request') + 1;
-             Produact::where('id',$id)->update('request',$p);
-              $show =  Produact::find($id);
-              return response()->json([
+                $show =  Ads::find($id);
+                 return response()->json([
               "status"=>true,
               "data"=> $show
               ]);  ;
@@ -128,25 +89,12 @@ class ProduactCoontrollerApi extends Controller
             public function update($id)
             {
                 $rules = [
-             'cate_name'=>'required|string',
-             'color_id'=>'numeric|nullable|sometimes',
-             'quantity'=>'numeric|nullable|sometimes',
-             'size_id'=>'numeric|nullable|sometimes',
-             'cate_image'=>''.it()->image().'|nullable|sometimes',
-             'cate_disc'=>'nullable|sometimes|string',
-             'cate_id'=>'',
-                         ];
+             'ad_image'=>'required|'.it()->image().'',
 
+                         ];
              $data = Validator::make(request()->all(),$rules,[],[
-             'cate_name'=>trans('admin.cate_name'),
-             'color_id'=>trans('admin.color_id'),
-             'quantity'=>trans('admin.quantity'),
-             'size_id'=>trans('admin.size_id'),
-             'cate_image'=>trans('admin.cate_image'),
-             'cate_disc'=>trans('admin.cate_disc'),
-             'cate_id'=>trans('admin.cate_id'),
+             'ad_image'=>trans('admin.ad_image'),
                    ]);
-                   
              if($data->fails()){
              return response()->json([
                "status"=>false,"
@@ -155,18 +103,18 @@ class ProduactCoontrollerApi extends Controller
              }
              $data = request()->except(["_token"]);
               $data['user_id'] = auth()->user()->id; 
-               if(request()->hasFile('cate_image')){
-              it()->delete(Produact::find($id)->cate_image);
-              $data['cate_image'] = it()->upload('cate_image','produactcoontroller');
+               if(request()->hasFile('ad_image')){
+              it()->delete(Ads::find($id)->ad_image);
+              $data['ad_image'] = it()->upload('ad_image','ads');
                }
-              Produact::where('id',$id)->update($data);
+              Ads::where('id',$id)->update($data);
 
-              $Produact = Produact::find($id);
+              $Ads = Ads::find($id);
 
               return response()->json([
                "status"=>true,
                "message"=>trans('admin.updated'),
-               "data"=> $Produact
+               "data"=> $Ads
                ]);
             }
 
@@ -178,12 +126,12 @@ class ProduactCoontrollerApi extends Controller
              */
             public function destroy($id)
             {
-               $produactcoontroller = Produact::find($id);
+               $ads = Ads::find($id);
 
-               it()->delete($produactcoontroller->cate_image);
-               it()->delete('produact',$id);
+               it()->delete($ads->ad_image);
+               it()->delete('ads',$id);
 
-               @$produactcoontroller->delete();
+               @$ads->delete();
                return response(["status"=>true,"message"=>trans('admin.deleted')]);
             }
 
@@ -195,20 +143,20 @@ class ProduactCoontrollerApi extends Controller
                 if(is_array($data)){
                     foreach($data as $id)
                     {
-                    	$produactcoontroller = Produact::find($id);
+                    	$ads = Ads::find($id);
 
-                    	it()->delete($produactcoontroller->cate_image);
-                    	it()->delete('produact',$id);
-                    	@$produactcoontroller->delete();
+                    	it()->delete($ads->ad_image);
+                    	it()->delete('ads',$id);
+                    	@$ads->delete();
                     }
                     return response(["status"=>true,"message"=>trans('admin.deleted')]);
                 }else {
-                    $produactcoontroller = Produact::find($data);
+                    $ads = Ads::find($data);
  
-                    	it()->delete($produactcoontroller->cate_image);
-                    	it()->delete('produact',$data);
+                    	it()->delete($ads->ad_image);
+                    	it()->delete('ads',$data);
 
-                    @$produactcoontroller->delete();
+                    @$ads->delete();
                     return response(["status"=>true,"message"=>trans('admin.deleted')]);
                 }
             }

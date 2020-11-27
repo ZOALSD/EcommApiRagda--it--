@@ -62,6 +62,8 @@ Route::post('produactcoontroller/multi_delete','Admin\ProduactCoontroller@multi_
 Route::any('category',function(){
 	return view('livewire.categorise');
 });
+				Route::resource('ads','Admin\AdsController'); 
+Route::post('ads/multi_delete','Admin\AdsController@multi_delete'); 
 				//////// Admin Routes /* End */ //////////////
 			});
 

@@ -16,6 +16,7 @@ class CreateProduactsTable extends Migration
     {
         Schema::create('produacts', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('user_id')->nullable();
             $table->bigInteger('admin_id')->unsigned()->nullable();
             $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');
             $table->string('cate_name');
