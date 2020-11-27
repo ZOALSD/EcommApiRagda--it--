@@ -1,6 +1,6 @@
 <div>
-
-    <input wire:model='SearchText' name="" id="" class=" " placeholder="بحــــث " type="text" value="">
+       
+    <input wire:model='SearchText' name="" id="" class="" placeholder="بحــــث " type="text" value="">
 
     <hr>
     <table class="table table-striped table-inverse table-responsive">
@@ -13,6 +13,8 @@
             </tr>
             </thead>
             <tbody>
+            @if ($d !== 0)
+                
              @foreach ($datase as $i)
                 <tr>
                     <td>{{ $i->name }}</td>
@@ -89,6 +91,7 @@
 </div>
 
     {{ $datase->links() }}
+    @endif
 
 </div>
 

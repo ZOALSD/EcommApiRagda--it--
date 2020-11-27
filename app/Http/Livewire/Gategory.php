@@ -12,8 +12,13 @@ class Gategory extends Component
     
     public function render()
     {
-
-        $datase =  Categories::where('name','like','%'.$this->SearchText.'%')->paginate(10);
-        return view('livewire.gategory',\compact('datase'));
+        $d =  Categories::search($this->SearchText)->count();
+        if($d == 0){
+            $datase = Categories::search('')->paginate(10);;
+        }else{
+        $datase = Categories::search($this->SearchText)->paginate(10);
+        }
+        
+        return view('livewire.gategory',\compact('datase','d'));
     }
 }
