@@ -78,18 +78,7 @@ class AdsDataTable extends DataTable
                         }',
                     ],
                 ],
-                'initComplete' => "function () {
-                this.api().columns([1]).every(function () {
-                var column = this;
-                var input = document.createElement(\"input\");
-                $(input).attr( 'style', 'width: 100%');
-                $(input).attr( 'class', 'form-control');
-                $(input).appendTo($(column.footer()).empty())
-                .on('keyup', function () {
-                    column.search($(this).val()).draw();
-                });
-            });
-            }",
+            
                 'order' => [[1, 'desc']],
 
                     'language' => [
@@ -101,7 +90,7 @@ class AdsDataTable extends DataTable
 							'sInfoEmpty'         => trans('admin.sInfoEmpty'),
 							'sInfoFiltered'      => trans('admin.sInfoFiltered'),
 							'sInfoPostFix'       => trans('admin.sInfoPostFix'),
-							'sSearch'            => trans('admin.sSearch'),
+							//'sSearch'            => trans('admin.sSearch'),
 							'sUrl'               => trans('admin.sUrl'),
 							'sInfoThousands'     => trans('admin.sInfoThousands'),
 							'sLoadingRecords'    => trans('admin.sLoadingRecords'),
