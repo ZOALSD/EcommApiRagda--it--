@@ -33,7 +33,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('produact\{id}','Api\ProduactCoontrollerApi@show');
     Route::delete('deletePro\{id}','Api\ProduactCoontrollerApi@destroy');
      // update Produact
-    Route::put('UpdatePro\{id}','Api\ProduactCoontrollerApi@update');
+    Route::put('UpdatePro/{id}','Api\ProduactCoontrollerApi@update');
 
 
     Route::get('color','Api\ColorControllerApi@index');
