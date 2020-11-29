@@ -14,7 +14,7 @@ $factory->define(Produact::class, function (Faker $faker) {
 'admin_id'=>1,
 'color_id'=>factory(Color::class),
 'cate_name'=>$this->faker->title,
-'quantity'=>$this->faker->buildingNumber,
+'price'=>$this->faker->buildingNumber,
 'size_id'=>factory(Size::class),
 'cate_disc'=>$this->faker->paragraph,
 'cate_image' =>$this->faker->imageUrl($width = 640, $height = 480),
