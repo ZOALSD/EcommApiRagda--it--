@@ -33,7 +33,11 @@
         <!-- END THEME GLOBAL STYLES -->
         <!-- BEGIN THEME LAYOUT STYLES -->
 
-
+        <link href="{{url('design/admin_panel')}}/assets/layouts/layout4/css/layout{{app('direction')}}.min.css" id="stylelink1" rel="stylesheet" type="text/css" />
+        <link href="{{url('design/admin_panel')}}/assets/layouts/layout4/css/themes/default{{app('direction')}}.min.css" id="stylelink2" rel="stylesheet" type="text/css" id="style_color" />
+        <link href="{{url('design/admin_panel')}}/assets/layouts/layout4/css/custom.css"  id="stylelink3" rel="stylesheet" type="text/css" />
+        
+{{--  
         @if(session('theme') == 1)
          <!-- BEGIN THEME LAYOUT STYLES -->
         <link href="{{url('design/admin_panel')}}/assets/layouts/layout4/css/layout{{app('direction')}}.min.css" id="stylelink1" rel="stylesheet" type="text/css" />
@@ -54,11 +58,12 @@
 
         @else
         <!-- BEGIN THEME LAYOUT STYLES -->
-        <link href="{{url('design/admin_panel')}}/assets/layouts/layout/css/layout{{app('direction')}}.min.css" id="stylelink1" rel="stylesheet" type="text/css" />
-        <link href="{{url('design/admin_panel')}}/assets/layouts/layout/css/themes/default{{app('direction')}}.min.css" id="stylelink2" rel="stylesheet" type="text/css" id="style_color" />
-        <link href="{{url('design/admin_panel')}}/assets/layouts/layout/css/custom{{app('direction')}}.min.css"  id="stylelink3" rel="stylesheet" type="text/css" />
+        <link href="{{url('design/admin_panel')}}/assets/layouts/layout4/css/layout{{app('direction')}}.min.css" id="stylelink1" rel="stylesheet" type="text/css" />
+        <link href="{{url('design/admin_panel')}}/assets/layouts/layout4/css/themes/default{{app('direction')}}.min.css" id="stylelink2" rel="stylesheet" type="text/css" id="style_color" />
+        <link href="{{url('design/admin_panel')}}/assets/layouts/layout4/css/custom{{app('direction')}}.min.css"  id="stylelink3" rel="stylesheet" type="text/css" />
+        
         @endif
-
+--}}
         <script src="{{url('design/admin_panel')}}/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
         <!-- END THEME LAYOUT STYLES -->
         @if(!empty(setting()->icon))
