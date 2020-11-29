@@ -20,7 +20,7 @@ protected $fillable = [
 		              'color_id',
 'cate_name',
 
-'quantity',
+'price',
 'size_id',
 
 'cate_image',

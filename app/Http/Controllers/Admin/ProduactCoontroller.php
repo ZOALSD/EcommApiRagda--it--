@@ -130,6 +130,7 @@ class ProduactCoontroller extends Controller
               $data['admin_id'] = admin()->user()->id; 
                if(request()->hasFile('cate_image')){
               it()->delete(Produact::find($id)->cate_image);
+              
               $data['cate_image'] = it()->upload('cate_image','produactcoontroller');
                }
               Produact::where('id',$id)->update($data);

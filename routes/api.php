@@ -35,6 +35,10 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
      // update Produact
     Route::put('UpdatePro\{id}','Api\ProduactCoontrollerApi@update');
 
+
+    Route::get('color','Api\ColorControllerApi@index');
+    Route::get('size','Api\SizeControllerApi@index');
+
     //For التاجر
     Route::get('ProEcomm','Api\ProduactCoontrollerApi@ProEcomm');
     Route::delete('ProEcommDelete\{id}','Api\ProduactCoontrollerApi@destroy');

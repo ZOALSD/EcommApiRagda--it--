@@ -28,7 +28,7 @@ class ClintLoginController extends Controller
 
         $data['password'] = Hash::make($request->password);
        $user = User::create($data);
-       return $user->createToken($request->device_name);//->plainTextToken;
+       return $token = $user->createToken($request->device_name)->plainTextToken;
 
     }
 
@@ -48,7 +48,7 @@ class ClintLoginController extends Controller
             ]);
         }
     
-        return $user->createToken($request->device_name)->plainTextToken;
+        return $token = $user->createToken($request->device_name)->plainTextToken;
     
 
     }

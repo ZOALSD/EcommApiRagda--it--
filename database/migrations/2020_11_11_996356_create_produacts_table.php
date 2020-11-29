@@ -22,7 +22,7 @@ class CreateProduactsTable extends Migration
             $table->string('cate_name');
             $table->bigInteger('color_id')->unsigned()->nullable();
             $table->foreign('color_id')->references('id')->on('colors')->onDelete('cascade');
-            $table->bigInteger('quantity')->nullable();
+            $table->bigInteger('price')->nullable();
             $table->bigInteger('size_id')->unsigned()->nullable();
             $table->foreign('size_id')->references('id')->on('sizes')->onDelete('cascade');
             $table->string('cate_image')->nullable();

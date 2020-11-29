@@ -64,7 +64,7 @@ class ProduactCoontrollerApi extends Controller
         $rules = [
              'cate_name'=>'required|string',
              'color_id'=>'numeric|nullable|sometimes',
-             'quantity'=>'numeric|nullable|sometimes',
+             'price'=>'numeric|nullable|sometimes',
              'size_id'=>'numeric|nullable|sometimes',
              'cate_image'=>''.it()->image().'|nullable|sometimes',
              'cate_disc'=>'nullable|sometimes|string',
@@ -73,7 +73,7 @@ class ProduactCoontrollerApi extends Controller
         $data = Validator::make(request()->all(),$rules,[],[
              'cate_name'=>trans('admin.cate_name'),
              'color_id'=>trans('admin.color_id'),
-             'quantity'=>trans('admin.quantity'),
+             'price'=>trans('admin.price'),
              'size_id'=>trans('admin.size_id'),
              'cate_image'=>trans('admin.cate_image'),
              'cate_disc'=>trans('admin.cate_disc'),
@@ -130,7 +130,7 @@ class ProduactCoontrollerApi extends Controller
                 $rules = [
              'cate_name'=>'required|string',
              'color_id'=>'numeric|nullable|sometimes',
-             'quantity'=>'numeric|nullable|sometimes',
+             'price'=>'numeric|nullable|sometimes',
              'size_id'=>'numeric|nullable|sometimes',
              'cate_image'=>''.it()->image().'|nullable|sometimes',
              'cate_disc'=>'nullable|sometimes|string',
@@ -140,7 +140,7 @@ class ProduactCoontrollerApi extends Controller
              $data = Validator::make(request()->all(),$rules,[],[
              'cate_name'=>trans('admin.cate_name'),
              'color_id'=>trans('admin.color_id'),
-             'quantity'=>trans('admin.quantity'),
+             'price'=>trans('admin.price'),
              'size_id'=>trans('admin.size_id'),
              'cate_image'=>trans('admin.cate_image'),
              'cate_disc'=>trans('admin.cate_disc'),
