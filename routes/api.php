@@ -30,8 +30,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('produact','Api\ProduactCoontrollerApi@index');
     
    
-    Route::get('produact\{id}','Api\ProduactCoontrollerApi@show');
-    Route::delete('deletePro\{id}','Api\ProduactCoontrollerApi@destroy');
+    Route::get('produact/{id}','Api\ProduactCoontrollerApi@show');
+    Route::delete('deletePro/{id}','Api\ProduactCoontrollerApi@destroy');
      // update Produact
     Route::put('UpdatePro/{id}','Api\ProduactCoontrollerApi@update');
 
@@ -41,7 +41,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
     //For التاجر
     Route::get('ProEcomm','Api\ProduactCoontrollerApi@ProEcomm');
-    Route::delete('ProEcommDelete\{id}','Api\ProduactCoontrollerApi@destroy');
+    Route::delete('ProEcommDelete/{id}','Api\ProduactCoontrollerApi@destroy');
     Route::post('AddProduact','Api\ProduactCoontrollerApi@store');
 
 
