@@ -8,7 +8,7 @@ class Dashboard extends Controller {
 
 	public function home() {
 		//$user = Admin::where('id',2);
-		$users = Admin::permission(['edit','delete ','publish '])->get(); // Returns only users with the permission 'edit articles' (inherited or directly)
+		$users = Admin::permission(['edit','delete','publish'])->get(); // Returns only users with the permission 'edit articles' (inherited or directly)
 
 		//$v= $user->hasPermissionTo('publish', 'admin');
 
