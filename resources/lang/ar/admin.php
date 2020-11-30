@@ -112,5 +112,7 @@
 		"produactcoontroller"	=>		"الاصناف",
 		"ads"	=>		"الاعلانات",
 		"ad_image"	=>		"صورة الاعلان",
+		"permission" => "الصلاحيات",
+		"manger"  => "المشرفين" ,
 
 ];

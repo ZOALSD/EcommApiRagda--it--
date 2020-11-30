@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
                 CategoriesSeeder::class,
                 AdminDataInfo::class,
                 UserSeeder::class,
-                ProduactSeeder::class
+                ProduactSeeder::class,
+                PermissionsDemoSeeder::class
 
         ]);
     }

@@ -5,6 +5,7 @@
         <span class="selected"></span>
     </a>
 </li>
+{{--  }}
 <li class="nav-item start {{active_link('settings','active open')}}  ">
     <a href="{{aurl('settings')}}" class="nav-link nav-toggle">
         <i class="fa fa-cog"></i>
@@ -12,6 +13,26 @@
         <span class="selected"></span>
     </a>
 </li>
+
+--}}
+<li class="nav-item start {{active_link('permission','active open')}}  ">
+<a href="{{-- aurl('permission') --}}" class="nav-link nav-toggle">
+        <i class="fa fa-lock"></i>
+        <span class="title">{{trans('admin.permission')}}</span>
+        <span class="selected"></span>
+    </a>
+</li>
+
+
+<li class="nav-item start {{active_link('manger','active open')}}  ">
+    <a href="{{-- aurl('manger') --}}" class="nav-link nav-toggle">
+            <i class="fa fa-user-plus"></i>
+            <span class="title">{{trans('admin.manger')}}</span>
+            <span class="selected"></span>
+        </a>
+    </li>
+
+
 <li class="nav-item start {{active_link('categories','active open')}} ">
     <a href="javascript:;" class="nav-link nav-toggle">
         <i class="fa fa-location-arrow"></i>
@@ -38,7 +59,7 @@
 </li>
 <li class="nav-item start {{active_link('color','active open')}} ">
     <a href="javascript:;" class="nav-link nav-toggle">
-        <i class="fa "></i>
+        <i class="fa fa-paint-brush "></i>
         <span class="title">{{trans('admin.color')}} </span>
         <span class="selected"></span>
         <span class="arrow {{active_link('color','open')}}"></span>
@@ -46,7 +67,7 @@
     <ul class="sub-menu" style="{{active_link('','block')}}"> 
         <li class="nav-item start {{active_link('color','active open')}}  "> 
             <a href="{{aurl('color')}}" class="nav-link "> 
-                <i class="fa "></i>
+                <i class="fa fa-paint-brush "></i>
                 <span class="title">{{trans('admin.color')}}  </span>
                 <span class="selected"></span>
             </a>
@@ -84,6 +105,7 @@
         </li> 
     </ul> 
 </li>
+{{--
 <li class="nav-item start {{active_link('produactcoontroller','active open')}} ">
     <a href="javascript:;" class="nav-link nav-toggle">
         <i class="fa fa-cart-plus"></i>
@@ -108,6 +130,7 @@
         </li> 
     </ul> 
 </li>
+--}}
 <li class="nav-item start {{active_link('ads','active open')}} ">
     <a href="javascript:;" class="nav-link nav-toggle">
         <i class="fa fa-photo"></i>

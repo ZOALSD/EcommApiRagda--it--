@@ -114,14 +114,20 @@
         <div class="portlet light bordered">
             <div class="portlet-title">
                 <div class="caption">
-                    <span class="caption-subject bold uppercase font-dark">{{trans('admin.dashboard')}}</span>
+                    <span class="uppercase caption-subject bold font-dark">{{trans('admin.dashboard')}}</span>
                 </div>
                 <div class="actions">
+                    @foreach ($users as $item)
+                        <p>
+                            {{ $item->name }}
+                        </p>
+                    @endforeach
                     <a class="btn btn-circle btn-icon-only btn-default fullscreen" href="#"> </a>
                 </div>
             </div>
             <div class="portlet-body">
                 <div id="dashboard_amchart_1" class="CSSAnimationChart"></div>
+
             </div>
         </div>
     </div>

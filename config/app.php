@@ -176,7 +176,10 @@ return [
         App\Providers\RouteServiceProvider::class,
         
         //QR Code 
-        LaravelQRCode\Providers\QRCodeServiceProvider::class,     
+        LaravelQRCode\Providers\QRCodeServiceProvider::class,  
+        // Permission
+        Spatie\Permission\PermissionServiceProvider::class,
+
 
     ],
 
