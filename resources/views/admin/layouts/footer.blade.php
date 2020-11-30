@@ -1,3 +1,8 @@
+      
+       @php
+           $path = env('Asset_Path');
+       @endphp
+
 <!-- END PAGE BASE CONTENT -->
 </div>
 <!-- END CONTENT BODY -->
@@ -54,14 +59,14 @@
                     <div class="media-status">
                         <span class="badge badge-success">8</span>
                     </div>
-                    <img class="media-object" src="{{url('design/admin_panel')}}/assets/layouts/layout/img/avatar3.jpg" alt="...">
+                    <img class="media-object" src="{{url($path)}}/design/admin_panel/assets/layouts/layout/img/avatar3.jpg" alt="...">
                     <div class="media-body">
                         <h4 class="media-heading">Bob Nilson</h4>
                         <div class="media-heading-sub"> Project Manager </div>
                     </div>
                 </li>
                 <li class="media">
-                    <img class="media-object" src="{{url('design/admin_panel')}}/assets/layouts/layout/img/avatar1.jpg" alt="...">
+                    <img class="media-object" src="{{url($path)}}/design/admin_panel/assets/layouts/layout/img/avatar1.jpg" alt="...">
                     <div class="media-body">
                         <h4 class="media-heading">Nick Larson</h4>
                         <div class="media-heading-sub"> Art Director </div>
@@ -71,14 +76,14 @@
                     <div class="media-status">
                         <span class="badge badge-danger">3</span>
                     </div>
-                    <img class="media-object" src="{{url('design/admin_panel')}}/assets/layouts/layout/img/avatar4.jpg" alt="...">
+                    <img class="media-object" src="{{url($path)}}/design/admin_panel/assets/layouts/layout/img/avatar4.jpg" alt="...">
                     <div class="media-body">
                         <h4 class="media-heading">Deon Hubert</h4>
                         <div class="media-heading-sub"> CTO </div>
                     </div>
                 </li>
                 <li class="media">
-                    <img class="media-object" src="{{url('design/admin_panel')}}/assets/layouts/layout/img/avatar2.jpg" alt="...">
+                    <img class="media-object" src="{{url($path)}}/design/admin_panel/assets/layouts/layout/img/avatar2.jpg" alt="...">
                     <div class="media-body">
                         <h4 class="media-heading">Ella Wong</h4>
                         <div class="media-heading-sub"> CEO </div>
@@ -91,7 +96,7 @@
                     <div class="media-status">
                         <span class="badge badge-warning">2</span>
                     </div>
-                    <img class="media-object" src="{{url('design/admin_panel')}}/assets/layouts/layout/img/avatar6.jpg" alt="...">
+                    <img class="media-object" src="{{url($path)}}/design/admin_panel/assets/layouts/layout/img/avatar6.jpg" alt="...">
                     <div class="media-body">
                         <h4 class="media-heading">Lara Kunis</h4>
                         <div class="media-heading-sub"> CEO, Loop Inc </div>
@@ -102,7 +107,7 @@
                     <div class="media-status">
                         <span class="label label-sm label-success">new</span>
                     </div>
-                    <img class="media-object" src="{{url('design/admin_panel')}}/assets/layouts/layout/img/avatar7.jpg" alt="...">
+                    <img class="media-object" src="{{url($path)}}/design/admin_panel/assets/layouts/layout/img/avatar7.jpg" alt="...">
                     <div class="media-body">
                         <h4 class="media-heading">Ernie Kyllonen</h4>
                         <div class="media-heading-sub"> Project Manager,
@@ -110,7 +115,7 @@
                     </div>
                 </li>
                 <li class="media">
-                    <img class="media-object" src="{{url('design/admin_panel')}}/assets/layouts/layout/img/avatar8.jpg" alt="...">
+                    <img class="media-object" src="{{url($path)}}/design/admin_panel/assets/layouts/layout/img/avatar8.jpg" alt="...">
                     <div class="media-body">
                         <h4 class="media-heading">Lisa Stone</h4>
                         <div class="media-heading-sub"> CTO, Keort Inc </div>
@@ -121,14 +126,14 @@
                     <div class="media-status">
                         <span class="badge badge-success">7</span>
                     </div>
-                    <img class="media-object" src="{{url('design/admin_panel')}}/assets/layouts/layout/img/avatar9.jpg" alt="...">
+                    <img class="media-object" src="{{url($path)}}/design/admin_panel/assets/layouts/layout/img/avatar9.jpg" alt="...">
                     <div class="media-body">
                         <h4 class="media-heading">Deon Portalatin</h4>
                         <div class="media-heading-sub"> CFO, H&D LTD </div>
                     </div>
                 </li>
                 <li class="media">
-                    <img class="media-object" src="{{url('design/admin_panel')}}/assets/layouts/layout/img/avatar10.jpg" alt="...">
+                    <img class="media-object" src="{{url($path)}}/design/admin_panel/assets/layouts/layout/img/avatar10.jpg" alt="...">
                     <div class="media-body">
                         <h4 class="media-heading">Irina Savikova</h4>
                         <div class="media-heading-sub"> CEO, Tizda Motors Inc </div>
@@ -138,7 +143,7 @@
                     <div class="media-status">
                         <span class="badge badge-danger">4</span>
                     </div>
-                    <img class="media-object" src="{{url('design/admin_panel')}}/assets/layouts/layout/img/avatar11.jpg" alt="...">
+                    <img class="media-object" src="{{url($path)}}/design/admin_panel/assets/layouts/layout/img/avatar11.jpg" alt="...">
                     <div class="media-body">
                         <h4 class="media-heading">Maria Gomez</h4>
                         <div class="media-heading-sub"> Manager, Infomatic Inc </div>
@@ -155,7 +160,7 @@
                 </div>
                 <div class="page-quick-sidebar-chat-user-messages">
                     <div class="post out">
-                        <img class="avatar" alt="" src="{{url('design/admin_panel')}}/assets/layouts/layout/img/avatar3.jpg" />
+                        <img class="avatar" alt="" src="{{url($path)}}/design/admin_panel/assets/layouts/layout/img/avatar3.jpg" />
                         <div class="message">
                             <span class="arrow"></span>
                             <a href="javascript:;" class="name">Bob Nilson</a>
@@ -164,7 +169,7 @@
                         </div>
                     </div>
                     <div class="post in">
-                        <img class="avatar" alt="" src="{{url('design/admin_panel')}}/assets/layouts/layout/img/avatar2.jpg" />
+                        <img class="avatar" alt="" src="{{url($path)}}/design/admin_panel/assets/layouts/layout/img/avatar2.jpg" />
                         <div class="message">
                             <span class="arrow"></span>
                             <a href="javascript:;" class="name">Ella Wong</a>
@@ -173,7 +178,7 @@
                         </div>
                     </div>
                     <div class="post out">
-                        <img class="avatar" alt="" src="{{url('design/admin_panel')}}/assets/layouts/layout/img/avatar3.jpg" />
+                        <img class="avatar" alt="" src="{{url($path)}}/design/admin_panel/assets/layouts/layout/img/avatar3.jpg" />
                         <div class="message">
                             <span class="arrow"></span>
                             <a href="javascript:;" class="name">Bob Nilson</a>
@@ -182,7 +187,7 @@
                         </div>
                     </div>
                     <div class="post in">
-                        <img class="avatar" alt="" src="{{url('design/admin_panel')}}/assets/layouts/layout/img/avatar2.jpg" />
+                        <img class="avatar" alt="" src="{{url($path)}}/design/admin_panel/assets/layouts/layout/img/avatar2.jpg" />
                         <div class="message">
                             <span class="arrow"></span>
                             <a href="javascript:;" class="name">Ella Wong</a>
@@ -191,7 +196,7 @@
                         </div>
                     </div>
                     <div class="post out">
-                        <img class="avatar" alt="" src="{{url('design/admin_panel')}}/assets/layouts/layout/img/avatar3.jpg" />
+                        <img class="avatar" alt="" src="{{url($path)}}/design/admin_panel/assets/layouts/layout/img/avatar3.jpg" />
                         <div class="message">
                             <span class="arrow"></span>
                             <a href="javascript:;" class="name">Bob Nilson</a>
@@ -200,7 +205,7 @@
                         </div>
                     </div>
                     <div class="post in">
-                        <img class="avatar" alt="" src="{{url('design/admin_panel')}}/assets/layouts/layout/img/avatar2.jpg" />
+                        <img class="avatar" alt="" src="{{url($path)}}/design/admin_panel/assets/layouts/layout/img/avatar2.jpg" />
                         <div class="message">
                             <span class="arrow"></span>
                             <a href="javascript:;" class="name">Ella Wong</a>
@@ -209,7 +214,7 @@
                         </div>
                     </div>
                     <div class="post out">
-                        <img class="avatar" alt="" src="{{url('design/admin_panel')}}/assets/layouts/layout/img/avatar3.jpg" />
+                        <img class="avatar" alt="" src="{{url($path)}}/design/admin_panel/assets/layouts/layout/img/avatar3.jpg" />
                         <div class="message">
                             <span class="arrow"></span>
                             <a href="javascript:;" class="name">Bob Nilson</a>
@@ -218,7 +223,7 @@
                         </div>
                     </div>
                     <div class="post in">
-                        <img class="avatar" alt="" src="{{url('design/admin_panel')}}/assets/layouts/layout/img/avatar2.jpg" />
+                        <img class="avatar" alt="" src="{{url($path)}}/design/admin_panel/assets/layouts/layout/img/avatar2.jpg" />
                         <div class="message">
                             <span class="arrow"></span>
                             <a href="javascript:;" class="name">Ella Wong</a>
@@ -227,7 +232,7 @@
                         </div>
                     </div>
                     <div class="post out">
-                        <img class="avatar" alt="" src="{{url('design/admin_panel')}}/assets/layouts/layout/img/avatar3.jpg" />
+                        <img class="avatar" alt="" src="{{url($path)}}/design/admin_panel/assets/layouts/layout/img/avatar3.jpg" />
                         <div class="message">
                             <span class="arrow"></span>
                             <a href="javascript:;" class="name">Bob Nilson</a>
@@ -584,44 +589,44 @@
                         @livewireScripts
 
 
-                        <script src="{{url('design/admin_panel')}}/assets/global/plugins/moment.min.js" type="text/javascript"></script>
-                        <script src="{{url('design/admin_panel')}}/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.js" type="text/javascript"></script>
-                        <script src="{{url('design/admin_panel')}}/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
-                        <script src="{{url('design/admin_panel')}}/assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js" type="text/javascript"></script>
-                        <script src="{{url('design/admin_panel')}}/assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+                        <script src="{{url($path)}}/design/admin_panel/assets/global/plugins/moment.min.js" type="text/javascript"></script>
+                        <script src="{{url($path)}}/design/admin_panel/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.js" type="text/javascript"></script>
+                        <script src="{{url($path)}}/design/admin_panel/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+                        <script src="{{url($path)}}/design/admin_panel/assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js" type="text/javascript"></script>
+                        <script src="{{url($path)}}/design/admin_panel/assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
                         <!-- END FOOTER -->
                         <!--[if lt IE 9]>
-                        <script src="{{url('design/admin_panel')}}/assets/global/plugins/respond.min.js"></script>
-                        <script src="{{url('design/admin_panel')}}/assets/global/plugins/excanvas.min.js"></script>
+                        <script src="{{url($path)}}/design/admin_panel/assets/global/plugins/respond.min.js"></script>
+                        <script src="{{url($path)}}/design/admin_panel/assets/global/plugins/excanvas.min.js"></script>
                         <![endif]-->
                         <!-- BEGIN CORE PLUGINS -->
-                        <script src="{{url('design/admin_panel')}}/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-                        <script src="{{url('design/admin_panel')}}/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
-                        <script src="{{url('design/admin_panel')}}/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-                        <script src="{{url('design/admin_panel')}}/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-                        <script src="{{url('design/admin_panel')}}/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+                        <script src="{{url($path)}}/design/admin_panel/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+                        <script src="{{url($path)}}/design/admin_panel/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+                        <script src="{{url($path)}}/design/admin_panel/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+                        <script src="{{url($path)}}/design/admin_panel/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+                        <script src="{{url($path)}}/design/admin_panel/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
                         <!-- END CORE PLUGINS -->
                         <!-- BEGIN PAGE LEVEL PLUGINS -->
-                        <script src="{{url('design/admin_panel')}}/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.js" type="text/javascript"></script>
-                        <script src="{{url('design/admin_panel')}}/assets/global/plugins/morris/morris.min.js" type="text/javascript"></script>
-                        <script src="{{url('design/admin_panel')}}/assets/global/plugins/morris/raphael-min.js" type="text/javascript"></script>
+                        <script src="{{url($path)}}/design/admin_panel/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.js" type="text/javascript"></script>
+                        <script src="{{url($path)}}/design/admin_panel/assets/global/plugins/morris/morris.min.js" type="text/javascript"></script>
+                        <script src="{{url($path)}}/design/admin_panel/assets/global/plugins/morris/raphael-min.js" type="text/javascript"></script>
                         <!-- END PAGE LEVEL PLUGINS -->
                         <!-- BEGIN THEME GLOBAL SCRIPTS -->
-                        <script src="{{url('design/admin_panel')}}/assets/global/scripts/app.min.js" type="text/javascript"></script>
+                        <script src="{{url($path)}}/design/admin_panel/assets/global/scripts/app.min.js" type="text/javascript"></script>
                         <!-- END THEME GLOBAL SCRIPTS -->
                         <!-- BEGIN PAGE LEVEL SCRIPTS -->
-                        <script src="{{url('design/admin_panel')}}/assets/pages/scripts/dashboard.min.js" type="text/javascript"></script>
+                        <script src="{{url($path)}}/design/admin_panel/assets/pages/scripts/dashboard.min.js" type="text/javascript"></script>
                         <!-- END PAGE LEVEL SCRIPTS -->
                         <!-- BEGIN THEME LAYOUT SCRIPTS -->
-                        <script src="{{url('design/admin_panel')}}/assets/layouts/layout4/scripts/layout.min.js" type="text/javascript"></script>
-                        <script src="{{url('design/admin_panel')}}/assets/layouts/layout4/scripts/demo.min.js" type="text/javascript"></script>
-                        <script src="{{url('design/admin_panel')}}/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
-                        <script src="{{url("design/admin_panel/assets/global/plugins/datatables/js/jquery.dataTables.min.js")}}"></script>
-                        <script src="{{url("design/admin_panel/assets/global/plugins/datatables/js/dataTables.bootstrap.min.js")}}"></script>
-                        <script src="{{url("design/admin_panel/assets/global/plugins/datatables/js/dataTables.buttons.min.js")}}"></script>
-                        <script src="{{url("design/admin_panel/assets/global/plugins/datatables/js/selecta_all_checkbtn.js")}}"></script>
-                        <script src="{{url("design/admin_panel/assets/global/plugins/datatables/js/buttons.server-side.js")}}"></script>
-                        <script src="{{url("design/admin_panel/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js")}}"></script>
+                        <script src="{{url($path)}}/design/admin_panel/assets/layouts/layout4/scripts/layout.min.js" type="text/javascript"></script>
+                        <script src="{{url($path)}}/design/admin_panel/assets/layouts/layout4/scripts/demo.min.js" type="text/javascript"></script>
+                        <script src="{{url($path)}}/design/admin_panel/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+                        <script src="{{url($path)}}/design/admin_panel/assets/global/plugins/datatables/js/jquery.dataTables.min.js"></script>
+                        <script src="{{url($path)}}/design/admin_panel/assets/global/plugins/datatables/js/dataTables.bootstrap.min.js"></script>
+                        <script src="{{url($path)}}/design/admin_panel/assets/global/plugins/datatables/js/dataTables.buttons.min.js"></script>
+                        <script src="{{url($path)}}/design/admin_panel/assets/global/plugins/datatables/js/selecta_all_checkbtn.js"></script>
+                        <script src="{{url($path)}}/design/admin_panel/assets/global/plugins/datatables/js/buttons.server-side.js"></script>
+                        <script src="{{url($path)}}/design/admin_panel/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js"></script>
                         <!--script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script-->
                         <script src="https://cdn.ckeditor.com/4.10.0/full/ckeditor.js"></script>
 
@@ -633,19 +638,19 @@
                         {
                         if(theme == 1)
                         {
-                        $('#stylelink1').attr('href',"{{url('design/admin_panel')}}/assets/layouts/layout4/css/layout{{app('direction')}}.min.css");
-                        $('#stylelink2').attr('href',"{{url('design/admin_panel')}}/assets/layouts/layout4/css/themes/default{{app('direction')}}.min.css");
-                        $('#stylelink3').attr('href',"{{url('design/admin_panel')}}/assets/layouts/layout4/css/custom{{app('direction')}}.min.css");
+                        $('#stylelink1').attr('href',"{{url(".$path.")}}/design/admin_panel/assets/layouts/layout4/css/layout{{app('direction')}}.min.css");
+                        $('#stylelink2').attr('href',"{{url(".$path.")}}/design/admin_panel/assets/layouts/layout4/css/themes/default{{app('direction')}}.min.css");
+                        $('#stylelink3').attr('href',"{{url(".$path.")}}/design/admin_panel/assets/layouts/layout4/css/custom{{app('direction')}}.min.css");
                         }else if(theme == 2)
                         {
-                        $('#stylelink1').attr('href',"{{url('design/admin_panel')}}/assets/layouts/layout/css/layout{{app('direction')}}.min.css");
-                        $('#stylelink2').attr('href',"{{url('design/admin_panel')}}/assets/layouts/layout/css/themes/default{{app('direction')}}.min.css");
-                        $('#stylelink3').attr('href',"{{url('design/admin_panel')}}/assets/layouts/layout/css/custom{{app('direction')}}.min.css");
+                        $('#stylelink1').attr('href',"{{url(".$path.")}}/design/admin_panel/assets/layouts/layout/css/layout{{app('direction')}}.min.css");
+                        $('#stylelink2').attr('href',"{{url(".$path.")}}/design/admin_panel/assets/layouts/layout/css/themes/default{{app('direction')}}.min.css");
+                        $('#stylelink3').attr('href',"{{url(".$path.")}}/design/admin_panel/assets/layouts/layout/css/custom{{app('direction')}}.min.css");
                         }else if(theme == 3)
                         {
-                        $('#stylelink1').attr('href',"{{url('design/admin_panel')}}/assets/layouts/layout2/css/layout{{app('direction')}}.min.css");
-                        $('#stylelink2').attr('href',"{{url('design/admin_panel')}}/assets/layouts/layout2/css/themes/default{{app('direction')}}.min.css");
-                        $('#stylelink3').attr('href',"{{url('design/admin_panel')}}/assets/layouts/layout2/css/custom{{app('direction')}}.min.css");
+                        $('#stylelink1').attr('href',"{{url(".$path.")}}/design/admin_panel/assets/layouts/layout2/css/layout{{app('direction')}}.min.css");
+                        $('#stylelink2').attr('href',"{{url(".$path.")}}/design/admin_panel/assets/layouts/layout2/css/themes/default{{app('direction')}}.min.css");
+                        $('#stylelink3').attr('href',"{{url(".$path.")}}/design/admin_panel/assets/layouts/layout2/css/custom{{app('direction')}}.min.css");
                         }
                         }
                         function change_theme(theme)

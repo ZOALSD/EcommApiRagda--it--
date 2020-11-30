@@ -13,29 +13,33 @@
         <meta content="" name="description" />
         <meta content="" name="author" />
         <!-- BEGIN GLOBAL MANDATORY STYLES -->
+       @php
+           $path = env('Asset_Path');
+       @endphp
+
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
-        <link href="{{url('design/admin_panel')}}/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-        <link href="{{url('design/admin_panel')}}/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
-        <link href="{{url('design/admin_panel')}}/assets/global/plugins/bootstrap/css/bootstrap{{app('direction')}}.min.css" rel="stylesheet" type="text/css" />
-        <link href="{{url('design/admin_panel')}}/assets/global/plugins/bootstrap-switch/css/bootstrap-switch{{app('direction')}}.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{url($path)}}/design/admin_panel/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{url($path)}}/design/admin_panel/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{url($path)}}/design/admin_panel/assets/global/plugins/bootstrap/css/bootstrap{{app('direction')}}.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{url($path)}}/design/admin_panel/assets/global/plugins/bootstrap-switch/css/bootstrap-switch{{app('direction')}}.min.css" rel="stylesheet" type="text/css" />
         <!-- END GLOBAL MANDATORY STYLES -->
         <!-- BEGIN PAGE LEVEL PLUGINS -->
-        <link href="{{url('design/admin_panel')}}/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css" rel="stylesheet" type="text/css" />
-        <link href="{{url('design/admin_panel')}}/assets/global/plugins/morris/morris.css" rel="stylesheet" type="text/css" />
-        <link href="{{url('design/admin_panel')}}/assets/global/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css" />
-        <link href="{{url('design/admin_panel')}}/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
-        <link href="{{url('design/admin_panel')}}/assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css" />
-        <link href="{{url('design/admin_panel')}}/assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{url($path)}}/design/admin_panel/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{url($path)}}/design/admin_panel/assets/global/plugins/morris/morris.css" rel="stylesheet" type="text/css" />
+        <link href="{{url($path)}}/design/admin_panel/assets/global/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{url($path)}}/design/admin_panel/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{url($path)}}/design/admin_panel/assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{url($path)}}/design/admin_panel/assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL STYLES -->
-        <link href="{{url('design/admin_panel')}}/assets/global/css/components{{app('direction')}}.min.css" rel="stylesheet" id="style_components" type="text/css" />
-        <link href="{{url('design/admin_panel')}}/assets/global/css/plugins{{app('direction')}}.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{url($path)}}/design/admin_panel/assets/global/css/components{{app('direction')}}.min.css" rel="stylesheet" id="style_components" type="text/css" />
+        <link href="{{url($path)}}/design/admin_panel/assets/global/css/plugins{{app('direction')}}.min.css" rel="stylesheet" type="text/css" />
         <!-- END THEME GLOBAL STYLES -->
         <!-- BEGIN THEME LAYOUT STYLES -->
 
-        <link href="{{url('design/admin_panel')}}/assets/layouts/layout4/css/layout{{app('direction')}}.min.css" id="stylelink1" rel="stylesheet" type="text/css" />
-        <link href="{{url('design/admin_panel')}}/assets/layouts/layout4/css/themes/default.css" id="stylelink2" rel="stylesheet" type="text/css" id="style_color" />
-        <link href="{{url('design/admin_panel')}}/assets/layouts/layout4/css/custom.css"  id="stylelink3" rel="stylesheet" type="text/css" />
+        <link href="{{url($path)}}/design/admin_panel/assets/layouts/layout4/css/layout{{app('direction')}}.min.css" id="stylelink1" rel="stylesheet" type="text/css" />
+        <link href="{{url($path)}}/design/admin_panel/assets/layouts/layout4/css/themes/default.css" id="stylelink2" rel="stylesheet" type="text/css" id="style_color" />
+        <link href="{{url($path)}}/design/admin_panel/assets/layouts/layout4/css/custom.css"  id="stylelink3" rel="stylesheet" type="text/css" />
         
 {{--  
         @if(session('theme') == 1)
@@ -64,7 +68,7 @@
         
         @endif
 --}}
-        <script src="{{url('design/admin_panel')}}/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+        <script src="{{url($path)}}/design/admin_panel/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
         <!-- END THEME LAYOUT STYLES -->
         @if(!empty(setting()->icon))
         <link rel="shortcut icon" href="{{ it()->url(setting()->icon) }}" />
@@ -73,12 +77,12 @@
         <!-- BEGIN PAGE LEVEL PLUGINS -->
         <!-- END CORE PLUGINS -->
 
-        <link href="{{ url("design/admin_panel/assets/global/plugins/datatables/datatables.min.css") }}" rel="stylesheet" type="text/css" />
-        <link rel="stylesheet" href="{{url("design/admin_panel")}}/assets/global/css/components-rtl.min.css">
-        <link rel="stylesheet" href="{{url("design/admin_panel")}}/assets/global/css/plugins-rtl.min.css">
-        <link href="{{ url("design/admin_panel/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap-rtl.css") }}" rel="stylesheet" type="text/css" />
+        <link href="{{url($path)}}/design/admin_panel/assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="{{url($path)}}/design/admin_panel/assets/global/css/components-rtl.min.css">
+        <link rel="stylesheet" href="{{url($path)}}/design/admin_panel/assets/global/css/plugins-rtl.min.css">
+        <link href="{{url($path)}}/design/admin_panel/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap-rtl.css" rel="stylesheet" type="text/css" />
         @if(app("l") != 'ar')
-        <link href="{{ url("design/admin_panel/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css") }}" rel="stylesheet" type="text/css" />
+        <link href="{{url($path)}}/design/admin_panel/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
         @endif
 
        <style type="text/css">
@@ -86,7 +90,7 @@
                 padding-top:70px;
             }
         </style>
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset($path) }}/css/app.css" rel="stylesheet" type="text/css" />
         @livewireStyles
 
     </head>
