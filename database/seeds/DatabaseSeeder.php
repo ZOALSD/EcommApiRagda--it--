@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
                 SizeSeeder::class,
                 CategoriesSeeder::class,
                 AdminDataInfo::class,
-                UserSeeder::class,
+                //UserSeeder::class,
                ProduactSeeder::class,
                PermissionsDemoSeeder::class,
                // CardSeeder::class
