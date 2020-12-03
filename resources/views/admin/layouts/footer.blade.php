@@ -583,10 +583,7 @@
                             </div>
                         </div>
 
-
-
-                        <script src="{{ asset('js/app.js') }}" defer></script>
-                        @livewireScripts
+                      
 
 
                         <script src="{{url($path)}}/design/admin_panel/assets/global/plugins/moment.min.js" type="text/javascript"></script>
@@ -679,8 +676,16 @@
                         });
                         </script>
 
+                  <script src="{{ url($path) }}/js/app.js" defer></script>
+
+                  <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+                  {!! Toastr::message() !!}
+          
+
+    
                         @stack('js')
 
+                        @livewireScripts
 
                         <!-- END THEME LAYOUT SCRIPTS -->
                     </body>

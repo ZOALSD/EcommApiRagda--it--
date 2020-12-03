@@ -6,5 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Card extends Model
 {
-    //
+    protected $fillable = [
+        
+        'produact_id',
+        'seller_id',
+        'clint_id',
+        'process_id',
+        'city_id',
+        'area_id',
+        'quantity',
+        'price',
+        'total',
+        'stutus'
+
+    ];
 }

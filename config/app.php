@@ -180,6 +180,9 @@ return [
         // Permission
         Spatie\Permission\PermissionServiceProvider::class,
 
+        //toaster
+        Brian2694\Toastr\ToastrServiceProvider::class,
+
 
     ],
 
@@ -236,6 +239,9 @@ return [
 
         //QR Code 
         'QRCode' => LaravelQRCode\Facades\QRCode::class,     
+
+        //toastter
+        'Toastr'  => Brian2694\Toastr\Facades\Toastr::class,
 
     ],
 

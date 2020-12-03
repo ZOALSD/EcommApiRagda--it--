@@ -19,8 +19,9 @@ use Illuminate\Support\Str;
 
 $factory->define(User::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
-        'phone' => $faker->e164PhoneNumber,
+        'name' => "Ragda",
+        'phone' => '09999',
+        'password' => bcrypt(00000),
         'year' => $faker->year($max ='now'),
         'email' => $faker->unique()->safeEmail,
         'type'  => 1

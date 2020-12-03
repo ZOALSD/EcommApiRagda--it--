@@ -16,7 +16,7 @@
 
 --}}
 <li class="nav-item start {{active_link('permission','active open')}}  ">
-<a href="{{-- aurl('permission') --}}" class="nav-link nav-toggle">
+<a href="{{aurl('permission')}}" class="nav-link nav-toggle">
         <i class="fa fa-lock"></i>
         <span class="title">{{trans('admin.permission')}}</span>
         <span class="selected"></span>
@@ -25,7 +25,7 @@
 
 
 <li class="nav-item start {{active_link('manger','active open')}}  ">
-    <a href="{{-- aurl('manger') --}}" class="nav-link nav-toggle">
+    <a href="{{ aurl('manger') }}" class="nav-link nav-toggle">
             <i class="fa fa-user-plus"></i>
             <span class="title">{{trans('admin.manger')}}</span>
             <span class="selected"></span>

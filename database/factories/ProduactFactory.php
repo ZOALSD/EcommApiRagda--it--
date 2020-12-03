@@ -11,7 +11,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Produact::class, function (Faker $faker) {
     return [
-'admin_id'=>1,
+'user_id'=>1,
 'color_id'=>factory(Color::class),
 'cate_name'=>$this->faker->title,
 'price'=>$this->faker->buildingNumber,

@@ -42,6 +42,9 @@ app()->singleton('admin', function () {
 		 */
 
 		Route::group(['middleware' => 'admin:admin'], function () {
+
+
+			
 				//////// Admin Routes /* Start */ //////////////
 				Route::get('/', 'Admin\Dashboard@home');
 				Route::any('logout', 'Admin\AdminAuthenticated@logout');
@@ -65,6 +68,14 @@ Route::any('category',function(){
 				Route::resource('ads','Admin\AdsController'); 
 Route::post('ads/multi_delete','Admin\AdsController@multi_delete'); 
 				//////// Admin Routes /* End */ //////////////
+
+
+				Route::get('manger', function () {
+
+					return view('admin.admins',['title'=>'إدارة المشرفين']);
+				})->name('manger');
+
+				Route::get('permission','Admin\permissionController@index')->name('permission');
 			});
 
 	});

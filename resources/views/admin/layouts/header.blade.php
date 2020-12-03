@@ -17,10 +17,11 @@
            $path = env('Asset_Path');
        @endphp
 
+
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
         <link href="{{url($path)}}/design/admin_panel/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <link href="{{url($path)}}/design/admin_panel/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
-        <link href="{{url($path)}}/design/admin_panel/assets/global/plugins/bootstrap/css/bootstrap{{app('direction')}}.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{url($path)}}/design/admin_panel/assets/global/plugins/bootstrap/css/bootstrap-rtl.min.css" rel="stylesheet" type="text/css" />
         <link href="{{url($path)}}/design/admin_panel/assets/global/plugins/bootstrap-switch/css/bootstrap-switch{{app('direction')}}.min.css" rel="stylesheet" type="text/css" />
         <!-- END GLOBAL MANDATORY STYLES -->
         <!-- BEGIN PAGE LEVEL PLUGINS -->
@@ -90,7 +91,10 @@
                 padding-top:70px;
             }
         </style>
-        <link href="{{ asset($path) }}/css/app.css" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css" />
         @livewireStyles
 
     </head>
