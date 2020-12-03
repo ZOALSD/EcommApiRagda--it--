@@ -5,6 +5,7 @@
 use App\User;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
+use Hash;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,8 +21,8 @@ use Illuminate\Support\Str;
 $factory->define(User::class, function (Faker $faker) {
     return [
         'name' => "Ragda",
-        'phone' => '09999',
-        'password' => bcrypt(00000),
+        'phone' => '99999',
+        'password' => Hash::make(99999),
         'year' => $faker->year($max ='now'),
         'email' => $faker->unique()->safeEmail,
         'type'  => 1
