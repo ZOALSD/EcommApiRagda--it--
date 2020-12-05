@@ -3,6 +3,11 @@
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
 <!--[if !IE]><!-->
 <html lang="{{app('l')}}" dir="{{app('dir')}}">
+    
+    @php
+    $path = env('Asset_Path');
+    @endphp
+
     <!--<![endif]-->
     <!-- BEGIN HEAD -->
     <head>
@@ -14,17 +19,17 @@
         <meta content="" name="author" />
         <!-- BEGIN GLOBAL MANDATORY STYLES -->
 
-        <link href="{{url('design/admin_panel')}}/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-        <link href="{{url('design/admin_panel')}}/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
-        <link href="{{url('design/admin_panel')}}/assets/global/plugins/bootstrap/css/bootstrap{{app('direction')}}.min.css" rel="stylesheet" type="text/css" />
-        <link href="{{url('design/admin_panel')}}/assets/global/plugins/bootstrap-switch/css/bootstrap-switch{{app('direction')}}.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{url($path)}}/design/admin_panel/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{url($path)}}/design/admin_panel/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{url($path)}}/design/admin_panel/assets/global/plugins/bootstrap/css/bootstrap{{app('direction')}}.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{url($path)}}/design/admin_panel/assets/global/plugins/bootstrap-switch/css/bootstrap-switch{{app('direction')}}.min.css" rel="stylesheet" type="text/css" />
         <!-- END GLOBAL MANDATORY STYLES -->
         <!-- BEGIN THEME GLOBAL STYLES -->
-        <link href="{{url('design/admin_panel')}}/assets/global/css/components{{app('direction')}}.min.css" rel="stylesheet" id="style_components" type="text/css" />
-        <link href="{{url('design/admin_panel')}}/assets/global/css/plugins{{app('direction')}}.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{url($path)}}/design/admin_panel/assets/global/css/components{{app('direction')}}.min.css" rel="stylesheet" id="style_components" type="text/css" />
+        <link href="{{url($path)}}/design/admin_panel/assets/global/css/plugins{{app('direction')}}.min.css" rel="stylesheet" type="text/css" />
         <!-- END THEME GLOBAL STYLES -->
         <!-- BEGIN PAGE LEVEL STYLES -->
-        <link href="{{url('design/admin_panel')}}/assets/pages/css/login{{app('direction')}}.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{url($path)}}/design/admin_panel/assets/pages/css/login{{app('direction')}}.min.css" rel="stylesheet" type="text/css" />
         <!-- END PAGE LEVEL STYLES -->
         <!-- BEGIN THEME LAYOUT STYLES -->
         <!-- END THEME LAYOUT STYLES -->
@@ -106,27 +111,27 @@
                         <br />
                         <bdi> 2014 © Metronic. Admin Dashboard Template & <a href="http://phpanonymous.com/it" target="_blank">Deployed By It Version 1.0</a>  </bdi></div>
                         <!--[if lt IE 9]>
-                        <script src="{{url('design/admin_panel')}}/assets/global/plugins/respond.min.js"></script>
-                        <script src="{{url('design/admin_panel')}}/assets/global/plugins/excanvas.min.js"></script>
+                        <script src="{{url($path)}}/design/admin_panel/assets/global/plugins/respond.min.js"></script>
+                        <script src="{{url($path)}}/design/admin_panel/assets/global/plugins/excanvas.min.js"></script>
                         <![endif]-->
                         <!-- BEGIN CORE PLUGINS -->
-                        <script src="{{url('design/admin_panel')}}/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
-                        <script src="{{url('design/admin_panel')}}/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-                        <script src="{{url('design/admin_panel')}}/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
-                        <script src="{{url('design/admin_panel')}}/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-                        <script src="{{url('design/admin_panel')}}/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-                        <script src="{{url('design/admin_panel')}}/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+                        <script src="{{url($path)}}/design/admin_panel/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+                        <script src="{{url($path)}}/design/admin_panel/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+                        <script src="{{url($path)}}/design/admin_panel/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+                        <script src="{{url($path)}}/design/admin_panel/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+                        <script src="{{url($path)}}/design/admin_panel/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+                        <script src="{{url($path)}}/design/admin_panel/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
                         <!-- END CORE PLUGINS -->
                         <!-- BEGIN PAGE LEVEL PLUGINS -->
-                        <script src="{{url('design/admin_panel')}}/assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
-                        <script src="{{url('design/admin_panel')}}/assets/global/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
+                        <script src="{{url($path)}}/design/admin_panel/assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+                        <script src="{{url($path)}}/design/admin_panel/assets/global/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
 
                         <!-- END PAGE LEVEL PLUGINS -->
                         <!-- BEGIN THEME GLOBAL SCRIPTS -->
-                        <script src="{{url('design/admin_panel')}}/assets/global/scripts/app.min.js" type="text/javascript"></script>
+                        <script src="{{url($path)}}/design/admin_panel/assets/global/scripts/app.min.js" type="text/javascript"></script>
                         <!-- END THEME GLOBAL SCRIPTS -->
                         <!-- BEGIN PAGE LEVEL SCRIPTS -->
-                        <script src="{{url('design/admin_panel')}}/assets/pages/scripts/login.min.js" type="text/javascript"></script>
+                        <script src="{{url($path)}}/design/admin_panel/assets/pages/scripts/login.min.js" type="text/javascript"></script>
                         <!-- END PAGE LEVEL SCRIPTS -->
                         <!-- BEGIN THEME LAYOUT SCRIPTS -->
                         <!-- END THEME LAYOUT SCRIPTS -->
