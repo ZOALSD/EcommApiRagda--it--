@@ -105,7 +105,7 @@
         </li> 
     </ul> 
 </li>
-{{--
+
 <li class="nav-item start {{active_link('produactcoontroller','active open')}} ">
     <a href="javascript:;" class="nav-link nav-toggle">
         <i class="fa fa-cart-plus"></i>
@@ -130,7 +130,7 @@
         </li> 
     </ul> 
 </li>
---}}
+
 <li class="nav-item start {{active_link('ads','active open')}} ">
     <a href="javascript:;" class="nav-link nav-toggle">
         <i class="fa fa-photo"></i>
