@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
                 UserSeeder::class,
                ProduactSeeder::class,
                PermissionsDemoSeeder::class,
+               AdsSeeder::class
                // CardSeeder::class
 
         ]);
