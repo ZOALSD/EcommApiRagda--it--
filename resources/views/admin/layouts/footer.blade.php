@@ -573,10 +573,9 @@
                         <!-- END CONTAINER -->
                         <!-- BEGIN FOOTER -->
                         <div class="page-footer">
-                            <div class="page-footer-inner"> 2016 &copy; Metronic Theme By
-                                <a target="_blank" href="http://keenthemes.com">Keenthemes</a> &nbsp;
+                            <div class="page-footer-inner">  
+                                <a target="_blank" href="http://facebook.com/ZOOL_S3D">Created Via ZOOL_S3D</a> &nbsp;
                                 |&nbsp;
-                                <a href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes" title="Purchase Metronic just for 27$ and get lifetime updates for free" target="_blank">Purchase Metronic!</a>
                             </div>
                             <div class="scroll-to-top">
                                 <i class="fa fa-arrow-up"></i>
@@ -627,7 +626,10 @@
                         <!--script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script-->
                         <script src="https://cdn.ckeditor.com/4.10.0/full/ckeditor.js"></script>
 
+
+
 <script>
+
                         CKEDITOR.replaceClass = 'ckeditor';
                         </script>
                         <script type="text/javascript">
@@ -681,12 +683,29 @@
                   <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
                   {!! Toastr::message() !!}
           
+                  @stack('js')
+                  @livewireScripts
 
+                  <script>
+                  
+                        window.livewire.on('adminDelete', (id) => {
+                        $(".modal-backdrop").remove();
+                        $(".modal-backdrop.in").remove();
+                        $('#delete_record'+id).modal('hide');
+                    })  
+                    
+
+                    window.livewire.on('Add_Admin', () => {
+                        $(".modal-backdrop").remove();
+                        $(".modal-backdrop.in").remove();
+                        $('#Add_Admin').modal('hide');
+                    })  
+                    
+
+                    </script>
     
-                        @stack('js')
+                      
 
-                        @livewireScripts
-
-                        <!-- END THEME LAYOUT SCRIPTS -->
+                        <!-- END THEME LAYOUT SCRIPTS  Add_Admin -->
                     </body>
                 </html>

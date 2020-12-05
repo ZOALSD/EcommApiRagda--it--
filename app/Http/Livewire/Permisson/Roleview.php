@@ -71,19 +71,44 @@ class Roleview extends Component
 
     public function saveRole(){
         $this->add =true;
-        $this->addNew =false;//
+        $this->addNew =false;
         $role =new Role;
+        $role->guard_name = 'admin';
         $role->name = $this->newRoleValue;
         $role->save();
         
     }
 
-    public function removePermission($name){
+    public function removePermission($id){
         
      
         $n = $this->bgSeleted;
-        $role= Role::where('name',$n)->vlaue('id');
-        $role->revokePermissionTo($name);
+        $role_id= Role::where('name',$n)->value('id');
+        RolePermission::where('role_id',$role_id)->where('permission_id',$id)->delete();
+        //$role->revokePermissionTo($name);
+    session()->flash('deleted', ' تـم   الحـــذف  بنجــاح');
 
+
+    }
+
+
+    public function addPermission($id){
+        
+     
+        $n = $this->bgSeleted;
+        $role_id= Role::where('name',$n)->value('id');
+       // RolePermission::where('role_id',$role_id)->where('permission_id',$id)->delete();
+      $co = RolePermission::where('role_id',$role_id)->where('permission_id',$id)->count();
+      
+      if($co == 0){
+       $RP =new RolePermission ;
+        $RP->role_id = $role_id ;
+        $RP->permission_id = $id;
+        $RP->save();
+    session()->flash('new', ' تـم  الاضافة بنجــاح');
+
+      }else{
+    session()->flash('old', ' تـم  الاضافة مسباقاَ');
+      }
     }
 }

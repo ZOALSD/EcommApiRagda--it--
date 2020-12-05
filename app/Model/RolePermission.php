@@ -9,6 +9,7 @@ class RolePermission extends Model
 {
     protected $table = 'role_has_permissions';
 
+    public $timestamps = false;
 
     public function permission()
     {

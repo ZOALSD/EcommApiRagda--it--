@@ -24,7 +24,18 @@ class CardRequest extends FormRequest
     public function rules()
     {
         return [
+        'produact_id'    => 'required',
+        'seller_id'      => 'required',
+        'clint_id'       => 'required',
+        'process_id'     => '',
+        'city_id'        => 'required',
+        'area_id'        => '',
+        'quantity'       => 'required',
+        'price'          => 'required',
+        'total'          => '',
+        'stutus'         => '',
             
+            //required 
         ];
     }
 }

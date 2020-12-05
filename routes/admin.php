@@ -71,7 +71,6 @@ Route::post('ads/multi_delete','Admin\AdsController@multi_delete');
 
 
 				Route::get('manger', function () {
-
 					return view('admin.admins',['title'=>'إدارة المشرفين']);
 				})->name('manger');
 

@@ -1,8 +1,38 @@
 <div >
-<h1 style ="color:#da8d1a">
-    {{  $bgSeleted  }}
-    {{ $namePer }}
-</h1>
+
+    <h1 style ="color:#da8d1a">
+        {{  $bgSeleted  }}
+        {{ $namePer }}
+    </h1>
+
+    @if(session()->has('old'))
+    <div wire:poll.3000ms class="alert alert-wiring" role="alert">
+      <p>
+        {{ session('old') }}
+      </p>
+    </div>
+    @endif
+
+
+    @if(session()->has('new'))
+    <div wire:poll.3000ms class="alert alert-success" role="alert">
+      <p>
+        {{ session('new') }}
+      </p>
+    </div>
+    @endif
+
+
+    @if(session()->has('deleted'))
+    <div wire:poll.3000ms class="alert alert-success" role="alert">
+      <p>
+        {{ session('deleted') }}
+      </p>
+    </div>
+    @endif
+
+
+
 <hr style="border-color:#da8d1a">
     <div class="row">
         <div class="col-md-9">
@@ -16,7 +46,7 @@
                 &ThinSpace;
                 &ThinSpace;
                 &ThinSpace;
-                <button class="float-left btn" wire:click="removePermission('{{ $p->name }}')">
+                <button class="float-left btn" wire:click="removePermission('{{ $p->id }}')">
 
                     <i  class=" fa fa-trash fa-x" aria-hidden="true"></i>
                 </button>
@@ -34,8 +64,9 @@
                 <i class="fa fa-lock" aria-hidden="true"></i>
 
                 {{ $i->name }}
-                <i class="float-left fa fa-plus fa-x " aria-hidden="true"></i>
-
+                <button wire:click="addPermission({{ $i->id }})" class="btn float-left">
+                <i class=" fa fa-plus fa-x " aria-hidden="true"></i>
+                </button>
             </li>
             @endforeach
 

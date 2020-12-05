@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Admin;
 use Illuminate\Http\Request;
 use App\Model\RolePermission;
 use Spatie\Permission\Models\Role;
@@ -12,9 +13,7 @@ class permissionController extends Controller
     
     public function index(){
 
-     //   return RolePermission::where('role_id',1)->with('permission')->get();
-   //return Role::findByName('writer');
-
+       // return	Admin::with('roles')->get(); //roles
         return view('admin.permission',['title'=>'صلاحيات المشرفين']);
     }
 

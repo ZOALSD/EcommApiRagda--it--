@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 class CardControllerApi extends Controller
 {
     
-    
+    public function store(){
+
+    }
 
 }

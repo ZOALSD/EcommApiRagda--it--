@@ -53,6 +53,43 @@ class PermissionsDemoSeeder extends Seeder
         $user->assignRole($role1);
 
         $user = \App\Admin::create([
+            'name' => 'Example User',
+            'email' => 'tes1t@example.com',
+        ]);
+        $user->assignRole($role1);
+
+        $user = \App\Admin::create([
+            'name' => 'Example User',
+            'email' => 'te2st@example.com',
+        ]);
+        $user->assignRole($role1);
+
+        $user = \App\Admin::create([
+            'name' => 'Example User',
+            'email' => 'tes3t@example.com',
+        ]);
+        $user->assignRole($role1);
+
+        $user = \App\Admin::create([
+            'name' => 'Example User',
+            'email' => 'tes4t@example.com',
+        ]);
+        $user->assignRole($role1);
+
+        $user = \App\Admin::create([
+            'name' => 'Example User',
+            'email' => 'tes5t@example.com',
+        ]);
+        $user->assignRole($role1);
+
+        $user = \App\Admin::create([
+            'name' => 'Example User',
+            'email' => 'te6st@example.com',
+        ]);
+        $user->assignRole($role1);
+
+
+        $user = \App\Admin::create([
             'name' => 'Example Admin User',
             'email' => 'admin@example.com',
         ]);

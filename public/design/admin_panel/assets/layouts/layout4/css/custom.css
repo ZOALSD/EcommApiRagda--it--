@@ -4,6 +4,28 @@
         border: groove !important;
     }
 }
+.error {
+    color: red;
+    margin: 10px 5px -7px;
+}
+
+.alert.bottom {
+    position: fixed;
+    left: 50px;
+    bottom: 20px;
+    width: 300px;
+}
+
+.alert.alert-wiring {
+    background-color: #ff572294;
+}
+
+.alert.top-left {
+    position: fixed;
+    top: 200px;
+    left: 50px;
+    z-index: 999999;
+}
 
 .lds-spinner {
     color: black;

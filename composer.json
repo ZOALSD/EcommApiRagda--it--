@@ -20,6 +20,7 @@
         "laravel/tinker": "^2.5",
         "laravelcollective/html": "^6.0",
         "livewire/livewire": "^2.3",
+        "mattlibera/livewire-flash": "^0.4.1",
         "nicolaslopezj/searchable": "^1.13",
         "phpanonymous/it": "1.4.1",
         "phpoffice/phpspreadsheet": "^1.15",
