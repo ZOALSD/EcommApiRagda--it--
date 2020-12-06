@@ -23,82 +23,38 @@ class PermissionsDemoSeeder extends Seeder
 
         // create permissions
         Permission::create(['guard_name' => 'admin' , 'name' => 'read']);
-        Permission::create(['guard_name' => 'admin' , 'name' => 'print']);
+        Permission::create(['guard_name' => 'admin' , 'name' => 'طباعة']);
 //       Permission::create(['guard_name' => 'admin' , 'name' => 'report']);
-        Permission::create(['guard_name' => 'admin' , 'name' => 'edit']);
-        Permission::create(['guard_name' => 'admin' , 'name' => 'delete']);
-        Permission::create(['guard_name' => 'admin' , 'name' => 'publish']);
-        Permission::create(['guard_name' => 'admin' , 'name' => 'unpublish']);
+        Permission::create(['guard_name' => 'admin' , 'name' => 'تعديل']);
+        Permission::create(['guard_name' => 'admin' , 'name' => 'حذف']);
+        Permission::create(['guard_name' => 'admin' , 'name' => 'رفع']);
+        Permission::create(['guard_name' => 'admin' , 'name' => 'تجميد']);
 
         // create roles and assign existing permissions
         $role1 = Role::create(['guard_name' => 'admin' , 'name' => 'writer']);
         $role1->givePermissionTo('read');
-        $role1->givePermissionTo('edit');
-        $role1->givePermissionTo('delete');
+        $role1->givePermissionTo('تعديل');
+        $role1->givePermissionTo('حذف');
 
         $role2 = Role::create(['guard_name' => 'admin' , 'name' => 'admin']);
-        $role2->givePermissionTo('print');
+        $role2->givePermissionTo('طباعة');
         $role2->givePermissionTo('read');
-        $role2->givePermissionTo('publish');
-        $role2->givePermissionTo('unpublish');
+        $role2->givePermissionTo('رفع');
+        $role2->givePermissionTo('تجميد');
 
         $role3 = Role::create(['guard_name' => 'admin' , 'name' => 'super-admin']);
         // gets all permissions via Gate::before rule; see AuthServiceProvider
 
+        for($i = 1 ; $i<= 15 ; $i++){
         // create demo users
         $user = \App\Admin::create([
-            'name' => 'Example User',
-            'email' => 'test@example.com',
+            'name' => 'Admin number :'.$i,
+            'email' => 'Admin'.$i.'@example.com',
+            'phone' => $i.'343434'
         ]);
         $user->assignRole($role1);
-
-        $user = \App\Admin::create([
-            'name' => 'Example User',
-            'email' => 'tes1t@example.com',
-        ]);
-        $user->assignRole($role1);
-
-        $user = \App\Admin::create([
-            'name' => 'Example User',
-            'email' => 'te2st@example.com',
-        ]);
-        $user->assignRole($role1);
-
-        $user = \App\Admin::create([
-            'name' => 'Example User',
-            'email' => 'tes3t@example.com',
-        ]);
-        $user->assignRole($role1);
-
-        $user = \App\Admin::create([
-            'name' => 'Example User',
-            'email' => 'tes4t@example.com',
-        ]);
-        $user->assignRole($role1);
-
-        $user = \App\Admin::create([
-            'name' => 'Example User',
-            'email' => 'tes5t@example.com',
-        ]);
-        $user->assignRole($role1);
-
-        $user = \App\Admin::create([
-            'name' => 'Example User',
-            'email' => 'te6st@example.com',
-        ]);
-        $user->assignRole($role1);
-
-
-        $user = \App\Admin::create([
-            'name' => 'Example Admin User',
-            'email' => 'admin@example.com',
-        ]);
-        $user->assignRole($role2);
-
-        $user = \App\Admin::create([
-            'name' => 'Example Super-Admin User',
-            'email' => 'superadmin@example.com',
-        ]);
-        $user->assignRole($role3);
+        
+       }
+     
     }
 }

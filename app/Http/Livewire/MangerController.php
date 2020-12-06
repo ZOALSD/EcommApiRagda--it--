@@ -5,6 +5,8 @@ namespace App\Http\Livewire;
 use App\Admin;
 use Livewire\Component;
 use Spatie\Permission\Models\Role;
+use Spatie\Permission\Traits\HasRoles;
+
 use Illuminate\Support\Facades\Hash;
 
 
@@ -14,6 +16,10 @@ class MangerController extends Component
     public $manger ;
     public $idd;
     public $role;
+    public $role_selected_name;
+    public $admin_name;
+    public $admin_Role_up;
+    public $admin_id;
 
     public $name;
     public $email;
@@ -29,7 +35,7 @@ class MangerController extends Component
         'password' => 'required| min:4|confirmed',
         //'password_confirmation' => 'required| min:4',
         //'role_id' => 'nullable'
-       // 'phone' => 'nullable',
+          'phone' => 'nullable',
 
         ];
         
@@ -72,7 +78,7 @@ class MangerController extends Component
             'name' => $this->name,
             'email' => $this->email,
             'password' => Hash::make($this->password),
-            //'role' => $this->role,
+            'phone' => $this->phone,
         ]);
         $user->assignRole($this->role_name);
 $this->filedReset();
@@ -81,5 +87,29 @@ $this->emit('Add_Admin', $this->idd );
 session()->flash('message', 'تــم إضــافة المشرف بنجـــاح');
 
 
+    }
+
+    public function adminRoleSelect($id,$email){
+        
+        $this->role_selected_name = Role::where('id',$id)->value('name');
+
+        $e = $email;
+        $this->admin_id = Admin::where('email',$e)->value('id');
+        $this->admin_name = Admin::where('email',$e)->value('name');
+
+    }
+
+    public function saveAdminRole(){
+
+        $admin = Admin::where('id',$this->admin_id)->first();//syncRoles([$this->role_selected_name]);
+        $admin->removeRole($this->role_selected_name);
+        //$admin->syncRoles([$this->admin_Role_up]);
+       $admin->assignRole($this->admin_Role_up);
+
+        $this->emit('Change_Role');
+        session()->flash('message', 'تــم تغير دور المشرف بنجـــاح');
+
+        
+        
     }
 }

@@ -700,12 +700,18 @@
                         $(".modal-backdrop.in").remove();
                         $('#Add_Admin').modal('hide');
                     })  
+
+                    window.livewire.on('Change_Role', () => {
+                        $(".modal-backdrop").remove();
+                        $(".modal-backdrop.in").remove();
+                        $('#Change_Role').modal('hide');
+                    })  
                     
 
                     </script>
     
                       
 
-                        <!-- END THEME LAYOUT SCRIPTS  Add_Admin -->
+                        <!-- END THEME LAYOUT SCRIPTS  Add_Admin  Change_Role-->
                     </body>
                 </html>

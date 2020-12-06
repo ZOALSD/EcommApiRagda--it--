@@ -29,10 +29,10 @@
     <tr>
         <td>{{ $i->name }}</td>
         <td>{{ $i->email }}</td>
-        <td>phone</td>
+        <td>{{ $i->phone }}</td>
         <td>
             @foreach ($i->roles as $r)
-                <button class="btn btn-success" data-toggle="modal" data-target="#Change_Role">
+                <button wire:click="adminRoleSelect({{ $r->id }}, '{{ $i->email }}')" class="btn btn-success" data-toggle="modal" data-target="#Change_Role">
                         {{ $r->name }}</button>
             @endforeach
         </td>
@@ -124,17 +124,30 @@
                     <div class="modal-content">
                             <div class="modal-header">
                                     <button class="close" data-dismiss="modal">x</button>
-                                    <h4 class="modal-title"> تغير دور المشرف </h4>
+                                    <h4 class="modal-title"> تغير دور المشرف {{ $admin_name }} من {{ $role_selected_name }} </h4>
                             </div>
                             <div class="modal-body">
     
-                                        {!! Form::select('role_name',Spatie\Permission\Models\Role::pluck('name'),'', ['class' => 'form-control']) !!}
+                                     <select wire:model.lazy='admin_Role_up' name="admin_Role_up" id="" class="form-control">
+                                             @foreach (Spatie\Permission\Models\Role::pluck('name') as $role)
+                                             <option 
+                                             @if ($role_selected_name == $role)
+                                                 selected
+                                             @endif
+                                             value="{{ $role }}">
+
+                                                     {{ $role }}
+                                             </option>
+
+                                             @endforeach
+
+                                     </select>
                                   
                                     </select>
                             </div>
                             
                             <div class="modal-footer">
-                                    <button wire:click="addAdmin" class="btn btn-danger">إضــافة</button>                          
+                                    <button wire:click="saveAdminRole" class="btn btn-danger">حــفظ</button>                          
                                     <a class="btn btn-default" data-dismiss="modal">{{trans('admin.cancel')}}</a>
                             </div>
                     </div> 

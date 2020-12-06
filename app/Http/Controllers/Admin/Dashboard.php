@@ -9,7 +9,7 @@ class Dashboard extends Controller {
 
 	public function home() {
 		//$user = Admin::where('id',2);
-		$users = Admin::permission(['edit','delete','publish'])->get(); // Returns only users with the permission 'edit articles' (inherited or directly)
+		$users = Admin::permission(['تعديل'])->get(); // Returns only users with the permission 'edit articles' (inherited or directly)
 
 		//$v= $user->hasPermissionTo('publish', 'admin');
 		//Toastr::info('تم حذف المشرف بنجاح','',["positionClass" => "toast-bottom-left"]);
@@ -17,10 +17,10 @@ class Dashboard extends Controller {
 		return view('admin.home', ['title' => trans('admin.dashboard')],\compact('users'));
 	}
 
-	public function theme($id) {
-		if (session()->has('theme')) {
-			session()   ->forget('theme');
-		}
-		session()->put('theme', $id);
-	}
+	// public function theme($id) {
+	// 	if (session()->has('theme')) {
+	// 		session()->forget('theme');
+	// 	}
+	// 	session()->put('theme', $id);
+	// }
 }
