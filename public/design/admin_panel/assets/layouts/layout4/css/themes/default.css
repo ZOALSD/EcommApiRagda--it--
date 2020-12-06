@@ -21,8 +21,8 @@ body.page-md {
     ***********/
 /* Header search bar, toggler button & top menu */
 .page-header.navbar {
-    background: #fbc02d;
-    border-bottom: 1px solid #fbc02d;
+    background: #fdd835;
+    border-bottom: 1px solid #fdd835;
     /* Top notification menu/bar */
     /* Header seaech box */
     /* Menu Toggler */
@@ -354,7 +354,7 @@ body.page-md {
     background: #41465a;
 }
 .page-header.navbar .search-form {
-    background: #fbc02d;
+    background: #fdd835;
 }
 .page-header.navbar .search-form .input-group {
     border: 1px solid #737a99;
@@ -457,7 +457,7 @@ body.page-md {
     > a
     > i,
 .page-sidebar .page-sidebar-menu > li > a > i {
-    color: #ff9800;
+    color: #fdd835;
 }
 .page-sidebar-closed.page-sidebar-fixed
     .page-sidebar:hover
@@ -504,7 +504,7 @@ body.page-md {
 .page-sidebar .page-sidebar-menu > li:hover > a,
 .page-sidebar .page-sidebar-menu > li.open > a {
     background: #696d70;
-    color: #ff9800;
+    color: #fdd835;
 }
 .page-sidebar-closed.page-sidebar-fixed
     .page-sidebar:hover
@@ -520,7 +520,7 @@ body.page-md {
     > i,
 .page-sidebar .page-sidebar-menu > li:hover > a > i,
 .page-sidebar .page-sidebar-menu > li.open > a > i {
-    color: #ff9800;
+    color: #fdd835;
 }
 .page-sidebar-closed.page-sidebar-fixed
     .page-sidebar:hover
@@ -595,7 +595,7 @@ body.page-md {
     > i,
 .page-sidebar .page-sidebar-menu > li.active > a > i,
 .page-sidebar .page-sidebar-menu > li.active.open > a > i {
-    color: #ff9800;
+    color: #fdd835;
 }
 .page-sidebar-closed.page-sidebar-fixed
     .page-sidebar:hover
@@ -633,7 +633,7 @@ body.page-md {
     > li.active
     > a,
 .page-sidebar .page-sidebar-menu > li.active > a {
-    border-left: 3px solid #ff9800 !important;
+    border-left: 3px solid #fdd835 !important;
     margin-left: -3px;
     padding-left: 15px;
 }
@@ -950,12 +950,12 @@ body.page-md {
 @media (max-width: 767px) {
     /* 767px */
     .page-header.navbar {
-        background: #fbc02d;
+        background: #fdd835;
         border-bottom: 1px solid #41465a;
         /* Top menu */
     }
     .page-header.navbar .page-top {
-        background: #fbc02d;
+        background: #fdd835;
     }
     .page-header.navbar
         .top-menu

@@ -20,11 +20,11 @@ class ProduactSeeder extends Seeder
 
             'user_id'=>1,
             'color_id'=> $i,
-            'cate_name'=> 'name pro --:'.$i,
+            'cate_name'=> 'name pro'.$i,
             'price'=> $i.'000',
             'size_id'=> $i,
             'cate_disc'=> 'this pergragrph descrpation via zools3d  this pergragrph descrpation via zools3d this pergragrph descrpation via zools3d ',
-            'cate_image' => 'produactcoontroller/'.$i.'.jpg',
+            'cate_image' =>'produactcoontroller/'.$i.'.jpg',
             'cate_id'=> $i
         ]);
 

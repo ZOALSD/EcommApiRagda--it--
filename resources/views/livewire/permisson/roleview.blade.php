@@ -132,7 +132,7 @@
     }
     .bg-success:hover{
         background-color:#8e99a1;
-        color:#da8d1a !important;
+        color:#FDD835 !important;
     }
 
     .bg-permission{
@@ -148,18 +148,18 @@
     }
     .bg-permission:hover{
         background-color:#12658b;
-        color:#f99705;
+        color:#FDD835;
         font-size:18px;
     }
 
     .bg-permission-2:hover{
         background-color:#12658b;
-        color:#f99705;
+        color:#FDD835;
         font-size:18px;
     }
 
     .fa{
-        color:#f99705;
+        color:#FDD835;
     }
     
     .fa-trash{
