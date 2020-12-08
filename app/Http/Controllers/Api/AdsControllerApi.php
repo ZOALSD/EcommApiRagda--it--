@@ -20,12 +20,10 @@ class AdsControllerApi extends Controller
              * Display a listing of the resource. Api
              * @return \Illuminate\Http\Response
              */
-            public function index()
-            {
-               return response()->json([
-               "status"=>true,
-               "data"=>Ads::orderBy('id','desc')->get()
-               ]);
+            public function index(){
+
+            $data = Ads::orderBy('id','desc')->get();
+            return response()->json($data);
             }
 
 
