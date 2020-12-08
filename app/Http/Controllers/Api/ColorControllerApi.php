@@ -22,7 +22,7 @@ class ColorControllerApi extends Controller
              */
             public function index()
             {
-               return response()->json(Color::orderBy('id','desc')->get());
+               return Color::orderBy('id','desc')->get() ;//response()->json(Color::orderBy('id','desc')->get());
             }
 
 

@@ -22,9 +22,9 @@ class SizeControllerApi extends Controller
              */
             public function index()
             {
-               return response()->json([
-               Size::orderBy('id','desc')->get()
-               ]);
+            //    return response()->json([
+              return  Size::orderBy('id','desc')->get() ;
+            //    ]);
             }
 
 
