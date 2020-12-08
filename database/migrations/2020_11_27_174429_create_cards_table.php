@@ -24,7 +24,7 @@ class CreateCardsTable extends Migration
             $table->bigInteger('quantity');
             $table->bigInteger('price');
             $table->bigInteger('total');
-               $table->Integer('stutus')->default(2);
+            $table->Integer('stutus')->default(2);
             
             // 2 تم الطلب  
             // 1 تم تاكيد الطلب  

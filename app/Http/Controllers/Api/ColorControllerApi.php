@@ -24,7 +24,7 @@ class ColorControllerApi extends Controller
             {
                return response()->json([
                "status"=>true,
-               "data"=>Color::orderBy('id','desc')->paginate(15)
+               "data"=>Color::orderBy('id','desc')->get()
                ]);
             }
 

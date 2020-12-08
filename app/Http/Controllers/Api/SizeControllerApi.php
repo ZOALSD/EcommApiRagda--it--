@@ -24,7 +24,7 @@ class SizeControllerApi extends Controller
             {
                return response()->json([
                "status"=>true,
-               "data"=>Size::orderBy('id','desc')->paginate(15)
+               "data"=>Size::orderBy('id','desc')->get()
                ]);
             }
 

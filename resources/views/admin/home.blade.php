@@ -7,10 +7,10 @@
             <div class="display">
                 <div class="number">
                     <h3 class="font-green-sharp">
-                    <span data-counter="counterup" data-value="7800">0</span>
-                    <small class="font-green-sharp">$</small>
+                    <span data-counter="counterup" data-value="7800">{{ $orderCount }}</span>
+                    <small class="font-green-sharp"></small>
                     </h3>
-                    <small>TOTAL PROFIT</small>
+                    <small>الطلبات الجديدة</small>
                 </div>
 
                 <div class="icon">
@@ -117,11 +117,7 @@
                     <span class="uppercase caption-subject bold font-dark">{{trans('admin.dashboard')}}</span>
                 </div>
                 <div class="actions">
-                    @foreach ($users as $item)
-                        <p>
-                            {{ $item->name }}
-                        </p>
-                    @endforeach
+                   
                     <a class="btn btn-circle btn-icon-only btn-default fullscreen" href="#"> </a>
                 </div>
             </div>

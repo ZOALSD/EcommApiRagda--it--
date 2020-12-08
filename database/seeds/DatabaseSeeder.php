@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
                 UserSeeder::class,
                ProduactSeeder::class,
                PermissionsDemoSeeder::class,
-               AdsSeeder::class
+               AdsSeeder::class,
+               QRcodeOrderSeeder::class,
                // CardSeeder::class
 
         ]);

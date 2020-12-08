@@ -11,7 +11,7 @@ use Mail;
 class AdminAuthenticated extends Controller {
 
 	public function login_page() {
-		return view('admin.login', ['title' => trans('admin.login_page')]);
+		return view('admin.loginzero', ['title' => trans('admin.login_page')]);
 	}
 
 	public function login_post() {
@@ -87,7 +87,7 @@ class AdminAuthenticated extends Controller {
 	}
 
 	public function account() {
-		return view('admin.account', ['title' => trans('admin.account')]);
+		return view('admin.AdminProfile', ['title' => trans('admin.account')]);
 	}
 
 	public function account_post() {
