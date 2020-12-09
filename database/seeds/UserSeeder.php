@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
         factory(User::class,1)->create();
 
         
-        for($i =1 ; $i<=15 ; $i++){
+        //for($i =1 ; $i<=15 ; $i++){
 
              /*   if($i<= 5){
                     User::create([
@@ -50,7 +50,7 @@ class UserSeeder extends Seeder
                 }*/
 
 
-        }
-        factory(User::class,1)->create();
+       // }
+       // factory(User::class,1)->create();
     }
 }
