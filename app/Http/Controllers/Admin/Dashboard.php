@@ -16,10 +16,8 @@ class Dashboard extends Controller {
 		//$v= $user->hasPermissionTo('publish', 'admin');
 		//Toastr::info('تم حذف المشرف بنجاح','',["positionClass" => "toast-bottom-left"]);
 
-		$orderCount = QRCodeOrder::where('stusts',0)->count();
-        $orderData  = QRCodeOrder::where('stusts',0)->get();
-
-		return view('admin.home', ['title' => trans('admin.dashboard')],\compact('orderCount'));
+		
+		return view('admin.home', ['title' => trans('admin.dashboard')]);
 	}
 
 	// public function theme($id) {

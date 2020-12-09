@@ -44,48 +44,48 @@ class OrderProduactController extends Controller
              "total" => 'nullable', // -- table  "-- Crad Table Value
              "stutus" => 'nullable', // -- table  "-- Crad Table Value
         ];
-
-
-
         $data = Validator::make(request()->all(),$rules,'');
-        
-        $PID = Card::orderBy('id','desc')->value('process_id')->frist();
-        if($PID == null){
-                $PIDValue = 1;
-        }else{
-                $PIDValue = $PID+1;
-        }
 
         $total = $req->quantity * $req->price;
-        Card::create([
+
+        foreach($req->seller_id as $SellerID){
             
-             "produact_id" => $req->produact_id ,//,/// -- table  "-- Crad Table Value
-             "seller_id" => $req->seller_id   ,// //, // -- table  "-- Crad Table Value
-             "clint_id" => Auth::id(),// //, // -- table  "-- Crad Table Value
-             "process_id" => $PIDValue  ,// //, // -- table  "-- Crad Table Value
-             "city_id" => $req->city_id   ,// //, // -- table  "-- Crad Table Value
-             "area_id" => $req->area_id   ,// //, // -- table  "-- Crad Table Value
-             "quantity" => $req->quantity   ,// //, // -- table  "-- Crad Table Value
-             "price" => $req->price   ,// //, // -- table  "-- Crad Table Value
-             "total" => $total // //, // -- table  "-- Crad Table Value
-           //  "stutus" => $req->   ,// //, //
+            $PID = Card::orderBy('id','desc')->value('process_id')->frist();
+                if($PID == null){
+                        $PIDValue = 1; // process id select
+                }else{
+                        $PIDValue = $PID+1;
+                }
+            $x = $SellerID ;
+               foreach($req->seller_id as $SellerIDIner)
+              {
+                if($x == $SellerIDIner){
+                    Card::create([
+                        "produact_id" => $req->produact_id ,//,/// -- table  "-- Crad Table Value
+                        "seller_id" => $req->seller_id   ,// //, // -- table  "-- Crad Table Value
+                        "clint_id" => Auth::id(),// //, // -- table  "-- Crad Table Value
+                        "process_id" => $PIDValue  ,// //, // -- table  "-- Crad Table Value
+                        "city_id" => $req->city_id   ,// //, // -- table  "-- Crad Table Value
+                        "area_id" => $req->area_id   ,// //, // -- table  "-- Crad Table Value
+                        "quantity" => $req->quantity   ,// //, // -- table  "-- Crad Table Value
+                        "price" => $req->price   ,// //, // -- table  "-- Crad Table Value
+                        "total" => $total // //, // -- table  "-- Crad Table Value
+                      //  "stutus" => $req->   ,// //, //
+                   ]);
+                }//end if
+              } //end iner for each
 
-        ]);
+              $crpt = Auth::id.$PIDValue ;
+              QRCodeOrder::create([
+                  "client_id" => Auth::id(),
+                  "seller_id" => $req->seller_id,
+                  "card_process_id" => $PIDValue ,
+                  "qrcode" => Hash::make($crpt),
+              ]);
 
-        $crpt = Auth::id.$PIDValue ;
-        QRCodeOrder::create([
-            
-            "client_id" => Auth::id(),
-            "seller_id" => $req->seller_id,
-            "card_process_id" => $PIDValue ,
-            "qrcode" => Hash::make($crpt),
+        }
 
-        ]);
-
-
-        
-
-
+       
         if($data->fails()){
             return response()->json([
                "status"=>false,"
