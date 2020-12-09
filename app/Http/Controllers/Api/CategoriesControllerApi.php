@@ -22,8 +22,9 @@ class CategoriesControllerApi extends Controller
              */
             public function index()
             {
-              $data =Categories::get();//:orderBy('id','desc')->paginate(15);
-                return  CategoriseResources::collection($data);
+         
+               return  Categories::select(['id','Parent_id','name','image_cate'])->get();//:orderBy('id','desc')->paginate(15);
+               // return  CategoriseResources::collection($data);
             //    return response()->json([
             //    "status"=>true,
             //    "data"=>Categories::orderBy('id','desc')->paginate(15)
