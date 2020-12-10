@@ -19,4 +19,16 @@ class PuseProduactController extends Controller
         
     }
 
+
+    public function Unpuse($id){
+
+        $up =Produact::find($id) ;
+        $up->stutus = 1 ;
+        $up->save();
+
+        return response()->json('Product Puesed');
+
+        
+    }
+
 }
