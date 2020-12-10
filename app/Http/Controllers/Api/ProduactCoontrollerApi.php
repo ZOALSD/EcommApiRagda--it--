@@ -38,7 +38,7 @@ class ProduactCoontrollerApi extends Controller
 
              public function ProEcomm(){
                  $id = auth()->user()->id; 
-                $Produact = Produact::where(['user_id'=>$id , 'stutus' => 1])->get();	
+                $Produact = Produact::where('stutus',1)->where('user_id',$id)->get();	
 
                 return $Produact;
 
