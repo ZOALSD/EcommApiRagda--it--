@@ -15,7 +15,7 @@ class SizeSeeder extends Seeder
       //  factory(Size::class ,10)->create() ;
 
       Size::create([
-          'size_name' => 'كرتونة'
+          'size_name' => 'كرتونة' 
       ]);
     
 
