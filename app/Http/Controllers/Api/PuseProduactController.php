@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
+use App\Model\Produact;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class PuseProduactController extends Controller
 {
