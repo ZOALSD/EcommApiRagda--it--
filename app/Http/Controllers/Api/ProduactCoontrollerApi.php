@@ -38,7 +38,7 @@ class ProduactCoontrollerApi extends Controller
 
              public function ProEcomm(){
                  $id = auth()->user()->id; 
-                $Produact = Produact::where('user_id',$id)->get();	
+                $Produact = Produact::where(['user_id'=>$id , 'stutus' => 1])->get();	
 
                 return $Produact;
 
@@ -122,6 +122,7 @@ class ProduactCoontrollerApi extends Controller
             }
 
 
+            
             /**
              * Baboon Script By [It V 1.2 | https://it.phpanonymous.com]
              * update a newly created resource in storage.

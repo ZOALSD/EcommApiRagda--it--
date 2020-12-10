@@ -26,6 +26,7 @@ protected $fillable = [
 'cate_image',
 'cate_disc',
 'cate_id',
+'stutus',
 
 		'created_at',
 		'updated_at',

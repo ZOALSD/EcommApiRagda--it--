@@ -30,6 +30,7 @@ class CreateProduactsTable extends Migration
             $table->bigInteger('cate_id')->unsigned()->nullable();
             $table->foreign('cate_id')->references('id')->on('categories')->onDelete('cascade');
             $table->integer('request')->nullable()->default(1);
+            $table->integer('stutus')->nullable()->default(1);
             $table->softDeletes();
 
 			$table->timestamps();

@@ -47,6 +47,11 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     //AdsControllerApi
     Route::get('Ads','Api\AdsControllerApi@index');//
 
+    Route::get('puse/{id}','Api\PuseProduactController@puse');
+
+
+    
+
 
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
