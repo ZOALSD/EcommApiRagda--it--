@@ -18,6 +18,5 @@ $factory->define(Produact::class, function (Faker $faker) {
 'size_id'=>factory(Size::class),
 'cate_disc'=>$this->faker->paragraph,
 'cate_image' =>$this->faker->imageUrl($width = 640, $height = 480),
-'cate_id'=>factory(Categories::class)
     ];
 });
