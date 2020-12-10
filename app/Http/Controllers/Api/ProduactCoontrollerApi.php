@@ -61,21 +61,23 @@ class ProduactCoontrollerApi extends Controller
              */
     public function store()
     {
+
+        
         $rules = [
              'cate_name'=>'required|string',
              'color_name'=>'string|nullable|sometimes',
              'price'=>'numeric|nullable|sometimes',
              'size_id'=>'numeric|nullable|sometimes',
-            // 'cate_image'=>''.it()->image().'|nullable|sometimes',
+             'cate_image'=>'nullable',
              'cate_disc'=>'nullable|sometimes|string',
              'cate_id'=>'',
         ];
         $data = Validator::make(request()->all(),$rules,[],[
              'cate_name'=>trans('admin.cate_name'),
-             'color_id'=>trans('admin.color_id'),
+             'color_name'=>trans('admin.color_id'),
              'price'=>trans('admin.price'),
              'size_id'=>trans('admin.size_id'),
-           //  'cate_image'=>trans('admin.cate_image'),
+             'cate_image'=>trans('admin.cate_image'),
              'cate_disc'=>trans('admin.cate_disc'),
              'cate_id'=>trans('admin.cate_id'),
         ]);
@@ -93,10 +95,11 @@ class ProduactCoontrollerApi extends Controller
               }
         $create = Produact::create($data); 
 
+        $iddd = auth()->user()->id; 
         return response()->json([
             "status"=>true,
             "message"=>trans('admin.added'),
-            "data"=>$create
+            "data"=>$iddd
         ]);
     }
 
