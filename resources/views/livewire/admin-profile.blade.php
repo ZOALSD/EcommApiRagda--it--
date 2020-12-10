@@ -8,15 +8,40 @@
                 <div class="portlet-body">
                     <div id="dashboard_amchart_1" class="CSSAnimationChart">
                              
-                    <div class="container">
-
+                
                       <div class="row">
-                          <div class="col-md-6"><div class="zool-img"></div> </div>
+                          <div class="col-md-6"><div class="zool-img"></div> 
 
-                          <div class="col-md-6"></div>
+                          <br>
+                          <button class="btn btn-main center">تغير الصورة</button>
+                          <br>
+                          <br>
+                          <br>
+                          <input class='' type="file">
+                          <br>
+                           <div class="text admin-name">
+                            
+                                @if(!$EditName)
+                                <i wire:click='showEdtingName()' class="fa fa-edit"></i>
+                                {{ $user->name }}  
+                                @endif      
+
+                                @if($EditName)
+                                                <input wire:model='name' type="text" value="" placeholder="{{ $user->name }}" class="form-control"> 
+                                                <button wire:click='changeAdminName({{ $user->id }})' class="btn btn-success">حفــظ</button>
+                                @endif      
+                           
+                                </div>
+                            
+                        </div>
+
+                          <div class="col-md-6">
+                            {!! Form::text('name',$user->email, ['class' => 'form-control']) !!}
+                            {!! Form::text('name',$user->phone, ['class' => 'form-control']) !!}
+
+                          </div>
                           
                       </div>
-                    </div>
                        
                     </div>
     
@@ -53,4 +78,12 @@
     background: linear-gradient(to right, #FF9800, #fdd835)
 }
 
+.admin-name{
+
+    text-align: center;
+    font-size: 30px;
+    padding-left: 156px;
+    margin-top: 22px;
+    color: #fbcd01;
+}
 </style>

@@ -4,6 +4,19 @@
         border: groove !important;
     }
 }
+
+.btn-main {
+    color: #ed6b75;
+    background-color: #fdd835;
+    border-color: #fdd835;
+}
+
+.btn-main:hover {
+    color: #ed6b75;
+    background-color: #ffd000;
+    border-color: #635101;
+}
+
 .error {
     color: red;
     margin: 10px 5px -7px;

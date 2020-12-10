@@ -66,7 +66,7 @@ class ProduactCoontrollerApi extends Controller
              'color_name'=>'string|nullable|sometimes',
              'price'=>'numeric|nullable|sometimes',
              'size_id'=>'numeric|nullable|sometimes',
-             'cate_image'=>''.it()->image().'|nullable|sometimes',
+            // 'cate_image'=>''.it()->image().'|nullable|sometimes',
              'cate_disc'=>'nullable|sometimes|string',
              'cate_id'=>'',
         ];
@@ -75,7 +75,7 @@ class ProduactCoontrollerApi extends Controller
              'color_id'=>trans('admin.color_id'),
              'price'=>trans('admin.price'),
              'size_id'=>trans('admin.size_id'),
-             'cate_image'=>trans('admin.cate_image'),
+           //  'cate_image'=>trans('admin.cate_image'),
              'cate_disc'=>trans('admin.cate_disc'),
              'cate_id'=>trans('admin.cate_id'),
         ]);

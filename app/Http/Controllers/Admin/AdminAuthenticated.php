@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\Admin;
-use App\Http\Controllers\Controller;
-use App\Mail\AdminResetPassword;
-use Carbon\Carbon;
 use DB;
 use Mail;
+use App\Admin;
+use Carbon\Carbon;
+use App\Mail\AdminResetPassword;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class AdminAuthenticated extends Controller {
 
