@@ -20,8 +20,8 @@ class DatabaseSeeder extends Seeder
                ProduactSeeder::class,
                PermissionsDemoSeeder::class,
                AdsSeeder::class,
-              // QRcodeOrderSeeder::class,
-               // CardSeeder::class
+             // QRcodeOrderSeeder::class,
+               CardSeeder::class
 
         ]);
     }
