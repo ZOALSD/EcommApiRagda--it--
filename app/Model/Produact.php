@@ -16,8 +16,8 @@ class Produact extends Model {
 protected $table    = 'produacts';
 protected $fillable = [
 		'id',
-		'admin_id',
-		              'color_id',
+		'admin_id','user_id',
+		              'color_name',
 'cate_name',
 
 'price',
