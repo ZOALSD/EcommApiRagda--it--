@@ -20,7 +20,7 @@ class CreateProduactsTable extends Migration
             $table->bigInteger('admin_id')->unsigned()->nullable();
             $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');
             $table->string('cate_name');
-            $table->string('color_id');//->unsigned()->nullable();
+            $table->string('color_name');//->unsigned()->nullable();
             //$table->foreign('color_id')->references('id')->on('colors')->onDelete('cascade');
             $table->bigInteger('price')->nullable();
             $table->bigInteger('size_id')->unsigned()->nullable();

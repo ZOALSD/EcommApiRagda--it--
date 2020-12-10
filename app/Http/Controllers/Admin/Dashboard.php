@@ -17,7 +17,7 @@ class Dashboard extends Controller {
 		//Toastr::info('تم حذف المشرف بنجاح','',["positionClass" => "toast-bottom-left"]);
 
 		
-		return view('admin.home', ['title' => trans('admin.dashboard')]);
+		return view('admin.home');
 	}
 
 	// public function theme($id) {

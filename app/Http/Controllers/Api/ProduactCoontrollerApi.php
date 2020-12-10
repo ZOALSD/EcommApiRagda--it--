@@ -63,7 +63,7 @@ class ProduactCoontrollerApi extends Controller
     {
         $rules = [
              'cate_name'=>'required|string',
-             'color_id'=>'numeric|nullable|sometimes',
+             'color_name'=>'string|nullable|sometimes',
              'price'=>'numeric|nullable|sometimes',
              'size_id'=>'numeric|nullable|sometimes',
              'cate_image'=>''.it()->image().'|nullable|sometimes',
