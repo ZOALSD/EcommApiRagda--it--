@@ -12,6 +12,51 @@ class SizeSeeder extends Seeder
      */
     public function run()
     {
-        factory(Size::class ,10)->create() ;
-    }
+      //  factory(Size::class ,10)->create() ;
+
+      Size::create([
+          'size_name' => 'كرتونة'
+      ]);
+    
+
+    Size::create([
+        'size_name' => 'شوال'
+    ]);
+
+
+    Size::create([
+        'size_name' => 'كيلو'
+    ]);
+
+    Size::create([
+        'size_name' => 'رطل'
+    ]);
+
+    Size::create([
+        'size_name' => 'اردب'
+    ]);
+
+
+    Size::create([
+        'size_name' => 'قنطار'
+    ]);
+
+    
+    Size::create([
+        'size_name' => 'دسته'
+    ]);
+
+
+    Size::create([
+        'size_name' => 'حبة'
+    ]);
+    
+
+    Size::create([
+        'size_name' => 'وحدة'
+    ]);
+  
+   }
+
+
 }
