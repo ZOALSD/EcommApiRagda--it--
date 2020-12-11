@@ -41,7 +41,7 @@ class ProduactCoontrollerApi extends Controller
                 $Produact = Produact::where('stutus',1)->where('user_id',$id)->get();	
                 $color = Produact::where('stutus',1)->where('user_id',$id)->value('color_name');	
 
-                //return $Produact;
+                return $color;
  
                 return response()->json([
                  "status"=>true,
