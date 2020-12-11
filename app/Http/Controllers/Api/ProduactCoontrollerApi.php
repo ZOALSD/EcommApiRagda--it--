@@ -39,16 +39,31 @@ class ProduactCoontrollerApi extends Controller
              public function ProEcomm(){
                  $id = auth()->user()->id; 
                 $Produact = Produact::where('stutus',1)->where('user_id',$id)->get();	
+                $color = Produact::where('stutus',1)->where('user_id',$id)->value('color_name');	
 
-                return $Produact;
+                //return $Produact;
+ 
+                return response()->json([
+                 "status"=>true,
+                 "data"=> $Produact ,
+                 "color" => $color
+                 ]);
+                 
 
              }
 
              public function ProEcommPused(){
                 $id = auth()->user()->id; 
-               $Produact = Produact::where('stutus',0)->where('user_id',$id)->get();	
+                $Produact = Produact::where('stutus',0)->where('user_id',$id)->get();	
+                $color = Produact::where('stutus',0)->where('user_id',$id)->value('color_name');	
 
-               return $Produact;
+               //return $Produact;
+
+               return response()->json([
+                "status"=>true,
+                "data"=> $Produact ,
+                "color" => $color
+                ]);
 
             }
 
@@ -104,11 +119,11 @@ class ProduactCoontrollerApi extends Controller
               }
         $create = Produact::create($data); 
 
-        $iddd = auth()->user()->id; 
+       // $iddd = auth()->user()->id; 
         return response()->json([
             "status"=>true,
             "message"=>trans('admin.added'),
-            "data"=>$iddd
+           // "data"=>$iddd
         ]);
     }
 
@@ -178,8 +193,8 @@ class ProduactCoontrollerApi extends Controller
 
               return response()->json([
                "status"=>true,
-               "message"=>trans('admin.updated'),
-               "data"=> $Produact
+               "message"=>trans('admin.updated')//,
+              //// "data"=> $Produact
                ]);
             }
 
