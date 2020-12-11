@@ -38,19 +38,18 @@ class ProduactCoontrollerApi extends Controller
 
              public function ProEcomm(){
                  $id = auth()->user()->id; 
-                $Produact = Produact::where('stutus',1)->where('user_id',$id)->get();	
-                $color = Produact::where('stutus',1)->where('user_id',$id)->value('color_name');	
-
-                return $color;
- 
-                return response()->json([
-                 "status"=>true,
-                 "data"=> $Produact ,
-                 "color" => $color
-                 ]);
-                 
-
+                 return  $Produact = Produact::where('stutus',1)->where('user_id',$id)->get();	
+              
              }
+
+             public function ProEcommColor(){
+                $id = auth()->user()->id; 
+             //  $Produact = Produact::where('stutus',1)->where('user_id',$id)->get();	
+             return  $color = Produact::where('stutus',1)->where('user_id',$id)->value('color_name');	
+                
+
+            }
+
 
              public function ProEcommPused(){
                 $id = auth()->user()->id; 
