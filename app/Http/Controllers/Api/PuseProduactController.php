@@ -14,7 +14,7 @@ class PuseProduactController extends Controller
         $up =Produact::find($id) ;
         $up->stutus = 0 ;
         $up->save();
-
+       
         return response()->json('Product Puesed');
 
         

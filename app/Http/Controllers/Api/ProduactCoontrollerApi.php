@@ -44,6 +44,15 @@ class ProduactCoontrollerApi extends Controller
 
              }
 
+             public function ProEcommPused(){
+                $id = auth()->user()->id; 
+               $Produact = Produact::where('stutus',0)->where('user_id',$id)->get();	
+
+               return $Produact;
+
+            }
+
+
             public function index()
             {
                return response()->json([
