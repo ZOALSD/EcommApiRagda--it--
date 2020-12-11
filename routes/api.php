@@ -40,7 +40,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('size','Api\SizeControllerApi@index');
 
     //For التاجر
-    Route::get('ProEcommPused','Api\ProduactCoontrollerApi@ProEcommPused');//ProEcommPused
+    Route::get('ProEcommPused','Api\ProduactCoontrollerApi@ProEcommPused');//ProEcommColor
+    Route::get('ProEcommColor','Api\ProduactCoontrollerApi@ProEcommColor');//
     Route::get('ProEcomm','Api\ProduactCoontrollerApi@ProEcomm');//
     Route::delete('ProEcommDelete/{id}','Api\ProduactCoontrollerApi@destroy');
     Route::post('AddProduact','Api\ProduactCoontrollerApi@store');
