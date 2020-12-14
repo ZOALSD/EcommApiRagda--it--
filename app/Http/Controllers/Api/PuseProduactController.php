@@ -21,6 +21,15 @@ class PuseProduactController extends Controller
     }
 
 
+    //show produact Pused==
+
+    public function ProEcommPused(){
+        $id = auth()->user()->id; 
+        return  $Produact = Produact::where('stutus',0)->where('user_id',$id)->get();	
+     
+    }
+
+
     public function Unpuse($id){
 
         $up =Produact::find($id) ;
