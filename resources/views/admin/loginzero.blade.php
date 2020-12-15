@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	@php
-    $path = env('Asset_Path');
+    $path =env('Asset_Path');
 	@endphp
 	
 	<title>Login V3</title>

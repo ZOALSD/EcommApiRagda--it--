@@ -10,6 +10,28 @@
                              
                 
                       <div class="row">
+                        
+
+                    @if(session()->has('Password')) 
+                    <div wire:poll.7000ms class="alert alert-danger" role="alert">
+                    <p>
+                        {{ session('Password') }}
+                    </p>
+                    </div>
+                    <br>
+                    @endif
+
+                             
+                    @if(session()->has('message')) 
+                    <div wire:poll.7000ms class="alert alert-success" role="alert">
+                    <p>
+                        {{ session('message') }}
+                    </p>
+                    </div>
+                    <br>
+                    @endif
+
+
                           <div class="col-md-6"><div class="zool-img"></div> 
 
                           <br>
@@ -17,17 +39,21 @@
                           <br>
                           <br>
                           <br>
-                          <input class='' type="file">
+                          <input class='form-control' type="file">
+                        <br>
+                          <button wire:click='changeAdminPassword({{ $user->id }})' class="btn btn-success">
+                              تغير الصورة
+                        </button>
                           <br>
+                          اسم المشرف :
                            <div class="text admin-name">
-                            
                                 @if(!$EditName)
                                 <i wire:click='showEdtingName()' class="fa fa-edit"></i>
                                 {{ $user->name }}  
                                 @endif      
 
                                 @if($EditName)
-                                                <input wire:model='name' type="text" value="" placeholder="{{ $user->name }}" class="form-control"> 
+                                                <input wire:model.lazy='name' type="text" value="" placeholder="{{ $user->name }}" class="form-control"> 
                                                 <button wire:click='changeAdminName({{ $user->id }})' class="btn btn-success">حفــظ</button>
                                 @endif      
                            
@@ -36,10 +62,80 @@
                         </div>
 
                           <div class="col-md-6">
-                            {!! Form::text('name',$user->email, ['class' => 'form-control']) !!}
-                            {!! Form::text('name',$user->phone, ['class' => 'form-control']) !!}
+                            <br>  
+                            <br>  
+                              
+                            <hr>
+                        @if(!$ChangePssword)
+                                      البريد الالكتروني: 
+                            <div class="text admin-name">
+                            
+                                @if(!$EditEmail)
+                                <i wire:click='showEdtingُُEmail' class="fa fa-edit"> </i>
+                                
+                                {{ $user->email }}  
+                                @endif      
 
-                          </div>
+                                @if($EditEmail)
+                                                <input wire:model.lazy='email' type="text" value="" placeholder="{{ $user->email }}" class="form-control"> 
+                                                <button wire:click='changeAdminEmail({{ $user->id }})' class="btn btn-success">حفــظ</button>
+                                @endif      
+                           
+                                </div>
+          
+                            رقم الهاتف : 
+                  <div class="text admin-name">
+                  
+                      @if(!$EditPhone)
+                      <i wire:click='showEdtingُُPhone' class="fa fa-edit"> </i>
+                      
+                      {{ $user->phone }}  
+                      @endif      
+
+                      @if($EditPhone)
+                                      <input wire:model.lazy='phone' type="number" value="" placeholder="{{ $user->phone }}" class="form-control"> 
+                                      <button wire:click='changeAdminPhone({{ $user->id }})' class="btn btn-success">حفــظ</button>
+                      @endif      
+                 
+                      </div>
+              <br>
+              <hr>
+             <button wire:click='showEdtingُُPassword' class="btn btn-danger">
+                 تغير كلمة المرور
+             </button>
+             @endif
+             @if($ChangePssword)
+
+             <label>كلمة المرور القديمة</label>
+             <input wire:model.lazy='OldPassword' class="form-control" type="password" required>
+           
+             <hr class="yellow">
+
+
+             <label>كلمة المرور الجديدة</label>
+             <input wire:model.lazy='password' class="form-control" type="password" >
+           
+             <br>
+
+             <label> تأكيد كلمة المرور الجديدة</label>
+             <input wire:model.lazy='password_con' class="form-control" type="password" >
+           
+             <br>
+             <button wire:click='changeAdminPassword({{ $user->id }})' class="btn btn-success">
+                تغير كلمة المرور
+            </button>
+
+            <button wire:click='changeAdminPasswordExit' class="btn btn-info">
+                  الغاء
+            </button>
+
+             @endif
+
+             <hr>
+
+
+                </div> {{-- End col-md-6 --}}
+
                           
                       </div>
                        

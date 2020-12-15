@@ -1,6 +1,6 @@
       
        @php
-           $path = env('Asset_Path');
+           $path =env('Asset_Path');
        @endphp
 
 <!-- END PAGE BASE CONTENT -->

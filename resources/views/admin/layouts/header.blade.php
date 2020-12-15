@@ -14,7 +14,7 @@
         <meta content="" name="author" />
         <!-- BEGIN GLOBAL MANDATORY STYLES -->
        @php
-           $path = env('Asset_Path');
+           $path =env('Asset_Path');
        @endphp
 
 
