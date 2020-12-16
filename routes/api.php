@@ -22,7 +22,6 @@ Route::post('register','Api\ClintLoginController@Register');
 
 Route::post('login','Api\ClintLoginController@login');
 
-Route::get('Ads','Api\AdsControllerApi@index');//
 
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
@@ -59,6 +58,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
 
     
+    Route::get('Ads','Api\AdsControllerApi@index');//
 
 
 
