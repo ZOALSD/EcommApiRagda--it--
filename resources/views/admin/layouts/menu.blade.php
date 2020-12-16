@@ -33,6 +33,17 @@
     </li>
 
 
+
+<li class="nav-item start {{active_link('produactcoontroller','active open')}}  ">
+    <a href="{{ aurl('produactcoontroller') }}" class="nav-link nav-toggle">
+            <i class="fa fa-plus"></i>
+            <span class="title">{{trans('admin.produactcoontroller')}}</span>
+            <span class="selected"></span>
+        </a>
+    </li>
+
+
+
 <li class="nav-item start {{active_link('categories','active open')}} ">
     <a href="javascript:;" class="nav-link nav-toggle">
         <i class="fa fa-location-arrow"></i>
@@ -105,7 +116,7 @@
         </li> 
     </ul> 
 </li>
-
+{{--
 <li class="nav-item start {{active_link('produactcoontroller','active open')}} ">
     <a href="javascript:;" class="nav-link nav-toggle">
         <i class="fa fa-cart-plus"></i>
@@ -129,7 +140,7 @@
             </a> 
         </li> 
     </ul> 
-</li>
+</li>--}}
 
 <li class="nav-item start {{active_link('ads','active open')}} ">
     <a href="javascript:;" class="nav-link nav-toggle">

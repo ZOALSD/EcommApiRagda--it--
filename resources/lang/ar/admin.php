@@ -114,5 +114,7 @@
 		"ad_image"	=>		"صورة الاعلان",
 		"permission" => "الصلاحيات",
 		"manger"  => "المشرفين" ,
+		"ProImageChange" => "تغير صورة صنف",
+		"ProDelete" => "حذف صنف",
 
 ];

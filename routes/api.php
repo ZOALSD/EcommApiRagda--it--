@@ -22,6 +22,9 @@ Route::post('register','Api\ClintLoginController@Register');
 
 Route::post('login','Api\ClintLoginController@login');
 
+Route::get('Ads','Api\AdsControllerApi@index');//
+
+
 Route::group(['middleware' => 'auth:sanctum'], function () {
     
     Route::get('produact_search','Api\ProduactCoontrollerApi@search');
@@ -47,7 +50,6 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('AddProduact','Api\ProduactCoontrollerApi@store');
     
     //AdsControllerApi
-    Route::get('Ads','Api\AdsControllerApi@index');//
 
 
     Route::get('ProEcommPused','Api\PuseProduactController@ProEcommPused');//
@@ -65,3 +67,4 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 // });
 
 });
+

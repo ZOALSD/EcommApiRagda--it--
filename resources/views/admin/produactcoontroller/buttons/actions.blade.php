@@ -1,5 +1,31 @@
 
-		<div class="actions">
+<div class="actions">
+	<div class="btn-group">
+			<a class="btn btn-default btn-outlines btn-circle" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" aria-expanded="false">
+					<i class="fa fa-wrench"></i>
+			{{ trans('admin.actions') }}
+					<i class="fa fa-angle-down"></i>
+			</a>
+			<ul class="dropdown-menu pull-right">
+					<li>
+							<a href="{{ aurl('/produactcoontroller/'.$id.'/edit')}}"><i class="fa fa-pencil-square-o"></i> {{trans('admin.edit')}}</a>
+					</li>
+					<li class="divider"> </li>
+					
+					@can('ProDelete')
+					<li>
+							<a data-toggle="modal" data-target="#delete_record{{$id}}" href="#">
+			<i class="fa fa-trash"></i> {{trans('admin.delete')}}</a>
+					</li>
+					@endcan
+
+
+			</ul>
+	</div>
+</div>
+
+
+		{{--<div class="actions">
 				<div class="btn-group">
 						<a class="btn btn-default btn-outlines btn-circle" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" aria-expanded="false">
 								<i class="fa fa-wrench"></i>
@@ -21,6 +47,7 @@
 						</ul>
 				</div>
 		</div>
+		--}}
 		<div class="modal fade" id="delete_record{{$id}}">
 				<div class="modal-dialog">
 						<div class="modal-content">

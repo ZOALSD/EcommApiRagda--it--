@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 use App\Admin;
 use App\QRCodeOrder;
 use App\Http\Controllers\Controller;
-use Brian2694\Toastr\Facades\Toastr;
 
 
 class Dashboard extends Controller {
@@ -15,9 +14,10 @@ class Dashboard extends Controller {
 
 		//$v= $user->hasPermissionTo('publish', 'admin');
 		//Toastr::info('تم حذف المشرف بنجاح','',["positionClass" => "toast-bottom-left"]);
+		// return Admin::with('roles')->get();
 
-		
 		return view('admin.home');
+		
 	}
 
 	// public function theme($id) {

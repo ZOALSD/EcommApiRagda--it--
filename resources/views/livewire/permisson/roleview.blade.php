@@ -41,7 +41,7 @@
             @foreach ($i->permission as $p)
             <li class="list-group-item bg-permission ">
                 <i class="fa fa-lock" aria-hidden="true"></i>
-                {{ $p->name }}
+                {{ trans('admin.'.$p->name) }}
                    
                 &ThinSpace;
                 &ThinSpace;
@@ -63,7 +63,7 @@
             <li class="list-group-item bg-permission-2">
                 <i class="fa fa-lock" aria-hidden="true"></i>
 
-                {{ $i->name }}
+                {{ trans('admin.'.$i->name) }}
                 <button wire:click="addPermission({{ $i->id }})" class="btn float-left">
                 <i class=" fa fa-plus fa-x " aria-hidden="true"></i>
                 </button>

@@ -56,54 +56,56 @@
 <div class="form-group">
     {!! Form::label('cate_name',trans('admin.cate_name'),['class'=>'col-md-3 control-label']) !!}
     <div class="col-md-9">
-        {!! Form::text('cate_name', $produactcoontroller->cate_name ,['class'=>'form-control','placeholder'=>trans('admin.cate_name')]) !!}
+        {!! Form::text('cate_name', $produactcoontroller->cate_name ,['class'=>'form-control','placeholder'=>trans('admin.cate_name') , 'disabled']) !!}
     </div>
 </div>
 <br>
 <div class="form-group">
     {!! Form::label('color_id',trans('admin.color_id'),['class'=>'col-md-3 control-label']) !!}
     <div class="col-md-9">
-{!! Form::select('color_id',App\Model\Color::pluck("name","id"), $produactcoontroller->color_id ,['class'=>'form-control','placeholder'=>trans('admin.color_id')]) !!}
+{!! Form::text('color_name' ,$produactcoontroller->color_name ,['class'=>'form-control','placeholder'=>trans('admin.color_id') , 'disabled']) !!}
     </div>
 </div>
 <br>
 <div class="form-group">
     {!! Form::label('quantity',trans('admin.quantity'),['class'=>'col-md-3 control-label']) !!}
     <div class="col-md-9">
-        {!! Form::text('quantity', $produactcoontroller->quantity ,['class'=>'form-control','placeholder'=>trans('admin.quantity')]) !!}
+        {!! Form::text('quantity', $produactcoontroller->quantity ,['class'=>'form-control','placeholder'=>trans('admin.quantity') , 'disabled']) !!}
     </div>
 </div>
 <br>
 <div class="form-group">
     {!! Form::label('size_id',trans('admin.size_id'),['class'=>'col-md-3 control-label']) !!}
     <div class="col-md-9">
-{!! Form::select('size_id',App\Model\Size::pluck("size_name","id"), $produactcoontroller->size_id ,['class'=>'form-control','placeholder'=>trans('admin.size_id')]) !!}
-    </div>
-</div>
-<br>
-<div class="form-group">
-    {!! Form::label('cate_image',trans('admin.cate_image'),['class'=>'col-md-3 control-label']) !!}
-    <div class="col-md-9">
-        {!! Form::file('cate_image',['class'=>'form-control','placeholder'=>trans('admin.cate_image')]) !!}
-        @if(!empty($produactcoontroller->cate_image))
-        <img src="{{it()->url($produactcoontroller->cate_image)}}" style="width:150px;height:150px;" />
-        @endif
+{!! Form::select('size_id',App\Model\Size::pluck("size_name","id"), $produactcoontroller->size_id ,['class'=>'form-control','placeholder'=>trans('admin.size_id') , 'disabled']) !!}
     </div>
 </div>
 <br>
 <div class="form-group">
     {!! Form::label('cate_disc',trans('admin.cate_disc'),['class'=>'col-md-3 control-label']) !!}
     <div class="col-md-9">
-        {!! Form::textarea('cate_disc', $produactcoontroller->cate_disc ,['class'=>'form-control','placeholder'=>trans('admin.cate_disc')]) !!}
+        {!! Form::textarea('cate_disc', $produactcoontroller->cate_disc ,['class'=>'form-control','placeholder'=>trans('admin.cate_disc') , 'disabled']) !!}
     </div>
 </div>
 <br>
 <div class="form-group">
     {!! Form::label('cate_id',trans('admin.cate_id'),['class'=>'col-md-3 control-label']) !!}
     <div class="col-md-9">
-{!! Form::select('cate_id',App\Model\Categories::pluck("name","id"), $produactcoontroller->cate_id ,['class'=>'form-control','placeholder'=>trans('admin.cate_id')]) !!}
+{!! Form::select('cate_id',App\Model\Categories::pluck("name","id"), $produactcoontroller->cate_id ,['class'=>'form-control','placeholder'=>trans('admin.cate_id') , 'disabled']) !!}
     </div>
 </div>
+
+<br>
+<div class="form-group">
+    {!! Form::label('cate_image',trans('admin.cate_image'),['class'=>'col-md-3 control-label']) !!}
+    <div class="col-md-9">
+        {!! Form::file('cate_image',['class'=>'form-control','placeholder'=>trans('admin.cate_image') ]) !!}
+        @if(!empty($produactcoontroller->cate_image))
+        <img src="{{it()->url($produactcoontroller->cate_image)}}" style="width:150px;height:150px;" />
+        @endif
+    </div>
+</div>
+
 <br>
 
 <div class="form-actions">

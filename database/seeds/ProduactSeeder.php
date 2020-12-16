@@ -13,13 +13,13 @@ class ProduactSeeder extends Seeder
     public function run()
     {
         //factory(Produact::class, 10)->create();
-        for($i =1 ; $i<=10 ; $i++){
+        for($i =1 ; $i<=6 ; $i++){
 
         
         Produact::create([
 
             'user_id'=>1,
-            'color_id'=> $i,
+            'color_name'=> $i,
             'cate_name'=> 'name pro'.$i,
             'price'=> $i.'000',
             'size_id'=> $i,

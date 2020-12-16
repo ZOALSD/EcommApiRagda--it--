@@ -109,23 +109,23 @@ class ProduactCoontroller extends Controller
             public function update($id)
             {
                 $rules = [
-             'cate_name'=>'required|string',
-             'color_id'=>'numeric|nullable|sometimes',
-             'quantity'=>'numeric|nullable|sometimes',
-             'size_id'=>'numeric|nullable|sometimes',
-             'cate_image'=>''.it()->image().'|nullable|sometimes',
-             'cate_disc'=>'nullable|sometimes|string',
-             'cate_id'=>'',
+            //  'cate_name'=>'required|string',
+            //  'color_id'=>'numeric|nullable|sometimes',
+            //  'quantity'=>'numeric|nullable|sometimes',
+            //  'size_id'=>'numeric|nullable|sometimes',
+              'cate_image'=>''.it()->image().'|nullable|sometimes',
+            //  'cate_disc'=>'nullable|sometimes|string',
+            //  'cate_id'=>'',
 
                          ];
              $data = $this->validate(request(),$rules,[],[
-             'cate_name'=>trans('admin.cate_name'),
-             'color_id'=>trans('admin.color_id'),
-             'quantity'=>trans('admin.quantity'),
-             'size_id'=>trans('admin.size_id'),
+            //  'cate_name'=>trans('admin.cate_name'),
+            //  'color_id'=>trans('admin.color_id'),
+            //  'quantity'=>trans('admin.quantity'),
+            //  'size_id'=>trans('admin.size_id'),
              'cate_image'=>trans('admin.cate_image'),
-             'cate_disc'=>trans('admin.cate_disc'),
-             'cate_id'=>trans('admin.cate_id'),
+            //  'cate_disc'=>trans('admin.cate_disc'),
+            //  'cate_id'=>trans('admin.cate_id'),
                    ]);
               $data['admin_id'] = admin()->user()->id; 
                if(request()->hasFile('cate_image')){

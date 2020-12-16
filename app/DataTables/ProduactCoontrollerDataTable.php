@@ -43,7 +43,7 @@ class ProduactCoontrollerDataTable extends DataTable
      */
 	public function query()
     {
-        return Produact::query()->with(['color_id','size_id','cate_id',])->select("produacts.*");
+        return Produact::query()->with(['size_id','cate_id',])->select("produacts.*");
 
     }
     	
@@ -80,7 +80,7 @@ class ProduactCoontrollerDataTable extends DataTable
                     ],
                 ],
                 'initComplete' => "function () {
-                this.api().columns([1,2,3,4,5,6,7]).every(function () {
+                this.api().columns([1,2,3,4,7]).every(function () {
                 var column = this;
                 var input = document.createElement(\"input\");
                 $(input).attr( 'style', 'width: 100%');
@@ -156,8 +156,8 @@ class ProduactCoontrollerDataTable extends DataTable
                  'title'=>trans('admin.cate_name'),
 		    ],
 				[
-                 'name'=>'color_id.name',
-                 'data'=>'color_id.name',
+                 'name'=>'color_name',
+                 'data'=>'color_name',
                  'title'=>trans('admin.color_id'),
 		    ],
 				[

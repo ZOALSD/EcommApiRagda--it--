@@ -29,6 +29,8 @@ class PermissionsDemoSeeder extends Seeder
         Permission::create(['guard_name' => 'admin' , 'name' => 'حذف']);
         Permission::create(['guard_name' => 'admin' , 'name' => 'رفع']);
         Permission::create(['guard_name' => 'admin' , 'name' => 'تجميد']);
+        Permission::create(['guard_name' => 'admin' , 'name' => 'ProDelete']);
+        Permission::create(['guard_name' => 'admin' , 'name' => 'ProImageChange']);
 
         // create roles and assign existing permissions
         $role1 = Role::create(['guard_name' => 'admin' , 'name' => 'writer']);
@@ -49,8 +51,9 @@ class PermissionsDemoSeeder extends Seeder
         // create demo users
         $user = \App\Admin::create([
             'name' => 'Admin number :'.$i,
-            'email' => 'Admin'.$i.'@example.com',
-            'phone' => $i.'343434'
+            'email' => 'Admin'.$i.'@me.com',
+            'phone' => $i.'343434',
+             'password' =>crypt('Admin'.$i.'@me.com')
         ]);
         $user->assignRole($role1);
         
