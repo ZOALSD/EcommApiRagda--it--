@@ -11,6 +11,8 @@
 |
  */
 
+use Illuminate\Routing\Route;
+
 app()->singleton('admin', function () {
 		return 'admin';
 	});
@@ -82,6 +84,7 @@ app()->singleton('admin', function () {
 					return view('admin.admins',['title'=>'إدارة المشرفين']);
 				})->name('manger');
 
+				Route::get('Problem','ProblemAndIussController@index');
 				Route::get('permission','Admin\permissionController@index')->name('permission');
 			});
 
