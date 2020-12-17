@@ -119,9 +119,7 @@ class ProduactCoontrollerApi extends Controller
 
        // $iddd = auth()->user()->id; 
         return response()->json([
-            "status"=>true,
-            "message"=>trans('admin.added'),
-           // "data"=>$iddd
+            "status"=>true
         ]);
     }
 

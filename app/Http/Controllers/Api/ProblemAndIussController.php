@@ -9,22 +9,16 @@ use Auth;
 
 class ProblemAndIussController extends Controller
 {
-    
-
-           public function store(Request $request){
-          
-            $p = new ProblemAndIuss ;
-            $p->message = $request->message;
-            $p->user_id = Auth::id();
-            $p->save();
-
-            return response(['stuts'=> 'successfully Add Message']);
 
 
-           }
-         
+    public function store(Request $request)
+    {
 
+        $p = new ProblemAndIuss;
+        $p->message = $request->message;
+        $p->user_id = Auth::user()->id();
+        $p->save();
 
-
-
+        return response(['stuts' => 'successfully Add Message']);
+    }
 }
