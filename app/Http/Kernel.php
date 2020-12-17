@@ -70,6 +70,11 @@ class Kernel extends HttpKernel
         'admin_guest'      => \App\Http\Middleware\AdminGuest::class,
         'Lang'             => \Langnonymous\Lang\Lang::class,
 
+
+        'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
+        'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
+        'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
+
     ];
 
     /**

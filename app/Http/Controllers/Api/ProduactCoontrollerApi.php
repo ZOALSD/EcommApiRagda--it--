@@ -9,9 +9,7 @@ use Validator;
 use Set;
 use Up;
 use Form;
-// Auto Controller Maker By Baboon Script
-// Baboon Maker has been Created And Developed By  [It V 1.2 | https://it.phpanonymous.com]
-// Copyright Reserved  [It V 1.2 | https://it.phpanonymous.com]
+
 class ProduactCoontrollerApi extends Controller
 {
 
@@ -95,6 +93,7 @@ class ProduactCoontrollerApi extends Controller
              'cate_disc'=>'nullable|sometimes|string',
              'cate_id'=>'',
         ];
+        
         $data = Validator::make(request()->all(),$rules,[],[
              'cate_name'=>trans('admin.cate_name'),
              'color_name'=>trans('admin.color_id'),

@@ -14,7 +14,7 @@ class Dashboard extends Controller {
 
 		//$v= $user->hasPermissionTo('publish', 'admin');
 		//Toastr::info('تم حذف المشرف بنجاح','',["positionClass" => "toast-bottom-left"]);
-		// return Admin::with('roles')->get();
+		 //return Admin::with('permissions')->get();
 
 		return view('admin.home');
 		

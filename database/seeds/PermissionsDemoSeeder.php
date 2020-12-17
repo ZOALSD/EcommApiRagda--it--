@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\PermissionRegistrar;
+use Illuminate\Support\Facades\Hash;
 
 class PermissionsDemoSeeder extends Seeder
 {
@@ -38,6 +39,7 @@ class PermissionsDemoSeeder extends Seeder
         $role1->givePermissionTo('تعديل');
         $role1->givePermissionTo('حذف');
 
+
         $role2 = Role::create(['guard_name' => 'admin' , 'name' => 'admin']);
         $role2->givePermissionTo('طباعة');
         $role2->givePermissionTo('read');
@@ -53,10 +55,11 @@ class PermissionsDemoSeeder extends Seeder
             'name' => 'Admin number :'.$i,
             'email' => 'Admin'.$i.'@me.com',
             'phone' => $i.'343434',
-             'password' =>crypt('Admin'.$i.'@me.com')
+             'password' =>Hash::make('Admin'.$i.'@me.com')
         ]);
         $user->assignRole($role1);
-        
+        $user->givePermissionTo('read');
+
        }
      
     }

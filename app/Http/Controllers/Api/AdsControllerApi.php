@@ -9,9 +9,8 @@ use Validator;
 use Set;
 use Up;
 use Form;
-// Auto Controller Maker By Baboon Script
-// Baboon Maker has been Created And Developed By  [It V 1.2 | https://it.phpanonymous.com]
-// Copyright Reserved  [It V 1.2 | https://it.phpanonymous.com]
+
+
 class AdsControllerApi extends Controller
 {
 
@@ -20,6 +19,7 @@ class AdsControllerApi extends Controller
              * Display a listing of the resource. Api
              * @return \Illuminate\Http\Response
              */
+
             public function index(){
 
             $data = Ads::orderBy('id','desc')->get();
@@ -57,8 +57,8 @@ class AdsControllerApi extends Controller
 
         return response()->json([
             "status"=>true,
-            "message"=>trans('admin.added'),
-            "data"=>$create
+            "message"=>trans('admin.added')//,
+           // "data"=>$create
         ]);
     }
 
@@ -111,8 +111,8 @@ class AdsControllerApi extends Controller
 
               return response()->json([
                "status"=>true,
-               "message"=>trans('admin.updated'),
-               "data"=> $Ads
+               "message"=>trans('admin.updated')
+              // "data"=> $Ads
                ]);
             }
 

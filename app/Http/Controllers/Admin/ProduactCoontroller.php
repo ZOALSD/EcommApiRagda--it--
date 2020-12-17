@@ -1,33 +1,35 @@
 <?php
 namespace App\Http\Controllers\Admin;
-use App\Http\Controllers\Controller;
 use App\DataTables\ProduactCoontrollerDataTable;
+use App\Http\Controllers\Controller;
+use Spatie\Permission\Models\Role;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 use App\Model\Produact;
+use Carbon\Carbon;
 use Validator;
 use Set;
 use Up;
 use Form;
-// Auto Controller Maker By Baboon Script
-// Baboon Maker has been Created And Developed By  [It V 1.2 | https://it.phpanonymous.com]
-// Copyright Reserved  [It V 1.2 | https://it.phpanonymous.com]
+use Auth;
+
+
 class ProduactCoontroller extends Controller
 {
 
-            /**
-             * Baboon Script By [It V 1.0 | https://it.phpanonymous.com]
-             * Display a listing of the resource.
-             * @return \Illuminate\Http\Response
-             */
+            //   public function __construct()
+            // {
+            //   //  $this->middleware(['permission:ProImageChange']);
+            // }
+
             public function index(ProduactCoontrollerDataTable $produactcoontroller)
             {
+              // admin()->user()->with('permission');
+            //  $user->givePermissionTo('read');
                return $produactcoontroller->render('admin.produactcoontroller.index',['title'=>trans('admin.produactcoontroller')]);
             }
 
 
             /**
-             * Baboon Script By [It V 1.0 | https://it.phpanonymous.com]
              * Show the form for creating a new resource.
              * @return \Illuminate\Http\Response
              */
@@ -37,7 +39,6 @@ class ProduactCoontroller extends Controller
             }
 
             /**
-             * Baboon Script By [It V 1.0 | https://it.phpanonymous.com]
              * Store a newly created resource in storage.
              * @param  \Illuminate\Http\Request  $r
              * @return \Illuminate\Http\Response
@@ -77,7 +78,6 @@ class ProduactCoontroller extends Controller
 
             /**
              * Display the specified resource.
-             * Baboon Script By [It V 1.0 | https://it.phpanonymous.com]
              * @param  int  $id
              * @return \Illuminate\Http\Response
              */
@@ -89,19 +89,19 @@ class ProduactCoontroller extends Controller
 
 
             /**
-             * Baboon Script By [It V 1.0 | https://it.phpanonymous.com]
              * edit the form for creating a new resource.
              * @return \Illuminate\Http\Response
              */
             public function edit($id)
             {
+              $this->middleware(['permission:ProImageChange']);
+
                 $produactcoontroller =  Produact::find($id);
                 return view('admin.produactcoontroller.edit',['title'=>trans('admin.edit'),'produactcoontroller'=>$produactcoontroller]);
             }
 
 
             /**
-             * Baboon Script By [It V 1.0 | https://it.phpanonymous.com]
              * update a newly created resource in storage.
              * @param  \Illuminate\Http\Request  $r
              * @return \Illuminate\Http\Response
@@ -140,7 +140,6 @@ class ProduactCoontroller extends Controller
             }
 
             /**
-             * Baboon Script By [It V 1.0 | https://it.phpanonymous.com]
              * destroy a newly created resource in storage.
              * @param  \Illuminate\Http\Request  $r
              * @return \Illuminate\Http\Response
@@ -159,7 +158,7 @@ class ProduactCoontroller extends Controller
 
 
 
- 			public function multi_delete(Request $r)
+ 		/*	public function multi_delete(Request $r)
             {
                 $data = $r->input('selected_data');
                 if(is_array($data)){
@@ -183,7 +182,7 @@ class ProduactCoontroller extends Controller
                     session()->flash('success', trans('admin.deleted'));
                     return back();
                 }
-            }
+            }*/
 
             
 }

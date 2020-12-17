@@ -104,7 +104,12 @@ session()->flash('message', 'تــم إضــافة المشرف بنجـــا
         $admin = Admin::where('id',$this->admin_id)->first();//syncRoles([$this->role_selected_name]);
         $admin->removeRole($this->role_selected_name);
         //$admin->syncRoles([$this->admin_Role_up]);
-       $admin->assignRole($this->admin_Role_up);
+        if($this->admin_Role_up == null){
+            $role = $this->role_selected_name;
+        }else{
+            $role = $this->admin_Role_up;
+        }
+       $admin->assignRole($role);
 
         $this->emit('Change_Role');
         session()->flash('message', 'تــم تغير دور المشرف بنجـــاح');

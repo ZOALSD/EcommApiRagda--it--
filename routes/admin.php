@@ -5,8 +5,8 @@
 | Web Admin Panel Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
+| Here is where you can register web Routes for your application. These
+| Routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
  */
@@ -54,20 +54,28 @@ app()->singleton('admin', function () {
 				Route::resource('settings', 'Admin\Settings');
 
 				Route::resource('categories','Admin\CategoriesController'); 
-Route::post('categories/multi_delete','Admin\CategoriesController@multi_delete'); 
-				Route::resource('color','Admin\ColorController'); 
-Route::post('color/multi_delete','Admin\ColorController@multi_delete'); 
-				Route::resource('size','Admin\SizeController'); 
-Route::post('size/multi_delete','Admin\SizeController@multi_delete'); 
-				Route::resource('produactcoontroller','Admin\ProduactCoontroller'); 
-Route::post('produactcoontroller/multi_delete','Admin\ProduactCoontroller@multi_delete'); 
+				Route::post('categories/multi_delete','Admin\CategoriesController@multi_delete'); 
+								Route::resource('color','Admin\ColorController'); 
+				Route::post('color/multi_delete','Admin\ColorController@multi_delete'); 
+								Route::resource('size','Admin\SizeController'); 
+				Route::post('size/multi_delete','Admin\SizeController@multi_delete'); 
+								//Route::resource('produactcoontroller','Admin\ProduactCoontroller'); 
+				//Route::post('produactcoontroller/multi_delete','Admin\ProduactCoontroller@multi_delete'); 
 
-Route::any('category',function(){
-	return view('livewire.categorise');
-});
-				Route::resource('ads','Admin\AdsController'); 
-Route::post('ads/multi_delete','Admin\AdsController@multi_delete'); 
-				//////// Admin Routes /* End */ //////////////
+				Route::get('produactcoontroller','Admin\ProduactCoontroller@index')->name('produactcoontroller.index');
+				Route::post('produactcoontroller','Admin\ProduactCoontroller@store')->name('produactcoontroller.store');
+				Route::get('produactcoontroller/create','Admin\ProduactCoontroller@create')->name('produactcoontroller.create');
+				Route::get('produactcoontroller/{id}','Admin\ProduactCoontroller@show')->name('produactcoontroller.show')->middleware(['permission:ProImageChange']);
+				Route::put('produactcoontroller/{id}','Admin\ProduactCoontroller@update')->name('produactcoontroller.update');
+				Route::get('produactcoontroller/{id}/edit','Admin\ProduactCoontroller@edit')->name('produactcoontroller.edit');
+				Route::delete('produactcoontroller/{id}','Admin\ProduactCoontroller@destroy')->name('produactcoontroller.destroy');
+				
+				Route::any('category',function(){
+					return view('livewire.categorise');
+				});
+								Route::resource('ads','Admin\AdsController'); 
+				Route::post('ads/multi_delete','Admin\AdsController@multi_delete'); 
+								//////// Admin Routes /* End */ //////////////
 
 
 				Route::get('manger', function () {

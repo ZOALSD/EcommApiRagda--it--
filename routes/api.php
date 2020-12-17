@@ -48,7 +48,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::delete('ProEcommDelete/{id}','Api\ProduactCoontrollerApi@destroy');
     Route::post('AddProduact','Api\ProduactCoontrollerApi@store');
     
-    //AdsControllerApi
+    //AdsControllerApi //ProblemAndIussController //store
 
 
     Route::get('ProEcommPused','Api\PuseProduactController@ProEcommPused');//
@@ -58,9 +58,13 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
 
     
-    Route::get('Ads','Api\AdsControllerApi@index');//
+    Route::get('Ads','Api\AdsControllerApi@index');
 
 
+    Route::post('Problem','Api\ProblemAndIussController@store');
+
+
+    //AdsControllerApi // //
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
