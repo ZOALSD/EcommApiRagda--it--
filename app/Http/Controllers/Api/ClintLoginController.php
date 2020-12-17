@@ -30,7 +30,7 @@ class ClintLoginController extends Controller
             $user = User::create($data);
             $token = $user->createToken($request->device_name)->plainTextToken;
      
-            return response()->json(['token' => $token], 200);
+            return response()->json(['token' => $token , 'Data' => $user], 200);
 
     }
 
@@ -49,12 +49,39 @@ class ClintLoginController extends Controller
            // $data['password'] = Hash::make($request->password);
 
            // $user = User::create($data);
-           $user =User::find($id);
-           $user->name = $request->name;
-           $user->email = $request->email;
-           $user->phone = $request->phone;
-           $user->year = $request->year;
-           $user->save();
+
+           if($request->old_password){
+             $user = User::where('id',$id)->first();
+             $check = Hash::check($request->old_password, $user->password);
+             if($check){
+
+                $user =User::find($id);
+                $user->name = $request->name;
+                $user->email = $request->email;
+                $user->phone = $request->phone;
+                $user->year = $request->year;
+                $user->password = Hash::make($request->new_password);
+                $user->save();
+
+                return response(['stuts'=>'Success Data Updated' , 'Data' => $user]);
+
+             }else{
+                 return response('old Password incorrect');
+             }
+
+           }else{
+            $user =User::find($id);
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->phone = $request->phone;
+            $user->year = $request->year;
+            $user->save();
+
+            return response(['stuts'=>'Success Data Updated' , 'Data' => $user]);
+
+           }
+
+        
      
             return response()->json(['stutus' => 'Successfully Data Updated'], 200);
 
@@ -83,7 +110,7 @@ class ClintLoginController extends Controller
        
          $token = $user->createToken($request->device_name)->plainTextToken;
          
-        return response()->json(['token' => $token], 200);
+        return response()->json(['token' => $token , 'Data' => $user], 200);
 
 
     }
