@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\ProblemAndIuss;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class ProblemAndIussController extends Controller
 {

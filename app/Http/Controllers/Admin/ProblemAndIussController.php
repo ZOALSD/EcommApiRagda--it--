@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Add\ProblemAndIuss;
+use App\ProblemAndIuss;
 
 
 class ProblemAndIussController extends Controller

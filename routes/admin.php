@@ -32,16 +32,7 @@ app()->singleton('admin', function () {
 				Route::get('password/reset/{token}', 'Admin\AdminAuthenticated@reset_password_final');
 				Route::post('password/reset/{token}', 'Admin\AdminAuthenticated@reset_password_change');
 			});
-		/*
-		|--------------------------------------------------------------------------
-		| Web Routes
-		|--------------------------------------------------------------------------
-		| Do not delete any written comments in this file
-		| These comments are related to the application (it)
-		| If you want to delete it, do this after you have finished using the application
-		| For any errors you may encounter, please go to this link and put your problem
-		| phpanonymous.com/it/issues
-		 */
+		
 
 		Route::group(['middleware' => 'admin:admin'], function () {
 
@@ -64,13 +55,13 @@ app()->singleton('admin', function () {
 								//Route::resource('produactcoontroller','Admin\ProduactCoontroller'); 
 				//Route::post('produactcoontroller/multi_delete','Admin\ProduactCoontroller@multi_delete'); 
 
-				Route::get('produactcoontroller','Admin\ProduactCoontroller@index')->name('produactcoontroller.index');
-				Route::post('produactcoontroller','Admin\ProduactCoontroller@store')->name('produactcoontroller.store');
-				Route::get('produactcoontroller/create','Admin\ProduactCoontroller@create')->name('produactcoontroller.create');
-				Route::get('produactcoontroller/{id}','Admin\ProduactCoontroller@show')->name('produactcoontroller.show')->middleware(['permission:ProImageChange']);
-				Route::put('produactcoontroller/{id}','Admin\ProduactCoontroller@update')->name('produactcoontroller.update');
-				Route::get('produactcoontroller/{id}/edit','Admin\ProduactCoontroller@edit')->name('produactcoontroller.edit');
-				Route::delete('produactcoontroller/{id}','Admin\ProduactCoontroller@destroy')->name('produactcoontroller.destroy');
+				// Route::get('produactcoontroller','Admin\ProduactCoontroller@index')->name('produactcoontroller.index');
+				// Route::post('produactcoontroller','Admin\ProduactCoontroller@store')->name('produactcoontroller.store');
+				// Route::get('produactcoontroller/create','Admin\ProduactCoontroller@create')->name('produactcoontroller.create');
+				// Route::get('produactcoontroller/{id}','Admin\ProduactCoontroller@show')->name('produactcoontroller.show')->middleware(['permission:ProImageChange']);
+				// Route::put('produactcoontroller/{id}','Admin\ProduactCoontroller@update')->name('produactcoontroller.update');
+				// Route::get('produactcoontroller/{id}/edit','Admin\ProduactCoontroller@edit')->name('produactcoontroller.edit');
+				// Route::delete('produactcoontroller/{id}','Admin\ProduactCoontroller@destroy')->name('produactcoontroller.destroy');
 				
 				Route::any('category',function(){
 					return view('livewire.categorise');

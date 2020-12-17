@@ -5,7 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Model\Produact;
-use Validator;
+use \Validator;
 use Set;
 use Up;
 use Form;
