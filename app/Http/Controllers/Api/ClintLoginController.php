@@ -35,12 +35,14 @@ class ClintLoginController extends Controller
     }
 
 
-    public function UserUpdate(Request $request ,$id)
+    public function UserUpdate(Request $request )
     {
+        $id = Auth::user()->id;
+
         
          $request->validate([
-            'name' => 'required|string|min:3',
-            'email' => 'nullable|email|unique:users',
+            'name' => 'nullable|string|min:3',
+            'email' => 'nullable|email|unique:users'.$id,
             'password' => 'nullable',
             'phone' => 'required|unique:users|numeric',
             'year' => 'required|numeric',
