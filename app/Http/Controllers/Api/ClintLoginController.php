@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\User;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -32,6 +32,36 @@ class ClintLoginController extends Controller
      
             return response()->json(['token' => $token], 200);
 
+    }
+
+
+    public function UserUpdate(Request $request ,$id)
+    {
+        
+         $request->validate([
+            'name' => 'required|string|min:3',
+            'email' => 'nullable|email|unique:users',
+            'password' => 'nullable',
+            'phone' => 'required|unique:users|numeric',
+            'year' => 'required|numeric',
+        ]);
+
+           // $data['password'] = Hash::make($request->password);
+
+           // $user = User::create($data);
+           $user =User::find($id);
+           $user->name = $request->name;
+           $user->email = $request->email;
+           $user->phone = $request->phone;
+           $user->year = $request->year;
+           $user->save();
+     
+            return response()->json(['stutus' => 'Successfully Data Updated'], 200);
+
+    }
+
+    public function UserData(){
+        return Auth::user();
     }
 
     public function login(Request $request){

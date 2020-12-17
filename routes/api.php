@@ -63,7 +63,15 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
     Route::post('Problem','Api\ProblemAndIussController@store');
 
+    Route::post('UserUpdate/{id}','Api\ClintLoginController@UserUpdate');
+    Route::get('UserData','Api\ClintLoginController@UserData');
 
+/*
+
+
+
+
+*/
     //AdsControllerApi // //
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
