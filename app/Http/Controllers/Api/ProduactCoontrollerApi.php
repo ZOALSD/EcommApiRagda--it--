@@ -9,6 +9,8 @@ use \Validator;
 use Set;
 use Up;
 use Form;
+use Illuminate\Support\Str;
+
 
 class ProduactCoontrollerApi extends Controller
 {
@@ -43,8 +45,10 @@ class ProduactCoontrollerApi extends Controller
              public function ProEcommColor(){
                 $id = auth()->user()->id; 
              //  $Produact = Produact::where('stutus',1)->where('user_id',$id)->get();	
-             return  $color = Produact::where('stutus',1)->where('user_id',$id)->value('color_name');	
+              $color = Produact::where('stutus',1)->where('user_id',$id)->value('color_name');	
                 
+            return Str::between($color, '(', ')');
+
 
             }
 
