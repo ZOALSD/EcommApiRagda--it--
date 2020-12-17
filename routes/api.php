@@ -63,7 +63,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
     Route::post('Problem','Api\ProblemAndIussController@store');
 
-    Route::put('UserUpdate','Api\ClintLoginController@UserUpdate');
+    Route::post('UserUpdate','Api\ClintLoginController@UserUpdate');
     Route::post('UserData','Api\ClintLoginController@UserData');
 
 /*
