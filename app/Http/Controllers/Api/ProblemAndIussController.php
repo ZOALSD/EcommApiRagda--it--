@@ -16,7 +16,9 @@ class ProblemAndIussController extends Controller
 
         $p = new ProblemAndIuss;
         $p->message = $request->message;
-        $p->user_id = Auth::user()->id();
+        $p->user_id =Auth::user()->id;
+     
+;
         $p->save();
 
         return response(['stuts' => 'successfully Add Message']);
