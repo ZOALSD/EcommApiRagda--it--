@@ -42,7 +42,7 @@ class ClintLoginController extends Controller
         
          $request->validate([
             'name' => 'nullable|string|min:3',
-            'email' => 'nullable|email|unique:users'.$id,
+            'email' => 'nullable|email|',//unique:users',
             'password' => 'nullable',
             'phone' => 'required|unique:users|numeric',
             'year' => 'required|numeric',
