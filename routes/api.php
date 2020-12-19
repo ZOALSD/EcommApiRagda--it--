@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,72 +11,57 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | is assigned the "api" middleware group. Enjoy building your API!
 |
-*/
+ */
 
+Route::post('register', 'Api\ClintLoginController@Register');
 
-
-
-
-Route::post('register','Api\ClintLoginController@Register');
-
-Route::post('login','Api\ClintLoginController@login');
-Route::get('data','Api\ClintLoginController@data');
-
-
+Route::post('login', 'Api\ClintLoginController@login');
+Route::get('data', 'Api\ClintLoginController@data');
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
-    
-    Route::get('produact_search','Api\ProduactCoontrollerApi@search');
-    Route::get('categorise','Api\CategoriesControllerApi@index');
-    Route::get('logout','Api\ClintLoginController@logout');
-    Route::get('produact','Api\ProduactCoontrollerApi@index');
-    
-   
-    Route::get('produact/{id}','Api\ProduactCoontrollerApi@show');
-    Route::delete('deletePro/{id}','Api\ProduactCoontrollerApi@destroy');
-     // update Produact
-    Route::put('UpdatePro/{id}','Api\ProduactCoontrollerApi@update');
 
+    Route::get('produact_search', 'Api\ProduactCoontrollerApi@search');
+    Route::get('categorise', 'Api\CategoriesControllerApi@index');
+    Route::get('SupCategoriseOrData\{id}', 'Api\CategoriesControllerApi@SupCategorise');
+    Route::get('logout', 'Api\ClintLoginController@logout');
+    Route::get('produact', 'Api\ProduactCoontrollerApi@index');
 
-    Route::get('color','Api\ColorControllerApi@index');
-    Route::get('size','Api\SizeControllerApi@index');
+    Route::get('produact/{id}', 'Api\ProduactCoontrollerApi@show');
+    Route::delete('deletePro/{id}', 'Api\ProduactCoontrollerApi@destroy');
+    // update Produact
+    Route::put('UpdatePro/{id}', 'Api\ProduactCoontrollerApi@update');
+
+    Route::get('color', 'Api\ColorControllerApi@index');
+    Route::get('size', 'Api\SizeControllerApi@index');
 
     //For التاجر
-    Route::get('ProEcommPused','Api\ProduactCoontrollerApi@ProEcommPused');//ProEcommColor
-    Route::get('ProEcommColor','Api\ProduactCoontrollerApi@ProEcommColor');//
-    Route::get('ProEcomm','Api\ProduactCoontrollerApi@ProEcomm');//
-    Route::delete('ProEcommDelete/{id}','Api\ProduactCoontrollerApi@destroy');
-    Route::post('AddProduact','Api\ProduactCoontrollerApi@store');
-    
+    Route::get('ProEcommPused', 'Api\ProduactCoontrollerApi@ProEcommPused'); //ProEcommColor
+    Route::get('ProEcommColor', 'Api\ProduactCoontrollerApi@ProEcommColor'); //
+    Route::get('ProEcomm', 'Api\ProduactCoontrollerApi@ProEcomm'); //
+    Route::delete('ProEcommDelete/{id}', 'Api\ProduactCoontrollerApi@destroy');
+    Route::post('AddProduact', 'Api\ProduactCoontrollerApi@store');
+
     //AdsControllerApi //ProblemAndIussController //store
 
+    Route::get('ProEcommPused', 'Api\PuseProduactController@ProEcommPused'); //
 
-    Route::get('ProEcommPused','Api\PuseProduactController@ProEcommPused');//
-    
-    Route::get('puse/{id}','Api\PuseProduactController@puse');
-    Route::get('Unpuse/{id}','Api\PuseProduactController@Unpuse');
+    Route::get('puse/{id}', 'Api\PuseProduactController@puse');
+    Route::get('Unpuse/{id}', 'Api\PuseProduactController@Unpuse');
 
+    Route::get('Ads', 'Api\AdsControllerApi@index');
 
-    
-    Route::get('Ads','Api\AdsControllerApi@index');
+    Route::post('Problem', 'Api\ProblemAndIussController@store');
 
-
-    Route::post('Problem','Api\ProblemAndIussController@store');
-
-    Route::post('UserUpdate','Api\ClintLoginController@UserUpdate');
-    Route::post('UserData','Api\ClintLoginController@UserData');
+    Route::post('UserUpdate', 'Api\ClintLoginController@UserUpdate');
+    Route::post('UserData', 'Api\ClintLoginController@UserData');
 
 /*
 
-
-
-
-*/
+ */
     //AdsControllerApi // //
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+    //     return $request->user();
+    // });
 
 });
-

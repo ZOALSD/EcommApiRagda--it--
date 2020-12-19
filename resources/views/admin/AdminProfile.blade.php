@@ -6,5 +6,5 @@
 @endsection
 
 <style>
-    
+
 </style>

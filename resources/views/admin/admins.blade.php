@@ -7,8 +7,9 @@
 
 <style>
     .page-footer {
-    bottom: 0px;
-    position: absolute;
-    right: 20px;
-}
+        bottom: 0px;
+        position: absolute;
+        right: 20px;
+    }
+
 </style>

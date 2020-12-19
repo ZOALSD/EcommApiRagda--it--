@@ -2,64 +2,60 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Validation\ValidationException;
-
 
 class ClintLoginController extends Controller
 {
-    
+
     public function Register(Request $request)
     {
-        
+
         $data = $request->validate([
             'name' => 'required|string|min:3',
-            'email' => 'nullable|email|unique:users',
+            'email' => 'required|email|unique:users',
             'password' => 'nullable',
             'phone' => 'required|unique:users|numeric',
             'year' => 'required|numeric',
             'type' => 'required|numeric',
-            'device_name' =>'required',
+            'device_name' => 'required',
         ]);
 
-            $data['password'] = Hash::make($request->password);
-            $user = User::create($data);
-            $token = $user->createToken($request->device_name)->plainTextToken;
-     
-            $dataa = User::where('id',$user->id)->first();
+        $data['password'] = Hash::make($request->password);
+        $user = User::create($data);
+        $token = $user->createToken($request->device_name)->plainTextToken;
 
-            return response()->json(['token' => $token , 'Data' => $dataa], 200);
+        $dataa = User::where('id', $user->id)->first();
+
+        return response()->json(['token' => $token, 'Data' => $dataa], 200);
 
     }
 
-
-    public function UserUpdate(Request $request )
+    public function UserUpdate(Request $request)
     {
         $id = Auth::user()->id;
 
-        
-         $request->validate([
+        $request->validate([
             'name' => 'nullable|string|min:3',
-            'email' => 'nullable|email|',//unique:users',
+            'email' => 'nullable|email|', //unique:users',
             'password' => 'nullable',
             'phone' => 'required|unique:users|numeric',
             'year' => 'required|numeric',
         ]);
 
-           // $data['password'] = Hash::make($request->password);
+        // $data['password'] = Hash::make($request->password);
+        // $user = User::create($data);
 
-           // $user = User::create($data);
+        if ($request->old_password) {
+            $user = User::where('id', $id)->first();
+            $check = Hash::check($request->old_password, $user->password);
+            if ($check) {
 
-           if($request->old_password){
-             $user = User::where('id',$id)->first();
-             $check = Hash::check($request->old_password, $user->password);
-             if($check){
-
-                $user =User::find($id);
+                $user = User::find($id);
                 $user->name = $request->name;
                 $user->email = $request->email;
                 $user->phone = $request->phone;
@@ -67,66 +63,67 @@ class ClintLoginController extends Controller
                 $user->password = Hash::make($request->new_password);
                 $user->save();
 
-                return response(['stuts'=>'Success Data Updated' , 'Data' => $user]);
+                return response(['stuts' => 'Success Data Updated', 'Data' => $user]);
 
-             }else{
-                 return response('old Password incorrect');
-             }
+            } else {
+                return response('old Password incorrect');
+            }
 
-           }else{
-            $user =User::find($id);
+        } else {
+            $user = User::find($id);
             $user->name = $request->name;
             $user->email = $request->email;
             $user->phone = $request->phone;
             $user->year = $request->year;
             $user->save();
 
-            return response(['stuts'=>'Success Data Updated' , 'Data' => $user]);
+            return response(['stuts' => 'Success Data Updated', 'Data' => $user]);
 
-           }
+        }
 
-        
-     
-            return response()->json(['stutus' => 'Successfully Data Updated'], 200);
+        return response()->json(['stutus' => 'Successfully Data Updated'], 200);
 
     }
 
-    public function data(){
+    public function data()
+    {
 
-        return response()->json(['Data' => User::where('id',1)->get()]);
+        return response()->json(['Data' => User::where('id', 1)->get()]);
 
     }
-    public function UserData(){
+    public function UserData()
+    {
         return Auth::user();
     }
 
-    public function login(Request $request){
+    public function login(Request $request)
+    {
 
         $request->validate([
             'password' => 'required',
             'phone' => 'required',
             'device_name' => 'required',
         ]);
-    
+
         $user = User::where('phone', $request->phone)->first();
-    
-        if (! $user || ! Hash::check($request->password, $user->password)) {
+        $user->tokens()->delete();
+
+        if (!$user || !Hash::check($request->password, $user->password)) {
             throw ValidationException::withMessages([
                 'phone' => ['The provided phone number are incorrect.'],
             ]);
         }
-    
-       
-         $token = $user->createToken($request->device_name)->plainTextToken;
-         
-        return response()->json(['token' => $token , 'Data' => $user], 200);
 
+        $token = $user->createToken($request->device_name)->plainTextToken;
+        return response()->json(['token' => $token, 'Data' => $user], 200);
 
     }
 
-    public function logout(){
+    public function logout()
+    {
+
         Auth::user()->currentAccessToken()->delete();
-        $data ="We will miss you, don't be late to me !!";
+        $data = "We will miss you, don't be late to me !!";
         return response()->json($data, 200);
     }
 
