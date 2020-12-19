@@ -30,7 +30,9 @@ class ClintLoginController extends Controller
             $user = User::create($data);
             $token = $user->createToken($request->device_name)->plainTextToken;
      
-            return response()->json(['token' => $token , 'Data' => $user], 200);
+            $dataa = User::where('id',$user->id)->first();
+
+            return response()->json(['token' => $token , 'Data' => $dataa], 200);
 
     }
 
@@ -89,6 +91,11 @@ class ClintLoginController extends Controller
 
     }
 
+    public function data(){
+
+        return response()->json(['Data' => User::where('id',1)->get()]);
+
+    }
     public function UserData(){
         return Auth::user();
     }
