@@ -3,6 +3,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Model\Categories;
+use App\Model\Produact;
 use Illuminate\Http\Request;
 use Up;
 use Validator;
@@ -32,15 +33,16 @@ class CategoriesControllerApi extends Controller
     //reTurn Categorise OR Data
     public function SupCategorise($id)
     {
-        $count = Categorise::where('Parent_id', $id)->count();
+        $count = Categories::where('Parent_id', $id)->count();
 
         if ($count == 0) {
             $data = Produact::where('stutus', 1)->where('cate_id', $id)->get();
             return response()->json(["Data" => $data, "Sup" => 0], 200);
         } else {
 
-            $Sup = Categorise::where('Parent_id', $id)->select(['id', 'name', 'image_cate'])->get();
-            return response()->json(["Sup" => $Sup], 200);
+            $Sup = Categories::where('Parent_id', $id)->select(['id', 'name', 'image_cate'])->get();
+            $cate = Categories::where('id', $id)->select(['id', 'name', 'image_cate'])->get();
+            return response()->json(["Categorise" => $cate, "Sup" => $Sup], 200);
 
         }
 

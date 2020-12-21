@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Request;
 use Illuminate\Validation\ValidationException;
 
 class ClintLoginController extends Controller
@@ -98,7 +98,6 @@ class ClintLoginController extends Controller
 
     public function login(Request $request)
     {
-
         $request->validate([
             'password' => 'required',
             'phone' => 'required',
@@ -106,6 +105,7 @@ class ClintLoginController extends Controller
         ]);
 
         $user = User::where('phone', $request->phone)->first();
+
         $user->tokens()->delete();
 
         if (!$user || !Hash::check($request->password, $user->password)) {
