@@ -36,7 +36,7 @@ class CategoriesControllerApi extends Controller
         $count = Categories::where('Parent_id', $id)->count();
 
         if ($count == 0) {
-            $data = Produact::where('stutus', 1)->where('cate_id', $id)->get();
+            $data = Produact::where('stutus', 1)->where('stutus_admin', 1)->where('cate_id', $id)->get();
             return response()->json(["Data" => $data, "Sup" => 0], 200);
         } else {
 

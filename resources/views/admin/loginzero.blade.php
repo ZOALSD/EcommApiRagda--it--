@@ -3,7 +3,7 @@
 
 <head>
     @php
-    $path =env('Asset_Path');
+    $path =Path();
     @endphp
 
     <title>Login V3</title>

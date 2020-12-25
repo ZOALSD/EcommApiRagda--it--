@@ -10,18 +10,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-    $this->call([
-        
-                ColorSeeder::class,
-                SizeSeeder::class,
-                CategoriesSeeder::class,
-                AdminDataInfo::class,
-                UserSeeder::class,
-               ProduactSeeder::class,
-               PermissionsDemoSeeder::class,
-               AdsSeeder::class,
-              QRcodeOrderSeeder::class,
-               CardSeeder::class
+        $this->call([
+
+            ColorSeeder::class,
+            SizeSeeder::class,
+            CategoriesSeeder::class,
+            // AdminDataInfo::class,
+            UserSeeder::class,
+            ProduactSeeder::class,
+            PermissionsDemoSeeder::class,
+            AdsSeeder::class,
+            QRcodeOrderSeeder::class,
+            CardSeeder::class,
 
         ]);
     }

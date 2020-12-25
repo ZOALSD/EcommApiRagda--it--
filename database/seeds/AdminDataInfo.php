@@ -11,10 +11,10 @@ class AdminDataInfo extends Seeder
      */
     public function run()
     {
-        return \App\Admin::create([
-            'name'     => 'admin',
-            'email'    => 'test@test.com',
-            'password' => bcrypt(123456),
-        ]);
+        // return \App\Admin::create([
+        //     'name'     => 'admin',
+        //     'email'    => 'test@test.com',
+        //     'password' => bcrypt(123456),
+        // ]);
     }
 }

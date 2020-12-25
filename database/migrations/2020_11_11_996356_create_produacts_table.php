@@ -1,7 +1,8 @@
 <?php
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
 // Auto Schema  By Baboon Script
 // Baboon Maker has been Created And Developed By [It V 1.4 | https://it.phpanonymous.com]
 // Copyright Reserved  [It V 1.4 | https://it.phpanonymous.com]
@@ -20,7 +21,7 @@ class CreateProduactsTable extends Migration
             $table->bigInteger('admin_id')->unsigned()->nullable();
             $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');
             $table->string('cate_name');
-            $table->string('color_name');//->unsigned()->nullable();
+            $table->string('color_name'); //->unsigned()->nullable();
             //$table->foreign('color_id')->references('id')->on('colors')->onDelete('cascade');
             $table->bigInteger('price')->nullable();
             $table->bigInteger('size_id')->unsigned()->nullable();
@@ -31,9 +32,10 @@ class CreateProduactsTable extends Migration
             $table->foreign('cate_id')->references('id')->on('categories')->onDelete('cascade');
             $table->integer('request')->nullable()->default(1);
             $table->integer('stutus')->nullable()->default(1);
+            $table->integer('stutus_admin')->nullable()->default(1);
             $table->softDeletes();
 
-			$table->timestamps();
+            $table->timestamps();
         });
     }
 
