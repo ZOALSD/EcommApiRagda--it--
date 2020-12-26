@@ -13,7 +13,7 @@ class ProduactSeeder extends Seeder
     public function run()
     {
         //factory(Produact::class, 10)->create();
-        for ($i = 1; $i <= 8; $i++) {
+        for ($i = 1; $i <= 6; $i++) {
 
             Produact::create([
 
@@ -29,7 +29,7 @@ class ProduactSeeder extends Seeder
 
         }
 
-        for ($x = 1; $x <= 5; $x++) {
+        for ($x = 1; $x <= 11; $x++) {
 
             if ($x == 1) {
                 for ($y = 1; $y <= 3; $y++) {
@@ -37,12 +37,12 @@ class ProduactSeeder extends Seeder
 
                         'user_id' => $y,
                         'color_name' => $y,
-                        'cate_name' => 'ملابس رجالي رقم' . $y,
+                        'cate_name' => 'ملابس رجالي مقاس صغير' . $y,
                         'price' => $y . '000',
                         'size_id' => $y,
                         'cate_disc' => 'this pergragrph descrpation via zools3d  this pergragrph descrpation via zools3d this pergragrph descrpation via zools3d ',
                         'cate_image' => 'produactcoontroller/' . $y . '.jpg',
-                        'cate_id' => 7,
+                        'cate_id' => 18,
                     ]);
                 }
 
@@ -167,7 +167,7 @@ class ProduactSeeder extends Seeder
 
             } //
 
-            if ($x == 8) {
+            if ($x == 9) {
                 for ($y = 1; $y <= 3; $y++) {
                     Produact::create([
 
@@ -183,6 +183,40 @@ class ProduactSeeder extends Seeder
                 }
 
             } //
+
+            if ($x == 10) {
+                for ($y = 1; $y <= 3; $y++) {
+                    Produact::create([
+
+                        'user_id' => $y,
+                        'color_name' => $y,
+                        'cate_name' => 'ملابس رجالي مقاس متوسط' . $y,
+                        'price' => $y . '000',
+                        'size_id' => $y,
+                        'cate_disc' => 'this pergragrph descrpation via zools3d  this pergragrph descrpation via zools3d this pergragrph descrpation via zools3d ',
+                        'cate_image' => 'produactcoontroller/' . $y . '.jpg',
+                        'cate_id' => 19,
+                    ]);
+                }
+
+            }
+
+            if ($x == 11) {
+                for ($y = 1; $y <= 3; $y++) {
+                    Produact::create([
+
+                        'user_id' => $y,
+                        'color_name' => $y,
+                        'cate_name' => 'ملابس رجالي مقاس كبير' . $y,
+                        'price' => $y . '000',
+                        'size_id' => $y,
+                        'cate_disc' => 'this pergragrph descrpation via zools3d  this pergragrph descrpation via zools3d this pergragrph descrpation via zools3d ',
+                        'cate_image' => 'produactcoontroller/' . $y . '.jpg',
+                        'cate_id' => 20,
+                    ]);
+                }
+
+            }
 
         }
 

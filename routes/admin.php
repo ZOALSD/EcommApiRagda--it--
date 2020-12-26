@@ -55,7 +55,7 @@ Route::group(['middleware' => 'Lang'], function () {
         Route::post('categories/multi_delete', 'Admin\CategoriesController@multi_delete');
         Route::resource('color', 'Admin\ColorController');
         Route::post('color/multi_delete', 'Admin\ColorController@multi_delete');
-        Route::resource('size', 'Admin\SizeController');
+        Route::resource('size', 'Admin\SizeController'); //===--=::-==---
         Route::post('size/multi_delete', 'Admin\SizeController@multi_delete');
         // Route::resource('produactcoontroller', 'Admin\ProduactCoontroller');
 
