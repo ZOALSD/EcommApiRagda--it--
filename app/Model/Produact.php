@@ -5,9 +5,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Nicolaslopezj\Searchable\SearchableTrait;
 
-// Auto Models By Baboon Script
-// Baboon Maker has been Created And Developed By  [It V 1.2 | https://it.phpanonymous.com]
-// Copyright Reserved  [It V 1.2 | https://it.phpanonymous.com]
 class Produact extends Model
 {
 
@@ -26,6 +23,7 @@ class Produact extends Model
         'cate_image',
         'cate_disc',
         'cate_id',
+        'stutus_admin',
         'stutus',
         'created_at',
         'updated_at',
@@ -36,19 +34,14 @@ class Produact extends Model
         'admin_id',
         'user_id',
         'stutus',
+        'stutus_admin',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
 
     protected $searchable = [
-        /**
-         * Columns and their priority in search results.
-         * Columns with higher values are more important.
-         * Columns with equal values have equal importance.
-         *
-         * @var array
-         */
+
         'columns' => [
             //'produacts.color_id' => 10,
             'produacts.cate_name' => 10,

@@ -57,7 +57,15 @@ Route::group(['middleware' => 'Lang'], function () {
         Route::post('color/multi_delete', 'Admin\ColorController@multi_delete');
         Route::resource('size', 'Admin\SizeController');
         Route::post('size/multi_delete', 'Admin\SizeController@multi_delete');
-        Route::resource('produactcoontroller', 'Admin\ProduactCoontroller');
+        // Route::resource('produactcoontroller', 'Admin\ProduactCoontroller');
+
+        Route::get('produactcoontroller', 'Admin\ProduactCoontroller@index')->name('produactcoontroller.index');
+        Route::get('produactcoontroller/{id}', 'Admin\ProduactCoontroller@show')->name('produactcoontroller.show');
+        Route::delete('produactcoontroller/{id}', 'Admin\ProduactCoontroller@destroy')->name('produactcoontroller.destroy')->middleware('permission:ProDelete');
+        Route::get('produactcoontroller/{id}/edit', 'Admin\ProduactCoontroller@edit')->name('produactcoontroller.edit')->middleware('permission:ProImageChange'); //
+        Route::put('produactcoontroller/{id}', 'Admin\ProduactCoontroller@update')->name('produactcoontroller.update');
+        Route::get('produactcoontroller/create', 'Admin\ProduactCoontroller@create')->name('produactcoontroller.create');
+
         Route::post('produactcoontroller/multi_delete', 'Admin\ProduactCoontroller@multi_delete');
 
         Route::any('category', function () {

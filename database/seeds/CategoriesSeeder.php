@@ -55,55 +55,55 @@ class CategoriesSeeder extends Seeder
             'parent_id' => 2,
             'image_cate' => 'CategoriesImage/default.jpg',
         ]);
-        Categories::create([
+        Categories::create([ //9
             'name' => 'اطفال',
             'parent_id' => 2,
             'image_cate' => 'CategoriesImage/default.jpg',
         ]);
 
-        Categories::create([
+        Categories::create([ //10
             'name' => 'تويوتا',
             'parent_id' => 3,
             'image_cate' => 'CategoriesImage/default.jpg',
         ]);
 
-        Categories::create([
+        Categories::create([ //11
             'name' => 'هونداي',
             'parent_id' => 3,
             'image_cate' => 'CategoriesImage/default.jpg',
         ]);
 
-        Categories::create([
+        Categories::create([ //12
             'name' => 'تويوتا اكسنت',
             'parent_id' => 10,
             'image_cate' => 'CategoriesImage/default.jpg',
         ]);
 
-        Categories::create([
+        Categories::create([ //13
             'name' => 'تويوتا برادو',
             'parent_id' => 10,
             'image_cate' => 'CategoriesImage/default.jpg',
         ]);
 
-        Categories::create([
+        Categories::create([ //14
             'name' => 'تويوتا بوكسي',
             'parent_id' => 10,
             'image_cate' => 'CategoriesImage/default.jpg',
         ]);
 
-        Categories::create([
+        Categories::create([ //15
             'name' => ' هونداي اكسنت',
             'parent_id' => 11,
             'image_cate' => 'CategoriesImage/default.jpg',
         ]);
 
-        Categories::create([
+        Categories::create([ //16
             'name' => ' هونداي برادو',
             'parent_id' => 11,
             'image_cate' => 'CategoriesImage/default.jpg',
         ]);
 
-        Categories::create([
+        Categories::create([ //17
             'name' => ' هونداي بوكسي',
             'parent_id' => 11,
             'image_cate' => 'CategoriesImage/default.jpg',

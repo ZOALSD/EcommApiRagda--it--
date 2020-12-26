@@ -13,7 +13,7 @@ class ProduactSeeder extends Seeder
     public function run()
     {
         //factory(Produact::class, 10)->create();
-        for ($i = 1; $i <= 6; $i++) {
+        for ($i = 1; $i <= 8; $i++) {
 
             Produact::create([
 
@@ -29,7 +29,7 @@ class ProduactSeeder extends Seeder
 
         }
 
-        for ($x = 1; $x <= 3; $x++) {
+        for ($x = 1; $x <= 5; $x++) {
 
             if ($x == 1) {
                 for ($y = 1; $y <= 3; $y++) {
@@ -81,6 +81,108 @@ class ProduactSeeder extends Seeder
                 }
 
             }
+
+            if ($x == 4) {
+                for ($y = 1; $y <= 3; $y++) {
+                    Produact::create([
+
+                        'user_id' => $y,
+                        'color_name' => $y,
+                        'cate_name' => 'اكسنت تويوتا رقم' . $y,
+                        'price' => $y . '000',
+                        'size_id' => $y,
+                        'cate_disc' => 'car Accent From Towttow Action  ',
+                        'cate_image' => 'produactcoontroller/' . $y . '.jpg',
+                        'cate_id' => 12,
+                    ]);
+                }
+
+            }
+
+            if ($x == 5) {
+                for ($y = 1; $y <= 3; $y++) {
+                    Produact::create([
+
+                        'user_id' => $y,
+                        'color_name' => $y,
+                        'cate_name' => 'تويوتا برادو  رقم' . $y,
+                        'price' => $y . '000',
+                        'size_id' => $y,
+                        'cate_disc' => 'car Accent From Hownidy Action  ',
+                        'cate_image' => 'produactcoontroller/' . $y . '.jpg',
+                        'cate_id' => 13,
+                    ]);
+                }
+
+            }
+
+            if ($x == 6) {
+                for ($y = 1; $y <= 3; $y++) {
+                    Produact::create([
+
+                        'user_id' => $y,
+                        'color_name' => $y,
+                        'cate_name' => ' تويوتا بوكسي  رقم' . $y,
+                        'price' => $y . '000',
+                        'size_id' => $y,
+                        'cate_disc' => 'car Accent From Hownidy Action  ',
+                        'cate_image' => 'produactcoontroller/' . $y . '.jpg',
+                        'cate_id' => 14,
+                    ]);
+                }
+
+            } //
+
+            if ($x == 7) {
+                for ($y = 1; $y <= 3; $y++) {
+                    Produact::create([
+
+                        'user_id' => $y,
+                        'color_name' => $y,
+                        'cate_name' => ' هونداي اكسنت رقم' . $y,
+                        'price' => $y . '000',
+                        'size_id' => $y,
+                        'cate_disc' => 'car Accent From Hownidy Action  ',
+                        'cate_image' => 'produactcoontroller/' . $y . '.jpg',
+                        'cate_id' => 15,
+                    ]);
+                }
+
+            } //
+
+            if ($x == 8) {
+                for ($y = 1; $y <= 3; $y++) {
+                    Produact::create([
+
+                        'user_id' => $y,
+                        'color_name' => $y,
+                        'cate_name' => 'هونداي برادو رقم' . $y,
+                        'price' => $y . '000',
+                        'size_id' => $y,
+                        'cate_disc' => 'car Accent From Hownidy Action  ',
+                        'cate_image' => 'produactcoontroller/' . $y . '.jpg',
+                        'cate_id' => 16,
+                    ]);
+                }
+
+            } //
+
+            if ($x == 8) {
+                for ($y = 1; $y <= 3; $y++) {
+                    Produact::create([
+
+                        'user_id' => $y,
+                        'color_name' => $y,
+                        'cate_name' => ' هونداي بوكسي رقم' . $y,
+                        'price' => $y . '000',
+                        'size_id' => $y,
+                        'cate_disc' => 'car Accent From Hownidy Action  ',
+                        'cate_image' => 'produactcoontroller/' . $y . '.jpg',
+                        'cate_id' => 17,
+                    ]);
+                }
+
+            } //
 
         }
 
