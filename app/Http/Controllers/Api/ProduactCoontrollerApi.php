@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProduactRequestApi;
 use App\Model\Produact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -83,45 +84,61 @@ class ProduactCoontrollerApi extends Controller
      * @param  \Illuminate\Http\Request  $r
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(ProduactRequestApi $req)
     {
 
-        $rules = [
-            'cate_name' => 'required|string',
-            'color_name' => 'string|nullable|sometimes',
-            'price' => 'numeric|nullable|sometimes',
-            'size_id' => 'numeric|nullable|sometimes',
-            'cate_image' => 'nullable',
-            'cate_disc' => 'nullable|sometimes|string',
-            'cate_id' => '',
-        ];
+        //'color_name' => 'string|nullable|sometimes',
+        // $rules = [
+        //     'cate_name' => 'required|string',
+        //     'price' => 'numeric|nullable|sometimes',
+        //     'size_id' => 'numeric|nullable|sometimes',
+        //     'cate_image' => 'nullable',
+        //     'cate_disc' => 'nullable|sometimes|string',
+        //     'cate_id' => '',
+        // ];
+        // //  'color_name' => trans('admin.color_id'),
 
-        $data = Validator::make(request()->all(), $rules, [], [
-            'cate_name' => trans('admin.cate_name'),
-            'color_name' => trans('admin.color_id'),
-            'price' => trans('admin.price'),
-            'size_id' => trans('admin.size_id'),
-            'cate_image' => trans('admin.cate_image'),
-            'cate_disc' => trans('admin.cate_disc'),
-            'cate_id' => trans('admin.cate_id'),
-        ]);
+        // $data = Validator::make(request()->all(), $rules, [], [
+        //     'cate_name' => trans('admin.cate_name'),
+        //     'price' => trans('admin.price'),
+        //     'size_id' => trans('admin.size_id'),
+        //     'cate_image' => trans('admin.cate_image'),
+        //     'cate_disc' => trans('admin.cate_disc'),
+        //     'cate_id' => trans('admin.cate_id'),
+        // ]);
 
-        if ($data->fails()) {
-            return response()->json([
-                "status" => false, "
-               messages" => $data->messages(),
-            ]);
-        }
-        $data = request()->except(["_token"]);
-        $data['user_id'] = auth()->user()->id;
-        if (request()->hasFile('cate_image')) {
-            $data['cate_image'] = it()->upload('cate_image', 'produactcoontroller');
-        }
-        $create = Produact::create($data);
+        //Color(0xFFFFFDE7)
+        // $data = $req->except("color_name");
+        // if ($data->fails()) {
+        //     return response()->json([
+        //         "status" => false,
+        //         "messages" => $data->messages(),
+        //     ]);
+        // }
+        // $color = Str::between($req->color_name, '(', ')');
+        // //  $data['color_name'] = $color;
+        // $data = $req->except(["_token"]);
+        // $data['user_id'] = auth()->user()->id;
+
+        // if (request()->hasFile('cate_image')) {
+        //     $data['cate_image'] = it()->upload('cate_image', 'produactcoontroller');
+        // }
+        $pro = new Produact;
+        $pro->cate_name = $req->cate_name;
+        $pro->color_name = Str::between($req->color_name, '(', ')');
+        $pro->price = $req->price;
+        $pro->size_id = $req->size_id;
+        $pro->cate_disc = $req->cate_disc;
+        $pro->cate_id = $req->cate_id;
+        $pro->user_id = auth()->user()->id;
+
+        $pro->save();
 
         // $iddd = auth()->user()->id;
         return response()->json([
             "status" => true,
+            "message" => "Success Produact Add",
+            // "data" => $pro,
         ]);
     }
 

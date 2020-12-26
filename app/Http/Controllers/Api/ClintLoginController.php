@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Token;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -105,8 +106,12 @@ class ClintLoginController extends Controller
         ]);
 
         $user = User::where('phone', $request->phone)->first();
+        $user_id = User::where('phone', $request->phone)->value('id');
 
-        $user->tokens()->delete();
+        $token = Token::where('tokenable_id', $user_id)->count();
+        if ($token != 0) {
+            $user->tokens()->delete();
+        }
 
         if (!$user || !Hash::check($request->password, $user->password)) {
             throw ValidationException::withMessages([
