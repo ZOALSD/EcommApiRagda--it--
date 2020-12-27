@@ -57,15 +57,9 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
     //Get Area ----------
     Route::get('area', 'Api\AreaControllerApi@index'); //area
-    Route::get('village/{id}', 'Api\VillageControllerApi@show'); //area
-
-/*
-
- */
-    //AdsControllerApi // //
-
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    //     return $request->user();
-    // });
+    Route::get('village/{id}', 'Api\VillageControllerApi@show'); //area//
+    Route::post('card', 'Api\CardControllerApi@card'); //
+    Route::post('cardconfirm', 'Api\CardControllerApi@cardconfirm'); //
+    Route::post('cardcancle', 'Api\CardControllerApi@cardcancle'); //
 
 });

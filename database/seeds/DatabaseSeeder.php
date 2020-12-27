@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
             ProduactSeeder::class,
             PermissionsDemoSeeder::class,
             AdsSeeder::class,
-            QRcodeOrderSeeder::class,
+            //QRcodeOrderSeeder::class,
             CardSeeder::class,
             AreaSeeder::class,
             VillageSeeder::class,

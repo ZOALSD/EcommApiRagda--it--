@@ -21,4 +21,8 @@ class Card extends Model
         'stutus',
 
     ];
+
+    protected $hidden = [
+        'updated_at', 'created_at',
+    ];
 }

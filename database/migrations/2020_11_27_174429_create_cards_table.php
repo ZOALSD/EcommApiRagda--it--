@@ -24,6 +24,7 @@ class CreateCardsTable extends Migration
             $table->string('near_flg')->nullable();
             $table->bigInteger('quantity');
             $table->bigInteger('price');
+            $table->string('qr_code')->nullable();
             $table->bigInteger('total');
             $table->Integer('stutus')->default(2);
 

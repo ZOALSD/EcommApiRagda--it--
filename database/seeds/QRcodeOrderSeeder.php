@@ -13,17 +13,17 @@ class QRcodeOrderSeeder extends Seeder
      */
     public function run()
     {
-        for($i=1 ; $i<= 5 ; $i++){
-            $value = 'Ahmed'.$i;
-        QRCodeOrder::create([
-        
-        "client_id"=>1, 
-        "seller_id"=>1,
-        "delivery_id"=>1 ,
-        "card_process_id"=>$i ,
-        "qrcode"=> Hash::make($value) ,
+        for ($i = 1; $i <= 5; $i++) {
+            $value = 'Ahmed' . $i;
+            QRCodeOrder::create([
 
-        ]);
+                "client_id" => 1,
+                "seller_id" => 1,
+                "delivery_id" => 1,
+                "card_process_id" => $i,
+                "qrcode" => Hash::make($value),
+
+            ]);
+        }
     }
-  }
 }
