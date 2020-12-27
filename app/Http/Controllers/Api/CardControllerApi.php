@@ -36,7 +36,8 @@ class CardControllerApi extends Controller
         }
 
         $seller_id = Produact::where('id', $req->produact_id)->value('user_id');
-        $total = $req->quantity * $req->price;
+        $price = Produact::where('id', $req->produact_id)->value('price');
+        $total = $req->quantity * $price;
 
         $card = new Card;
         $card->produact_id = $req->produact_id;
@@ -44,7 +45,7 @@ class CardControllerApi extends Controller
         $card->clint_id = Auth::id(); // not Requset
         $card->process_id = $process_id; // not Requset
         $card->quantity = $req->quantity;
-        $card->price = $req->price;
+        $card->price = $price;
         $card->total = $total; // not Requset
         // $card->stutus = 2; // طلب فقط لم ياكد
         $card->save();
