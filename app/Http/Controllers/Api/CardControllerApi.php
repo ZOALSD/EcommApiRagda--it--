@@ -58,7 +58,7 @@ class CardControllerApi extends Controller
 
     public function showCard()
     {
-        Card::where('clint_id', Auth::id())->where('stutus', 2)->get();
+        return Card::where('clint_id', Auth::id())->where('stutus', 2)->get();
     }
     public function cardconfirm(Request $req)
     {
