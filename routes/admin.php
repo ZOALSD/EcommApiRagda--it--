@@ -73,7 +73,11 @@ Route::group(['middleware' => 'Lang'], function () {
         });
         Route::resource('ads', 'Admin\AdsController');
         Route::post('ads/multi_delete', 'Admin\AdsController@multi_delete');
-        //////// Admin Routes /* End */ //////////////
+        Route::resource('area','Admin\AreaController'); 
+Route::post('area/multi_delete','Admin\AreaController@multi_delete'); 
+				Route::resource('village','Admin\VillageController'); 
+Route::post('village/multi_delete','Admin\VillageController@multi_delete'); 
+				//////// Admin Routes /* End */ //////////////
 
         Route::get('manger', function () {
             return view('admin.admins', ['title' => 'إدارة المشرفين']);

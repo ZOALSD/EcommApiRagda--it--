@@ -15,12 +15,12 @@ class CreateQRCodeOrdersTable extends Migration
     {
         Schema::create('q_r_code_orders', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('client_id')->nullable();
-            $table->bigInteger('seller_id')->nullable();
-            $table->bigInteger('delivery_id')->nullable();
-            $table->bigInteger('card_process_id')->nullable();
-            $table->string('qrcode');
-            $table->Integer('stusts')->default(0)->nullable();
+            // $table->bigInteger('client_id')->nullable();
+            // $table->bigInteger('seller_id')->nullable();
+            // $table->bigInteger('delivery_id')->nullable();
+            // $table->bigInteger('card_process_id')->nullable();
+            // $table->string('qrcode');
+            // $table->Integer('stusts')->default(0)->nullable();
             $table->timestamps();
         });
     }

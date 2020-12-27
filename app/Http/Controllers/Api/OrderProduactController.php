@@ -9,13 +9,13 @@ use Validator;
 class OrderProduactController extends Controller
 {
 
-    public function index()
-    {
-        return response()->json([
-            "status" => true,
-            "data" => QRCodeOrder::where('user_id', Auth::id())->where('stusts', 0)->orderBy('id', 'desc')->get(),
-        ]);
-    }
+    // public function index()
+    // {
+    //     return response()->json([
+    //         "status" => true,
+    //         "data" => QRCodeOrder::where('user_id', Auth::id())->where('stusts', 0)->orderBy('id', 'desc')->get(),
+    //     ]);
+    // }
 
     public function store()
     {
@@ -144,29 +144,6 @@ class OrderProduactController extends Controller
         $QRCodeOrder = QRCodeOrder::find($id);
         $QRCodeOrder->delete();
         return response(["status" => true, "message" => trans('admin.deleted')]);
-    }
-
-    public function multi_delete(Request $r)
-    {
-        $data = $r->input('selected_data');
-        if (is_array($data)) {
-            foreach ($data as $id) {
-                $QRCodeOrder = QRCodeOrder::find($id);
-
-                it()->delete($QRCodeOrder->ad_image);
-                it()->delete('QRCodeOrder', $id);
-                @$QRCodeOrder->delete();
-            }
-            return response(["status" => true, "message" => trans('admin.deleted')]);
-        } else {
-            $QRCodeOrder = QRCodeOrder::find($data);
-
-            it()->delete($QRCodeOrder->ad_image);
-            it()->delete('QRCodeOrder', $data);
-
-            @$QRCodeOrder->delete();
-            return response(["status" => true, "message" => trans('admin.deleted')]);
-        }
     }
 
 }

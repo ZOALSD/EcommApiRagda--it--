@@ -1,6 +1,6 @@
 @extends('admin.index')
 @section('content')
-    
-@livewire('dashbord-order')
+
+    @livewire('dashbord-order')
 
 @endsection

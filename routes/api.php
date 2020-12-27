@@ -55,6 +55,10 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('UserUpdate', 'Api\ClintLoginController@UserUpdate');
     Route::post('UserData', 'Api\ClintLoginController@UserData');
 
+    //Get Area ----------
+    Route::get('area', 'Api\AreaControllerApi@index'); //area
+    Route::get('village/{id}', 'Api\VillageControllerApi@show'); //area
+
 /*
 
  */

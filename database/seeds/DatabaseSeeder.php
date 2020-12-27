@@ -22,6 +22,8 @@ class DatabaseSeeder extends Seeder
             AdsSeeder::class,
             QRcodeOrderSeeder::class,
             CardSeeder::class,
+            AreaSeeder::class,
+            VillageSeeder::class,
 
         ]);
     }

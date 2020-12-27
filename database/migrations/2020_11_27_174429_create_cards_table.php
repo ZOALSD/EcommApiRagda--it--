@@ -21,14 +21,15 @@ class CreateCardsTable extends Migration
             $table->bigInteger('process_id');
             $table->bigInteger('city_id')->nullable();
             $table->bigInteger('area_id')->nullable();
+            $table->string('near_flg')->nullable();
             $table->bigInteger('quantity');
             $table->bigInteger('price');
             $table->bigInteger('total');
             $table->Integer('stutus')->default(2);
-            
-            // 2 تم الطلب  
-            // 1 تم تاكيد الطلب  
-            // 0 تم الغاء الطلب  
+
+            // 2 تم الطلب
+            // 1 تم تاكيد الطلب
+            // 0 تم الغاء الطلب
 
             $table->timestamps();
         });
