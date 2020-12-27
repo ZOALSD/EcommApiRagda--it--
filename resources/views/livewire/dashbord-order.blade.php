@@ -137,7 +137,9 @@
                     </div>
                     <div class="portlet-body">
                         <div id="dashboard_amchart_1" class="CSSAnimationChart">
-
+                            @foreach ($Orders as $i)
+                                {{ $i->id }}
+                            @endforeach
 
 
                         </div>

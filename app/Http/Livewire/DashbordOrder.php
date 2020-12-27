@@ -11,12 +11,14 @@ class DashbordOrder extends Component
     public $order = true;
     public $newOrder;
     public $title;
+    public $orderData;
+
     public function render()
     {
         $orderCount = 7; //QRCodeOrder::where('stusts',0)->count();
-        $orderData = 8; //QRCodeOrder::where('stusts',0)->get();
+        $Orders = $this->orderData; //= Card::where('stusts', 2)->get();
 
-        return view('livewire.dashbord-order', \compact('orderCount'));
+        return view('livewire.dashbord-order', \compact('orderCount', 'Orders'));
     }
 
     public function OrdarClose()
@@ -28,7 +30,7 @@ class DashbordOrder extends Component
     {
         $this->title = "الطلبات الجديدة";
         $this->order = false;
-        $this->NewOrder = Card::where('stutus', 1)->get();
+        $this->orderData = Card::where('stutus', 2)->get();
 
     }
 }
