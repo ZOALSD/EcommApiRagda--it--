@@ -12,13 +12,13 @@ class DashbordOrder extends Component
     public $newOrder;
     public $title;
     public $orderData;
-
+    public $clintDataa;
     public function render()
     {
         $orderCount = 7; //QRCodeOrder::where('stusts',0)->count();
         $Orders = $this->orderData; //= Card::where('stusts', 2)->get();
-
-        return view('livewire.dashbord-order', \compact('orderCount', 'Orders'));
+        $clintData = $this->clintDataa;
+        return view('livewire.dashbord-order', \compact('orderCount', 'Orders', 'clintData'));
     }
 
     public function OrdarClose()
@@ -31,6 +31,11 @@ class DashbordOrder extends Component
         $this->title = "الطلبات الجديدة";
         $this->order = false;
         $this->orderData = Card::where('stutus', 2)->get();
+    }
+
+    public function OrderDetlis($id)
+    {
+        $this->clintDataa = Card::where('id', $id)->where('stutus', 2)->first();
 
     }
 }

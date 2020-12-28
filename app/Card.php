@@ -22,6 +22,16 @@ class Card extends Model
 
     ];
 
+    public function clint()
+    {
+        return $this->belongsTo('App\User', 'clint_id');
+    }
+
+    public function area()
+    {
+        return $this->belongsTo('App\Model\Area', 'area_id');
+    }
+
     protected $hidden = [
         'updated_at', 'created_at',
     ];

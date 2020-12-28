@@ -137,18 +137,102 @@
                     </div>
                     <div class="portlet-body">
                         <div id="dashboard_amchart_1" class="CSSAnimationChart">
-                            @foreach ($Orders as $i)
-                                {{ $i->id }}
-                            @endforeach
+
+                            <div class="row">
+                                <div class="col-md-9">
+
+                                    @foreach ($clintData as $data)
+
+                                        <table class="table">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th scope="col">اسم العميل</th>
+                                                    <th scope="col">{{ $data->clint->name }}
+                                                    <th scope="col">المحلية</th>
+                                                    <th scope="col">الخرطوم</th>
+                                                    </th>
+                                                </tr>
+
+                                                <tr>
+                                                    <th scope="col">المنطقة </th>
+                                                    <th scope="col">{{ $data->clint->name }}
+                                                    <th scope="col">اقرب معلم</th>
+                                                    <th scope="col">الجامع الخرطوم</th>
+                                                    </th>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="col">الطلبات</th>
+                                                    <th scope="col">الكمية</th>
+                                                    <th scope="col">السعر</th>
+                                                    <th scope="col">التاجر</th>
+                                                    <th scope="col"> المجموع</th>
+
+                                                </tr>
+
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($Orders as $i)
+
+                                                    <tr class="req-hover">
+                                                        <td>{{ $i->clint->name }}</td>
+                                                        <td>Otto</td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    @endforeach
 
 
+                                </div>
+                                <div class="col-md-3 border-righet ">
+                                    قائمة الطلبات
+                                    <hr>
+
+                                    <table class="table">
+                                        <thead class="thead-dark">
+                                            <tr class="">
+                                                <th scope="col">اسم العميل</th>
+                                                <th scope="col">المحلية</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($Orders as $i)
+
+                                                <tr class="req-hover">
+                                                    <td>{{ $i->clint->name }}</td>
+                                                    <td>Otto</td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+
+
+
+
+
+
+
+                                </div>
+
+                            </div>
                         </div>
-
                     </div>
                 </div>
-            </div>
-        </div>
-        <!-- END PAGE BASE CONTENT -->
+                <!-- END PAGE BASE CONTENT -->
     @endif
 
 </div>
+
+<style>
+    .req-hover:hover {
+        background-color: #fdd835;
+        font-size: 22px !important;
+        font-weight: bold;
+        color: white !important
+    }
+
+    .border-righet {
+        border-right: 1px solid #fdd835;
+    }
+
+</style>
