@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Model\CardData;
 use App\Model\CardRequest;
+use App\User;
 use Livewire\Component;
 
 class DashbordOrder extends Component
