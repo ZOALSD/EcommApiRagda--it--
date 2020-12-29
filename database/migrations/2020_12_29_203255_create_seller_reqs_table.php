@@ -15,6 +15,14 @@ class CreateSellerReqsTable extends Migration
     {
         Schema::create('seller_reqs', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('seller_id');
+            $table->bigInteger('card_info_id');
+            $table->bigInteger('card_req_id');
+            $table->integer('stuts')->nullable();
+            // null => لم يتم الرد
+            // 0 => جاري التحضير
+            // 1 => تم النسليم
+            $table->string('qr_code')->nullable();
             $table->timestamps();
         });
     }

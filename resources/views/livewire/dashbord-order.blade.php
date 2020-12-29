@@ -257,30 +257,71 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button class="close" data-dismiss="modal">x</button>
-                    <h4 class="modal-title">مناديب التوصيل</h4>
-                    </h4>
+                    @if ($DeliveyTaskShow == false)
+
+                        <h4 class="modal-title">مناديب التوصيل</h4>
+                        </h4>
                 </div>
                 <div class="modal-body">
+
                     <table class="table">
                         <tr>
                             <th>الاسم</th>
                             <th>رقم الهاتف</th>
                             <th>المحلية</th>
                             <th>الحالة</th>
-                            <th>الصورة</th>
                         </tr>
                         @foreach ($delive as $i)
 
                             <tr>
                                 <td>{{ $i->name }}</td>
                                 <td>{{ $i->phone }}</td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $i->area->area_name }}</td>
+                                @if ($$i->stuts_delivery == 1)
+                                    <td>
+                                        <button wire:click='deliveryTask' class="btn btn-info">غير متفرغ</button>
+                                    </td>
+                                @else
+                                    <td>
+                                        <button class="btn btn-info" disabled> متفرغ</button>
+                                    </td>
+                                @endif
                                 <td></td>
                             </tr>
                         @endforeach
 
                     </table>
+                @else
+                    <h3 class="modal-title">مهام مندوب التوصيل : {{ $i->name }}</h3>
+                    </h4>
+                </div>
+                <div class="modal-body">
+
+                    <table class="table">
+                        <tr>
+                            <th>رقم الطلب</th>
+                            <th>اسم العميل</th>
+                            <th>مكان العميل</th>
+                            <th>اسم التاجر</th>
+                            <th>مكان التاجر</th>
+                            <th>الحالة</th>
+                        </tr>
+
+                        @foreach ($delTask as $i)
+
+                            <tr>
+                                <td>{{ $i->CardInfo->id }}</td>
+                                <td>{{ $i->CardInfo->clint->name }}</td>
+                                <td>{{ $i->CardInfo->area->area_name }}</td>
+                                <td>{{ $i->CardInfo->seller->name }}</td>
+                                <td>{{ $i->CardInfo->seller->area->area_name }}</td>
+                                <td>{{ $i->stuts }}</td>
+                            </tr>
+
+                        @endforeach
+
+
+                        @endif
 
 
                 </div>

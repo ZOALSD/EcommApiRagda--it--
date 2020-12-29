@@ -54,7 +54,10 @@ class UserSeeder extends Seeder
             }
             if ($i == 4) {
                 for ($x = 1; $x <= 5; $x++) {
-
+                    if ($x >= 3) {$area = 1;
+                        $stuts_delivery = 1;} elseif ($x == 4) {$area = 2;
+                        $stuts_delivery = null;} else { $area = 3;
+                        $stuts_delivery = null;}
                     User::create([
                         'name' => 'Delivery' . $x,
                         'email' => 'Delivery' . $x . '@me.com',
@@ -62,6 +65,10 @@ class UserSeeder extends Seeder
                         'phone' => $x . $x . $x,
                         'year' => '199' . $i,
                         'type' => 3,
+                        'area_id' => $area,
+                        // 'photo',
+                        // 'stuts',
+                        'stuts_delivery' => $stuts_delivery,
                     ]);
                 }
             }

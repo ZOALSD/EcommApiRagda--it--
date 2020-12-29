@@ -18,6 +18,11 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'email', 'password', 'phone',
         'year', 'type',
+        'area_id',
+        'village_id',
+        'photo',
+        'stuts',
+        'stuts_delivery',
     ];
 
     /**
@@ -27,5 +32,8 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password', 'remember_token', 'created_at', 'updated_at', 'email_verified_at',
+        'village_id',
+        'stuts',
+        'stuts_delivery',
     ];
 }
