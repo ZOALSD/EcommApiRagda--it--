@@ -1,0 +1,43 @@
+<?php
+
+use App\Model\CardData;
+use Illuminate\Database\Seeder;
+
+class CardDataSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        for ($i = 1; $i <= 3; $i++) {
+            if ($i == 1) {
+                $area = 1;
+                $village = 2;
+                $flg = 'عافرة';
+                $order_num = 1;
+            } elseif ($i == 2) {
+                $area = 2;
+                $village = 4;
+                $flg = 'جامع الخليفة';
+                $order_num = 2;
+            } else {
+                $area = 3;
+                $village = 7;
+                $flg = 'مسرح خضر بشير';
+                $order_num = 3;
+            }
+            CardData::create([
+                "clint_id" => $i,
+                "area_id" => $area,
+                "village_id" => $village,
+                "near_flg" => $flg,
+                "order_num" => $order_num,
+                "deliver_id" => "",
+                "qr_code" => Hash::make($i . time() . round(3)), // "stutus" => "",
+            ]);
+        }
+    }
+}

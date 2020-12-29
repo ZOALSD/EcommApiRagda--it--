@@ -1,25 +1,20 @@
 <?php
 
-namespace App;
+namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Card extends Model
+class CardData extends Model
 {
     protected $fillable = [
-
-        'produact_id',
-        'seller_id',
         'clint_id',
-        'process_id',
         'area_id',
         'village_id',
         'near_flg',
-        'quantity',
-        'price',
-        'total',
+        'order_num',
+        'deliver_id',
+        'qr_code',
         'stutus',
-
     ];
 
     public function clint()

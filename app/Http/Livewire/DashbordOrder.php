@@ -2,7 +2,8 @@
 
 namespace App\Http\Livewire;
 
-use App\Card;
+use App\Model\CardData;
+use App\Model\CardRequest;
 use Livewire\Component;
 
 class DashbordOrder extends Component
@@ -13,12 +14,16 @@ class DashbordOrder extends Component
     public $title;
     public $orderData;
     public $clintDataa;
+    public $cardRequest;
+
     public function render()
     {
         $orderCount = 7; //QRCodeOrder::where('stusts',0)->count();
         $Orders = $this->orderData; //= Card::where('stusts', 2)->get();
         $clintData = $this->clintDataa;
-        return view('livewire.dashbord-order', \compact('orderCount', 'Orders', 'clintData'));
+        $CardReq = $this->cardRequest;
+        $delive = User::where('type', 3)->get();
+        return view('livewire.dashbord-order', \compact('orderCount', 'Orders', 'clintData', 'CardReq', 'delive'));
     }
 
     public function OrdarClose()
@@ -28,14 +33,17 @@ class DashbordOrder extends Component
 
     public function NewOrder()
     {
-        $this->title = "الطلبات الجديدة";
+        $id = CardData::where('stutus', 0)->first()->value('id');
+        $this->title = " : طلب رقم " . $id;
         $this->order = false;
-        $this->orderData = Card::where('stutus', 2)->get();
+        $this->orderData = CardData::where('stutus', 0)->get();
+        $this->clintDataa = CardData::where('stutus', 0)->first();
+        $this->cardRequest = CardRequest::where('card_data_id', $id)->get();
+
     }
 
     public function OrderDetlis($id)
     {
-        $this->clintDataa = Card::where('id', $id)->where('stutus', 2)->first();
 
     }
 }

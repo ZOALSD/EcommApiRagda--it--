@@ -118,15 +118,13 @@
                 </div>
             </div>
         </div>
-
     @else
-
         <div class="row">
             <div class="col-md-12 col-sm-12">
                 <div class="portlet light bordered">
                     <div class="portlet-title">
                         <div class="caption">
-                            <span class="uppercase caption-subject bold font-dark">{{ $title }}</span>
+                            <span class="uppercase caption-subject bold font-dark">{{ $title }} </span>
                         </div>
                         <div class="actions">
                             <a wire:click='OrdarClose' class="btn btn-circle btn-icon-only btn-default " href="#"><i
@@ -137,83 +135,112 @@
                     </div>
                     <div class="portlet-body">
                         <div id="dashboard_amchart_1" class="CSSAnimationChart">
-
                             <div class="row">
-                                <div class="col-md-9">
+                                <div class="col-md-9 border-righet ">
+                                    <table class="table">
+                                        <thead class="thead-dark">
+                                        <tbody>
 
-                                    @foreach ($clintData as $data)
+                                            <tr>
+                                                <th> اسم العميل </th>
+                                                <td>:&nbsp;{{ $clintData->clint->name }}</td>
+                                                <th> المحلية </th>
+                                                <td>:&nbsp;{{ $clintData->area->area_name }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th> المنطقة </th>
+                                                <td>:&nbsp;{{ $clintData->village->village_name }}</td>
+                                                <th> اقرب معلم </th>
+                                                <td>:&nbsp;{{ $clintData->near_flg }}</td>
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <th>الطلبات</th>
+                                                <th>الكمية</th>
+                                                <th>السعر</th>
+                                                <th>التاجر</th>
+                                                <th> المجموع</th>
+                                            </tr>
 
-                                        <table class="table">
-                                            <thead class="thead-dark">
+                                            @foreach ($CardReq as $i)
+
                                                 <tr>
-                                                    <th scope="col">اسم العميل</th>
-                                                    <th scope="col">{{ $data->clint->name }}
-                                                    <th scope="col">المحلية</th>
-                                                    <th scope="col">الخرطوم</th>
-                                                    </th>
+                                                    <td>{{ $i->produact->cate_name }}</td>
+                                                    <td>{{ $i->quantity }}</td>
+                                                    <td>{{ $i->price }}</td>
+                                                    <td>{{ $i->seller->name }}</td>
+                                                    <td>{{ $i->total }}</td>
                                                 </tr>
+                                            @endforeach
+                                            <tr>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
+                                            <tr>
 
-                                                <tr>
-                                                    <th scope="col">المنطقة </th>
-                                                    <th scope="col">{{ $data->clint->name }}
-                                                    <th scope="col">اقرب معلم</th>
-                                                    <th scope="col">الجامع الخرطوم</th>
-                                                    </th>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="col">الطلبات</th>
-                                                    <th scope="col">الكمية</th>
-                                                    <th scope="col">السعر</th>
-                                                    <th scope="col">التاجر</th>
-                                                    <th scope="col"> المجموع</th>
+                                                <th colspan="">مندوب التوصيل</th>
+                                                <td colspan=""> <button data-toggle="modal" data-target="#AddDelivery"
+                                                        class="btn btn-info">modamed</button> </td>
+                                                <th></th>
+                                                <th>رقم المندوب</th>
+                                                <td>0900004444</td>
+                                            </tr>
+                                            <tr>
+                                                <th>زمن الطلب</th>
+                                                <td>{{ $clintData->created_at }}</td>
+                                                <th></th>
+                                                <th>رقم الطلب</th>
+                                                <td>{{ $clintData->id }}</td>
+                                            </tr>
 
-                                                </tr>
-
-                                            </thead>
-                                            <tbody>
-                                                @foreach ($Orders as $i)
-
-                                                    <tr class="req-hover">
-                                                        <td>{{ $i->clint->name }}</td>
-                                                        <td>Otto</td>
-                                                    </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
-                                    @endforeach
+                                            <tr>
+                                                <th></th>
+                                                <th colspan="2" class="center">
+                                                    <button class="btn btn-success btn-block">إرسال</button>
+                                                </th>
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
+                                            <tr>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
 
 
                                 </div>
-                                <div class="col-md-3 border-righet ">
+                                {{--==-**--------*===///////////=*===**----------==--}}
+                                <div class="col-md-3 ">
                                     قائمة الطلبات
                                     <hr>
 
                                     <table class="table">
                                         <thead class="thead-dark">
                                             <tr class="">
-                                                <th scope="col">اسم العميل</th>
-                                                <th scope="col">المحلية</th>
+                                                <th>اسم العميل</th>
+                                                <th>المحلية</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach ($Orders as $i)
-
                                                 <tr class="req-hover">
                                                     <td>{{ $i->clint->name }}</td>
-                                                    <td>Otto</td>
+                                                    <td>{{ $i->area->area_name }}</td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
-
-
-
-
-
-
-
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -222,6 +249,52 @@
     @endif
 
 </div>
+
+<!--------------------------------------------------------------------------->
+<form wire:submit.prevent action="/">
+    <div wire:ignore.self class="modal fade" id="AddDelivery">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal">x</button>
+                    <h4 class="modal-title">مناديب التوصيل</h4>
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <tr>
+                            <th>الاسم</th>
+                            <th>رقم الهاتف</th>
+                            <th>المحلية</th>
+                            <th>الحالة</th>
+                            <th>الصورة</th>
+                        </tr>
+                        @foreach ($delive as $i)
+
+                            <tr>
+                                <td>{{ $i->name }}</td>
+                                <td>{{ $i->phone }}</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        @endforeach
+
+                    </table>
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <a class="btn btn-default" data-dismiss="modal">{{ trans('admin.cancel') }}</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form>
+<!--------------------------------------------------------------------------->
+
 
 <style>
     .req-hover:hover {
@@ -232,7 +305,11 @@
     }
 
     .border-righet {
-        border-right: 1px solid #fdd835;
+        border-left: 1px solid #fdd835;
+    }
+
+    .border-buttom {
+        border-bottom: 1px solid #fdd835;
     }
 
 </style>

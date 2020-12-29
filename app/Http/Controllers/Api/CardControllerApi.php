@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Card;
 use App\Http\Controllers\Controller;
+use App\Model\CardData;
 use App\Model\Produact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,7 +28,23 @@ class CardControllerApi extends Controller
         'total',
         'stutus',
          */
+        $id = Auth::id();
+        $order = CardData::where('clint_id', $id)->where('stutus', null)->count();
+        $cardDataId = CardData::where('clint_id', $id)->where('stutus', null)->value('id');
 
+        if ($order == 0) {
+            $c = new CardData;
+            $c->clint_id = $id;
+            $c->order_num = 1;
+            $c->save();
+        } else {
+            $order_num = CardData::where('clint_id', $id)->where('stutus', null)->value('order_num');
+            $c = CardData::find($cardDataId);
+            $c->order_num = $order_num + 1;
+            $c->save();
+        }
+
+        /////=====
         $PID = Card::max('process_id');
         if ($PID == null) {
             $process_id = 1;
