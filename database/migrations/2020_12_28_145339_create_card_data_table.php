@@ -22,7 +22,7 @@ class CreateCardDataTable extends Migration
             $table->bigInteger('order_num')->nullable();
             $table->bigInteger('deliver_id')->nullable();
             $table->string('qr_code')->nullable();
-            $table->Integer('stutus')->default(0);
+            $table->Integer('stutus')->nullable();
 
             // 1 تم تاكيد الطلب
             // 0 ت الطلب

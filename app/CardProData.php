@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Model;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CardRequest extends Model
+class CardProData extends Model
 {
+    protected $table = 'card_pro_data'; //
     protected $fillable = [
         'card_data_id',
         'produact_id',
@@ -23,5 +24,9 @@ class CardRequest extends Model
     public function produact()
     {
         return $this->belongsTo('App\Model\Produact', 'produact_id');
+    }
+    public function ClintReq()
+    {
+        return $this->belongsTo('App\Model\CardData', 'card_data_id');
     }
 }

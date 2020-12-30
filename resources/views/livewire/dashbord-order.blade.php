@@ -249,7 +249,7 @@
     @endif
 
 </div>
-
+{{--}}
 <!--------------------------------------------------------------------------->
 <form wire:submit.prevent action="/">
     <div wire:ignore.self class="modal fade" id="AddDelivery">
@@ -257,10 +257,11 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button class="close" data-dismiss="modal">x</button>
-                    @if ($DeliveyTaskShow == false)
+                    {{-- @if ($DeliveyTaskShow == false)
+                        -}}
 
-                        <h4 class="modal-title">مناديب التوصيل</h4>
-                        </h4>
+                    <h4 class="modal-title">مناديب التوصيل</h4>
+                    </h4>
                 </div>
                 <div class="modal-body">
 
@@ -281,7 +282,7 @@
                                     <td>
                                         <button wire:click='deliveryTask' class="btn btn-info">غير متفرغ</button>
                                     </td>
-                                @else
+                                    @else
                                     <td>
                                         <button class="btn btn-info" disabled> متفرغ</button>
                                     </td>
@@ -291,7 +292,7 @@
                         @endforeach
 
                     </table>
-                @else
+                    {{-- @else
                     <h3 class="modal-title">مهام مندوب التوصيل : {{ $i->name }}</h3>
                     </h4>
                 </div>
@@ -307,18 +308,18 @@
                             <th>الحالة</th>
                         </tr>
 
-                        @foreach ($delTask as $i)
+                        {{-- @foreach ($delTask as $i)
 
                             <tr>
                                 <td>{{ $i->CardInfo->id }}</td>
-                                <td>{{ $i->CardInfo->clint->name }}</td>
-                                <td>{{ $i->CardInfo->area->area_name }}</td>
-                                <td>{{ $i->CardInfo->seller->name }}</td>
-                                <td>{{ $i->CardInfo->seller->area->area_name }}</td>
-                                <td>{{ $i->stuts }}</td>
-                            </tr>
+                        <td>{{ $i->CardInfo->clint->name }}</td>
+                        <td>{{ $i->CardInfo->area->area_name }}</td>
+                        <td>{{ $i->CardInfo->seller->name }}</td>
+                        <td>{{ $i->CardInfo->seller->area->area_name }}</td>
+                        <td>{{ $i->stuts }}</td>
+                        </tr>
 
-                        @endforeach
+                        @endforeach--}
 
 
                         @endif
@@ -335,7 +336,7 @@
     </div>
 </form>
 <!--------------------------------------------------------------------------->
-
+--}}
 
 <style>
     .req-hover:hover {

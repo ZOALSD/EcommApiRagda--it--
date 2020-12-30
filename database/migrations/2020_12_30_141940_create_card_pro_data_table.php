@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCardRequestsTable extends Migration
+class CreateCardProDataTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCardRequestsTable extends Migration
      */
     public function up()
     {
-        Schema::create('card_requests', function (Blueprint $table) {
+        Schema::create('card_pro_data', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('card_data_id');
             $table->bigInteger('produact_id');
@@ -33,6 +33,6 @@ class CreateCardRequestsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('card_requests');
+        Schema::dropIfExists('card_pro_data');
     }
 }

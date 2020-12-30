@@ -4,7 +4,6 @@ namespace App\Http\Livewire;
 
 use App\Model\CardData;
 use App\Model\CardRequest;
-use App\User;
 use Livewire\Component;
 
 class DashbordOrder extends Component
@@ -17,7 +16,7 @@ class DashbordOrder extends Component
     public $clintDataa;
     public $cardRequest;
     public $DeliveyTaskShow = false;
-    public $delTaskK;
+    // public $delTaskK;
 
     public function render()
     {
@@ -25,9 +24,9 @@ class DashbordOrder extends Component
         $Orders = $this->orderData; //= Card::where('stusts', 2)->get();
         $clintData = $this->clintDataa;
         $CardReq = $this->cardRequest;
-        $delTask = $this->delTaskK;
-        $delive = User::where('type', 3)->get();
-        return view('livewire.dashbord-order', \compact('orderCount', 'Orders', 'clintData', 'CardReq', 'delive', 'delTask'));
+        //  $delTask = $this->delTaskK;
+        //   $delive = User::where('type', 3)->get();
+        return view('livewire.dashbord-order', \compact('orderCount', 'Orders', 'clintData', 'CardReq', 'delive'));
     }
 
     public function OrdarClose()
@@ -46,18 +45,18 @@ class DashbordOrder extends Component
 
     }
 
-    public function deliveryTask()
-    {
-        /* 'deliver_id',
-        'card_info_id',
-        'stuts',
-        'qr_code', */
-        $this->DeliveyTaskShow = true;
-        $this->delTaskK = DeliverReq::where('stuts', '!=', 1)->get();
-    }
+    // public function deliveryTask()
+    // {
+    //     /* 'deliver_id',
+    //     'card_info_id',
+    //     'stuts',
+    //     'qr_code', */
+    //     $this->DeliveyTaskShow = true;
+    //     $this->delTaskK = DeliverReq::where('stuts', '!=', 1)->get();
+    // }
 
-    public function OrderDetlis($id)
-    {
+    // public function OrderDetlis($id)
+    // {
 
-    }
+    // }
 }
