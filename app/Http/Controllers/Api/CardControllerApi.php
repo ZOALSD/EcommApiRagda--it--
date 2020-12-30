@@ -62,25 +62,48 @@ class CardControllerApi extends Controller
         $cardID = CardData::where('clint_id', Auth::id())->where('stutus', null)->value('id');
         return CardProData::where('card_data_id', $cardID)->get();
     }
+
     public function cardconfirm(Request $req)
     {
         $value = Auth::id() . time();
         $QRCode = Hash::make($value);
-
         $id = CardData::where('clint_id', Auth::id())->where('stutus', null)->value('id');
-        //     $card = CardData::find($id);
-        //    city_id = $req->city_id;
-        //    area_id = $req->area_id;
-        //    near_flg = $req->near_flg;
-        //    qr_code = $QRCode;
-        //    stutus = 1; //  تم تأكيد الطلب
-        //    save();
+
+        $card = CardData::find($id);
+        $card->area_id = $req->area_id;
+        $card->village_id = $req->village_id;
+        $card->near_flg = $req->near_flg;
+        $card->qr_code = $QRCode;
+        $card->stutus = 1; //  تم تأكيد الطلب
+        $card->save();
 
         return response()->json([
             'stutus' => 'true',
             'message' => 'Order Confirmed',
         ], 200);
 
+    }
+
+    public function EditProCard(Request $req, $id)
+    {
+
+        CardProData::where('id', $id)->update([
+            'quantity' => $req->quantity,
+        ]);
+
+        return response()->json([
+            'stutus' => 'true',
+            'message' => 'Order Updated',
+        ], 200);
+    }
+
+    public function DeleteProCard($id)
+    {
+        CardProData::find($id)->delete();
+        return response()->json([
+            'stutus' => 'true',
+            'message' => 'Order Delete',
+        ], 200);
     }
 
     public function cardcancle(Request $req)
