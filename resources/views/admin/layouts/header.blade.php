@@ -146,7 +146,24 @@
 </head>
 <!-- END HEAD -->
 
-<body onload="myFunction()" class="page-container-bg-solid page-header-fixed page-sidebar-closed-hide-logo">
+<script>
+    var myVar;
 
+    function loading() {
+        myVar = setTimeout(showPage, 3000);
+    }
 
-    <div wire:loading id="loader"></div>
+    function showPage() {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("myDiv").style.display = "block";
+    }
+
+</script>
+
+<body onload="loading()" class="page-container-bg-solid page-header-fixed page-sidebar-closed-hide-logo">
+
+    <div wire:loading>
+        <div id="loader"></div>
+    </div>
+
+    {{-- <div id="loader"></div> --}}
