@@ -1,4 +1,7 @@
 <div>
+    <div wire:loading>
+        <div id="loader"></div>
+    </div>
 
     @if ($order == true)
 

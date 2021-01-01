@@ -162,8 +162,6 @@
 
 <body onload="loading()" class="page-container-bg-solid page-header-fixed page-sidebar-closed-hide-logo">
 
-    <div wire:loading>
-        <div id="loader"></div>
-    </div>
+
 
     {{-- <div id="loader"></div> --}}
