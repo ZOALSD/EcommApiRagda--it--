@@ -147,21 +147,13 @@
 <!-- END HEAD -->
 
 <script>
-    var myVar;
-
-    function loading() {
-        myVar = setTimeout(showPage, 3000);
-    }
-
-    function showPage() {
+    window.onload = (event) => {
         document.getElementById("loader").style.display = "none";
-        document.getElementById("myDiv").style.display = "block";
-    }
+    };
 
 </script>
 
-<body onload="loading()" class="page-container-bg-solid page-header-fixed page-sidebar-closed-hide-logo">
+<body onready="showPage()" class="page-container-bg-solid page-header-fixed page-sidebar-closed-hide-logo">
 
 
-
-    {{-- <div id="loader"></div> --}}
+    <div id="loader"></div>
