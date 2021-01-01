@@ -18,12 +18,16 @@ class CardDataSeeder extends Seeder
                 $village = 2;
                 $flg = 'عافرة';
                 $order_num = 1;
+                $del = 14;
+
             } elseif ($i == 2) {
                 $area = 2;
                 $village = 4;
                 $flg = 'جامع الخليفة';
                 $order_num = 2;
+                $del = 15;
             } else {
+                $del = 11 + $i;
                 $area = 3;
                 $village = 7;
                 $flg = 'مسرح خضر بشير';
@@ -35,7 +39,7 @@ class CardDataSeeder extends Seeder
                 "village_id" => $village,
                 "near_flg" => $flg,
                 "order_num" => $order_num,
-                "deliver_id" => "",
+                "deliver_id" => $del,
                 "qr_code" => Hash::make($i . time() . round(3)), // "stutus" => "",
             ]);
         }

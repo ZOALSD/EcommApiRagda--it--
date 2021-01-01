@@ -1,6 +1,6 @@
 <?php
 
-use App\Model\CardRequest;
+use App\CardProData;
 use Illuminate\Database\Seeder;
 
 class CardRequestSeeder extends Seeder
@@ -16,27 +16,28 @@ class CardRequestSeeder extends Seeder
             if ($i == 1) {
                 $card_data_id = 1;
                 $pro = 1;
-                $seller = 1;
+                $seller = 7;
                 $quan = 2;
                 $price = $i . '000';
             } elseif ($i <= 3) {
                 $card_data_id = 2;
                 $pro = $i;
-                $seller = 2;
+                $seller = 6 + 2;
                 $quan = $i;
                 $price = $i . '000';
             } else {
                 $card_data_id = 3;
                 $pro = $i;
                 if ($i == 4) {
-                    $seller = 3;
+                    $seller = 11;
                 } else {
-                    $seller = 4;
+                    $seller = 10;
                 }
                 $quan = 2;
-                $price = $i . '000';
+                $price = $i . '0080';
             }
-            CardRequest::create([
+
+            CardProData::create([
                 'card_data_id' => $card_data_id,
                 'produact_id' => $pro,
                 'seller_id' => $seller,

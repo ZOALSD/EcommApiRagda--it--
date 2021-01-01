@@ -623,6 +623,9 @@
                         <script src="{{url($path)}}/design/admin_panel/assets/global/plugins/datatables/js/selecta_all_checkbtn.js"></script>
                         <script src="{{url($path)}}/design/admin_panel/assets/global/plugins/datatables/js/buttons.server-side.js"></script>
                         <script src="{{url($path)}}/design/admin_panel/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js"></script>
+
+
+
                         <!--script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script-->
                         <script src="https://cdn.ckeditor.com/4.10.0/full/ckeditor.js"></script>
 

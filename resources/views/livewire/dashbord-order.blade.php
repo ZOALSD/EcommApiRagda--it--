@@ -2,6 +2,7 @@
 
     @if ($order == true)
 
+
         <!-- BEGIN PAGE BASE CONTENT -->
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -233,10 +234,12 @@
                                         </thead>
                                         <tbody>
                                             @foreach ($Orders as $i)
-                                                <tr class="req-hover">
-                                                    <td>{{ $i->clint->name }}</td>
-                                                    <td>{{ $i->area->area_name }}</td>
-                                                </tr>
+                                                <a>
+                                                    <tr class="req-hover">
+                                                        <td>{{ $i->clint->name }}</td>
+                                                        <td>{{ $i->area->area_name }}</td>
+                                                    </tr>
+                                                </a>
                                             @endforeach
                                         </tbody>
                                     </table>
@@ -249,28 +252,49 @@
     @endif
 
 </div>
-{{--}}
+
 <!--------------------------------------------------------------------------->
 <form wire:submit.prevent action="/">
     <div wire:ignore.self class="modal fade" id="AddDelivery">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button class="close" data-dismiss="modal">x</button>
-                    {{-- @if ($DeliveyTaskShow == false)
-                        -}}
 
-                    <h4 class="modal-title">مناديب التوصيل</h4>
-                    </h4>
+                    <button class="close col-md-2" data-dismiss="modal">x</button>
+
+                    <h4 class="modal-title col-md-4">مناديب التوصيل</h4>
+                    <hr>
+                    <select wire:model.lazy='typeSearch' class="input-text">
+                        <option vlaue="*">الكل</option>
+                        <option vlaue="">غير مشغولين</option>
+                        <option vlaue=1> مشغولين</option>
+                    </select>
+
+                    <select wire:model.lazy='AreaModel' class="input-text" placeholder="المحلية">
+                        <option selected class="hide">المحلية</option>
+                        <option value="all">الكل</option>
+                        @foreach ($Areas as $a)
+
+                            <option value="{{ $a->id }}">{{ $a->area_name }}</option>
+                        @endforeach
+
+                    </select>
+
+                    <input wire:model='SearchWord' class="input-text" type="text"
+                        placeholder="بحث بالاسم او رقم الهاتف">
+
+
+
+
                 </div>
                 <div class="modal-body">
-
                     <table class="table">
                         <tr>
                             <th>الاسم</th>
                             <th>رقم الهاتف</th>
                             <th>المحلية</th>
                             <th>الحالة</th>
+                            <th>اختيار</th>
                         </tr>
                         @foreach ($delive as $i)
 
@@ -278,67 +302,262 @@
                                 <td>{{ $i->name }}</td>
                                 <td>{{ $i->phone }}</td>
                                 <td>{{ $i->area->area_name }}</td>
-                                @if ($$i->stuts_delivery == 1)
+                                @if ($i->stuts_delivery == null)
+                                    <td>غير مشغول</td>
+
                                     <td>
-                                        <button wire:click='deliveryTask' class="btn btn-info">غير متفرغ</button>
+                                        <a class="btn btn-info">تحديد</a>
                                     </td>
+                                @else
+                                    <td>
+                                        <a wire:click='DeliveReqDetile({{ $i->id }})' class="btn btn-scandary">مشغول</a>
+                                    </td>
+
+                                    <td>
+                                        <a class="btn btn-info">تحديد</a>
+                                    </td>
+                                    @if ($detelis == $i->id)
+                                        <div>
+                                            @foreach ($ReqDelDetlises as $ReqDelDetlis)
+
+                            <tr class="border-shod">
+                                <th>مكان العميل</th>
+                                <td>
+                                    {{ $ReqDelDetlis->area->area_name . ' , ' . $ReqDelDetlis->village->village_name }}
+                                </td>
+
+                                <th>عدد الطلبات</th>
+                                <th>
+                                    {{ \App\CardProData::where('card_data_id', $ReqDelDetlis->id)->count() }}
+                                </th>
+                                <th>
+                                    @if ($ShowDetliesDeliReqVar == $ReqDelDetlis->id)
+                                        <a wire:click='ShowDetliesDeliReqClose({{ $ReqDelDetlis->id }})'
+                                            class="btn">اغلاق التفاصيل</a>
                                     @else
-                                    <td>
-                                        <button class="btn btn-info" disabled> متفرغ</button>
-                                    </td>
-                                @endif
+                                        <a wire:click='ShowDetliesDeliReqMethod({{ $ReqDelDetlis->id }})'
+                                            class="btn">التقاصيل</a>
+                                    @endif
+                                </th>
+
+                            </tr>
+                            <tr>
                                 <td></td>
                             </tr>
+                            @if ($ShowDetliesDeliReqVar == $ReqDelDetlis->id)
+
+                                <tr class="border-shodow">
+                                    <th>الطلبات</th>
+                                    <th>اسم التأجر</th>
+                                    <th>مكان التأجر</th>
+                                    <th> الكمية*السعر</th>
+                                    <th>المجموع</th>
+                                </tr>
+                                @foreach ($produactDeliver as $ProDliverDetils)
+
+                                    <tr class="border-shodow">
+                                        <td>{{ $ProDliverDetils->produact->cate_name }}</td>
+                                        <td>{{ $ProDliverDetils->seller->name }}</td>
+                                        <td>{{ $ProDliverDetils->seller->area->area_name . ' , ' . $ProDliverDetils->seller->village->village_name }}
+                                        </td>
+                                        <td>
+                                            {{ $ProDliverDetils->quantity . '*' . $ProDliverDetils->price }}
+                                        </td>
+                                        <td>
+                                            {{ $ProDliverDetils->total }}
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                <tr class="border-shodsum">
+                                    <th>وقت الطلب</th>
+                                    <td>{{ $ReqDelDetlis->created_at }}</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        {{ \App\CardProData::where('card_data_id', $ReqDelDetlis->id)->sum('total') }}
+                                    </td>
+                                </tr>
+                            @endif
                         @endforeach
 
-                    </table>
-                    {{-- @else
-                    <h3 class="modal-title">مهام مندوب التوصيل : {{ $i->name }}</h3>
-                    </h4>
                 </div>
-                <div class="modal-body">
+                @endif
 
-                    <table class="table">
-                        <tr>
-                            <th>رقم الطلب</th>
-                            <th>اسم العميل</th>
-                            <th>مكان العميل</th>
-                            <th>اسم التاجر</th>
-                            <th>مكان التاجر</th>
-                            <th>الحالة</th>
-                        </tr>
-
-                        {{-- @foreach ($delTask as $i)
-
-                            <tr>
-                                <td>{{ $i->CardInfo->id }}</td>
-                        <td>{{ $i->CardInfo->clint->name }}</td>
-                        <td>{{ $i->CardInfo->area->area_name }}</td>
-                        <td>{{ $i->CardInfo->seller->name }}</td>
-                        <td>{{ $i->CardInfo->seller->area->area_name }}</td>
-                        <td>{{ $i->stuts }}</td>
-                        </tr>
-
-                        @endforeach--}
+                @endif
 
 
-                        @endif
+                </tr>
+                @endforeach
+
+                </table>
 
 
-                </div>
-
-                <div class="modal-footer">
-                    <a class="btn btn-default" data-dismiss="modal">{{ trans('admin.cancel') }}</a>
-                </div>
             </div>
 
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ $delive->links() }}
+                    </div>
+                    <div class="col-md-6">
+                        <a class="btn btn-default" data-dismiss="modal">{{ trans('admin.cancel') }}</a>
+                    </div>
+
+                </div>
+
+            </div>
         </div>
+
+    </div>
     </div>
 </form>
 <!--------------------------------------------------------------------------->
---}}
+
 
 <style>
+    /*
+    button.page-link {
+        background-color: #fff;
+        border: solid 1px #ddd;
+        padding: 4px 10px;
+        font-size: 17px;
+        margin-left: -2px;
+    }
+*/
+
+
+    .pagination {
+        display: flex;
+        padding-left: 0;
+        list-style: none;
+    }
+
+    .page-link {
+        position: relative;
+        display: block;
+        color: #0d6efd;
+        text-decoration: none;
+        background-color: #fff;
+        border: 1px solid #dee2e6;
+        transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .page-link {
+            transition: none;
+        }
+    }
+
+    .page-link:hover {
+        z-index: 2;
+        color: #0a58ca;
+        background-color: #e9ecef;
+        border-color: #dee2e6;
+    }
+
+    .page-link:focus {
+        z-index: 3;
+        color: #0a58ca;
+        background-color: #e9ecef;
+        outline: 0;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    }
+
+    .page-item:not(:first-child) .page-link {
+        margin-left: -1px;
+    }
+
+    .page-item.active .page-link {
+        z-index: 3;
+        color: #fff;
+        background-color: #0d6efd;
+        border-color: #0d6efd;
+    }
+
+    .page-item.disabled .page-link {
+        color: #6c757d;
+        pointer-events: none;
+        background-color: #fff;
+        border-color: #dee2e6;
+    }
+
+    .page-link {
+        padding: 0.375rem 0.75rem;
+    }
+
+    .page-item:first-child .page-link {
+        border-top-left-radius: 0.25rem;
+        border-bottom-left-radius: 0.25rem;
+    }
+
+    .page-item:last-child .page-link {
+        border-top-right-radius: 0.25rem;
+        border-bottom-right-radius: 0.25rem;
+    }
+
+    .pagination-lg .page-link {
+        padding: 0.75rem 1.5rem;
+        font-size: 1.25rem;
+    }
+
+    .pagination-lg .page-item:first-child .page-link {
+        border-top-left-radius: 0.3rem;
+        border-bottom-left-radius: 0.3rem;
+    }
+
+    .pagination-lg .page-item:last-child .page-link {
+        border-top-right-radius: 0.3rem;
+        border-bottom-right-radius: 0.3rem;
+    }
+
+    .pagination-sm .page-link {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.875rem;
+    }
+
+    .pagination-sm .page-item:first-child .page-link {
+        border-top-left-radius: 0.2rem;
+        border-bottom-left-radius: 0.2rem;
+    }
+
+    .pagination-sm .page-item:last-child .page-link {
+        border-top-right-radius: 0.2rem;
+        border-bottom-right-radius: 0.2rem;
+    }
+
+
+    /**================================================*/
+    .input-text {
+        background-color: white;
+        border: solid 1px #f1ca31;
+        border-radius: 5px !important;
+        height: 30px;
+        margin: 5px
+    }
+
+    .input-text:focus {
+        background-color: white;
+        border: solid 1px #ffcc02;
+        border-radius: 5px !important;
+        height: 31px;
+        margin: 6px
+    }
+
+    .border-shodow {
+        background-color: #fdd8356b;
+
+    }
+
+    .border-shod {
+        background-color: #fdd835;
+
+    }
+
+    .border-shodsum {
+        background-color: #daca83;
+
+    }
+
     .req-hover:hover {
         background-color: #fdd835;
         font-size: 22px !important;

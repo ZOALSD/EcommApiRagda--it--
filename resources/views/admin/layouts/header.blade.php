@@ -138,6 +138,7 @@
     </style>
 
     <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+    <link rel="stylesheet" href="{{ url($path) }}/css/load.css">
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css" />
     @livewireStyles
@@ -145,4 +146,7 @@
 </head>
 <!-- END HEAD -->
 
-<body class="page-container-bg-solid page-header-fixed page-sidebar-closed-hide-logo">
+<body onload="myFunction()" class="page-container-bg-solid page-header-fixed page-sidebar-closed-hide-logo">
+
+
+    <div wire:loading id="loader"></div>

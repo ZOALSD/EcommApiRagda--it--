@@ -42,13 +42,25 @@ class UserSeeder extends Seeder
             }
             if ($i == 3) {
                 for ($x = 1; $x <= 5; $x++) {
+                    if ($x <= 3) {
+                        $area = $x;
+                        $village = $x + 2;
+                    } else {
+                        $village = $x - 2;
+
+                        $area = $x - 3;
+                    }
                     User::create([
                         'name' => 'Seller' . $x,
                         'email' => 'Seller' . $x . '@me.com',
                         'password' => Hash::make($x . $x . $x . $x),
-                        'phone' => $x . $x . $x . $x,
+                        'phone' => "09" . $x . $x . $x . $x . "0000",
                         'year' => '199' . $i,
                         'type' => 2,
+                        'area_id' => $area,
+                        // 'photo',
+                        // 'stuts',
+                        'village_id' => $village,
                     ]);
                 }
             }
