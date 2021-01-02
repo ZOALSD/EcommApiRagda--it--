@@ -22,10 +22,18 @@ class CreateCardDataTable extends Migration
             $table->bigInteger('order_num')->nullable();
             $table->bigInteger('deliver_id')->nullable();
             $table->string('qr_code')->nullable();
-            $table->Integer('stutus')->nullable();
+            $table->Integer('clint_stutus')->nullable();
+            //null => Just Request
+            // own => Comfirmed Requested
+            // zero => Cancel Requested
+            $table->Integer('deliver_stutus')->nullable();
+            //null => Not Accept Request
+            // zero => Accepted Requested
+            // own => Delivered Done Successfully
+            $table->Integer('admin_stutus')->nullable();
 
-            // 1 تم تاكيد الطلب
-            // 0 ت الطلب
+            //null => Not Accept Request
+            // own => Accept Request
 
             $table->timestamps();
         });

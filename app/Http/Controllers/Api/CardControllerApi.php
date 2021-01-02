@@ -17,7 +17,7 @@ class CardControllerApi extends Controller
     {
 
         $id = Auth::id();
-        $order = CardData::where('clint_id', $id)->where('stutus', null)->count();
+        $order = CardData::where('clint_id', $id)->where('clint_stutus', null)->count();
 
         if ($order == 0) {
             $c = new CardData;
@@ -26,7 +26,7 @@ class CardControllerApi extends Controller
             $c->save();
 
         } else {
-            $cardData = CardData::where('clint_id', $id)->where('stutus', null)->first();
+            $cardData = CardData::where('clint_id', $id)->where('clint_stutus', null)->first();
             $c = CardData::find($cardData->id);
             $c->order_num = $cardData->order_num + 1;
             $c->save();
@@ -37,7 +37,7 @@ class CardControllerApi extends Controller
         $price = Produact::where('id', $req->produact_id)->value('price');
         $total = $req->quantity * $price;
 
-        $cardDataID = CardData::where('clint_id', $id)->where('stutus', null)->value('id');
+        $cardDataID = CardData::where('clint_id', $id)->where('clint_stutus', null)->value('id');
 
         $ConutSamePro = CardProData::where('card_data_id', $cardDataID)
             ->where('produact_id', $req->produact_id)
@@ -64,13 +64,13 @@ class CardControllerApi extends Controller
 
             $card = CardProData::where('id', $Up->id)->with('produact')->first();
 
-            $cardData = CardData::where('clint_id', $id)->where('stutus', null)->first();
+            $cardData = CardData::where('clint_id', $id)->where('clint_stutus', null)->first();
             $c = CardData::find($cardData->id);
             $c->order_num = $cardData->order_num - 1;
             $c->save();
         }
 
-        $order_num = CardData::where('clint_id', $id)->where('stutus', null)->value('order_num');
+        $order_num = CardData::where('clint_id', $id)->where('clint_stutus', null)->value('order_num');
 
         return response()->json([
             'stutus' => 'true',
@@ -81,7 +81,7 @@ class CardControllerApi extends Controller
 
     public function showCard()
     {
-        $cardID = CardData::where('clint_id', Auth::id())->where('stutus', null)->value('id');
+        $cardID = CardData::where('clint_id', Auth::id())->where('clint_stutus', null)->value('id');
         return CardProData::where('card_data_id', $cardID)->get();
     }
 
@@ -89,14 +89,14 @@ class CardControllerApi extends Controller
     {
         $value = Auth::id() . time();
         $QRCode = Hash::make($value);
-        $id = CardData::where('clint_id', Auth::id())->where('stutus', null)->value('id');
+        $id = CardData::where('clint_id', Auth::id())->where('clint_stutus', null)->value('id');
 
         $card = CardData::find($id);
         $card->area_id = $req->area_id;
         $card->village_id = $req->village_id;
         $card->near_flg = $req->near_flg;
         $card->qr_code = $QRCode;
-        $card->stutus = 1; //  تم تأكيد الطلب
+        $card->clint_stutus = 1; //  تم تأكيد الطلب
         $card->save();
 
         return response()->json([

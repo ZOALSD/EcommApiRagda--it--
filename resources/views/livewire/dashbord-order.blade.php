@@ -1,9 +1,23 @@
 <div>
+    @if (session()->has('success'))
+        <div wire:poll.3000ms class="alert alert-success" role="alert">
+            <p>
+                {{ session('success') }}
+            </p>
+        </div>
+    @endif
+
+    @if (session()->has('danger'))
+        <div wire:poll.3000ms class="alert alert-danger" role="alert">
+            <p>
+                {{ session('danger') }}
+            </p>
+        </div>
+    @endif
+
     <div wire:loading id="loader"></div>
 
-
     @if ($order == true)
-
 
         <!-- BEGIN PAGE BASE CONTENT -->
         <div class="row">
@@ -127,7 +141,11 @@
                 <div class="portlet light bordered">
                     <div class="portlet-title">
                         <div class="caption">
-                            <span class="uppercase caption-subject bold font-dark">{{ $title }} </span>
+                            @if ($ShowImageOrder)
+                                <span class="uppercase caption-subject bold font-dark"> اختار من القائمة </span>
+                            @else
+                                <span class="uppercase caption-subject bold font-dark">{{ $title }} </span>
+                            @endif
                         </div>
                         <div class="actions">
                             <a wire:click='OrdarClose' class="btn btn-circle btn-icon-only btn-default " href="#"><i
@@ -139,90 +157,102 @@
                     <div class="portlet-body">
                         <div id="dashboard_amchart_1" class="CSSAnimationChart">
                             <div class="row">
-                                <div class="col-md-9 border-righet ">
+                                <div class="col-md-9 border-righet">
+
+                                    @if (!$ShowImageOrder)
+                                        @if ($title == 'لا يـوجد طلبــات جــديدة')
+                                            <div class="noorders"></div>
+                                        @endif
+                                    @endif
+
+
                                     <table class="table">
                                         <thead class="thead-dark">
                                         <tbody>
-
-                                            <tr>
-                                                <th> اسم العميل </th>
-                                                <td>:&nbsp;{{ $clintData->clint->name }}</td>
-                                                <th> المحلية </th>
-                                                <td>:&nbsp;{{ $clintData->area->area_name }}</td>
-                                            </tr>
-                                            <tr>
-                                                <th> المنطقة </th>
-                                                <td>:&nbsp;{{ $clintData->village->village_name }}</td>
-                                                <th> اقرب معلم </th>
-                                                <td>:&nbsp;{{ $clintData->near_flg }}</td>
-                                                </th>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <th>الطلبات</th>
-                                                <th>الكمية</th>
-                                                <th>السعر</th>
-                                                <th>التاجر</th>
-                                                <th> المجموع</th>
-                                            </tr>
-
-                                            @foreach ($CardReq as $i)
+                                            @if ($title !== 'لا يـوجد طلبــات جــديدة')
 
                                                 <tr>
-                                                    <td>{{ $i->produact->cate_name }}</td>
-                                                    <td>{{ $i->quantity }}</td>
-                                                    <td>{{ $i->price }}</td>
-                                                    <td>{{ $i->seller->name }}</td>
-                                                    <td>{{ $i->total }}</td>
+                                                    <th> اسم العميل </th>
+                                                    <td>:&nbsp;{{ $clintData->clint->name ?? '' }}</td>
+                                                    <th> المحلية </th>
+                                                    <td>:&nbsp;{{ $clintData->area->area_name ?? '' }}</td>
                                                 </tr>
-                                            @endforeach
-                                            <tr>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                            </tr>
-                                            <tr>
+                                                <tr>
+                                                    <th> المنطقة </th>
+                                                    <td>:&nbsp;{{ $clintData->village->village_name ?? '' }}</td>
+                                                    <th> اقرب معلم </th>
+                                                    <td>:&nbsp;{{ $clintData->near_flg ?? '' }}</td>
+                                                    </th>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>الطلبات</th>
+                                                    <th>الكمية</th>
+                                                    <th>السعر</th>
+                                                    <th>التاجر</th>
+                                                    <th> المجموع</th>
+                                                </tr>
 
-                                                <th colspan="">مندوب التوصيل</th>
-                                                <td colspan=""> <button data-toggle="modal"
-                                                        data-target="#DeliverySelectedHide" class="btn btn-info">
-                                                        @if ($clintData->deliver_id == null)
-                                                            تحـديد
-                                                        @else
-                                                            {{ $clintData->deliver->name . ' ' . '|' . ' ' . 'المحلية' . ' : ' . $clintData->deliver->area->area_name }}
-                                                        @endif
-                                                    </button> </td>
-                                                <th></th>
-                                                <th>رقم المندوب</th>
-                                                <td>{{ $clintData->deliver->phone }}</td>
-                                            </tr>
-                                            <tr>
-                                                <th>زمن الطلب</th>
-                                                <td>{{ $clintData->created_at }}</td>
-                                                <th></th>
-                                                <th>رقم الطلب</th>
-                                                <td>{{ $clintData->id }}</td>
-                                            </tr>
+                                                @foreach ($CardReq as $i)
 
-                                            <tr>
-                                                <th></th>
-                                                <th colspan="2" class="center">
-                                                    <button class="btn btn-success btn-block">إرسال</button>
-                                                </th>
-                                                <th></th>
-                                                <th></th>
-                                            </tr>
-                                            <tr>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                            </tr>
+                                                    <tr>
+                                                        <td>{{ $i->produact->cate_name }}</td>
+                                                        <td>{{ $i->quantity }}</td>
+                                                        <td>{{ $i->price }}</td>
+                                                        <td>{{ $i->seller->name }}</td>
+                                                        <td>{{ $i->total }}</td>
+                                                    </tr>
+                                                @endforeach
+                                                <tr>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th></th>
+                                                </tr>
+                                                <tr>
+
+                                                    <th colspan="">مندوب التوصيل</th>
+                                                    <td colspan=""> <button data-toggle="modal"
+                                                            data-target="#DeliverySelectedHide" class="btn btn-info">
+                                                            @if ($clintData->deliver_id == null)
+                                                                تحـديد
+                                                            @else
+                                                                {{ $clintData->deliver->name . ' ' . '|' . ' ' . 'المحلية' . ' : ' . $clintData->deliver->area->area_name }}
+                                                            @endif
+                                                        </button> </td>
+                                                    <th></th>
+                                                    <th>رقم المندوب</th>
+                                                    <td>{{ $clintData->deliver->phone ?? '' }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>زمن الطلب</th>
+                                                    <td>{{ $clintData->created_at }}</td>
+                                                    <th></th>
+                                                    <th>رقم الطلب</th>
+                                                    <td>{{ $clintData->id }}</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <th></th>
+                                                    <th colspan="2" class="center">
+                                                        <button wire:click='AdminStutusChange({{ $clintData->id }})'
+                                                            class="btn btn-success btn-block">إرسال</button>
+                                                    </th>
+                                                    <th></th>
+                                                    <th></th>
+                                                </tr>
+                                                <tr>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th></th>
+                                                </tr>
+                                            @endif
+
                                         </tbody>
                                     </table>
 
@@ -241,14 +271,45 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($Orders as $i)
-                                                <a>
-                                                    <tr class="req-hover">
+                                            @if ($ShowImageOrder)
+                                                @foreach ($Orders as $i)
+                                                    <a>
+                                                        @if ($DeliverySelectedIdBtnActive == $i->id)
+                                                            <tr wire:click='ShowRequestDetils({{ $i->id }})'
+                                                                class="req-hover ActiveDelivery pointer">
+                                                            @else
+                                                            <tr wire:click='ShowRequestDetils({{ $i->id }})'
+                                                                class="req-hover pointer">
+                                                        @endif
                                                         <td>{{ $i->clint->name }}</td>
                                                         <td>{{ $i->area->area_name }}</td>
-                                                    </tr>
-                                                </a>
-                                            @endforeach
+                                                        </tr>
+
+                                                    </a>
+                                                @endforeach
+                                            @else
+
+                                                @if ($title != 'لا يـوجد طلبــات جــديدة')
+
+                                                    @foreach ($Orders as $i)
+                                                        <a>
+                                                            @if ($DeliverySelectedIdBtnActive == $i->id)
+                                                                <tr wire:click='ShowRequestDetils({{ $i->id }})'
+                                                                    class="req-hover ActiveDelivery pointer">
+                                                                @else
+                                                                <tr wire:click='ShowRequestDetils({{ $i->id }})'
+                                                                    class="req-hover pointer">
+                                                            @endif
+                                                            <td>{{ $i->clint->name }}</td>
+                                                            <td>{{ $i->area->area_name }}</td>
+                                                            </tr>
+
+                                                        </a>
+                                                    @endforeach
+                                                @endif
+                                            @endif
+
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -262,180 +323,187 @@
 </div>
 
 <!--------------------------------------------------------------------------->
-<form wire:submit.prevent action="/">
-    <div wire:ignore.self class="modal fade" id="DeliverySelectedHide">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
+@if ($title != 'لا يـوجد طلبــات جــديدة')
 
-                    <button class="close col-md-2" data-dismiss="modal">x</button>
+    <form wire:submit.prevent action="/">
+        <div wire:ignore.self class="modal fade" id="DeliverySelectedHide">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
 
-                    <h4 class="modal-title col-md-4">مناديب التوصيل</h4>
-                    <hr>
-                    <select wire:model.lazy='typeSearch' class="input-text">
-                        <option vlaue="*">الكل</option>
-                        <option vlaue="">غير مشغولين</option>
-                        <option vlaue=1> مشغولين</option>
-                    </select>
+                        <button class="close col-md-2" data-dismiss="modal">x</button>
 
-                    <select wire:model.lazy='AreaModel' class="input-text" placeholder="المحلية">
-                        <option selected class="hide">المحلية</option>
-                        <option value="all">الكل</option>
-                        @foreach ($Areas as $a)
+                        <h4 class="modal-title col-md-4">مناديب التوصيل</h4>
+                        <hr>
+                        <select wire:model.lazy='typeSearch' class="input-text">
+                            <option vlaue="*">الكل</option>
+                            <option vlaue="">غير مشغولين</option>
+                            <option vlaue=1> مشغولين</option>
+                        </select>
 
-                            <option value="{{ $a->id }}">{{ $a->area_name }}</option>
-                        @endforeach
+                        <select wire:model.lazy='AreaModel' class="input-text" placeholder="المحلية">
+                            <option selected class="hide">المحلية</option>
+                            <option value="all">الكل</option>
+                            @foreach ($Areas as $a)
 
-                    </select>
+                                <option value="{{ $a->id }}">{{ $a->area_name }}</option>
+                            @endforeach
 
-                    <input wire:model='SearchWord' class="input-text" type="text"
-                        placeholder="بحث بالاسم او رقم الهاتف">
+                        </select>
+
+                        <input wire:model='SearchWord' class="input-text" type="text"
+                            placeholder="بحث بالاسم او رقم الهاتف">
 
 
 
 
-                </div>
-                <div class="modal-body">
-                    <table class="table">
-                        <tr>
-                            <th>الاسم</th>
-                            <th>رقم الهاتف</th>
-                            <th>المحلية</th>
-                            <th>الحالة</th>
-                            <th>اختيار</th>
-                        </tr>
-                        @foreach ($delive as $i)
-
+                    </div>
+                    <div class="modal-body">
+                        <table class="table">
                             <tr>
-                                <td>{{ $i->name }}</td>
-                                <td>{{ $i->phone }}</td>
-                                <td>{{ $i->area->area_name }}</td>
-                                @if ($i->stuts_delivery == null)
-                                    <td>غير مشغول</td>
+                                <th>الاسم</th>
+                                <th>رقم الهاتف</th>
+                                <th>المحلية</th>
+                                <th>الحالة</th>
+                                <th>اختيار</th>
+                            </tr>
+                            @foreach ($delive as $i)
 
-                                    <td>
-                                        <a wire:click='selectDelivery({{ $i->id }})' class="btn btn-info">
-                                            @if ($DeliverySelectedChangeBtn == $i->id)
-                                                تـم التحـديد
+                                <tr>
+                                    <td>{{ $i->name }}</td>
+                                    <td>{{ $i->phone }}</td>
+                                    <td>{{ $i->area->area_name }}</td>
+                                    @if ($i->stuts_delivery == null)
+                                        <td>غير مشغول</td>
 
-                                            @else
-                                                تحـديـد
-                                            @endif
+                                        <td>
+                                            <a wire:click='selectDelivery({{ $i->id }})' class="btn btn-info">
+                                                @if ($DeliverySelectedChangeBtn == $i->id)
+                                                    تـم التحـديد
 
-                                        </a>
-                                    </td>
-                                @else
-                                    <td>
-                                        <a wire:click='DeliveReqDetile({{ $i->id }})' class="btn btn-scandary">مشغول</a>
-                                    </td>
+                                                @else
+                                                    تحـديـد
+                                                @endif
 
-                                    <td>
-                                        <a wire:click='selectDelivery({{ $i->id }})' class="btn btn-info">
-                                            @if ($DeliverySelectedChangeBtn == $i->id)
-                                                تـم التحـديد
-                                            @else
-                                                تحـديـد
-                                            @endif
-
-                                        </a>
-                                    </td>
-                                    @if ($detelis == $i->id)
-                                        <div>
-                                            @foreach ($ReqDelDetlises as $ReqDelDetlis)
-
-                            <tr class="border-shod">
-                                <th>مكان العميل</th>
-                                <td>
-                                    {{ $ReqDelDetlis->area->area_name . ' , ' . $ReqDelDetlis->village->village_name }}
-                                </td>
-
-                                <th>عدد الطلبات</th>
-                                <th>
-                                    {{ \App\CardProData::where('card_data_id', $ReqDelDetlis->id)->count() }}
-                                </th>
-                                <th>
-                                    @if ($ShowDetliesDeliReqVar == $ReqDelDetlis->id)
-                                        <a wire:click='ShowDetliesDeliReqClose({{ $ReqDelDetlis->id }})'
-                                            class="btn">اغلاق التفاصيل</a>
+                                            </a>
+                                        </td>
                                     @else
-                                        <a wire:click='ShowDetliesDeliReqMethod({{ $ReqDelDetlis->id }})'
-                                            class="btn">التقاصيل</a>
-                                    @endif
-                                </th>
+                                        <td>
+                                            <a wire:click='DeliveReqDetile({{ $i->id }})'
+                                                class="btn btn-scandary">مشغول</a>
+                                        </td>
 
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            @if ($ShowDetliesDeliReqVar == $ReqDelDetlis->id)
+                                        <td>
+                                            <a wire:click='selectDelivery({{ $i->id }})' class="btn btn-info">
+                                                @if ($DeliverySelectedChangeBtn == $i->id)
+                                                    تـم التحـديد
+                                                @else
+                                                    تحـديـد
+                                                @endif
 
-                                <tr class="border-shodow">
-                                    <th>الطلبات</th>
-                                    <th>اسم التأجر</th>
-                                    <th>مكان التأجر</th>
-                                    <th> الكمية*السعر</th>
-                                    <th>المجموع</th>
+                                            </a>
+                                        </td>
+                                        @if ($detelis == $i->id)
+                                            <div>
+                                                @foreach ($ReqDelDetlises as $ReqDelDetlis)
+
+                                <tr class="border-shod">
+                                    <th>مكان العميل</th>
+                                    <td>
+                                        {{ $ReqDelDetlis->area->area_name . ' , ' . $ReqDelDetlis->village->village_name }}
+                                    </td>
+
+                                    <th>عدد الطلبات</th>
+                                    <th>
+                                        {{ \App\CardProData::where('card_data_id', $ReqDelDetlis->id)->count() }}
+                                    </th>
+                                    <th>
+                                        @if ($ShowDetliesDeliReqVar == $ReqDelDetlis->id)
+                                            <a wire:click='ShowDetliesDeliReqClose({{ $ReqDelDetlis->id }})'
+                                                class="btn">اغلاق التفاصيل</a>
+                                        @else
+                                            <a wire:click='ShowDetliesDeliReqMethod({{ $ReqDelDetlis->id }})'
+                                                class="btn">التقاصيل</a>
+                                        @endif
+                                    </th>
+
                                 </tr>
-                                @foreach ($produactDeliver as $ProDliverDetils)
+                                <tr>
+                                    <td></td>
+                                </tr>
+                                @if ($ShowDetliesDeliReqVar == $ReqDelDetlis->id)
 
                                     <tr class="border-shodow">
-                                        <td>{{ $ProDliverDetils->produact->cate_name }}</td>
-                                        <td>{{ $ProDliverDetils->seller->name }}</td>
-                                        <td>{{ $ProDliverDetils->seller->area->area_name . ' , ' . $ProDliverDetils->seller->village->village_name }}
-                                        </td>
+                                        <th>الطلبات</th>
+                                        <th>اسم التأجر</th>
+                                        <th>مكان التأجر</th>
+                                        <th> الكمية*السعر</th>
+                                        <th>المجموع</th>
+                                    </tr>
+                                    @foreach ($produactDeliver as $ProDliverDetils)
+
+                                        <tr class="border-shodow">
+                                            <td>{{ $ProDliverDetils->produact->cate_name }}</td>
+                                            <td>{{ $ProDliverDetils->seller->name }}</td>
+                                            <td>{{ $ProDliverDetils->seller->area->area_name . ' , ' . $ProDliverDetils->seller->village->village_name }}
+                                            </td>
+                                            <td>
+                                                {{ $ProDliverDetils->quantity . '*' . $ProDliverDetils->price }}
+                                            </td>
+                                            <td>
+                                                {{ $ProDliverDetils->total }}
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    <tr class="border-shodsum">
+                                        <th>وقت الطلب</th>
+                                        <td>{{ $ReqDelDetlis->created_at }}</td>
+                                        <td></td>
+                                        <td></td>
                                         <td>
-                                            {{ $ProDliverDetils->quantity . '*' . $ProDliverDetils->price }}
-                                        </td>
-                                        <td>
-                                            {{ $ProDliverDetils->total }}
+                                            {{ \App\CardProData::where('card_data_id', $ReqDelDetlis->id)->sum('total') }}
                                         </td>
                                     </tr>
-                                @endforeach
-                                <tr class="border-shodsum">
-                                    <th>وقت الطلب</th>
-                                    <td>{{ $ReqDelDetlis->created_at }}</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        {{ \App\CardProData::where('card_data_id', $ReqDelDetlis->id)->sum('total') }}
-                                    </td>
-                                </tr>
-                            @endif
-                        @endforeach
+                                @endif
+                            @endforeach
 
-                </div>
-                @endif
-
-                @endif
-
-
-                </tr>
-                @endforeach
-
-                </table>
-
-
-            </div>
-
-            <div class="modal-footer">
-                <div class="row">
-                    <div class="col-md-6">
-                        {{ $delive->links() }}
                     </div>
-                    <div class="col-md-6">
-                        <a class="btn btn-default" data-dismiss="modal">{{ trans('admin.cancel') }}</a>
-                    </div>
+@endif
 
-                </div>
+@endif
 
-            </div>
+
+</tr>
+@endforeach
+
+</table>
+
+
+</div>
+
+<div class="modal-footer">
+    <div class="row">
+        <div class="col-md-6">
+            {{ $delive->links() }}
+        </div>
+        <div class="col-md-6">
+            <a class="btn btn-default" data-dismiss="modal">{{ trans('admin.cancel') }}</a>
         </div>
 
     </div>
-    </div>
+
+</div>
+</div>
+
+</div>
+</div>
 </form>
+@endif
 <!--------------------------------------------------------------------------->
 
+{{-- @if ($title == 'لا يـوجد طلبــات جــديدة')
+    <img src="{{ url(Path() . '/img/noorders.png') }}" class="img-fluid" alt="Responsive image">
+@endif --}}
 
 <style>
     /*
@@ -447,6 +515,30 @@
         margin-left: -2px;
     }
 */
+    .pointer {
+
+        cursor: pointer;
+    }
+
+    .ActiveDelivery {
+        background-color: #f1ca31;
+    }
+
+    .noorders {
+        height: 400px;
+        background-image: url("{{ url(Path() . '/img/noorders.png') }}");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+    }
+
+    .orders {
+        height: 400px;
+        background-image: url("{{ url(Path() . '/img/orders.png') }}");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+    }
 
 
     .pagination {

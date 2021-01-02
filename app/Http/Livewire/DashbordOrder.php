@@ -34,9 +34,12 @@ class DashbordOrder extends Component
     public $ReQNumber;
     public $DeliverySelectedChangeBtn = 0;
     public $IdOFFirstReQORSelected;
+    public $DeliverySelectedIdBtnActive;
+    public $ShowImageOrder = false;
 
     public function render()
     {
+
         $orderCount = 7; //QRCodeOrder::where('stusts',0)->count();
         $Orders = $this->orderData; //= Card::where('stusts', 2)->get();
         $clintData = $this->clintDataa;
@@ -90,17 +93,58 @@ class DashbordOrder extends Component
     public function NewOrder()
     {
         $this->order = !$this->order;
-        $id = CardData::where('stutus', null)->first()->value('id');
+        $count = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->count();
+        if ($count != 0) {
+            $id = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->first()->value('id');
+            $this->DeliverySelectedIdBtnActive = $id;
+            $this->title = " : طلب رقم " . $id;
+            $this->ReQNumber = $id;
+            $this->orderData = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->get();
+            $this->clintDataa = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->first();
+            $IdOFF = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->first();
+            $this->IdOFFirstReQORSelected = $IdOFF->id;
+            $this->cardRequest = CardProData::where('card_data_id', $id)->get();
+        } else {
+            $this->title = "لا يـوجد طلبــات جــديدة";
+
+        }
+
+    }
+    public function ShowRequestDetils($id)
+    {
+        $this->DeliverySelectedIdBtnActive = $id;
         $this->title = " : طلب رقم " . $id;
         $this->ReQNumber = $id;
-        $this->orderData = CardData::where('stutus', null)->get();
-        $this->clintDataa = CardData::where('stutus', null)->first();
-        $IdOFF = CardData::where('stutus', null)->first();
-        $this->IdOFFirstReQORSelected = $IdOFF->id;
+        // $this->orderData = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->get();
+        $this->clintDataa = CardData::where('id', $id)->where('clint_stutus', 1)->where('admin_stutus', null)->first();
+        $this->IdOFFirstReQORSelected = $id;
         $this->cardRequest = CardProData::where('card_data_id', $id)->get();
 
     }
 
+    public function AdminStutusChange($id)
+    {
+        $DeliverySelectedChangeBtn = null;
+        $CheckDeliver = CardData::where('id', $id)->value('deliver_id');
+        if ($CheckDeliver != null) {
+            CardData::where('id', $id)->update(['admin_stutus' => 1]);
+            $count = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->count();
+            if ($count != 0) {
+                $this->title = "لا يـوجد طلبــات جــديدة";
+                $this->ShowImageOrder = true;
+                // $this->clintDataa = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->first();
+            } else {
+                $this->title = "لا يـوجد طلبــات جــديدة";
+            }
+            $this->orderData = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->get();
+            session()->flash('success', 'تم ارسال الطلب بنجاح');
+
+        } else {
+            session()->flash('danger', 'الرجاء تحديـد مندوب التوصيل اولاً');
+
+        }
+
+    }
     public function deliveryTask()
     {
         /* 'deliver_id',

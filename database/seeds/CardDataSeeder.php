@@ -40,6 +40,7 @@ class CardDataSeeder extends Seeder
                 "near_flg" => $flg,
                 "order_num" => $order_num,
                 // "deliver_id" => $del,
+                'clint_stutus' => 1,
                 "qr_code" => Hash::make($i . time() . round(3)), // "stutus" => "",
             ]);
         }
