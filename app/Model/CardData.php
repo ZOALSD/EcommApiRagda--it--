@@ -31,6 +31,10 @@ class CardData extends Model
     {
         return $this->belongsTo('App\Model\Village', 'village_id');
     }
+    public function deliver()
+    {
+        return $this->belongsTo('App\User', 'deliver_id');
+    }
 
     protected $hidden = [
         'updated_at', 'created_at',

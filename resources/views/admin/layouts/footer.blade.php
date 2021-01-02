@@ -710,7 +710,12 @@
                         $('#Change_Role').modal('hide');
                     })  
                     
-
+                    window.livewire.on('DeliverySelectedHide', () => {
+                        $(".modal-backdrop").remove();
+                        $(".modal-backdrop.in").remove();
+                        $('#DeliverySelectedHide').modal('hide');
+                    })  
+                    
                     </script>
     
                       

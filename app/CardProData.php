@@ -29,4 +29,9 @@ class CardProData extends Model
     {
         return $this->belongsTo('App\Model\CardData', 'card_data_id');
     }
+
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
 }

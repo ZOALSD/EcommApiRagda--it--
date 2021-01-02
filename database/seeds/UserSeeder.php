@@ -80,7 +80,7 @@ class UserSeeder extends Seeder
                         'area_id' => $area,
                         // 'photo',
                         // 'stuts',
-                        'stuts_delivery' => $stuts_delivery,
+                        //'stuts_delivery' => $stuts_delivery,
                     ]);
                 }
             }

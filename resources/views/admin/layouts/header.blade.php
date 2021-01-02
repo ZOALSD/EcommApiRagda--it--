@@ -153,7 +153,7 @@
 
 </script>
 
-<body onready="showPage()" class="page-container-bg-solid page-header-fixed page-sidebar-closed-hide-logo">
+<body class="page-container-bg-solid page-header-fixed page-sidebar-closed-hide-logo">
 
 
     <div id="loader"></div>

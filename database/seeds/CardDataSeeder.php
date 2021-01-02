@@ -39,7 +39,7 @@ class CardDataSeeder extends Seeder
                 "village_id" => $village,
                 "near_flg" => $flg,
                 "order_num" => $order_num,
-                "deliver_id" => $del,
+                // "deliver_id" => $del,
                 "qr_code" => Hash::make($i . time() . round(3)), // "stutus" => "",
             ]);
         }

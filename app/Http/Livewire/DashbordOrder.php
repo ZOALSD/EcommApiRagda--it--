@@ -31,6 +31,9 @@ class DashbordOrder extends Component
     public $typeSearch = "الكل";
     public $SearchWord;
     public $AreaModel = null;
+    public $ReQNumber;
+    public $DeliverySelectedChangeBtn = 0;
+    public $IdOFFirstReQORSelected;
 
     public function render()
     {
@@ -89,8 +92,11 @@ class DashbordOrder extends Component
         $this->order = !$this->order;
         $id = CardData::where('stutus', null)->first()->value('id');
         $this->title = " : طلب رقم " . $id;
+        $this->ReQNumber = $id;
         $this->orderData = CardData::where('stutus', null)->get();
         $this->clintDataa = CardData::where('stutus', null)->first();
+        $IdOFF = CardData::where('stutus', null)->first();
+        $this->IdOFFirstReQORSelected = $IdOFF->id;
         $this->cardRequest = CardProData::where('card_data_id', $id)->get();
 
     }
@@ -116,6 +122,18 @@ class DashbordOrder extends Component
         $this->ShowDetliesDeliReqVar = 0;
 
     }
+
+    public function selectDelivery($id)
+    {
+        // User::where('id', $id)->update(['stuts_delivery' => 1]);
+        //ReQNumber
+        CardData::where('id', $this->IdOFFirstReQORSelected)->update(['deliver_id' => $id]);
+        $this->DeliverySelectedChangeBtn = $id;
+        $this->clintDataa = CardData::where('id', $this->IdOFFirstReQORSelected)->first();
+        $this->emit('DeliverySelectedHide');
+
+    }
+
     public function ShowDetliesDeliReqMethod($id)
     {
 // $proD = CardData::where('deliver_id', $id)->value('id');

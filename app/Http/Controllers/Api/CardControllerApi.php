@@ -26,10 +26,9 @@ class CardControllerApi extends Controller
             $c->save();
 
         } else {
-            $cardDataId = CardData::where('clint_id', $id)->where('stutus', null)->value('id');
-            $order_num = CardData::where('clint_id', $id)->where('stutus', null)->value('order_num');
-            $c = CardData::find($cardDataId);
-            $c->order_num = $order_num + 1;
+            $cardData = CardData::where('clint_id', $id)->where('stutus', null)->first();
+            $c = CardData::find($cardData->id);
+            $c->order_num = $cardData->order_num + 1;
             $c->save();
 
         }
@@ -40,14 +39,37 @@ class CardControllerApi extends Controller
 
         $cardDataID = CardData::where('clint_id', $id)->where('stutus', null)->value('id');
 
-        $card = CardProData::create([
-            'card_data_id' => $cardDataID, // not Requset
-            'produact_id' => $req->produact_id,
-            'seller_id' => $seller_id, // not Requset
-            'quantity' => $req->quantity,
-            'price' => $price, // not Requset
-            'total' => $total, // not Requset
-        ]);
+        $ConutSamePro = CardProData::where('card_data_id', $cardDataID)
+            ->where('produact_id', $req->produact_id)
+            ->count();
+        if ($ConutSamePro == 0) {
+            $add = CardProData::create([
+                'card_data_id' => $cardDataID, // not Requset
+                'produact_id' => $req->produact_id,
+                'seller_id' => $seller_id, // not Requset
+                'quantity' => $req->quantity,
+                'price' => $price, // not Requset
+                'total' => $total, // not Requset
+            ]);
+            $card = CardProData::find($add->id)->with('produact')->first();
+
+        } else {
+            $OldPro = CardProData::where('card_data_id', $cardDataID)
+                ->where('produact_id', $req->produact_id)->first();
+
+            $Up = CardProData::find($OldPro->id);
+            $Up->quantity = $OldPro->quantity + $req->quantity;
+            $Up->total = $total;
+            $Up->save();
+
+            $card = CardProData::where('id', $Up->id)->with('produact')->first();
+
+            $cardData = CardData::where('clint_id', $id)->where('stutus', null)->first();
+            $c = CardData::find($cardData->id);
+            $c->order_num = $cardData->order_num - 1;
+            $c->save();
+        }
+
         $order_num = CardData::where('clint_id', $id)->where('stutus', null)->value('order_num');
 
         return response()->json([

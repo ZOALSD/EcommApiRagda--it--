@@ -188,11 +188,17 @@
                                             <tr>
 
                                                 <th colspan="">مندوب التوصيل</th>
-                                                <td colspan=""> <button data-toggle="modal" data-target="#AddDelivery"
-                                                        class="btn btn-info">modamed</button> </td>
+                                                <td colspan=""> <button data-toggle="modal"
+                                                        data-target="#DeliverySelectedHide" class="btn btn-info">
+                                                        @if ($clintData->deliver_id == null)
+                                                            تحـديد
+                                                        @else
+                                                            {{ $clintData->deliver->name . ' ' . '|' . ' ' . 'المحلية' . ' : ' . $clintData->deliver->area->area_name }}
+                                                        @endif
+                                                    </button> </td>
                                                 <th></th>
                                                 <th>رقم المندوب</th>
-                                                <td>0900004444</td>
+                                                <td>{{ $clintData->deliver->phone }}</td>
                                             </tr>
                                             <tr>
                                                 <th>زمن الطلب</th>
@@ -257,7 +263,7 @@
 
 <!--------------------------------------------------------------------------->
 <form wire:submit.prevent action="/">
-    <div wire:ignore.self class="modal fade" id="AddDelivery">
+    <div wire:ignore.self class="modal fade" id="DeliverySelectedHide">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -308,7 +314,15 @@
                                     <td>غير مشغول</td>
 
                                     <td>
-                                        <a class="btn btn-info">تحديد</a>
+                                        <a wire:click='selectDelivery({{ $i->id }})' class="btn btn-info">
+                                            @if ($DeliverySelectedChangeBtn == $i->id)
+                                                تـم التحـديد
+
+                                            @else
+                                                تحـديـد
+                                            @endif
+
+                                        </a>
                                     </td>
                                 @else
                                     <td>
@@ -316,7 +330,14 @@
                                     </td>
 
                                     <td>
-                                        <a class="btn btn-info">تحديد</a>
+                                        <a wire:click='selectDelivery({{ $i->id }})' class="btn btn-info">
+                                            @if ($DeliverySelectedChangeBtn == $i->id)
+                                                تـم التحـديد
+                                            @else
+                                                تحـديـد
+                                            @endif
+
+                                        </a>
                                     </td>
                                     @if ($detelis == $i->id)
                                         <div>
