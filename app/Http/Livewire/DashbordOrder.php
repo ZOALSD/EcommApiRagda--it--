@@ -173,6 +173,7 @@ class DashbordOrder extends Component
         //ReQNumber
         CardData::where('id', $this->IdOFFirstReQORSelected)->update(['deliver_id' => $id]);
         $this->DeliverySelectedChangeBtn = $id;
+        User::where('id', $id)->update(['stuts_delivery' => 1]);
         $this->clintDataa = CardData::where('id', $this->IdOFFirstReQORSelected)->first();
         $this->emit('DeliverySelectedHide');
 

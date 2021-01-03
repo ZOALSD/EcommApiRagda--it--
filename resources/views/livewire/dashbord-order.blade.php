@@ -5,6 +5,8 @@
                 {{ session('success') }}
             </p>
         </div>
+
+
     @endif
 
     @if (session()->has('danger'))
@@ -20,7 +22,7 @@
     @if ($order == true)
 
         <!-- BEGIN PAGE BASE CONTENT -->
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <a href="#">
                     <div wire:click='NewOrder' class="dashboard-stat2 bordered">
@@ -134,7 +136,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     @else
         <div class="row">
             <div class="col-md-12 col-sm-12">
@@ -353,10 +355,6 @@
 
                         <input wire:model='SearchWord' class="input-text" type="text"
                             placeholder="بحث بالاسم او رقم الهاتف">
-
-
-
-
                     </div>
                     <div class="modal-body">
                         <table class="table">
