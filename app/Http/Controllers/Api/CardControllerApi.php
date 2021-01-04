@@ -83,7 +83,7 @@ class CardControllerApi extends Controller
     {
         $cardID = CardData::where('clint_id', Auth::id())->where('clint_stutus', null)->value('id');
 
-        return $car = CardProData::where('card_data_id', $cardID)->with('produact')->first();
+        $car = CardProData::where('card_data_id', $cardID)->with('produact')->first();
 
         $pro = Produact::select(['cate_name', 'color_name'])->where('id', $cardID->id)->get();
 
