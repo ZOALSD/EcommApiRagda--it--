@@ -85,9 +85,9 @@ class CardControllerApi extends Controller
 
         return $car = CardProData::where('card_data_id', $cardID)->with('produact')->first();
 
-        // $pro = Produact::where('id', $cardID->id)->get();
+        $pro = Produact::select(['cate_name', 'color_name'])->where('id', $cardID->id)->get();
 
-        // return response()->json(["card" => $car, "prodact" => $pro], 200);
+        return response()->json(["card" => $car, "prodact" => $pro], 200);
     }
 
     public function cardconfirm(Request $req)
