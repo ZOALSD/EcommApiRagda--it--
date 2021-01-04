@@ -65,4 +65,11 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('DeleteProCard/{id}', 'Api\CardControllerApi@DeleteProCard'); ////
     Route::post('EditProCard/{id}', 'Api\CardControllerApi@EditProCard'); ////
 
+    Route::get('ClintProTitelDone', 'Api\CardControllerApi@ClintProTitelDone'); ////
+    Route::get('ClintProTitelCanceled', 'Api\CardControllerApi@ClintProTitelCanceled'); ////
+    Route::get('ClintProData/{id}', 'Api\CardControllerApi@ClintProData/{id}'); ////
+
+    /*ClintProTitelDone
+ClintProTitelCanceled
+ClintProData */
 });

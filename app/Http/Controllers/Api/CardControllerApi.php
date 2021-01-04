@@ -82,7 +82,12 @@ class CardControllerApi extends Controller
     public function showCard()
     {
         $cardID = CardData::where('clint_id', Auth::id())->where('clint_stutus', null)->value('id');
-        return CardProData::where('card_data_id', $cardID)->with('produact')->first();
+
+        return $car = CardProData::where('card_data_id', $cardID)->with('produact')->first();
+
+        // $pro = Produact::where('id', $cardID->id)->get();
+
+        // return response()->json(["card" => $car, "prodact" => $pro], 200);
     }
 
     public function cardconfirm(Request $req)
@@ -130,19 +135,35 @@ class CardControllerApi extends Controller
 
     public function cardcancle(Request $req)
     {
-        $value = Auth::id() . time();
-        $QRCode = Hash::make($value);
-        foreach ($req->ids as $id) {
-
-            $card = Card::find($id);
-            delete();
-        }
+        // $value = Auth::id() . time();
+        $car = CardProData::find($id);
+        $car->clint_stutus = 0;
+        $car->save();
 
         return response()->json([
             'stutus' => 'ture',
             'message' => 'Order Canceled',
         ], 200);
 
+    }
+
+    //Clinet PorDuact -----
+
+    public function ClintProTitelDone()
+    {
+        $id = Auth::id();
+        return CardData::where('clint_id', $id)->where('clint_stutus', 1)->get();
+    }
+
+    public function ClintProTitelCanceled()
+    {
+        $id = Auth::id();
+        return CardData::where('clint_id', $id)->where('clint_stutus', 0)->get();
+    }
+
+    public function ClintProData($id)
+    {
+        return CardProData::where('card_data_id', $id)->first();
     }
 
 }
