@@ -34,7 +34,7 @@ class CardDataSeeder extends Seeder
                 $order_num = 3;
             }
             CardData::create([
-                "clint_id" => $i,
+                "clint_id" => 2,
                 "area_id" => $area,
                 "village_id" => $village,
                 "near_flg" => $flg,
