@@ -16,7 +16,7 @@ class DashbordOrder extends Component
 
     protected $paginationTheme = 'bootstrap';
 
-    public $order = true;
+    public $order = false;
     public $newOrder;
     public $title;
     public $orderData;
@@ -36,18 +36,10 @@ class DashbordOrder extends Component
     public $IdOFFirstReQORSelected;
     public $DeliverySelectedIdBtnActive;
     public $ShowImageOrder = false;
+    public $TiemRespact = null;
 
     public function render()
     {
-
-        $orderCount = 7; //QRCodeOrder::where('stusts',0)->count();
-        $Orders = $this->orderData; //= Card::where('stusts', 2)->get();
-        $clintData = $this->clintDataa;
-        $CardReq = $this->cardRequest;
-        $delTask = $this->delTaskK;
-        $ReqDelDetlises = $this->DeliveReqDet;
-        $produactDeliver = $this->produactDel;
-
         if ($this->AreaModel != null) {
 
             if ($this->AreaModel != "all") {
@@ -81,8 +73,31 @@ class DashbordOrder extends Component
             }
         }
 
+        $this->NewOrder();
+
+        $orderCount = 7; //QRCodeOrder::where('stusts',0)->count();
+        $Orders = $this->orderData; //= Card::where('stusts', 2)->get();
+        $clintData = $this->clintDataa;
+        $CardReq = $this->cardRequest;
+        $delTask = $this->delTaskK;
+        $ReqDelDetlises = $this->DeliveReqDet;
+        $produactDeliver = $this->produactDel;
         $Areas = Area::get();
-        return view('livewire.dashbord-order', \compact('orderCount', 'Orders', 'clintData', 'CardReq', 'delive', 'ReqDelDetlises', 'produactDeliver', 'Areas'));
+        return view('livewire.dashbord-order',
+            compact
+            (
+                'orderCount', 'Orders',
+                'clintData', 'CardReq',
+                'delive', 'ReqDelDetlises',
+                'produactDeliver', 'Areas'
+            ))
+            ->extends('admin.index')
+            ->section('content');
+    }
+
+    public function SearchDlivery()
+    {
+
     }
 
     public function OrdarClose()
@@ -92,7 +107,7 @@ class DashbordOrder extends Component
 
     public function NewOrder()
     {
-        $this->order = !$this->order;
+        //  $this->order = !$this->order;
         $count = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->count();
         if ($count != 0) {
             $id = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->first()->value('id');
@@ -127,17 +142,23 @@ class DashbordOrder extends Component
         $DeliverySelectedChangeBtn = null;
         $CheckDeliver = CardData::where('id', $id)->value('deliver_id');
         if ($CheckDeliver != null) {
-            CardData::where('id', $id)->update(['admin_stutus' => 1]);
-            $count = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->count();
-            if ($count != 0) {
-                $this->title = "لا يـوجد طلبــات جــديدة";
-                $this->ShowImageOrder = true;
-                // $this->clintDataa = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->first();
+            if ($this->TiemRespact != null) {
+                CardData::where('id', $id)->update(['admin_stutus' => 1, 'time_respact' => $this->TiemRespact]);
+
+                $count = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->count();
+                if ($count != 0) {
+                    $this->title = "لا يـوجد طلبــات جــديدة";
+                    $this->ShowImageOrder = true;
+                    // $this->clintDataa = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->first();
+                } else {
+                    $this->title = "لا يـوجد طلبــات جــديدة";
+                }
+                $this->orderData = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->get();
+                session()->flash('success', 'تم ارسال الطلب بنجاح');
             } else {
-                $this->title = "لا يـوجد طلبــات جــديدة";
+                session()->flash('danger', 'الرجاء تحديـد الزمن المتوقع للتوصيل اولاً');
+
             }
-            $this->orderData = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->get();
-            session()->flash('success', 'تم ارسال الطلب بنجاح');
 
         } else {
             session()->flash('danger', 'الرجاء تحديـد مندوب التوصيل اولاً');

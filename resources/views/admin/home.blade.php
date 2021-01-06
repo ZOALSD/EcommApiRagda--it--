@@ -5,7 +5,8 @@
     <div>
 
         <!-- BEGIN PAGE BASE CONTENT -->
-        <div class="row">
+        {{-- <div class="row">
+
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <a href="#">
                     <div wire:click='NewReqOrder' class="dashboard-stat2 bordered">
@@ -20,8 +21,8 @@
                             </div>
 
                             <!--div class="icon">
-                            <i class="fa fa-truck"></i>
-                        </div-->
+                                <i class="fa fa-truck"></i>
+                            </div-->
                         </div>
 
                         <div class="progress-info">
@@ -38,6 +39,7 @@
                     </div>
                 </a>
             </div>
+
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="dashboard-stat2 bordered">
                     <div class="display">
@@ -121,7 +123,7 @@
             </div>
         </div>
 
-    </div>
+    </div> --}}
 
 
     {{-- @livewire('dashbord-order') --}}
