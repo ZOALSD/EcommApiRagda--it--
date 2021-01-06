@@ -12,7 +12,7 @@
                                     data-value="7800">{{ $orderCount }}</span>
                                 <small class="font-green-sharp"></small>
                             </h3>
-                            <small><button class="btn btn-success">الطلبات
+                            <small><button class="btn btn-block btn-success">الطلبات
                                     الجديدة</button></small>
                         </div>
 
@@ -42,7 +42,7 @@
                         <h3 class="font-red-haze">
                             <span data-counter="counterup" data-value="1349">{{ $NotReadyCount }}</span>
                         </h3>
-                        <small><button class="btn btn-danger">
+                        <small><button class="btn btn-block btn-danger">
                                 الطلبات قيد التحضير</button></small>
                     </div>
                     <div class="icon">
@@ -69,7 +69,7 @@
                         <h3 class="font-blue-sharp">
                             <span data-counter="counterup" data-value="567">{{ $InderDeliverCount }}</span>
                         </h3>
-                        <small><button class="btn btn-info">
+                        <small><button class="btn btn-block btn-info">
                                 الطلبات قيد التوصيل</button></small>
                     </div>
                     <div class="icon">
@@ -96,7 +96,7 @@
                         <h3 class="font-purple-soft">
                             <span data-counter="counterup" data-value="276">{{ $SuccessflluCount }}</span>
                         </h3>
-                        <small><button class="btn btn-success">
+                        <small><button class="btn btn-block btn-success">
                                 الطلبات تم تسليمها</button></small>
                     </div>
                     <div class="icon">
@@ -118,10 +118,100 @@
         </div>
     </div>
 
-    <hr>
+
+    <!-- BEGIN PAGE BASE CONTENT -->
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <a href="#">
+                <div wire:click='NewReqOrder' class="dashboard-stat2 bordered">
+                    <div class="display">
+                        <div class="number">
+                            <h3 class="font-green-sharp">
+                                <span wire:poll.5000m data-counter="counterup"
+                                    data-value="7800">{{ $orderCount }}</span>
+                                <small class="font-green-sharp"></small>
+                            </h3>
+                            <small><button class="btn btn-block btn-success">
+                                    فواتير الــتُجار</button></small>
+                        </div>
+
+                        <!--div class="icon">
+                        <i class="fa fa-truck"></i>
+                    </div-->
+                    </div>
+
+                    <div class="progress-info">
+                        <div class="progress">
+                            <span style="width: 100%;" class="progress-bar progress-bar-success green-sharp">
+                                <span class="sr-only">100% progress</span>
+                            </span>
+                        </div>
+                        <div class="status">
+                            <div class="status-title"> progress </div>
+                            <div class="status-number"> {{ $orderCount }} </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div wire:click='OrderNotReadyy()' class="dashboard-stat2 bordered">
+                <div class="display">
+                    <div class="number">
+                        <h3 class="font-red-haze">
+                            <span data-counter="counterup" data-value="1349">{{ $NotReadyCount }}</span>
+                        </h3>
+                        <small><button class="btn btn-block btn-info">
+                                فؤاتير العملاء </button></small>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-comments"></i>
+                    </div>
+                </div>
+                <div class="progress-info">
+                    <div class="progress">
+                        <span style="width: 100%;" class="progress-bar progress-bar-success blue-sharp">
+                            <span class="sr-only">{{ $NotReadyCount }}</span>
+                        </span>
+                    </div>
+                    <div class="status">
+                        <div class="status-title"> change </div>
+                        <div class="status-number"> {{ $NotReadyCount }} </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div wire:click='OrderNotReadyy()' class="dashboard-stat2 bordered">
+                <div class="display">
+                    <div class="number">
+                        <h3 class="font-red-haze">
+                            <span data-counter="counterup" data-value="1349">{{ $NotReadyCount }}</span>
+                        </h3>
+                        <small><button class="btn btn-block btn-info">
+                                فؤاتير مناديب التؤصيل </button></small>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-comments"></i>
+                    </div>
+                </div>
+                <div class="progress-info">
+                    <div class="progress">
+                        <span style="width: 100%;" class="progress-bar progress-bar-success blue-sharp">
+                            <span class="sr-only">{{ $NotReadyCount }}</span>
+                        </span>
+                    </div>
+                    <div class="status">
+                        <div class="status-title"> change </div>
+                        <div class="status-number"> {{ $NotReadyCount }} </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="row">
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
             <a href="#">
                 <div wire:click='Clints()' class="dashboard-stat2 bordered">
                     <div class="display">
@@ -131,7 +221,7 @@
                                     data-value="7800">{{ $ClintCount }}</span>
                                 <small class="font-green-sharp"></small>
                             </h3>
-                            <small><button class="btn btn-success">العملاء</button></small>
+                            <small><button class="btn btn-block btn-success">العملاء</button></small>
                         </div>
 
                         <!--div class="icon">
@@ -153,14 +243,14 @@
                 </div>
             </a>
         </div>
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
             <div wire:click='Sellers()' class="dashboard-stat2 bordered">
                 <div class="display">
                     <div class="number">
                         <h3 class="font-red-haze">
                             <span data-counter="counterup" data-value="1349">{{ $DeliveryCount }}</span>
                         </h3>
-                        <small><button class="btn btn-danger">
+                        <small><button class="btn btn-block btn-danger">
                                 التُجّــار </button></small>
                     </div>
                     <div class="icon">
@@ -180,14 +270,14 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
             <div wire:click='Deliveres()' class="dashboard-stat2 bordered">
                 <div class="display">
                     <div class="number">
                         <h3 class="font-blue-sharp">
                             <span data-counter="counterup" data-value="567">{{ $SellerCount }}</span>
                         </h3>
-                        <small><button class="btn btn-info">
+                        <small><button class="btn btn-block btn-info">
                                 مناديب الؤصيل</button></small>
                     </div>
                     <div class="icon">
@@ -214,7 +304,7 @@
                         <h3 class="font-purple-soft">
                             <span data-counter="counterup" data-value="276">{{ $SuccessflluCount }}</span>
                         </h3>
-                        <small><button class="btn btn-success">
+                        <small><button class="btn btn-block btn-success">
                                 الطلبات تم تسليمها</button></small>
                     </div>
                     <div class="icon">
@@ -249,10 +339,10 @@
 
                 </div>
                 <div class="actions">
-                    <a wire:click='OrdarClose' class="btn btn-circle btn-icon-only btn-default " href="#"><i
+                    <a wire:click='OrdarClose' class="btn btn-block btn-circle btn-icon-only btn-default " href="#"><i
                             class="fa fa-close"></i>
                     </a>
-                    <a class="btn btn-circle btn-icon-only btn-default fullscreen" href="#"> </a>
+                    <a class="btn btn-block btn-circle btn-icon-only btn-default fullscreen" href="#"> </a>
                 </div>
             </div>
             <div class="portlet-body">

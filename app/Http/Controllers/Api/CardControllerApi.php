@@ -6,6 +6,7 @@ use App\CardProData;
 use App\Http\Controllers\Controller;
 use App\Model\CardData;
 use App\Model\Produact;
+use App\Model\SellerOrder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -51,6 +52,17 @@ class CardControllerApi extends Controller
                 'price' => $price, // not Requset
                 'total' => $total, // not Requset
             ]);
+            $sellerOrder = SellerOrder::where('card_cata_id', $cardDataID)->where('seller_id', $seller_id)->count();
+
+            if ($sellerOrder == 0) {
+                $qrcode = Hash::make($cardDataID . time() . 'ZOOLS3D' . Auth::id());
+                SellerOrder::create([
+                    'card_cata_id' => $cardDataID,
+                    'seller_id' => $seller_id,
+                    'qrcode' => $qrcode,
+                ]);
+            }
+
             $card = CardProData::find($add->id)->with('produact')->first();
 
         } else {
