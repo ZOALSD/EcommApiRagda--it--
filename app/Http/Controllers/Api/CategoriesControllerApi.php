@@ -18,10 +18,20 @@ class CategoriesControllerApi extends Controller
      * Display a listing of the resource. Api
      * @return \Illuminate\Http\Response
      */
+
+    public function CategoryForSeller()
+    {
+        $Cate = Categories::where('has_parent', null)->select(['id', 'name', 'image_cate'])->get();
+        return response()->json($Cate, 200);
+
+    }
+
     public function index()
     {
 
-        return Categories::where('Parent_id', null)->select(['id', 'name', 'image_cate'])->get(); //:orderBy('id','desc')->paginate(15);
+        return Categories::where('Parent_id', null)->select(['id', 'name', 'image_cate'])->get(); //
+
+        //:orderBy('id','desc')->paginate(15);
         // return  CategoriseResources::collection($data);
         //    return response()->json([
         //    "status"=>true,

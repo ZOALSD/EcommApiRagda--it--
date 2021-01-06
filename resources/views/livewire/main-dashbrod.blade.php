@@ -123,7 +123,7 @@
     <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
             <a href="#">
-                <div wire:click='NewReqOrder' class="dashboard-stat2 bordered">
+                <div wire:click='Clints()' class="dashboard-stat2 bordered">
                     <div class="display">
                         <div class="number">
                             <h3 class="font-green-sharp">
@@ -154,7 +154,7 @@
             </a>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div wire:click='OrderNotReadyy()' class="dashboard-stat2 bordered">
+            <div wire:click='Sellers()' class="dashboard-stat2 bordered">
                 <div class="display">
                     <div class="number">
                         <h3 class="font-red-haze">
@@ -181,7 +181,7 @@
             </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div wire:click='OrderInderDelivering()' class="dashboard-stat2 bordered">
+            <div wire:click='Deliveres()' class="dashboard-stat2 bordered">
                 <div class="display">
                     <div class="number">
                         <h3 class="font-blue-sharp">
@@ -207,7 +207,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        {{-- <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
             <div wire:click='OrderSuccessfullyDelivery()' class="dashboard-stat2 bordered">
                 <div class="display">
                     <div class="number">
@@ -233,7 +233,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 
 

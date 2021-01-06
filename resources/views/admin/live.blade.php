@@ -3,6 +3,6 @@
 @include('admin.layouts.menu')
 @include('admin.layouts.messages')
 
-@yield('content')
+{{ $slot }}
 
 @include('admin.layouts.footer')

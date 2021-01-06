@@ -23,6 +23,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('produact_search', 'Api\ProduactCoontrollerApi@search');
     Route::get('categorise', 'Api\CategoriesControllerApi@index');
     Route::get('SupCategoriseOrData/{id}', 'Api\CategoriesControllerApi@SupCategorise');
+    Route::get('CategoryForSeller', 'Api\CategoriesControllerApi@CategoryForSeller');
+    //
     Route::get('logout', 'Api\ClintLoginController@logout');
     Route::get('produact', 'Api\ProduactCoontrollerApi@index');
 

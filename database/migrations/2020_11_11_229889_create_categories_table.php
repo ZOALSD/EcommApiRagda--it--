@@ -1,7 +1,8 @@
 <?php
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
 // Auto Schema  By Baboon Script
 // Baboon Maker has been Created And Developed By [It V 1.4 | https://it.phpanonymous.com]
 // Copyright Reserved  [It V 1.4 | https://it.phpanonymous.com]
@@ -19,11 +20,13 @@ class CreateCategoriesTable extends Migration
             $table->bigInteger('admin_id')->unsigned()->nullable();
             $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');
             $table->unsignedInteger('Parent_id')->nullable();
+            $table->unsignedInteger('has_parent')->nullable();
+            // if has = 1
             $table->string('name');
             $table->string('image_cate')->nullable();
-			$table->softDeletes();
+            $table->softDeletes();
 
-			$table->timestamps();
+            $table->timestamps();
         });
     }
 

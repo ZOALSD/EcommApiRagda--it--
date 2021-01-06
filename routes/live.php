@@ -2,9 +2,12 @@
 
 use App\Http\Livewire\DashbordOrder;
 use App\Http\Livewire\MainDashbrod;
+use App\Http\Livewire\Request\Clints;
+use App\Http\Livewire\Request\Deliveres;
 use App\Http\Livewire\Request\OrderInDelivering;
 use App\Http\Livewire\Request\OrderNotReady;
 use App\Http\Livewire\Request\OrderSuccessfullyDelivered;
+use App\Http\Livewire\Request\Selleres;
 
 Route::group(['middleware' => 'admin:admin'], function () {
 
@@ -14,4 +17,7 @@ Route::group(['middleware' => 'admin:admin'], function () {
     Route::get('/OrderInderDeliver', OrderInDelivering::class)->name('OrderInderDelivering');
     Route::get('/OrderSuccessfullyDelivered', OrderSuccessfullyDelivered::class)->name('OrderSuccessfullyDelivery');
 
+    Route::get('/Clints', Clints::class)->name('Clints');
+    Route::get('/Deliveres', Deliveres::class)->name('Deliveres');
+    Route::get('/Selleres', Selleres::class)->name('Sellers');
 });

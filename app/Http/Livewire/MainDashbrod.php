@@ -53,4 +53,22 @@ class MainDashbrod extends Component
         return redirect()->route('OrderSuccessfullyDelivery');
     }
 
+    public function Clints()
+    {
+        return redirect()->route('Clints');
+
+    }
+
+    public function Sellers()
+    {
+        return redirect()->route('Sellers');
+
+    }
+
+    public function Deliveres()
+    {
+        return redirect()->route('Deliveres');
+
+    }
+
 }
