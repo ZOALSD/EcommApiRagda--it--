@@ -102,7 +102,7 @@ class CardControllerApi extends Controller
 
     public function cardconfirm(Request $req)
     {
-        $value = Auth::id() . time();
+        $value = Auth::id() . time() . "ZOOLS3D";
         $QRCode = Hash::make($value);
         $id = CardData::where('clint_id', Auth::id())->where('clint_stutus', null)->value('id');
 
@@ -111,6 +111,7 @@ class CardControllerApi extends Controller
         $card->village_id = $req->village_id;
         $card->near_flg = $req->near_flg;
         $card->qr_code = $QRCode;
+        $card->clint_phone = $req->clint_phone;
         $card->clint_stutus = 1; //  تم تأكيد الطلب
         $card->save();
 
@@ -123,22 +124,31 @@ class CardControllerApi extends Controller
 
     public function EditProCard(Request $req, $id)
     {
+        $cardID = CardData::where('clint_id', Auth::id())->where('clint_stutus', null)->value('id');
 
-        CardProData::where('id', $id)->update([
+        $data = CardProData::where('card_data_id', $cardID)
+            ->where('produact_id', $id)->update([
             'quantity' => $req->quantity,
         ]);
 
         return response()->json([
             'stutus' => 'true',
+            'Data' => $data,
             'message' => 'Order Updated',
         ], 200);
     }
 
     public function DeleteProCard($id)
     {
-        CardProData::find($id)->delete();
+        $cardID = CardData::where('clint_id', Auth::id())->where('clint_stutus', null)->value('id');
+
+        $data = CardProData::where('card_data_id', $cardID)
+            ->where('produact_id', $id)
+            ->delete();
+
         return response()->json([
             'stutus' => 'true',
+            'Data' => $data,
             'message' => 'Order Delete',
         ], 200);
     }

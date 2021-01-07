@@ -21,6 +21,7 @@ class CreateCardDataTable extends Migration
             $table->string('near_flg')->nullable();
             $table->bigInteger('order_num')->nullable();
             $table->bigInteger('deliver_id')->nullable();
+            $table->bigInteger('clint_phone')->nullable();
             $table->string('qr_code')->nullable();
 
             $table->dateTime('time_respact', 0)->nullable();
