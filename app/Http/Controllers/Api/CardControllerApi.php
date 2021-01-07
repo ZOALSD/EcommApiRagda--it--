@@ -133,7 +133,6 @@ class CardControllerApi extends Controller
 
         return response()->json([
             'stutus' => 'true',
-            'Data' => $data,
             'message' => 'Order Updated',
         ], 200);
     }
@@ -148,17 +147,14 @@ class CardControllerApi extends Controller
 
         return response()->json([
             'stutus' => 'true',
-            'Data' => $data,
             'message' => 'Order Delete',
         ], 200);
     }
 
-    public function cardcancle(Request $req)
+    public function cardcancle()
     {
-        // $value = Auth::id() . time();
-        $car = CardProData::find($id);
-        $car->clint_stutus = 0;
-        $car->save();
+        CardData::where('clint_id', Auth::id())
+            ->update(['clint_stutus' => 0]);
 
         return response()->json([
             'stutus' => 'ture',
