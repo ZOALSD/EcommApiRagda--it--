@@ -75,15 +75,12 @@ class CardControllerApi extends Controller
             $Up->save();
 
             $card = CardProData::where('id', $Up->id)->with('produact')->first();
-
             $cardData = CardData::where('clint_id', $id)->where('clint_stutus', null)->first();
             $c = CardData::find($cardData->id);
             $c->order_num = $cardData->order_num - 1;
             $c->save();
         }
-
         $order_num = CardData::where('clint_id', $id)->where('clint_stutus', null)->value('order_num');
-
         return response()->json([
             'stutus' => 'true',
             'data' => $card,
@@ -94,9 +91,7 @@ class CardControllerApi extends Controller
     public function showCard()
     {
         $cardID = CardData::where('clint_id', Auth::id())->where('clint_stutus', null)->value('id');
-
         $car = CardProData::where('card_data_id', $cardID)->with('produact')->get();
-
         return response()->json($car, 200);
     }
 
@@ -122,7 +117,6 @@ class CardControllerApi extends Controller
             } else {
                 User::where('id', Auth::id())->update(['clint_order_num' => $clintOderNum + 1]);
             }
-
             return response()->json([
                 'stutus' => 'true',
                 'message' => 'Order Confirmed',
@@ -138,12 +132,9 @@ class CardControllerApi extends Controller
 
     public function EditProCard(Request $req, $id)
     {
-        // $cardID = CardData::where('clint_id', Auth::id())->where('clint_stutus', null)->value('id');
-
         $data = CardProData::find($id)->update([
             'quantity' => $req->quantity,
         ]);
-
         return response()->json([
             'stutus' => 'true',
             'message' => 'Order Updated',
@@ -152,13 +143,9 @@ class CardControllerApi extends Controller
 
     public function DeleteProCard($id)
     {
-
         $data = CardProData::where('id', $id)->count();
-
         if ($data !== 0) {
-
             $data = CardProData::find($id)->delete();
-
             return response()->json([
                 'stutus' => true,
                 'message' => 'Order Delete',
@@ -199,7 +186,8 @@ class CardControllerApi extends Controller
 
     public function ClintProData($id)
     {
-        return CardProData::where('card_data_id', $id)->with('produact')->first();
+        $data = CardProData::where('card_data_id', $id)->with('produact')->first();
+        return response()->json($data, 200);
     }
 
 }
