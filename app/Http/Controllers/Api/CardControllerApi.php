@@ -199,7 +199,7 @@ class CardControllerApi extends Controller
 
     public function ClintProData($id)
     {
-        return CardProData::where('card_data_id', $id)->first();
+        return CardProData::where('card_data_id', $id)->with('produact')->first();
     }
 
 }
