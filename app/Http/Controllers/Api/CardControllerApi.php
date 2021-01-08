@@ -186,7 +186,7 @@ class CardControllerApi extends Controller
 
     public function ClintProData($id)
     {
-        $data = CardProData::where('card_data_id', $id)->with('produact')->first();
+        $data = CardProData::where('card_data_id', $id)->with('produact')->get();
         return response()->json($data, 200);
     }
 
