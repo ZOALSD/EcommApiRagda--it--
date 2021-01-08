@@ -19,6 +19,7 @@ class CreateSellerOrdersTable extends Migration
             $table->bigInteger('seller_id');
             $table->string('qrcode');
             $table->bigInteger('stutus')->nullable();
+            /// 1=> Done Delivered
             $table->timestamps();
         });
     }

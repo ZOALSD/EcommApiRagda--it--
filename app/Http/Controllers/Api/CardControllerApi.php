@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Model\CardData;
 use App\Model\Produact;
 use App\Model\SellerOrder;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -62,8 +63,7 @@ class CardControllerApi extends Controller
                     'qrcode' => $qrcode,
                 ]);
             }
-
-            $card = CardProData::find($add->id)->with('produact')->first();
+            $card = CardProData::where('id', $add->id)->with('produact')->first();
 
         } else {
             $OldPro = CardProData::where('card_data_id', $cardDataID)
@@ -102,23 +102,37 @@ class CardControllerApi extends Controller
 
     public function cardconfirm(Request $req)
     {
-        $value = Auth::id() . time() . "ZOOLS3D";
-        $QRCode = Hash::make($value);
-        $id = CardData::where('clint_id', Auth::id())->where('clint_stutus', null)->value('id');
+        if (CardData::where('clint_id', Auth::id())->where('clint_stutus', null)->count() != 0) {
+            $value = Auth::id() . time() . "ZOOLS3D";
+            $QRCode = Hash::make($value);
+            $id = CardData::where('clint_id', Auth::id())->where('clint_stutus', null)->value('id');
 
-        $card = CardData::find($id);
-        $card->area_id = $req->area_id;
-        $card->village_id = $req->village_id;
-        $card->near_flg = $req->near_flg;
-        $card->qr_code = $QRCode;
-        $card->clint_phone = $req->clint_phone;
-        $card->clint_stutus = 1; //  تم تأكيد الطلب
-        $card->save();
+            $card = CardData::find($id);
+            $card->area_id = $req->area_id;
+            $card->village_id = $req->village_id;
+            $card->near_flg = $req->near_flg;
+            $card->qr_code = $QRCode;
+            $card->clint_phone = $req->clint_phone;
+            $card->clint_stutus = 1; //  تم تأكيد الطلب
+            $card->save();
 
-        return response()->json([
-            'stutus' => 'true',
-            'message' => 'Order Confirmed',
-        ], 200);
+            $clintOderNum = User::where('id', Auth::id())->value('clint_order_num');
+            if ($clintOderNum == null) {
+                User::where('id', Auth::id())->update(['clint_order_num' => 1]);
+            } else {
+                User::where('id', Auth::id())->update(['clint_order_num' => $clintOderNum + 1]);
+            }
+
+            return response()->json([
+                'stutus' => 'true',
+                'message' => 'Order Confirmed',
+            ], 200);
+        } else {
+            return response()->json([
+                'stutus' => false,
+                'message' => 'Your Don\'t Have Order To Comfirm -^-',
+            ], 200);
+        }
 
     }
 
@@ -126,8 +140,7 @@ class CardControllerApi extends Controller
     {
         $cardID = CardData::where('clint_id', Auth::id())->where('clint_stutus', null)->value('id');
 
-        $data = CardProData::where('card_data_id', $cardID)
-            ->where('produact_id', $id)->update([
+        $data = CardProData::find($id)->update([
             'quantity' => $req->quantity,
         ]);
 
@@ -139,16 +152,23 @@ class CardControllerApi extends Controller
 
     public function DeleteProCard($id)
     {
-        $cardID = CardData::where('clint_id', Auth::id())->where('clint_stutus', null)->value('id');
 
-        $data = CardProData::where('card_data_id', $cardID)
-            ->where('produact_id', $id)
-            ->delete();
+        $data = CardProData::where('id', $id)->count();
 
-        return response()->json([
-            'stutus' => 'true',
-            'message' => 'Order Delete',
-        ], 200);
+        if ($data !== 0) {
+
+            $data = CardProData::find($id)->delete();
+
+            return response()->json([
+                'stutus' => true,
+                'message' => 'Order Delete',
+            ], 200);
+        } else {
+            return response()->json([
+                'stutus' => false,
+                'message' => 'Order Not Found -^-',
+            ], 200);
+        }
     }
 
     public function cardcancle()

@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Model\CardData;
+use App\Model\SellerOrder;
 use App\User;
 use Livewire\Component;
 
@@ -16,6 +17,8 @@ class MainDashbrod extends Component
     public $ClintCount;
     public $DeliveryCount;
     public $SellerCount;
+    public $SellerMonyCount;
+    public $ClintMonyCount;
 
     public function render()
     {
@@ -27,6 +30,9 @@ class MainDashbrod extends Component
         $this->InderDeliverCount = CardData::where('deliver_stutus', 1)->count();
         $this->SuccessflluCount = CardData::where('order_stutus', 1)->count();
         $this->NotReadyCount = CardData::where('admin_stutus', 1)->where('admin_stutus', null)->count();
+
+        $this->SellerMonyCount = SellerOrder::count();
+        $this->ClintMonyCount = CardData::where('clint_stutus', 1)->count();
 
         return view('livewire.main-dashbrod')
             ->extends('admin.index')
@@ -68,6 +74,24 @@ class MainDashbrod extends Component
     public function Deliveres()
     {
         return redirect()->route('Deliveres');
+
+    }
+
+    public function deliverOrderNum()
+    {
+        return redirect()->route('deliverOrderNum');
+
+    }
+
+    public function clinteOrderNum()
+    {
+        return redirect()->route('clinteOrderNum');
+
+    }
+
+    public function sellerOrderNum()
+    {
+        return redirect()->route('sellerOrderNum');
 
     }
 

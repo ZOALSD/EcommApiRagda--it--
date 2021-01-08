@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Request;
 
 use App\CardProData;
 use App\Model\Area;
@@ -10,7 +10,7 @@ use App\User;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class DashbordOrder extends Component
+class NewOrderReq extends Component
 {
     use WithPagination;
 
@@ -73,6 +73,26 @@ class DashbordOrder extends Component
             }
         }
 
+        ///=================================================================
+
+        // $count = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->count();
+        // if ($count != 0) {
+        //     $id = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->first()->value('id');
+        //     $this->DeliverySelectedIdBtnActive = $id;
+        //     $this->title = " : طلب رقم " . $id;
+        //     $this->ReQNumber = $id;
+        //     $this->orderData = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->get();
+        //     $this->clintDataa = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->first();
+        //     $IdOFF = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->first();
+        //     $this->IdOFFirstReQORSelected = $IdOFF->id;
+        //     $this->cardRequest = CardProData::where('card_data_id', $id)->get();
+        // } else {
+        //     $this->title = "لا يـوجد طلبــات جــديدة";
+
+        // }
+
+///-----------------------------================================
+
         $this->NewOrder();
 
         $orderCount = 7; //QRCodeOrder::where('stusts',0)->count();
@@ -83,9 +103,8 @@ class DashbordOrder extends Component
         $ReqDelDetlises = $this->DeliveReqDet;
         $produactDeliver = $this->produactDel;
         $Areas = Area::get();
-        //return view('livewire.request.new-order-req');
 
-        return view('livewire.dashbord-order',
+        return view('livewire.request.new-order-req',
             compact
             (
                 'orderCount', 'Orders',
@@ -102,48 +121,36 @@ class DashbordOrder extends Component
         $this->order = true;
     }
 
-    public function NewOrder()
-    {
-        //  $this->order = !$this->order;
-        $count = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->count();
-        if ($count != 0) {
-            $id = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->first()->value('id');
-            $this->DeliverySelectedIdBtnActive = $id;
-            $this->title = " : طلب رقم " . $id;
-            $this->ReQNumber = $id;
-            $this->orderData = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->get();
-            $this->clintDataa = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->first();
-            $IdOFF = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->first();
-            $this->IdOFFirstReQORSelected = $IdOFF->id;
-            $this->cardRequest = CardProData::where('card_data_id', $id)->get();
-        } else {
-            $this->title = "لا يـوجد طلبــات جــديدة";
+    // public function NewOrder()
+    // {
+    //     //  $this->order = !$this->order;
+    //     // $count = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->count();
+    //     // if ($count != 0) {
+    //     //     $id = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->first()->value('id');
+    //     //     $this->DeliverySelectedIdBtnActive = $id;
+    //     //     $this->title = " : طلب رقم " . $id;
+    //     //     $this->ReQNumber = $id;
+    //     //     $this->orderData = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->get();
+    //     //     $this->clintDataa = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->first();
+    //     //     $IdOFF = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->first();
+    //     //     $this->IdOFFirstReQORSelected = $IdOFF->id;
+    //     //     $this->cardRequest = CardProData::where('card_data_id', $id)->get();
+    //     // } else {
+    //     //     $this->title = "لا يـوجد طلبــات جــديدة";
 
-        }
+    //     // }
 
-    }
+    // }
 
     public function ShowRequestDetils($id)
     {
-        // $this->DeliverySelectedIdBtnActive = $id;
+        $this->DeliverySelectedIdBtnActive = $id;
         // $this->title = " : طلب رقم " . $id;
         // $this->ReQNumber = $id;
         // // $this->orderData = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->get();
         // $this->clintDataa = CardData::where('id', $id)->where('clint_stutus', 1)->where('admin_stutus', null)->first();
         // $this->IdOFFirstReQORSelected = $id;
         // $this->cardRequest = CardProData::where('card_data_id', $id)->get();
-
-    }
-
-    public function showRequestDetilesForAmin($id)
-    {
-        $this->DeliverySelectedIdBtnActive = $id;
-        $this->title = " : طلب رقم " . $id;
-        $this->ReQNumber = $id;
-        // $this->orderData = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->get();
-        $this->clintDataa = CardData::where('id', $id)->where('clint_stutus', 1)->where('admin_stutus', null)->first();
-        $this->IdOFFirstReQORSelected = $id;
-        $this->cardRequest = CardProData::where('card_data_id', $id)->get();
 
     }
 

@@ -28,6 +28,9 @@ class CreateUsersTable extends Migration
             $table->string('photo')->nullable();
             $table->string('stuts')->default(1); // OF Account  zero Blocked
             $table->string('stuts_delivery')->nullable(); // OF Delivery null or 1 => busy
+            $table->bigInteger('clint_order_num')->nullable();
+            $table->bigInteger('deliver_order_num')->nullable();
+            $table->bigInteger('seller_order_num')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
