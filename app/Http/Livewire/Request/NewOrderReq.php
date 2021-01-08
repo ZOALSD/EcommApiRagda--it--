@@ -75,25 +75,25 @@ class NewOrderReq extends Component
 
         ///=================================================================
 
-        // $count = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->count();
-        // if ($count != 0) {
-        //     $id = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->first()->value('id');
-        //     $this->DeliverySelectedIdBtnActive = $id;
-        //     $this->title = " : طلب رقم " . $id;
-        //     $this->ReQNumber = $id;
-        //     $this->orderData = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->get();
-        //     $this->clintDataa = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->first();
-        //     $IdOFF = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->first();
-        //     $this->IdOFFirstReQORSelected = $IdOFF->id;
-        //     $this->cardRequest = CardProData::where('card_data_id', $id)->get();
-        // } else {
-        //     $this->title = "لا يـوجد طلبــات جــديدة";
+        $count = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->count();
+        if ($count != 0) {
+            $id = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->first()->value('id');
+            $this->DeliverySelectedIdBtnActive = $id;
+            $this->title = " : طلب رقم " . $id;
+            $this->ReQNumber = $id;
+            $this->orderData = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->get();
+            $this->clintDataa = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->first();
+            $IdOFF = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->first();
+            $this->IdOFFirstReQORSelected = $IdOFF->id;
+            $this->cardRequest = CardProData::where('card_data_id', $id)->get();
+        } else {
+            $this->title = "لا يـوجد طلبــات جــديدة";
 
-        // }
+        }
 
 ///-----------------------------================================
 
-        $this->NewOrder();
+        // $this->NewOrder();
 
         $orderCount = 7; //QRCodeOrder::where('stusts',0)->count();
         $Orders = $this->orderData; //= Card::where('stusts', 2)->get();
@@ -123,22 +123,22 @@ class NewOrderReq extends Component
 
     // public function NewOrder()
     // {
-    //     //  $this->order = !$this->order;
-    //     // $count = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->count();
-    //     // if ($count != 0) {
-    //     //     $id = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->first()->value('id');
-    //     //     $this->DeliverySelectedIdBtnActive = $id;
-    //     //     $this->title = " : طلب رقم " . $id;
-    //     //     $this->ReQNumber = $id;
-    //     //     $this->orderData = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->get();
-    //     //     $this->clintDataa = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->first();
-    //     //     $IdOFF = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->first();
-    //     //     $this->IdOFFirstReQORSelected = $IdOFF->id;
-    //     //     $this->cardRequest = CardProData::where('card_data_id', $id)->get();
-    //     // } else {
-    //     //     $this->title = "لا يـوجد طلبــات جــديدة";
+    //     $this->order = !$this->order;
+    //     $count = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->count();
+    //     if ($count != 0) {
+    //         $id = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->first()->value('id');
+    //         $this->DeliverySelectedIdBtnActive = $id;
+    //         $this->title = " : طلب رقم " . $id;
+    //         $this->ReQNumber = $id;
+    //         $this->orderData = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->get();
+    //         $this->clintDataa = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->first();
+    //         $IdOFF = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->first();
+    //         $this->IdOFFirstReQORSelected = $IdOFF->id;
+    //         $this->cardRequest = CardProData::where('card_data_id', $id)->get();
+    //     } else {
+    //         $this->title = "لا يـوجد طلبــات جــديدة";
 
-    //     // }
+    //     }
 
     // }
 

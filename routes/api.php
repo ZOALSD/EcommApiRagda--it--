@@ -64,12 +64,13 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('cardconfirm', 'Api\CardControllerApi@cardconfirm'); //
     Route::get('cardcancle', 'Api\CardControllerApi@cardcancle'); //
     Route::get('showCard', 'Api\CardControllerApi@showCard');
-    Route::get('DeleteProCard/{id}', 'Api\CardControllerApi@DeleteProCard'); ////
-    Route::put('EditProCard/{id}', 'Api\CardControllerApi@EditProCard'); ////
+    Route::get('DeleteProCard/{id}', 'Api\CardControllerApi@DeleteProCard');
+    Route::put('EditProCard/{id}', 'Api\CardControllerApi@EditProCard');
 
-    Route::get('ClintProTitelDone', 'Api\CardControllerApi@ClintProTitelDone'); ////
-    Route::get('ClintProTitelCanceled', 'Api\CardControllerApi@ClintProTitelCanceled'); ////
-    Route::get('ClintProData/{id}', 'Api\CardControllerApi@ClintProData/{id}'); ////
+    Route::get('ClintProTitelDone', 'Api\CardControllerApi@ClintProTitelDone');
+    Route::get('ClintProTitelCanceled', 'Api\CardControllerApi@ClintProTitelCanceled');
+
+    Route::get('ClintProData/{id}', 'Api\CardControllerApi@ClintProData');
 
     /*ClintProTitelDone
 ClintProTitelCanceled

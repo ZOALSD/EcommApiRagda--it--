@@ -138,7 +138,7 @@ class CardControllerApi extends Controller
 
     public function EditProCard(Request $req, $id)
     {
-        $cardID = CardData::where('clint_id', Auth::id())->where('clint_stutus', null)->value('id');
+        // $cardID = CardData::where('clint_id', Auth::id())->where('clint_stutus', null)->value('id');
 
         $data = CardProData::find($id)->update([
             'quantity' => $req->quantity,

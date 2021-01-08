@@ -83,8 +83,6 @@ class DashbordOrder extends Component
         $ReqDelDetlises = $this->DeliveReqDet;
         $produactDeliver = $this->produactDel;
         $Areas = Area::get();
-        //return view('livewire.request.new-order-req');
-
         return view('livewire.dashbord-order',
             compact
             (
@@ -95,6 +93,11 @@ class DashbordOrder extends Component
             ))
             ->extends('admin.index')
             ->section('content');
+    }
+
+    public function SearchDlivery()
+    {
+
     }
 
     public function OrdarClose()
@@ -122,20 +125,7 @@ class DashbordOrder extends Component
         }
 
     }
-
     public function ShowRequestDetils($id)
-    {
-        // $this->DeliverySelectedIdBtnActive = $id;
-        // $this->title = " : طلب رقم " . $id;
-        // $this->ReQNumber = $id;
-        // // $this->orderData = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->get();
-        // $this->clintDataa = CardData::where('id', $id)->where('clint_stutus', 1)->where('admin_stutus', null)->first();
-        // $this->IdOFFirstReQORSelected = $id;
-        // $this->cardRequest = CardProData::where('card_data_id', $id)->get();
-
-    }
-
-    public function showRequestDetilesForAmin($id)
     {
         $this->DeliverySelectedIdBtnActive = $id;
         $this->title = " : طلب رقم " . $id;
@@ -152,12 +142,8 @@ class DashbordOrder extends Component
         $DeliverySelectedChangeBtn = null;
         $CheckDeliver = CardData::where('id', $id)->value('deliver_id');
         if ($CheckDeliver != null) {
-
             if ($this->TiemRespact != null) {
                 CardData::where('id', $id)->update(['admin_stutus' => 1, 'time_respact' => $this->TiemRespact]);
-
-                $deliverOderNum = User::find($CheckDeliver)->value('deliver_order_num');
-                User::find($CheckDeliver)->update(['deliver_order_num', $deliverOderNum + 1]);
 
                 $count = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->count();
                 if ($count != 0) {
@@ -220,5 +206,8 @@ class DashbordOrder extends Component
         $this->produactDel = CardProData::where('card_data_id', $id)->get();
         $this->ShowDetliesDeliReqVar = $id;
     }
+    public function OrderDetlis($id)
+    {
 
+    }
 }
