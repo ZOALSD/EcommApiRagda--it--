@@ -13,7 +13,8 @@ class Selleres extends Component
     {
         $clintsData = User::where('type', 2)->get();
         return view('livewire.request.selleres'
-            , compact('clintsData'))
+            , compact('clintsData', )) //
+
             ->layout('admin.live')
             ->slot('body');
 

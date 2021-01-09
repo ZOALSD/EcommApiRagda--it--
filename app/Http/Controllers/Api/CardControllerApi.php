@@ -176,12 +176,14 @@ class CardControllerApi extends Controller
     {
         $id = Auth::id();
         return CardData::where('clint_id', $id)->where('clint_stutus', 1)->get();
+
     }
 
     public function ClintProTitelCanceled()
     {
         $id = Auth::id();
         return CardData::where('clint_id', $id)->where('clint_stutus', 0)->get();
+
     }
 
     public function ClintProData($id)

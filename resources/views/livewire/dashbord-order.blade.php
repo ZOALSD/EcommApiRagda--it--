@@ -151,60 +151,46 @@
 
                                 </div>
                                 {{--==-**--------*===///////////=*===**----------==--}}
-                                <div class="col-md-3 ">
-                                    قائمة الطلبات
-                                    <hr>
+                                @if ($FoundOrder)
 
-                                    <table class="table">
-                                        <thead class="thead-dark">
-                                            <tr class="">
-                                                <th>اسم العميل</th>
-                                                <th>المحلية</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @if ($ShowImageOrder)
+                                    <div class="col-md-3">
+                                        قائمة الطلبات
+                                        <hr>
+
+
+                                        <table class="table">
+                                            <thead class="thead-dark">
+                                                <tr class="">
+                                                    <th>اسم العميل</th>
+                                                    <th>المحلية {{ $DeliverySelectedIdBtnActiveSelected }}</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
                                                 @foreach ($Orders as $i)
                                                     <a>
                                                         @if ($DeliverySelectedIdBtnActive == $i->id)
-                                                            <tr wire:click='showRequestDetilesForAmin({{ $i->id }})'
+                                                            <tr wire:click='ShowRequestDetils({{ $i->id }})'
                                                                 class="req-hover ActiveDelivery pointer">
                                                             @else
-                                                            <tr wire:click='showRequestDetilesForAmin({{ $i->id }})'
+                                                            <tr wire:click='ShowRequestDetils({{ $i->id }})'
                                                                 class="req-hover pointer">
                                                         @endif
                                                         <td>{{ $i->clint->name }}</td>
-                                                        <td>{{ $i->area->area_name }}</td>
+                                                        <td>{{ $i->area->area_name }}
+                                                        </td>
                                                         </tr>
-
                                                     </a>
                                                 @endforeach
-                                            @else
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                @else
+                                    <div class="col-md-3">
+                                        قائمة الطلبات فارغـة
+                                        <hr>
+                                    </div>
+                                @endif
 
-                                                @if ($title != 'لا يـوجد طلبــات جــديدة')
-
-                                                    @foreach ($Orders as $i)
-                                                        <a>
-                                                            @if ($DeliverySelectedIdBtnActive == $i->id)
-                                                                <tr wire:click='ShowRequestDetils({{ $i->id }})'
-                                                                    class="req-hover ActiveDelivery pointer">
-                                                                @else
-                                                                <tr wire:click='ShowRequestDetils({{ $i->id }})'
-                                                                    class="req-hover pointer">
-                                                            @endif
-                                                            <td>{{ $i->clint->name }}</td>
-                                                            <td>{{ $i->area->area_name }}</td>
-                                                            </tr>
-
-                                                        </a>
-                                                    @endforeach
-                                                @endif
-                                            @endif
-
-
-                                        </tbody>
-                                    </table>
-                                </div>
                             </div>
                         </div>
                     </div>

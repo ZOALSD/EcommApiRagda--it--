@@ -35,8 +35,10 @@ class DashbordOrder extends Component
     public $DeliverySelectedChangeBtn = 0;
     public $IdOFFirstReQORSelected;
     public $DeliverySelectedIdBtnActive;
+    public $DeliverySelectedIdBtnActiveSelected;
     public $ShowImageOrder = false;
     public $TiemRespact = null;
+    public $FoundOrder = true;
 
     public function render()
     {
@@ -110,16 +112,32 @@ class DashbordOrder extends Component
         //  $this->order = !$this->order;
         $count = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->count();
         if ($count != 0) {
-            $id = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->first()->value('id');
-            $this->DeliverySelectedIdBtnActive = $id;
-            $this->title = " : طلب رقم " . $id;
-            $this->ReQNumber = $id;
-            $this->orderData = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->get();
-            $this->clintDataa = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->first();
-            $IdOFF = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->first();
-            $this->IdOFFirstReQORSelected = $IdOFF->id;
-            $this->cardRequest = CardProData::where('card_data_id', $id)->get();
+            if ($this->DeliverySelectedIdBtnActiveSelected == null) {
+
+                $data = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->first();
+
+                $this->DeliverySelectedIdBtnActive = $data->id;
+                $this->title = " : طلب رقم " . $data->id;
+                $this->ReQNumber = $data->id;
+                $this->orderData = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->get();
+                $this->clintDataa = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->first();
+                $IdOFF = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->first();
+                $this->IdOFFirstReQORSelected = $IdOFF->id;
+                $this->cardRequest = CardProData::where('card_data_id', $data->id)->get();
+            } else {
+                $this->DeliverySelectedIdBtnActive = $this->DeliverySelectedIdBtnActiveSelected;
+                $id = $this->DeliverySelectedIdBtnActiveSelected;
+                $this->title = " : طلب رقم " . $id;
+                $this->ReQNumber = $id;
+                $this->orderData = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->get();
+                $this->clintDataa = CardData::where('id', $id)->first();
+                $this->IdOFFirstReQORSelected = $id;
+                $this->cardRequest = CardProData::where('card_data_id', $id)->get();
+                $this->IdOFFirstReQORSelected = $id;
+            }
+
         } else {
+            $this->FoundOrder = false;
             $this->title = "لا يـوجد طلبــات جــديدة";
 
         }
@@ -127,13 +145,9 @@ class DashbordOrder extends Component
     }
     public function ShowRequestDetils($id)
     {
-        $this->DeliverySelectedIdBtnActive = $id;
+        $this->DeliverySelectedIdBtnActiveSelected = $id;
         $this->title = " : طلب رقم " . $id;
-        $this->ReQNumber = $id;
-        // $this->orderData = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->get();
-        $this->clintDataa = CardData::where('id', $id)->where('clint_stutus', 1)->where('admin_stutus', null)->first();
-        $this->IdOFFirstReQORSelected = $id;
-        $this->cardRequest = CardProData::where('card_data_id', $id)->get();
+        // $this->ReQNumber = $id;
 
     }
 

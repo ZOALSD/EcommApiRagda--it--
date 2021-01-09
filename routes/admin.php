@@ -44,7 +44,10 @@ Route::group(['middleware' => 'Lang'], function () {
     Route::group(['middleware' => 'admin:admin'], function () {
 
         //////// Admin Routes /* Start */ //////////////
-        // Route::get('/', 'Admin\Dashboard@home');
+        Route::get('test', 'Admin\Dashboard@home');
+        Route::get('newOrderGet', function () {
+            return view('admin.new-order');
+        });
         Route::any('logout', 'Admin\AdminAuthenticated@logout');
 
         Route::get('account', 'Admin\AdminAuthenticated@account');

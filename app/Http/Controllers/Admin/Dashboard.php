@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Admin;
 use App\Http\Controllers\Controller;
+use App\Model\CardData;
 
 class Dashboard extends Controller
 {
@@ -16,7 +17,8 @@ class Dashboard extends Controller
         //$v= $user->hasPermissionTo('publish', 'admin');
         //Toastr::info('تم حذف المشرف بنجاح','',["positionClass" => "toast-bottom-left"]);
         //return Admin::with('permissions')->get();
-
+        $data = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->first();
+        return $data->id;
         return view('admin.home');
 
     }

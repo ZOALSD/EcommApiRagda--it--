@@ -15,8 +15,7 @@ use App\Http\Livewire\Request\Selleres;
 Route::group(['middleware' => 'admin:admin'], function () {
 
     Route::get('/', MainDashbrod::class)->name('MainDashBord');
-    Route::get('/Order', DashbordOrder::class)->name('Order'); //NewOrderReq
-    // Route::get('/Order', NewOrderReq::class)->name('Order'); //NewOrderReq
+    Route::get('/Order', DashbordOrder::class)->name('Order'); //
     Route::get('/OrderNotR', OrderNotReady::class)->name('OrderNotReadyy');
     Route::get('/OrderInderDeliver', OrderInDelivering::class)->name('OrderInderDelivering');
     Route::get('/OrderSuccessfullyDelivered', OrderSuccessfullyDelivered::class)->name('OrderSuccessfullyDelivery');
@@ -28,4 +27,5 @@ Route::group(['middleware' => 'admin:admin'], function () {
     Route::get('/deliverOrdeNum', DeliverOrderNum::class)->name('deliverOrdeNum');
     Route::get('/clintOrdeNum', ClintOrderNum::class)->name('clinteOrderNum');
     Route::get('/sellerOrdeNum', SellerOrderNum::class)->name('sellerOrdeNum');
+
 });
