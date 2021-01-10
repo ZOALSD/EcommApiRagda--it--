@@ -89,6 +89,12 @@ class CardControllerApi extends Controller
         ], 200, );
     }
 
+    public function OrderNum()
+    {
+        $data = CardData::where('clint_id', Auth::id())->where('clint_stutus', null)->value('order_num');
+        return response()->json(['stuts' => true, 'OrderNum' => $data], 200);
+    }
+
     public function showCard()
     {
         $cardID = CardData::where('clint_id', Auth::id())->where('clint_stutus', null)->value('id');

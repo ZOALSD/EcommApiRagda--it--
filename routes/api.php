@@ -77,4 +77,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
     Route::get('SellerOrderDetils', 'Api\SellerReqApi@SellerOrderDetils');
 
+    Route::get('OrderNum', 'Api\CardControllerApi@OrderNum');
+
+    //
+
 });
