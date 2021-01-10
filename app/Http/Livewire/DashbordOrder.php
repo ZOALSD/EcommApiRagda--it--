@@ -168,7 +168,8 @@ class DashbordOrder extends Component
                     $this->title = "لا يـوجد طلبــات جــديدة";
                 }
                 $this->orderData = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->get();
-                session()->flash('success', 'تم ارسال الطلب بنجاح');
+
+                return redirect()->route('Order')->with(session()->flash('success', 'تم ارسال الطلب بنجاح'));
             } else {
                 session()->flash('danger', 'الرجاء تحديـد الزمن المتوقع للتوصيل اولاً');
 

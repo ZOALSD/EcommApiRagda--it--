@@ -112,6 +112,7 @@ class CardControllerApi extends Controller
             $card->save();
 
             $clintOderNum = User::where('id', Auth::id())->value('clint_order_num');
+            SellerOrder::where(['card_cata_id' => $cardDataID, 'seller_id' => $seller_id])->update(['stutus_clint' => 1]);
             if ($clintOderNum == null) {
                 User::where('id', Auth::id())->update(['clint_order_num' => 1]);
             } else {

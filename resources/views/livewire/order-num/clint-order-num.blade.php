@@ -21,28 +21,132 @@
                     <div id="dashboard_amchart_1" class="CSSAnimationChart">
                         <div class="row">
                             <table class="table">
-                                <tr class="title">
-                                    <th>اسم العميل</th>
-                                    <th>رقم الهاتف</th>
-                                    {{-- <th>موقع الطلب</th>
-                                    --}}
-                                    <th>عدد الطلبات</th>
-                                </tr>
+                                @if ($ListClintOrder)
 
-                                @foreach ($data as $i)
-                                    <tr class="inner">
-                                        <td>{{ $i->name }}</td>
-                                        <td>{{ $i->phone }}</td>
-                                        {{-- <td>
-                                            {{ $i->area->area_name ?? '' }}
-                                            {{ '' . ',' . '' }}
-                                            {{ $i->village->village_name ?? '' }}
-
-                                        </td> --}}
-                                        <td>{{ $i->clint_order_num }}</td>
+                                    <tr class="title">
+                                        <th>اسم العميل</th>
+                                        <th>رقم الهاتف</th>
+                                        {{-- <th>موقع الطلب</th>
+                                        --}}
+                                        <th>عدد الطلبات</th>
                                     </tr>
-                                @endforeach
+
+                                    @foreach ($data as $i)
+                                        <tr wire:click='ClintOrder({{ $i->id }})' class="inner">
+                                            <td>{{ $i->name }}</td>
+                                            <td>{{ $i->phone }}</td>
+                                            {{-- <td>
+                                                {{ $i->area->area_name ?? '' }}
+                                                {{ '' . ',' . '' }}
+                                                {{ $i->village->village_name ?? '' }}
+
+                                            </td> --}}
+                                            <td>{{ $i->clint_order_num }}</td>
+                                        </tr>
+                                    @endforeach
+                                @else
+                                    @if ($HasManyOrder)
+                                        <tr>
+                                            <th>وقت الطلب</th>
+                                            <th>عدد الطلبات</th>
+                                            <th>قيمة الطلبات</th>
+                                            <th>حالة الطلب</th>
+                                        </tr>
+                                        @foreach ($CardList as $i)
+                                            @php
+                                            $coun =\App\CardProData::where('card_data_id', $i->id)->count();
+                                            $price =\App\CardProData::where('card_data_id', $i->id)->sum('price');
+                                            @endphp
+                                            <tr>
+                                                <td>{{ $i->created_at }}</td>
+                                                <td>{{ $coun }}</td>
+                                                <td>{{ $price }}</td>
+                                            </tr>
+                                        @endforeach
+                                    @else
+
+
+                                        <thead class="thead-dark">
+                                        <tbody>
+
+                                            <tr class="title">
+                                                <th> اسم العميل </th>
+                                                <td colspan="2">:&nbsp;{{ $CardDataDetils->clint->name ?? '' }}</td>
+                                                <th> رقم الهاتف </th>
+                                                <td>:&nbsp; {{ $CardDataDetils->clint_phone }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th> المنطقة </th>
+                                                <td colspan="2">
+                                                    :&nbsp;{{ $CardDataDetils->village->village_name . ',' . $CardDataDetils->area->area_name }}
+                                                </td>
+                                                <th> اقرب معلم </th>
+                                                <td>:&nbsp;{{ $CardDataDetils->near_flg ?? '' }}</td>
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <th>الطلبات</th>
+                                                <th>الكمية</th>
+                                                <th>السعر</th>
+                                                <th>التاجر</th>
+                                                <th> المجموع</th>
+                                            </tr>
+
+                                            @foreach ($CardDataDetilsProduact as $i)
+
+                                                <tr>
+                                                    <td>{{ $i->produact->cate_name }}</td>
+                                                    <td>{{ $i->quantity }}</td>
+                                                    <td>{{ $i->price }}</td>
+                                                    <td>{{ $i->seller->name }}</td>
+                                                    <td>{{ $i->total }}</td>
+                                                </tr>
+                                            @endforeach
+                                            <tr>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
+                                            <tr>
+
+                                                <th colspan="">مندوب التوصيل</th>
+                                                <td colspan="">
+                                                    @if ($CardDataDetils->deliver_id == null)
+                                                        لم يتم التحديد
+                                                    @else
+                                                        {{ $CardDataDetils->deliver->name . ' ' . '|' . ' ' . 'المحلية' . ' : ' . $CardDataDetils->deliver->area->area_name }}
+                                                    @endif
+                                                    </button>
+                                                </td>
+                                                <th></th>
+                                                <th>رقم المندوب</th>
+                                                <td>{{ $CardDataDetils->deliver->phone ?? '' }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>زمن الطلب</th>
+                                                <td>{{ $CardDataDetils->created_at }}</td>
+                                                <th></th>
+                                                <th>رقم الطلب</th>
+                                                <td>{{ $CardDataDetils->id }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th> الزمن المتوقع للتوصيل :</th>
+
+                                                <td>
+                                                    {{ $CardDataDetils->time_respact }}
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
                             </table>
+                            @endif
+
+                            @endif
 
                         </div>
                     </div>
@@ -55,9 +159,8 @@
 
 <style>
     tr.title {
-        background-color: #fdd835;
-        color: #678298;
-        font-weight: bold;
+        background-color: #fdd835 !important;
+        color: #337ab7 !important;
     }
 
     th.title-data {
