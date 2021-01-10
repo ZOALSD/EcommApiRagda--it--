@@ -58,6 +58,7 @@ class CardControllerApi extends Controller
             if ($sellerOrder == 0) {
                 $qrcode = Hash::make($cardDataID . time() . 'ZOOLS3D' . Auth::id());
                 SellerOrder::create([
+                    'clint_id' => Auth::id(),
                     'card_cata_id' => $cardDataID,
                     'seller_id' => $seller_id,
                     'qrcode' => $qrcode,
@@ -108,11 +109,17 @@ class CardControllerApi extends Controller
             $card->near_flg = $req->near_flg;
             $card->qr_code = $QRCode;
             $card->clint_phone = $req->clint_phone;
-            $card->clint_stutus = 1; //  تم تأكيد الطلب
+            $card->clint_stutus = 1; //   تم تأكيد الطلب
             $card->save();
 
             $clintOderNum = User::where('id', Auth::id())->value('clint_order_num');
-            SellerOrder::where(['card_cata_id' => $cardDataID, 'seller_id' => $seller_id])->update(['stutus_clint' => 1]);
+
+            SellerOrder::where([
+                'card_cata_id' => $id,
+                'clint_id' => Auth::id(),
+                'stutus_clint' => null])
+                ->update(['stutus_clint' => 1]);
+
             if ($clintOderNum == null) {
                 User::where('id', Auth::id())->update(['clint_order_num' => 1]);
             } else {

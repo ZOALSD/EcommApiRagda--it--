@@ -10,6 +10,7 @@ class SellerOrder extends Model
 
     protected $fillable = [
         'card_cata_id',
+        'clint_id',
         'seller_id',
         'qrcode',
         'stutus',

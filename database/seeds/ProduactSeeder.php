@@ -17,7 +17,7 @@ class ProduactSeeder extends Seeder
 
             Produact::create([
 
-                'user_id' => 1,
+                'user_id' => 7,
                 'color_name' => $i,
                 'cate_name' => 'name pro' . $i,
                 'price' => $i . '000',
@@ -35,7 +35,7 @@ class ProduactSeeder extends Seeder
                 for ($y = 1; $y <= 3; $y++) {
                     Produact::create([
 
-                        'user_id' => $y,
+                        'user_id' => $y + 7,
                         'color_name' => $y,
                         'cate_name' => 'ملابس رجالي مقاس صغير' . $y,
                         'price' => $y . '000',
@@ -52,7 +52,7 @@ class ProduactSeeder extends Seeder
                 for ($y = 1; $y <= 3; $y++) {
                     Produact::create([
 
-                        'user_id' => $y,
+                        'user_id' => $y + 7,
                         'color_name' => $y,
                         'cate_name' => 'ملابس نسائي رقم' . $y,
                         'price' => $y . '000',
@@ -69,7 +69,7 @@ class ProduactSeeder extends Seeder
                 for ($y = 1; $y <= 3; $y++) {
                     Produact::create([
 
-                        'user_id' => $y,
+                        'user_id' => $y + 7,
                         'color_name' => $y,
                         'cate_name' => 'ملابس اطفالي رقم' . $y,
                         'price' => $y . '000',
@@ -86,7 +86,7 @@ class ProduactSeeder extends Seeder
                 for ($y = 1; $y <= 3; $y++) {
                     Produact::create([
 
-                        'user_id' => $y,
+                        'user_id' => $y + 7,
                         'color_name' => $y,
                         'cate_name' => 'اكسنت تويوتا رقم' . $y,
                         'price' => $y . '000',
@@ -103,7 +103,7 @@ class ProduactSeeder extends Seeder
                 for ($y = 1; $y <= 3; $y++) {
                     Produact::create([
 
-                        'user_id' => $y,
+                        'user_id' => $y + 7,
                         'color_name' => $y,
                         'cate_name' => 'تويوتا برادو  رقم' . $y,
                         'price' => $y . '000',
@@ -120,7 +120,7 @@ class ProduactSeeder extends Seeder
                 for ($y = 1; $y <= 3; $y++) {
                     Produact::create([
 
-                        'user_id' => $y,
+                        'user_id' => $y + 7,
                         'color_name' => $y,
                         'cate_name' => ' تويوتا بوكسي  رقم' . $y,
                         'price' => $y . '000',
@@ -137,7 +137,7 @@ class ProduactSeeder extends Seeder
                 for ($y = 1; $y <= 3; $y++) {
                     Produact::create([
 
-                        'user_id' => $y,
+                        'user_id' => $y + 7,
                         'color_name' => $y,
                         'cate_name' => ' هونداي اكسنت رقم' . $y,
                         'price' => $y . '000',
@@ -154,7 +154,7 @@ class ProduactSeeder extends Seeder
                 for ($y = 1; $y <= 3; $y++) {
                     Produact::create([
 
-                        'user_id' => $y,
+                        'user_id' => $y + 7,
                         'color_name' => $y,
                         'cate_name' => 'هونداي برادو رقم' . $y,
                         'price' => $y . '000',
@@ -171,7 +171,7 @@ class ProduactSeeder extends Seeder
                 for ($y = 1; $y <= 3; $y++) {
                     Produact::create([
 
-                        'user_id' => $y,
+                        'user_id' => $y + 7,
                         'color_name' => $y,
                         'cate_name' => ' هونداي بوكسي رقم' . $y,
                         'price' => $y . '000',
@@ -188,7 +188,7 @@ class ProduactSeeder extends Seeder
                 for ($y = 1; $y <= 3; $y++) {
                     Produact::create([
 
-                        'user_id' => $y,
+                        'user_id' => $y + 7,
                         'color_name' => $y,
                         'cate_name' => 'ملابس رجالي مقاس متوسط' . $y,
                         'price' => $y . '000',
@@ -205,7 +205,7 @@ class ProduactSeeder extends Seeder
                 for ($y = 1; $y <= 3; $y++) {
                     Produact::create([
 
-                        'user_id' => $y,
+                        'user_id' => $y + 7,
                         'color_name' => $y,
                         'cate_name' => 'ملابس رجالي مقاس كبير' . $y,
                         'price' => $y . '000',
