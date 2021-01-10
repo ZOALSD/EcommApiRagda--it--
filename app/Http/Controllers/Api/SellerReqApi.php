@@ -13,13 +13,15 @@ class SellerReqApi extends Controller
     public function SellerOrder()
     {
         $data = SellerOrder::where(['seller_id' => Auth::id(), 'stutus_clint' => 1])->with('deliver')->get();
+
         return response()->json(['stuts' => true, 'Data' => $data], 200);
     }
 
     public function SellerOrderDone()
     {
         $data = SellerOrder::where(['seller_id' => Auth::id(), 'stutus_seller' => 1])->with('deliver')->get();
-        return response()->json(['stuts' => true, 'Data' => $data], 200);
+        return response()->json(['stuts' => true, 'Data' => $data,
+        ], 200);
     }
 
     public function SellerOrderDetils($id)
