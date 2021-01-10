@@ -1,13 +1,22 @@
 <div>
+
+    @if (session()->has('successuflly'))
+        <div wire:poll.5000ms class="alert alert-success" role="alert">
+            <p>
+                {{ session('successuflly') }}
+            </p>
+        </div>
+    @endif
+
+
     @if (session()->has('success'))
         <div wire:poll.5000ms class="alert alert-success" role="alert">
             <p>
                 {{ session('success') }}
             </p>
         </div>
-
-
     @endif
+
 
     @if (session()->has('danger'))
         <div wire:poll.10000ms class="alert alert-danger" role="alert">

@@ -6,6 +6,7 @@ use App\CardProData;
 use App\Model\Area;
 use App\Model\CardData;
 use App\Model\CardRequest;
+use App\Model\SellerOrder;
 use App\User;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -169,7 +170,15 @@ class DashbordOrder extends Component
                 }
                 $this->orderData = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->get();
 
-                return redirect()->route('Order')->with(session()->flash('success', 'تم ارسال الطلب بنجاح'));
+                SellerOrder::where([
+                    'card_cata_id' => $id,
+                    'stutus_clint' => 1,
+                    'stutus_admin' => null])
+                    ->update(['deliver_id' => $CheckDeliver, 'stutus_admin' => 1]);
+
+                session()->flash('successuflly', 'تم ارسال الطلب بنجاح');
+                return redirect()->to('/Order');
+
             } else {
                 session()->flash('danger', 'الرجاء تحديـد الزمن المتوقع للتوصيل اولاً');
 

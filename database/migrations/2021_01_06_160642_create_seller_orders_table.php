@@ -18,7 +18,11 @@ class CreateSellerOrdersTable extends Migration
             $table->bigInteger('card_cata_id');
             $table->bigInteger('seller_id');
             $table->bigInteger('clint_id');
+            $table->bigInteger('deliver_id')->nullable();
             $table->string('qrcode');
+            $table->bigInteger('stutus_admin')->nullable();
+            //null => not Confirm
+            //1 => Comfirmed
             $table->bigInteger('stutus_clint')->nullable();
             //null => not Confirm
             //1 => Comfirmed
