@@ -33,7 +33,7 @@ class CreateCardDataTable extends Migration
             $table->Integer('deliver_stutus')->nullable();
             //null => Not Accept Request
             // zero => Accepted Requested
-            // own => Inder Delivering
+            // own => Inder Delivered
             $table->Integer('admin_stutus')->nullable();
             //null => Not Accept Request
             // own => Accept Request

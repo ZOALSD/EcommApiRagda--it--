@@ -10,8 +10,13 @@
 
                     </div>
                     <div class="actions">
-
-                        <a class="btn btn-circle" href="{{ url('/') }}"><i class="">الرئيسية</i>
+                        @if ($CardID == null)
+                            <a class="btn btn-circle" href="{{ url('/') }}"><i class="">الرئيسية</i>
+                            @elseif($CardID == 'own')
+                                <button wire:click='backForAllOrder()' class="btn btn-circle">رجــوع</button>
+                            @else
+                                <button wire:click='ClintOrder({{ $CardID }})' class="btn btn-circle">رجــوع</button>
+                        @endif
                         </a>
 
                         <a class="btn btn-circle btn-icon-only btn-default fullscreen" href="#"> </a>
@@ -46,7 +51,7 @@
                                     @endforeach
                                 @else
                                     @if ($HasManyOrder)
-                                        <tr>
+                                        <tr class="title">
                                             <th>وقت الطلب</th>
                                             <th>عدد الطلبات</th>
                                             <th>قيمة الطلبات</th>
@@ -57,10 +62,16 @@
                                             $coun =\App\CardProData::where('card_data_id', $i->id)->count();
                                             $price =\App\CardProData::where('card_data_id', $i->id)->sum('price');
                                             @endphp
-                                            <tr>
+                                            <tr wire:click='ShowClintOrderDetiles({{ $i->id }})' class="inner">
                                                 <td>{{ $i->created_at }}</td>
                                                 <td>{{ $coun }}</td>
                                                 <td>{{ $price }}</td>
+                                                @if ($i->order_stutus == null)
+                                                    <td>لم يتم التسليم</td>
+                                                @else
+                                                    <td> تم التسليم</td>
+
+                                                @endif
                                             </tr>
                                         @endforeach
                                     @else
@@ -75,7 +86,7 @@
                                                 <th> رقم الهاتف </th>
                                                 <td>:&nbsp; {{ $CardDataDetils->clint_phone }}</td>
                                             </tr>
-                                            <tr>
+                                            <tr class="title">
                                                 <th> المنطقة </th>
                                                 <td colspan="2">
                                                     :&nbsp;{{ $CardDataDetils->village->village_name . ',' . $CardDataDetils->area->area_name }}
@@ -87,7 +98,7 @@
                                             <tr>
                                                 <td></td>
                                             </tr>
-                                            <tr>
+                                            <tr class="title">
                                                 <th>الطلبات</th>
                                                 <th>الكمية</th>
                                                 <th>السعر</th>

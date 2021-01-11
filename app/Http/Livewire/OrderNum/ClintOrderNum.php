@@ -15,6 +15,7 @@ class ClintOrderNum extends Component
     public $CardDataDetils;
     public $CardDataDetilsProduact;
     public $CardList;
+    public $CardID = null;
 
     public function render()
     {
@@ -34,6 +35,7 @@ class ClintOrderNum extends Component
         $this->ListClintOrder = false;
         $coun = CardData::where(['clint_id' => $id, 'clint_stutus' => '1'])->count();
         if ($coun == 1) {
+            $this->CardID = 'own';
             $card = CardData::where('clint_id', $id)->first();
             $this->CardDataDetils = $card;
             $this->CardDataDetilsProduact = CardProData::where('card_data_id', $card->id)->get();
@@ -42,6 +44,21 @@ class ClintOrderNum extends Component
             $this->CardList = CardData::where(['clint_id' => $id, 'clint_stutus' => 1])->get();
 
         }
+
+    }
+    public function backForAllOrder()
+    {
+        $this->ListClintOrder = true;
+    }
+
+    public function ShowClintOrderDetiles($id)
+    {
+        $this->ListClintOrder = false;
+        $this->HasManyOrder = false;
+        $this->CardID = CardData::where('id', $id)->value('clint_id');
+        $card = CardData::where('id', $id)->first();
+        $this->CardDataDetils = $card;
+        $this->CardDataDetilsProduact = CardProData::where('card_data_id', $card->id)->get();
 
     }
 }
