@@ -31,7 +31,7 @@ class MainDashbrod extends Component
         $this->SuccessflluCount = CardData::where('order_stutus', 1)->count();
         $this->NotReadyCount = CardData::where('admin_stutus', 1)->where('admin_stutus', null)->count();
 
-        $this->SellerMonyCount = SellerOrder::count();
+        $this->SellerMonyCount = SellerOrder::where('stutus_admin', 1)->count();
         $this->ClintMonyCount = CardData::where('clint_stutus', 1)->count();
 
         return view('livewire.main-dashbrod')
@@ -89,9 +89,9 @@ class MainDashbrod extends Component
 
     }
 
-    public function sellerOrderNum()
+    public function InvoceSeller()
     {
-        return redirect()->route('sellerOrderNum');
+        return redirect()->route('InvoceSeller');
 
     }
 

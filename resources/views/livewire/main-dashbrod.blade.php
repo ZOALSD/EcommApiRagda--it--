@@ -123,7 +123,7 @@
     <div class="row">
         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
             <a href="#">
-                <div wire:click='NewReqOrder' class="dashboard-stat2 bordered">
+                <div wire:click='InvoceSeller' class="dashboard-stat2 bordered">
                     <div class="display">
                         <div class="number">
                             <h3 class="font-green-sharp">

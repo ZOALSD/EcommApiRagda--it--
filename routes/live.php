@@ -26,6 +26,6 @@ Route::group(['middleware' => 'admin:admin'], function () {
 
     Route::get('/deliverOrdeNum', DeliverOrderNum::class)->name('deliverOrdeNum');
     Route::get('/clintOrdeNum', ClintOrderNum::class)->name('clinteOrderNum');
-    Route::get('/sellerOrdeNum', SellerOrderNum::class)->name('sellerOrdeNum');
+    Route::get('/InvoceSeller', SellerOrderNum::class)->name('InvoceSeller');
 
 });
