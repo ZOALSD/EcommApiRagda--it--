@@ -26,7 +26,7 @@ class SellerReqApi extends Controller
     public function SellerOrderDetils($id)
     {
         $cardID = SellerOrder::where('id', $id)->value('card_cata_id');
-        $data = CardProData::where('id', $cardID)->with('produact')->get();
+        $data = CardProData::where(['card_data_id' => $cardID, 'seller_id' => Auth::id()])->with('produact')->get();
         return response()->json($data, 200);
     }
 
