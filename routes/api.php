@@ -21,6 +21,8 @@ Route::get('data', 'Api\ClintLoginController@data');
 Route::group(['middleware' => 'auth:sanctum'], function () {
 
     Route::get('produact_search', 'Api\ProduactCoontrollerApi@search');
+    Route::get('produact_searchOld', 'Api\ProduactCoontrollerApi@searchNew');
+
     Route::get('categorise', 'Api\CategoriesControllerApi@index');
     Route::get('SupCategoriseOrData/{id}', 'Api\CategoriesControllerApi@SupCategorise');
     Route::get('CategoryForSeller', 'Api\CategoriesControllerApi@CategoryForSeller');
