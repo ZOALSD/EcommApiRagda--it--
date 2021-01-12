@@ -69,24 +69,16 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
     Route::get('ClintProTitelDone', 'Api\CardControllerApi@ClintProTitelDone');
     Route::get('ClintProTitelCanceled', 'Api\CardControllerApi@ClintProTitelCanceled');
-
     Route::get('ClintProData/{id}', 'Api\CardControllerApi@ClintProData');
 
     Route::get('SellerOrder', 'Api\SellerReqApi@SellerOrder');
     Route::get('SellerOrderDone', 'Api\SellerReqApi@SellerOrderDone');
-
     Route::get('SellerOrderDetils/{id}', 'Api\SellerReqApi@SellerOrderDetils');
 
     Route::get('OrderNum', 'Api\CardControllerApi@OrderNum');
 
     Route::get('DeliverOrder', 'Api\DeliveryReqApi@DeliverOrder');
-
     Route::get('DeliverOrderDone', 'Api\DeliveryReqApi@DeliverOrderDone');
     Route::get('DeliverOrderDetils\{id}', 'Api\DeliveryReqApi@DeliverOrderDetils');
-
-    /*
-
-     */
-    //
 
 });

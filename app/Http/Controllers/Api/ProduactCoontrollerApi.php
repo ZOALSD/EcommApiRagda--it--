@@ -21,8 +21,8 @@ class ProduactCoontrollerApi extends Controller
     public function search(Request $request)
     {
 
-        //$Produact = Produact::get();
-        $Produact = Produact::search($request->get('search'))->get();
+        $Produact = Produact::get();
+        // $Produact = Produact::search($request->get('search'))->get();
 
         return $Produact;
 

@@ -53,7 +53,7 @@ class ClintOrderNum extends Component
 
     public function ShowClintOrderDetiles($id)
     {
-        $this->ListClintOrder = false;
+        //$this->ListClintOrder = false;
         $this->HasManyOrder = false;
         $this->CardID = CardData::where('id', $id)->value('clint_id');
         $card = CardData::where('id', $id)->first();
