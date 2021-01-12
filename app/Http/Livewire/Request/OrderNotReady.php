@@ -20,7 +20,7 @@ class OrderNotReady extends Component
     {
         $ClintData = $this->ClintDataa;
         $NotReDetils = $this->DetlisOrder;
-        $NotReady = CardData::where('admin_stutus', 1)->paginate(9);
+        $NotReady = CardData::where(['admin_stutus' => 1, 'deliver_stutus' => null])->paginate(9);
         return view('livewire.request.order-not-ready'
             , compact('NotReady', 'NotReDetils', 'ClintData'))
             ->extends('admin.index')

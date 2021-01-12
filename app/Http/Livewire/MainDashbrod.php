@@ -26,10 +26,10 @@ class MainDashbrod extends Component
         $this->SellerCount = User::where('type', 2)->count();
         $this->DeliveryCount = User::where('type', 3)->count();
 
-        $this->orderCount = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->count();
-        $this->InderDeliverCount = CardData::where('deliver_stutus', 1)->count();
+        $this->InderDeliverCount = CardData::where('deliver_stutus', 0)->count();
         $this->SuccessflluCount = CardData::where('order_stutus', 1)->count();
-        $this->NotReadyCount = CardData::where('admin_stutus', 1)->where('admin_stutus', null)->count();
+        $this->NotReadyCount = CardData::where(['admin_stutus' => 1, 'deliver_stutus' => null])->count();
+        $this->orderCount = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->count();
 
         $this->SellerMonyCount = SellerOrder::where('stutus_admin', 1)->count();
         $this->ClintMonyCount = CardData::where('clint_stutus', 1)->count();
@@ -79,7 +79,7 @@ class MainDashbrod extends Component
 
     public function deliverOrderNum()
     {
-        return redirect()->route('deliverOrderNum');
+        return redirect()->route('deliverOrdeNum');
 
     }
 

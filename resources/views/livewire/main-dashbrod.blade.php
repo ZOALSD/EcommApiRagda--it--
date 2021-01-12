@@ -182,7 +182,7 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-            <div wire:click='OrderNotReadyy()' class="dashboard-stat2 bordered">
+            <div wire:click='deliverOrderNum()' class="dashboard-stat2 bordered">
                 <div class="display">
                     <div class="number">
                         <h3 class="font-red-haze">
