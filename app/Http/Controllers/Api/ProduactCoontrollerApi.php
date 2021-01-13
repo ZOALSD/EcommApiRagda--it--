@@ -22,16 +22,16 @@ class ProduactCoontrollerApi extends Controller
     {
 
         $Produact = Produact::get();
-
         return response()->json($Produact, 200);
+
     }
 
     public function searchNew(Request $request)
     {
 
         $Produact = Produact::search($request->get('search'))->get();
-
         return response()->json($Produact, 200);
+
     }
     public function ProEcommSearch()
     {

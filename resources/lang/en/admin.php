@@ -113,5 +113,6 @@ return [
     "village_name" => "اسم المنطقة",
     "permission" => "الصلاحيات",
     "manger" => "المشرفين",
+    "report" => "التقارير",
 
 ];

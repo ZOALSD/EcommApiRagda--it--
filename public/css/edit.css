@@ -1,4 +1,9 @@
 .page-footer .page-footer-inner {
-    position: absolute;
-    bottom: 20px;
+    
+    position: fixed;
+    bottom: -7px;
+    padding: 10px;
+    left: 2px;
+    background-color: #fdd835;
+
 }

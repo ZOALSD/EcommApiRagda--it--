@@ -16,11 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::post('register', 'Api\ClintLoginController@Register');
 
 Route::post('login', 'Api\ClintLoginController@login');
-Route::get('data', 'Api\ClintLoginController@data');
+// Route::get('data', 'Api\ClintLoginController@data');
+
+Route::get('produact_search', 'Api\ProduactCoontrollerApi@search');
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
 
-    Route::get('produact_search', 'Api\ProduactCoontrollerApi@search');
     Route::get('produact_searchOld', 'Api\ProduactCoontrollerApi@searchNew');
 
     Route::get('categorise', 'Api\CategoriesControllerApi@index');
