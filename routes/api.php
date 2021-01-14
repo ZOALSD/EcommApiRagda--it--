@@ -82,6 +82,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
     Route::get('DeliverOrder', 'Api\DeliveryReqApi@DeliverOrder');
     Route::get('DeliverOrderDone', 'Api\DeliveryReqApi@DeliverOrderDone');
+    Route::get('DeliverOrderDeliveredDone', 'Api\DeliveryReqApi@DeliverOrderDeliveredDone'); //
     Route::get('DeliverOrderDetils\{id}', 'Api\DeliveryReqApi@DeliverOrderDetils');
 
 });
