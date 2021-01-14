@@ -11,7 +11,7 @@ class DeliveryReqApi extends Controller
 {
     public function DeliverOrder()
     {
-        $data = CardData::where(['deliver_id' => Auth::id(), 'stutus_admin' => 1, 'stutus_deliver' => 0])->get();
+        $data = CardData::where(['deliver_id' => Auth::id(), 'admin_stutus' => 1, 'deliver_stutus' => null])->get();
         return response()->json(['stuts' => true, 'Data' => $data], 200);
     }
 

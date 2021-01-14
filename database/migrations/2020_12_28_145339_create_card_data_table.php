@@ -39,6 +39,7 @@ class CreateCardDataTable extends Migration
             // own => Accept Request
             $table->Integer('order_stutus')->nullable();
             //null => Not Delivered
+            //zero => تم استلم الطلب من التأجر وحاليا عند المندوب
             // own => Delivered
 
             $table->timestamps();
