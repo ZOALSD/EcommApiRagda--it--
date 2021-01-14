@@ -40,7 +40,7 @@ class DeliveryReqApi extends Controller
 
     public function DeliverOrderDetils($id)
     {
-        $data = CardProData::where(['card_data_id' => $id, 'deliver_id' => Auth::id()])->with('produact')->get();
+        $data = CardProData::where(['card_data_id' => $id])->with('produact')->get();
         return response()->json($data, 200);
     }
 }
