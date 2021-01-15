@@ -140,8 +140,9 @@
     <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
     <link rel="stylesheet" href="{{ url($path) }}/css/load.css">
 
-    <link href="{{ asset('css/edit.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{{ url($path) }}/css/edit.css" type="text/css">
+    <link rel="stylesheet" href="{{ url($path) }}/css/app.css" type="text/css">
+
     @livewireStyles
 
 </head>

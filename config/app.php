@@ -183,6 +183,9 @@ return [
         //toaster
         Brian2694\Toastr\ToastrServiceProvider::class,
 
+        ////
+        Barryvdh\DomPDF\ServiceProvider::class,
+
     ],
 
     /*
@@ -240,6 +243,9 @@ return [
 
         //toastter
         'Toastr' => Brian2694\Toastr\Facades\Toastr::class,
+
+        //
+        'PDF' => Barryvdh\DomPDF\Facade::class,
 
     ],
 
