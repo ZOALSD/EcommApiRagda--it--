@@ -43,6 +43,12 @@ Route::group(['middleware' => 'Lang'], function () {
 
     Route::group(['middleware' => 'admin:admin'], function () {
 
+        ///Start PDF
+
+        //s Route::get('ClintsPdf', 'Report');
+
+        ///end PDf
+
         //////// Admin Routes /* Start */ //////////////
         Route::get('test', 'Admin\Dashboard@home');
         Route::get('newOrderGet', function () {

@@ -18,4 +18,9 @@ class Clints extends Component
 
     }
 
+    public function ClintPdf()
+    {
+        return redirect()->route('ClintPdf');
+    }
+
 }

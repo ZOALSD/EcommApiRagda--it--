@@ -10,7 +10,7 @@
 
                     </div>
                     <div class="actions">
-
+                        <button wire:click='ClintPdf' target="_blanck">طباعة</button>
                         <a class="btn btn-circle" href="{{ url('/') }}"><i class="">الرئيسية</i>
                         </a>
 
@@ -25,19 +25,13 @@
                                 <tr class="title">
                                     <th>اسم العميل</th>
                                     <th>رقم الهاتف</th>
-                                    <th>الموقع</th>
                                 </tr>
 
                                 @foreach ($clintsData as $i)
                                     <tr class="inner">
                                         <td>{{ $i->name }}</td>
                                         <td>{{ $i->phone }}</td>
-                                        <td>
-                                            {{ $i->area->area_name ?? '' }}
-                                            {{ '' . ',' . '' }}
-                                            {{ $i->village->village_name ?? '' }}
 
-                                        </td>
 
                                     </tr>
                                 @endforeach
