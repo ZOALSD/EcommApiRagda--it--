@@ -10,7 +10,7 @@ class CodeScanContrller extends Controller
 {
     public function ScanfromSeller($qu)
     {
-        $count = SellerOrder::where('qrcode', $qu)->where('stuts', '!=', 1)->count();
+        $count = SellerOrder::where('qrcode', $qu)->where('stutus_seller', '!=', 1)->count();
         if ($count != 0) {
 
             $order = SellerOrder::where('qrcode', $qu)->first();
