@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\CardProData;
 use App\Http\Controllers\Controller;
+use App\Model\CardData;
 use App\Model\SellerOrder;
 
 class CodeScanContrller extends Controller
