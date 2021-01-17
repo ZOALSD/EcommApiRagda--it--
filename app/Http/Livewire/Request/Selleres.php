@@ -19,4 +19,8 @@ class Selleres extends Component
             ->slot('body');
 
     }
+    public function deliverPdf()
+    {
+        return redirect('deliverPdf');
+    }
 }

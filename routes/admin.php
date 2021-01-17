@@ -45,7 +45,9 @@ Route::group(['middleware' => 'Lang'], function () {
 
         ///Start PDF
 
-        //s Route::get('ClintsPdf', 'Report');
+        Route::get('ClintsPdf', 'Report\ClintController@clint');
+        Route::get('sellerPdf', 'Report\ClintController@seller');
+        Route::get('deliverPdf', 'Report\ClintController@deliver');
 
         ///end PDf
 

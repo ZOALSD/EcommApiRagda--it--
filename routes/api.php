@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::post('register', 'Api\ClintLoginController@Register');
 
 Route::post('login', 'Api\ClintLoginController@login');
-// Route::get('data', 'Api\ClintLoginController@data');
 
 Route::get('produact_search', 'Api\ProduactCoontrollerApi@search');
 

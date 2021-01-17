@@ -18,4 +18,9 @@ class Deliveres extends Component
             ->slot('body');
 
     }
+
+    public function SellerPdf()
+    {
+        return redirect('SellerPdf');
+    }
 }

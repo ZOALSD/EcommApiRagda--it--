@@ -67,7 +67,7 @@ return [
     |
      */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Africa/Khartoum',
 
     /*
     |--------------------------------------------------------------------------
@@ -175,13 +175,15 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        niklasravnsborg\LaravelPdf\PdfServiceProvider::class,
+
         //QR Code
-        LaravelQRCode\Providers\QRCodeServiceProvider::class,
+        //LaravelQRCode\Providers\QRCodeServiceProvider::class,
         // Permission
         Spatie\Permission\PermissionServiceProvider::class,
 
         //toaster
-        Brian2694\Toastr\ToastrServiceProvider::class,
+        //    Brian2694\Toastr\ToastrServiceProvider::class,
 
         ////
         // Barryvdh\DomPDF\ServiceProvider::class,
@@ -238,14 +240,13 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
-        //QR Code
-        'QRCode' => LaravelQRCode\Facades\QRCode::class,
-
-        //toastter
-        'Toastr' => Brian2694\Toastr\Facades\Toastr::class,
-
+        // //QR Code
+        // 'QRCode' => LaravelQRCode\Facades\QRCode::class,
+        // //toastter
+        // 'Toastr' => Brian2694\Toastr\Facades\Toastr::class,
         //
         // 'PDF' => Barryvdh\DomPDF\Facade::class,
+        'PDF' => niklasravnsborg\LaravelPdf\Facades\Pdf::class,
 
     ],
 

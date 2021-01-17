@@ -11,10 +11,13 @@ class CodeScanContrller extends Controller
 {
     public function ScanfromSeller($qu)
     {
-        $count = SellerOrder::where('qrcode', $qu)->where('stutus_seller', '!=', 1)->count();
-        if ($count != 0) {
+        //deliver Scan Code From Seller via
+        // Check Code is exit And Seller_Stutus Equal Nulll
+        // And
+        $count = SellerOrder::where(['deliver_id' => Auth::id(), 'qrcode' => $qu, 'stutus_seller' => null])->dd();
+        if ($count == 1) {
 
-            $order = SellerOrder::where('qrcode', $qu)->first();
+            $order = SellerOrder::where(['deliver_id' => Auth::id(), 'qrcode' => $qu])->first();
 
             CardData::where('id', $order->card_cata_id)->update(['order_stutus' => 0]);
             CardProData::where(['card_cata_id' => $order->card_cata_id,
@@ -25,7 +28,7 @@ class CodeScanContrller extends Controller
             return response()->json(["stutus" => true, 'message' => "Done Delivered"], 200);
 
         } else {
-            return response()->json(["stutus" => false, 'message' => "Already Request Delivered"], 200);
+            return response()->json(["stutus" => false, 'message' => "Already Request Delivered OR You are Not How Admin Selected"], 200);
         }
     }
 
