@@ -21,7 +21,7 @@ class ShowClintOrder extends Controller
         if ($wait != 0) {
             $data = CardData::where([
                 'clint_id' => Auth::id(),
-                'admin_stutus' => null,
+                // 'admin_stutus' => null,
                 'clint_stutus' => 1,
             ])->with('deliver')->get();
 
