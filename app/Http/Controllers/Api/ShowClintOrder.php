@@ -73,28 +73,11 @@ class ShowClintOrder extends Controller
         $data = CardProData::where('card_data_id', $id)->with('produact')->get();
         return response()->json($data, 200);
     }
+
+    public function ClintProTitelCanceled()
+    {
+        $id = Auth::id();
+        return CardData::where('clint_id', $id)->where('clint_stutus', 0)->get();
+
+    }
 }
-
-/*
-
-//Clinet PorDuact -----
-
-public function ClintProTitelDone()
-{
-$id = Auth::id();
-return CardData::where('clint_id', $id)->where('clint_stutus', 1)->get();
-
-}
-
-public function ClintProTitelCanceled()
-{
-$id = Auth::id();
-return CardData::where('clint_id', $id)->where('clint_stutus', 0)->get();
-
-}
-
-public function ClintProData($id)
-{
-$data = CardProData::where('card_data_id', $id)->with('produact')->get();
-return response()->json($data, 200);
-} */

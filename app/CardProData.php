@@ -25,6 +25,7 @@ class CardProData extends Model
     {
         return $this->belongsTo('App\Model\Produact', 'produact_id');
     }
+
     public function ClintReq()
     {
         return $this->belongsTo('App\Model\CardData', 'card_data_id');
