@@ -14,7 +14,7 @@ class ShowClintOrder extends Controller
     {
         $wait = CardData::where([
             'clint_id' => Auth::id(),
-            'admin_stutus' => null,
+            // 'admin_stutus' => null,
             'clint_stutus' => 1,
         ])->count();
 
