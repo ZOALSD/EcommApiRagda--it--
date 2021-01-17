@@ -21,7 +21,7 @@ class ShowClintOrder extends Controller
                 'clint_id' => Auth::id(),
                 'admin_stutus' => null,
                 'clint_stutus' => 1,
-            ])->get();
+            ])->with('deliver')->get();
 
             return response()->json([
                 'stutus' => true,
@@ -52,7 +52,7 @@ class ShowClintOrder extends Controller
                 'admin_stutus' => null,
                 'clint_stutus' => 1,
                 'order_stutus' => 1,
-            ])->get();
+            ])->with('deliver')->get();
 
             return response()->json([
                 'stutus' => true,
