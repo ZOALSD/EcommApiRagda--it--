@@ -1,4 +1,0 @@
-deployment:
-  tasks:
-    - export DEPLOYPATH=/home/oshraorg/public_html/EcomApi/
-    - /bin/cp -R * $DEPLOYPATH

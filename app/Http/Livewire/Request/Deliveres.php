@@ -11,7 +11,7 @@ class Deliveres extends Component
     public $title = "قائمة مناديب الؤصـيل";
     public function render()
     {
-        $clintsData = User::where('type', 2)->get();
+        $clintsData = User::where('type', 3)->get();
         return view('livewire.request.deliveres'
             , compact('clintsData'))
             ->layout('admin.live')

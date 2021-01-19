@@ -49,6 +49,11 @@ Route::group(['middleware' => 'Lang'], function () {
         Route::get('sellerPdf', 'Report\ClintController@seller');
         Route::get('deliverPdf', 'Report\ClintController@deliver');
 
+        //clint Invice Pdf Report
+        Route::get('ClintInvicePdf/{id}', 'Report\ClientInviceController@clint')->name('ClintInvice');
+        Route::get('DeliverInvicePdf/{id}', 'Report\DeliverInviceController@deliver')->name('DeliverInvice'); //
+        Route::get('SellerInvicePdf/{id}', 'Report\SellerInviceController@Seller');
+
         ///end PDf
 
         //////// Admin Routes /* Start */ //////////////

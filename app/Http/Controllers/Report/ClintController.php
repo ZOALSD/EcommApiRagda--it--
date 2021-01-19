@@ -20,7 +20,7 @@ class ClintController extends Controller
     public function seller()
     {
         $clint = User::where('type', 2)->get();
-        $title = "قائمة التأجر";
+        $title = "قائمة التُجار";
         $pdf = PDF::loadView('report.clint', \compact('clint', 'title'));
         return $pdf->stream('sellers.pdf');
 

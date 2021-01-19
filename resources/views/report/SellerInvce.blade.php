@@ -73,27 +73,59 @@
 
 <body dir="rtl">
     <br><br>
-    <h4><u>{{ $title }}</u></h4>
+    <h4><u>{{ $title }} {{ $invoce->seller->name }}</u></h4>
     <table class="table">
         <tr>
+            <th colspan="2">
+                رقم الفاتورة : {{ $invoce->id }}
+            </th>
+            <th colspan="3">
+                رقم التأجر : {{ $invoce->seller->phone }}
+            </th>
+        </tr>
+        <tr>
+            <td colspan="5"></td>
+        </tr>
+        <tr>
             <th>#</th>
-            <th class="right">الاســم </th>
-            <th class="right">البريد الالكتروني</th>
-            <th class="right">رقم الهاتف</th>
-            <th class="right">تاريخ التسجيل </th>
+            <th class="right">الطلبات</th>
+            <th class="right">الكمية</th>
+            <th class="right">السعر</th>
+            <th class="right">المجموع</th>
         </tr>
         @php $x= 1; @endphp
-        @foreach ($clint as $i)
+        @foreach ($CardPro as $i)
             <tr>
+                <td>{{ $x++ }}</td>
+                <td>{{ $i->produact->cate_name }}</td>
+                <td>{{ $i->quantity }}</td>
+                <td>{{ $i->price }}</td>
                 <td>
-                    {{ $x++ }}
+                    {{ $i->quantity * $i->price }}
                 </td>
-                <td>{{ $i->name }}</td>
-                <td>{{ $i->email }}</td>
-                <td>{{ $i->phone }}</td>
-                <td>{{ $i->created_at->format('Y/m/d') }}</td>
             </tr>
         @endforeach
+
+        <tr>
+
+            <th>
+                تاريخ الفاتورة
+            </th>
+            <td>
+                {{ $invoce->created_at->format('Y/m/d') }}
+            </td>
+
+        </tr>
+        <tr>
+            <td colspan="3"></td>
+            @if ($invoce->stutus_seller == 1)
+                <th>حالة الفاتورة : <u>مستحقة</u></th>
+            @else
+                <th>حالة الفاتورة : <u>غير مستحقة</u></th>
+
+            @endif
+            <td></td>
+        </tr>
     </table>
     <h4 class="left">
         تاريخ اليوم : {{ date('Y/m/d') }}<br />

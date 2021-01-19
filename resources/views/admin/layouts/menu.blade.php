@@ -32,14 +32,14 @@
     </a>
 </li>
 
-
+{{--
 <li class="nav-item start {{ active_link('report', 'active open') }}  ">
     <a href="{{ '#' }}" class="nav-link nav-toggle">
         <i class="fa fa-file"></i>
         <span class="title">{{ trans('admin.report') }}</span>
         <span class="selected"></span>
     </a>
-</li>
+</li> --}}
 
 
 <li class="nav-item start {{ active_link('produactcoontroller', 'active open') }}  ">

@@ -10,6 +10,10 @@
 
                     </div>
                     <div class="actions">
+                        @if (!$CardDeliverInfo)
+                            <a class="btn btn-info" target="_blank"
+                                href="{{ route('ClintInvice', $ClintIviceId) }}">طـباعة</a>
+                        @endif
 
                         <a class="btn btn-circle" href="{{ url('/') }}"><i class="">الرئيسية</i>
                         </a>
@@ -96,17 +100,19 @@
                                         <th> المجموع</th>
                                     </tr>
 
+                                    @foreach ($ProData as $i)
 
-                                    <tr class="inner">
-                                        <td>{{ $NotReDetils->produact->cate_name }}</td>
-                                        <td>{{ $NotReDetils->quantity }}</td>
-                                        <td>{{ $NotReDetils->price }}</td>
-                                        <td>{{ $NotReDetils->seller->name }}</td>
-                                        <td>{{ $NotReDetils->seller->area->area_name . '' . ' , ' . ' ' . $NotReDetils->seller->village->village_name }}
-                                        </td>
-                                        <td>{{ $NotReDetils->seller->phone }}</td>
-                                        <td>{{ $NotReDetils->total }}</td>
-                                    </tr>
+                                        <tr class="inner">
+                                            <td>{{ $i->produact->cate_name }}</td>
+                                            <td>{{ $i->quantity }}</td>
+                                            <td>{{ $i->price }}</td>
+                                            <td>{{ $i->seller->name }}</td>
+                                            <td>{{ $i->seller->area->area_name . '' . ' , ' . ' ' . $i->seller->village->village_name }}
+                                            </td>
+                                            <td>{{ $i->seller->phone }}</td>
+                                            <td>{{ $i->total }}</td>
+                                        </tr>
+                                    @endforeach
 
 
                                     <tr>

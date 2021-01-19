@@ -11,6 +11,7 @@
                     </div>
                     <div class="actions">
 
+                        <a href="{{ url('deliverPdf') }}" class="btn btn-info" target="_blank">طباعة</a>
                         <a class="btn btn-circle" href="{{ url('/') }}"><i class="">الرئيسية</i>
                         </a>
 
@@ -24,20 +25,18 @@
                             <table class="table">
                                 <tr class="title">
                                     <th>اسم العميل</th>
+                                    <th> البريد الالكتروني</th>
                                     <th>رقم الهاتف</th>
-                                    <th>الموقع</th>
+                                    <th>تاريخ التسجيل</th>
                                 </tr>
 
                                 @foreach ($clintsData as $i)
                                     <tr class="inner">
                                         <td>{{ $i->name }}</td>
+                                        <td>{{ $i->email }}</td>
                                         <td>{{ $i->phone }}</td>
-                                        <td>
-                                            {{ $i->area->area_name ?? '' }}
-                                            {{ '' . ',' . '' }}
-                                            {{ $i->village->village_name ?? '' }}
+                                        <td>{{ $i->created_at->format('Y/m/d') }}</td>
 
-                                        </td>
 
                                     </tr>
                                 @endforeach

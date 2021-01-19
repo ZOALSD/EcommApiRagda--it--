@@ -10,7 +10,10 @@
 
                     </div>
                     <div class="actions">
+                        @if (!$CardDeliverInfo)
+                            <a class="btn btn-info" href="{{ route('DeliverInvice', $CardID) }}"><i class="">طباعة</i>
 
+                        @endif
                         <a class="btn btn-circle" href="{{ url('/') }}"><i class="">الرئيسية</i>
                         </a>
                         <a class="btn btn-circle btn-icon-only btn-default fullscreen" href="#"> </a>

@@ -12,6 +12,7 @@ class DeliverOrderNum extends Component
     public $CardDeliverInfo = true;
     public $ClintData;
     public $NotReDetils;
+    public $CardID;
 
     public function render()
     {
@@ -29,6 +30,7 @@ class DeliverOrderNum extends Component
         $this->NotReDetils = CardProData::where('card_data_id', $id)->first();
         $this->ClintData = CardData::where('id', $id)->first();
         $this->CardDeliverInfo = false;
+        $this->CardID = $id;
 
     }
     public function BackOrderNotReady()
