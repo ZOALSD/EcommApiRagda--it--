@@ -713,6 +713,10 @@
                         $(".modal-backdrop.in").remove();
                         $('#DeliverySelectedHide').modal('hide');
                     })  
+
+                    window.livewire.on('ClintPercentOpenModel') => {
+                        $('#ClintPercent').modal('show');
+                    })  
                     
                     </script>
     

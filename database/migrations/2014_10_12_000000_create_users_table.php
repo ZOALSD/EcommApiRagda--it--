@@ -31,6 +31,7 @@ class CreateUsersTable extends Migration
             $table->bigInteger('clint_order_num')->nullable();
             $table->bigInteger('deliver_order_num')->nullable();
             $table->bigInteger('seller_order_num')->nullable();
+            $table->integer('clint_perce')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

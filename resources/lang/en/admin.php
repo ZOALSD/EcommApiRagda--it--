@@ -114,5 +114,6 @@ return [
     "permission" => "الصلاحيات",
     "manger" => "المشرفين",
     "report" => "التقارير",
+    "SellerManage" => "الـتُجار",
 
 ];

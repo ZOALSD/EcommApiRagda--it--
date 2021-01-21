@@ -11,6 +11,7 @@ use App\Http\Livewire\Request\OrderInDelivering;
 use App\Http\Livewire\Request\OrderNotReady;
 use App\Http\Livewire\Request\OrderSuccessfullyDelivered;
 use App\Http\Livewire\Request\Selleres;
+use App\Http\Livewire\SellerManage;
 
 Route::group(['middleware' => 'admin:admin'], function () {
 
@@ -27,5 +28,7 @@ Route::group(['middleware' => 'admin:admin'], function () {
     Route::get('/deliverOrdeNum', DeliverOrderNum::class)->name('deliverOrdeNum');
     Route::get('/clintOrdeNum', ClintOrderNum::class)->name('clinteOrderNum');
     Route::get('/InvoceSeller', SellerOrderNum::class)->name('InvoceSeller');
+
+    Route::get('/SellerManage', SellerManage::class);
 
 });

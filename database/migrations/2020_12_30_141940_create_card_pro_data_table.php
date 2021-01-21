@@ -20,9 +20,12 @@ class CreateCardProDataTable extends Migration
             $table->bigInteger('seller_id');
             $table->bigInteger('quantity');
             $table->bigInteger('price');
-            $table->bigInteger('deliver_stutus')->nullable();
 
-            $table->bigInteger('total');
+            $table->bigInteger('seller_percent')->nullable();
+            $table->bigInteger('our_percent')->nullable();
+            $table->bigInteger('total')->nullable();
+
+            $table->bigInteger('deliver_stutus')->nullable();
 
             $table->timestamps();
         });

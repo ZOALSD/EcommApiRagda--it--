@@ -40,6 +40,7 @@ class DashbordOrder extends Component
     public $ShowImageOrder = false;
     public $TiemRespact = null;
     public $FoundOrder = true;
+    public $DeliverPercent = null;
 
     public function render()
     {
@@ -156,9 +157,13 @@ class DashbordOrder extends Component
     {
         $DeliverySelectedChangeBtn = null;
         $CheckDeliver = CardData::where('id', $id)->value('deliver_id');
-        if ($CheckDeliver != null) {
+        if ($CheckDeliver != null && $this->DeliverPercent != null) {
             if ($this->TiemRespact != null) {
-                CardData::where('id', $id)->update(['admin_stutus' => 1, 'time_respact' => $this->TiemRespact]);
+                CardData::where('id', $id)->update([
+                    'admin_stutus' => 1,
+                    'deliver_Percent' => $this->DeliverPercent,
+                    'time_respact' => $this->TiemRespact,
+                ]);
 
                 $count = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->count();
                 if ($count != 0) {
@@ -174,7 +179,9 @@ class DashbordOrder extends Component
                     'card_cata_id' => $id,
                     'stutus_clint' => 1,
                     'stutus_admin' => null])
-                    ->update(['deliver_id' => $CheckDeliver, 'stutus_admin' => 1]);
+                    ->update([
+                        'deliver_id' => $CheckDeliver,
+                        'stutus_admin' => 1]);
 
                 session()->flash('successuflly', 'تم ارسال الطلب بنجاح');
                 return redirect()->to('/Order');
@@ -185,7 +192,7 @@ class DashbordOrder extends Component
             }
 
         } else {
-            session()->flash('danger', 'الرجاء تحديـد مندوب التوصيل اولاً');
+            session()->flash('danger', 'الرجاء تحديـد مندوب التوصيل والعمولة');
 
         }
 

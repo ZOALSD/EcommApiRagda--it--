@@ -14,6 +14,8 @@ class CardProData extends Model
         'quantity',
         'price',
         'total',
+        'seller_percent',
+        'our_percent',
     ];
 
     public function seller()

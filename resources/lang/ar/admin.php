@@ -124,5 +124,6 @@ return [
     "area_id" => "المحلية",
     "village_name" => "اسم المنطقة",
     "report" => "التقارير",
+    "SellerManage" => "الـتُجار",
 
 ];

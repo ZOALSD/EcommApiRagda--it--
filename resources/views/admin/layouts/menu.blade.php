@@ -24,6 +24,14 @@
 </li>
 
 
+<li class="nav-item start {{ active_link('SellerManage', 'active open') }}  ">
+    <a href="{{ aurl('Selleres') }}" class="nav-link nav-toggle">
+        <i class="fa fa-user-plus"></i>
+        <span class="title">{{ trans('admin.SellerManage') }}</span>
+        <span class="selected"></span>
+    </a>
+</li>
+
 <li class="nav-item start {{ active_link('manger', 'active open') }}  ">
     <a href="{{ aurl('manger') }}" class="nav-link nav-toggle">
         <i class="fa fa-user-plus"></i>

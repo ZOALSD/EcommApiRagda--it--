@@ -7,3 +7,37 @@
     background-color: #fdd835;
 
 }
+
+tr.inner {
+    background-color: #fff9dd !important;
+}
+
+tr.title {
+    background-color: #fdd835;
+    color: #678298;
+    font-weight: bold;
+}
+
+th.title-data {
+
+    border-color: #fff !important;
+    font-size: 18px;
+}
+
+td {
+    color: #678298;
+}
+
+
+
+.title-data {
+    font-size: 22px;
+    color: #c5aa31;
+    margin: 0 5px 10px;
+}
+
+.percent-input{
+    border: 1px solid #6f8298;
+    padding: 3px;
+    width: 50px;
+}

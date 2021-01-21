@@ -36,8 +36,9 @@ class CardControllerApi extends Controller
         }
 
         $seller_id = Produact::where('id', $req->produact_id)->value('user_id');
-        $price = Produact::where('id', $req->produact_id)->value('price');
-        $total = $req->quantity * $price;
+        $pro = Produact::where('id', $req->produact_id)->first();
+        $SellerPercent = User::where('id', $pro->user_id)->value('clint_perce');
+        $total = $req->quantity * $pro->price;
 
         $cardDataID = CardData::where('clint_id', $id)->where('clint_stutus', null)->value('id');
 
@@ -50,8 +51,10 @@ class CardControllerApi extends Controller
                 'produact_id' => $req->produact_id,
                 'seller_id' => $seller_id, // not Requset
                 'quantity' => $req->quantity,
-                'price' => $price, // not Requset
+                'price' => $pro->price, // not Requset
                 'total' => $total, // not Requset
+                'seller_percent' => $total * (100 - $SellerPercent) / 100, // not Requset
+                'our_percent' => $total * $SellerPercent / 100, // not Requset
             ]);
             $sellerOrder = SellerOrder::where('card_cata_id', $cardDataID)->where('seller_id', $seller_id)->count();
 

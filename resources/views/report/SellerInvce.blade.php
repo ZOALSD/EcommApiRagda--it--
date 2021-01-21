@@ -68,69 +68,102 @@
             margin-top: -20px;
         }
 
+        .f-18 {
+            font-size: 16px !important;
+        }
+
     </style>
 </head>
 
 <body dir="rtl">
     <br><br>
-    <h4><u>{{ $title }} {{ $invoce->seller->name }}</u></h4>
     <table class="table">
         <tr>
-            <th colspan="2">
-                رقم الفاتورة : {{ $invoce->id }}
-            </th>
-            <th colspan="3">
-                رقم التأجر : {{ $invoce->seller->phone }}
-            </th>
+            <th>التاريخ</th>
+            <td>{{ date('Y/m/d') }}</td>
+            <th colspan="4"> فاتورة &nbsp; Invoice</th>
+            <th>Date</th>
+        </tr>
+
+        <tr>
+            <td colspan="7"></td>
         </tr>
         <tr>
-            <td colspan="5"></td>
-        </tr>
-        <tr>
-            <th>#</th>
-            <th class="right">الطلبات</th>
+            <th class="right">#</th>
+            <th class="right">رقم الصنف</th>
+            <th class="right">البيان</th>
             <th class="right">الكمية</th>
             <th class="right">السعر</th>
+            <th class="right">{{ 'الخـصم:' . '%' . $percent }}</th>
             <th class="right">المجموع</th>
         </tr>
         @php $x= 1; @endphp
         @foreach ($CardPro as $i)
             <tr>
                 <td>{{ $x++ }}</td>
+                <td>{{ $i->produact->id }}</td>
                 <td>{{ $i->produact->cate_name }}</td>
                 <td>{{ $i->quantity }}</td>
                 <td>{{ $i->price }}</td>
+                <td>{{ $i->our_percent }}</td>
                 <td>
-                    {{ $i->quantity * $i->price }}
+                    {{ $i->total - $i->our_percent }}
                 </td>
             </tr>
         @endforeach
+        <tr>
+            <td colspan="4"></td>
+            <th colspan="2">إجــمالي</th>
+            <th>{{ $total }}</th>
+        </tr>
 
         <tr>
-
-            <th>
-                تاريخ الفاتورة
-            </th>
-            <td>
-                {{ $invoce->created_at->format('Y/m/d') }}
-            </td>
+            <td colspan="4"></td>
+            <th colspan="2">رسوم التوصيل</th>
+            <th>{{ $deliver_Percent }}</th>
+        </tr>
+        <tr>
+            <td colspan="4"></td>
+            <th colspan="2">صافي الفاتورة</th>
+            <th>{{ $total - $deliver_Percent }}</th>
+        </tr>
+        <tr>
+            <th>التوقيع</th>
+            <td colspan="3">|</td>
+            <th> الختم </th>
 
         </tr>
         <tr>
-            <td colspan="3"></td>
+            <td></td>
             @if ($invoce->stutus_seller == 1)
-                <th>حالة الفاتورة : <u>مستحقة</u></th>
+                <th colspan="5">حالة الفاتورة : <u>مستحقة</u></th>
             @else
-                <th>حالة الفاتورة : <u>غير مستحقة</u></th>
-
+                <th colspan="5">حالة الفاتورة : <u>غير مستحقة</u></th>
             @endif
             <td></td>
         </tr>
+        <tr>
+            <th>للتوصل:موبايل</th>
+            <td>0903320205</td>
+            <td colspan="3"></td>
+            <th>للتوصل:واتساب</th>
+            <td>0903320205</td>
+        </tr>
+        <tr>
+            <td colspan="7" class="center">FORE MALL </td>
+        </tr>
+
+        <tr>
+            <td class="center f-18" colspan="7">لاتعتبر الفاتورة مسددة (<u>مستحقة</u>)الا في حال اقفال الطلب نهائيا من
+                قبل
+                المندوب
+                والمستلم
+                عبر تاكيد
+                الباركود
+            </td>
+        </tr>
     </table>
-    <h4 class="left">
-        تاريخ اليوم : {{ date('Y/m/d') }}<br />
-        T {{ date('H:i:s') }}
-    </h4>
+
 </body>
 
 

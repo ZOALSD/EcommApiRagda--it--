@@ -122,6 +122,14 @@
                                                     <td>{{ $clintData->deliver->phone ?? '' }}</td>
                                                 </tr>
                                                 <tr>
+                                                    <th>عمولة مندوب التوصيل :</th>
+                                                    <td>
+                                                        <input wire:model='DeliverPercent' type="number"
+                                                            class="form-control">
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
                                                     <th>زمن الطلب</th>
                                                     <td>{{ $clintData->created_at }}</td>
                                                     <th></th>

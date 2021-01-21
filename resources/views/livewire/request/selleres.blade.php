@@ -1,5 +1,7 @@
 <div>
+
     <div wire:loading id="loader"></div>
+
 
     <div class="row">
         <div class="col-md-12 col-sm-12">
@@ -27,7 +29,9 @@
                                     <th>اسم العميل</th>
                                     <th> البريد الالكتروني</th>
                                     <th>رقم الهاتف</th>
-                                    <th>تاريخ التسجيل</th>
+                                    <th> الحالة</th>
+                                    <th> النسبة</th>
+                                    <th> تاريخ التسجيل</th>
                                 </tr>
 
                                 @foreach ($clintsData as $i)
@@ -35,6 +39,27 @@
                                         <td>{{ $i->name }}</td>
                                         <td>{{ $i->email }}</td>
                                         <td>{{ $i->phone }}</td>
+                                        <td>
+                                            @if ($i->stuts == 1)
+                                                <button wire:click='ActiveClint({{ $i->id }})'
+                                                    class="btn btn-info">نشـط</button>
+                                            @else
+                                                <button wire:click='DisActiveClint({{ $i->id }})'
+                                                    class="btn btn-wiring">غير نشط</button>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($IdEdit == $i->id)
+
+                                                <input wire:keydown.enter='ChangePercent({{ $i->id }})'
+                                                    wire:model='PercentValue' type="number" class="percent-input"
+                                                    placeholder="{{ $i->clint_perce }}" max=100>
+                                            @else
+                                                <button wire:click='EnblePercentEdit({{ $i->id }})'
+                                                    class="btn btn-scandary ">{{ $i->clint_perce . '%' }}</button>
+                                            @endif
+
+                                        </td>
                                         <td>{{ $i->created_at->format('Y/m/d') }}</td>
 
 
@@ -51,31 +76,28 @@
 </div>
 
 
-<style>
-    tr.title {
-        background-color: #fdd835;
-        color: #678298;
-        font-weight: bold;
-    }
+{{-- <form wire:submit.prevent action="/">
+    <div wire:ignore.self class="modal fade" id="ClintPercent">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal">x</button>
+                    <h4 class="modal-title"> تغير نسبة التاجر {{ $SellerName ?? '' }}
+                    </h4>
+                </div>
+                <div class="modal-body">
 
-    th.title-data {
+                    <input type="number" name="" value="{{ 'j' }}" class="form-control" id="">
+                    <br>
+                    <button class="btn btn-success"> حــفظ</button>
+                </div>
 
-        border-color: #fff !important;
-        font-size: 18px;
-    }
+                <div class="modal-footer">
+                    <button wire:click="saveAdminRole" class="btn btn-danger">حــفظ</button>
+                    <a class="btn btn-default" data-dismiss="modal">{{ trans('admin.cancel') }}</a>
+                </div>
+            </div>
 
-    td {
-        color: #678298;
-    }
-
-    tr.inner {
-        background-color: #ecdd97;
-    }
-
-    .title-data {
-        font-size: 22px;
-        color: #c5aa31;
-        margin: 0 5px 10px;
-    }
-
-</style>
+        </div>
+    </div>
+</form> --}}

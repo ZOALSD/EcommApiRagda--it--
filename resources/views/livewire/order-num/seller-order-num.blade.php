@@ -105,7 +105,7 @@
                                             <th>الطلبات</th>
                                             <th>الكمية</th>
                                             <th>السعر</th>
-                                            <th>المجموع</th>
+                                            <th>المبلغ المستحق</th>
 
                                         </tr>
                                         @foreach ($CardPro as $i)
@@ -114,7 +114,7 @@
                                                 </td>
                                                 <td>{{ $i->quantity }}</td>
                                                 <td>{{ $i->price }}</td>
-                                                <td>{{ $i->quantity * $i->price }}</td>
+                                                <td>{{ $i->seller_percent }}</td>
                                             </tr>
 
                                         @endforeach

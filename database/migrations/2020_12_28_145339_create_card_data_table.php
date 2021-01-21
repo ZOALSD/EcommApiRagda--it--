@@ -23,6 +23,7 @@ class CreateCardDataTable extends Migration
             $table->bigInteger('deliver_id')->nullable();
             $table->bigInteger('clint_phone')->nullable();
             $table->string('qr_code')->nullable();
+            $table->bigInteger('deliver_Percent')->nullable();
 
             $table->dateTime('time_respact', 0)->nullable();
             //Time Respact For Your Request H:m
