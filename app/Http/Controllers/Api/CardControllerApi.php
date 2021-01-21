@@ -94,7 +94,7 @@ class CardControllerApi extends Controller
 
     public function OrderNum()
     {
-        $data = CardData::where('clint_id', $id)->where('clint_stutus', null)->value('order_num');
+        $data = CardData::where('clint_id', Auth::id())->where('clint_stutus', null)->value('order_num');
         return response()->json(['OrderNum' => $data], 200);
     }
 
