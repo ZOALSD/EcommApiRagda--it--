@@ -18,9 +18,9 @@ Route::post('register', 'Api\ClintLoginController@Register');
 Route::post('login', 'Api\ClintLoginController@login');
 
 Route::get('produact_search', 'Api\ProduactCoontrollerApi@search');
-Route::get('OrderNum', 'Api\CardControllerApi@OrderNum');
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
+    Route::get('OrderNum', 'Api\CardControllerApi@OrderNum');
 
     Route::get('produact_searchOld', 'Api\ProduactCoontrollerApi@searchNew');
 
