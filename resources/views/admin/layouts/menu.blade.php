@@ -84,7 +84,8 @@
         </li>
     </ul>
 </li>
-<li class="nav-item start {{ active_link('color', 'active open') }} ">
+
+{{-- <li class="nav-item start {{ active_link('color', 'active open') }} ">
     <a href="javascript:;" class="nav-link nav-toggle">
         <i class="fa fa-paint-brush "></i>
         <span class="title">{{ trans('admin.color') }} </span>
@@ -107,7 +108,8 @@
             </a>
         </li>
     </ul>
-</li>
+</li> --}}
+
 <li class="nav-item start {{ active_link('size', 'active open') }} ">
     <a href="javascript:;" class="nav-link nav-toggle">
         <i class="fa fa-sliders"></i>

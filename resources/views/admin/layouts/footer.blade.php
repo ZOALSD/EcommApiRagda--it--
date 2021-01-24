@@ -574,7 +574,7 @@
                         <!-- BEGIN FOOTER -->
                         <div class="page-footer">
                             <div class="page-footer-inner">  
-                                <a target="_blank" href="http://facebook.com/ZOOL_S3D">Created Via ZOOLS3D</a> 
+                                <a target="_blank" href="http://facebook.com/ZOOLS3D">Created Via ZOOLS3D</a> 
                             </div>
                             <div class="scroll-to-top">
                                 <i class="fa fa-arrow-up"></i>

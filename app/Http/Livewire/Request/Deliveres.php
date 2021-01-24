@@ -18,6 +18,15 @@ class Deliveres extends Component
             ->slot('body');
 
     }
+    public function ActiveClint($id)
+    {
+        User::where('id', $id)->update(['stuts' => 0]);
+    }
+
+    public function DisActiveClint($id)
+    {
+        User::where('id', $id)->update(['stuts' => 1]);
+    }
 
     public function SellerPdf()
     {

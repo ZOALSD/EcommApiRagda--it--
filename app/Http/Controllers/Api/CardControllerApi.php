@@ -177,7 +177,7 @@ class CardControllerApi extends Controller
 
     public function cardcancle()
     {
-        CardData::where('clint_id', Auth::id())
+        CardData::where(['clint_id' => Auth::id(), 'clint_stutus' => null])
             ->update(['clint_stutus' => 0]);
 
         return response()->json([

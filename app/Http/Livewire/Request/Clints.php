@@ -24,4 +24,14 @@ class Clints extends Component
 
     }
 
+    public function ActiveClint($id)
+    {
+        User::where('id', $id)->update(['stuts' => 0]);
+    }
+
+    public function DisActiveClint($id)
+    {
+        User::where('id', $id)->update(['stuts' => 1]);
+    }
+
 }

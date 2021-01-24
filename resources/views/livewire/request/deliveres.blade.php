@@ -28,6 +28,7 @@
                                     <th> البريد الالكتروني</th>
                                     <th>رقم الهاتف</th>
                                     <th>تاريخ التسجيل</th>
+                                    <th>الحـالة</th>
                                 </tr>
 
                                 @foreach ($clintsData as $i)
@@ -36,7 +37,16 @@
                                         <td>{{ $i->email }}</td>
                                         <td>{{ $i->phone }}</td>
                                         <td>{{ $i->created_at->format('Y/m/d') }}</td>
-
+                                        <td>
+                                            @if ($i->stuts == 1)
+                                                <button wire:click='ActiveClint({{ $i->id }})'
+                                                    class="btn btn-info">نشـط</button>
+                                            @else
+                                                <button wire:click='DisActiveClint({{ $i->id }})'
+                                                    class="btn btn-wiring">غير
+                                                    نشط</button>
+                                            @endif
+                                        </td>
 
                                     </tr>
                                 @endforeach
