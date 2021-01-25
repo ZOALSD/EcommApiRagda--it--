@@ -45,14 +45,14 @@ Route::group(['middleware' => 'Lang'], function () {
 
         ///Start PDF
 
-        Route::get('ClintsPdf', 'Report\ClintController@clint');
-        Route::get('sellerPdf', 'Report\ClintController@seller');
-        Route::get('deliverPdf', 'Report\ClintController@deliver');
+        Route::get('ClintsPdf', 'Report\ClintController@clint')->middleware('permission:print');
+        Route::get('sellerPdf', 'Report\ClintController@seller')->middleware('permission:print');
+        Route::get('deliverPdf', 'Report\ClintController@deliver')->middleware('permission:print');
 
         //clint Invice Pdf Report
-        Route::get('ClintInvicePdf/{id}', 'Report\ClientInviceController@clint')->name('ClintInvice');
-        Route::get('DeliverInvicePdf/{id}', 'Report\DeliverInviceController@deliver')->name('DeliverInvice'); //
-        Route::get('SellerInvicePdf/{id}', 'Report\SellerInviceController@Seller');
+        Route::get('ClintInvicePdf/{id}', 'Report\ClientInviceController@clint')->name('ClintInvice')->middleware('permission:print');
+        Route::get('DeliverInvicePdf/{id}', 'Report\DeliverInviceController@deliver')->name('DeliverInvice')->middleware('permission:print');
+        Route::get('SellerInvicePdf/{id}', 'Report\SellerInviceController@Seller')->middleware('permission:print');
 
         ///end PDf
 
@@ -67,39 +67,39 @@ Route::group(['middleware' => 'Lang'], function () {
         Route::post('account', 'Admin\AdminAuthenticated@account_post');
         Route::resource('settings', 'Admin\Settings');
 
-        Route::resource('categories', 'Admin\CategoriesController');
-        Route::post('categories/multi_delete', 'Admin\CategoriesController@multi_delete');
-        Route::resource('color', 'Admin\ColorController');
-        Route::post('color/multi_delete', 'Admin\ColorController@multi_delete');
-        Route::resource('size', 'Admin\SizeController'); //===--=::-==---
-        Route::post('size/multi_delete', 'Admin\SizeController@multi_delete');
-        // Route::resource('produactcoontroller', 'Admin\ProduactCoontroller');
+        Route::resource('categories', 'Admin\CategoriesController')->middleware('permission:categor');
+        Route::post('categories/multi_delete', 'Admin\CategoriesController@multi_delete')->middleware('permission:categor');
+        //  Route::resource('color', 'Admin\ColorController');
+        //  Route::post('color/multi_delete', 'Admin\ColorController@multi_delete');
+        Route::resource('size', 'Admin\SizeController')->middleware('permission:size'); //===--=::-==---
+        Route::post('size/multi_delete', 'Admin\SizeController@multi_delete')->middleware('permission:size');
+        Route::resource('produactcoontroller', 'Admin\ProduactCoontroller')->middleware('permission:produact');
 
-        Route::get('produactcoontroller', 'Admin\ProduactCoontroller@index')->name('produactcoontroller.index');
-        Route::get('produactcoontroller/{id}', 'Admin\ProduactCoontroller@show')->name('produactcoontroller.show');
-        Route::delete('produactcoontroller/{id}', 'Admin\ProduactCoontroller@destroy')->name('produactcoontroller.destroy')->middleware('permission:ProDelete');
-        Route::get('produactcoontroller/{id}/edit', 'Admin\ProduactCoontroller@edit')->name('produactcoontroller.edit')->middleware('permission:ProImageChange'); //
-        Route::put('produactcoontroller/{id}', 'Admin\ProduactCoontroller@update')->name('produactcoontroller.update');
-        Route::get('produactcoontroller/create', 'Admin\ProduactCoontroller@create')->name('produactcoontroller.create');
+        // Route::get('produactcoontroller', 'Admin\ProduactCoontroller@index')->name('produactcoontroller.index')->middleware('permission:produact');
+        // Route::get('produactcoontroller/{id}', 'Admin\ProduactCoontroller@show')->name('produactcoontroller.show')->middleware('permission:produact');
+        // Route::delete('produactcoontroller/{id}', 'Admin\ProduactCoontroller@destroy')->name('produactcoontroller.destroy')->middleware('permission:ProDelete');
+        // Route::get('produactcoontroller/{id}/edit', 'Admin\ProduactCoontroller@edit')->name('produactcoontroller.edit')->middleware('permission:ProImageChange'); //
+        // Route::put('produactcoontroller/{id}', 'Admin\ProduactCoontroller@update')->name('produactcoontroller.update')->middleware('permission:produact');
+        // Route::get('produactcoontroller/create', 'Admin\ProduactCoontroller@create')->name('produactcoontroller.create')->middleware('permission:produact');
 
-        Route::post('produactcoontroller/multi_delete', 'Admin\ProduactCoontroller@multi_delete');
+        Route::post('produactcoontroller/multi_delete', 'Admin\ProduactCoontroller@multi_delete')->middleware('permission:produact');
 
         Route::any('category', function () {
             return view('livewire.categorise');
-        });
-        Route::resource('ads', 'Admin\AdsController');
-        Route::post('ads/multi_delete', 'Admin\AdsController@multi_delete');
-        Route::resource('area', 'Admin\AreaController');
-        Route::post('area/multi_delete', 'Admin\AreaController@multi_delete');
-        Route::resource('village', 'Admin\VillageController');
-        Route::post('village/multi_delete', 'Admin\VillageController@multi_delete');
+        })->middleware('permission:categor');
+        Route::resource('ads', 'Admin\AdsController')->middleware('permission:ads');
+        Route::post('ads/multi_delete', 'Admin\AdsController@multi_delete')->middleware('permission:ads');
+        Route::resource('area', 'Admin\AreaController')->middleware('permission:area');
+        Route::post('area/multi_delete', 'Admin\AreaController@multi_delete')->middleware('permission:area');
+        Route::resource('village', 'Admin\VillageController')->middleware('permission:village');
+        Route::post('village/multi_delete', 'Admin\VillageController@multi_delete')->middleware('permission:village');
         //////// Admin Routes /* End */ //////////////
 
         Route::get('manger', function () {
             return view('admin.admins', ['title' => 'إدارة المشرفين']);
-        })->name('manger');
+        })->name('manger')->middleware('permission:manager');
 
-        Route::get('permission', 'Admin\permissionController@index')->name('permission');
+        Route::get('permission', 'Admin\permissionController@index')->name('permission')->middleware('permission:permisson');
     });
 
 });

@@ -24,11 +24,29 @@ class PermissionsDemoSeeder extends Seeder
 
         // create permissions
         Permission::create(['guard_name' => 'admin', 'name' => 'read']);
-        Permission::create(['guard_name' => 'admin', 'name' => 'طباعة']);
+        Permission::create(['guard_name' => 'admin', 'name' => 'invoce_clint']);
+        Permission::create(['guard_name' => 'admin', 'name' => 'invoce_seller']);
+        Permission::create(['guard_name' => 'admin', 'name' => 'invoce_delivery']);
+        Permission::create(['guard_name' => 'admin', 'name' => 'clint']);
+        Permission::create(['guard_name' => 'admin', 'name' => 'delivery']);
+        Permission::create(['guard_name' => 'admin', 'name' => 'order_done']);
+        Permission::create(['guard_name' => 'admin', 'name' => 'order_in_delivery']);
+        Permission::create(['guard_name' => 'admin', 'name' => 'order_in_seller']);
+        Permission::create(['guard_name' => 'admin', 'name' => 'new_order']);
+        Permission::create(['guard_name' => 'admin', 'name' => 'village']);
+        Permission::create(['guard_name' => 'admin', 'name' => 'area']);
+        Permission::create(['guard_name' => 'admin', 'name' => 'ads']);
+        Permission::create(['guard_name' => 'admin', 'name' => 'size']);
+        Permission::create(['guard_name' => 'admin', 'name' => 'produact']);
+        Permission::create(['guard_name' => 'admin', 'name' => 'categor']);
+        Permission::create(['guard_name' => 'admin', 'name' => 'manager']);
+        Permission::create(['guard_name' => 'admin', 'name' => 'seller']);
+        Permission::create(['guard_name' => 'admin', 'name' => 'permisson']);
+        Permission::create(['guard_name' => 'admin', 'name' => 'print']);
 //       Permission::create(['guard_name' => 'admin' , 'name' => 'report']);
-        Permission::create(['guard_name' => 'admin', 'name' => 'تعديل']);
-        Permission::create(['guard_name' => 'admin', 'name' => 'حذف']);
-        Permission::create(['guard_name' => 'admin', 'name' => 'رفع']);
+        Permission::create(['guard_name' => 'admin', 'name' => 'edit']);
+        Permission::create(['guard_name' => 'admin', 'name' => 'remove']);
+        Permission::create(['guard_name' => 'admin', 'name' => 'upload']);
         Permission::create(['guard_name' => 'admin', 'name' => 'puse_pro']);
         Permission::create(['guard_name' => 'admin', 'name' => 'ProDelete']);
         Permission::create(['guard_name' => 'admin', 'name' => 'ProImageChange']);
