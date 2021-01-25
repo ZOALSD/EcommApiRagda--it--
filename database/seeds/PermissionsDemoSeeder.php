@@ -53,8 +53,8 @@ class PermissionsDemoSeeder extends Seeder
 
         $role1 = Role::create(['guard_name' => 'admin', 'name' => 'writer']);
         $role1->givePermissionTo('read');
-        $role1->givePermissionTo('تعديل');
-        $role1->givePermissionTo('حذف');
+        $role1->givePermissionTo('edit');
+        $role1->givePermissionTo('remove');
 
         // create roles and assign existing permissions
 
@@ -67,9 +67,9 @@ class PermissionsDemoSeeder extends Seeder
         ///*/*//===============================//
 
         $role2 = Role::create(['guard_name' => 'admin', 'name' => 'admin']);
-        $role2->givePermissionTo('طباعة');
+        $role2->givePermissionTo('print');
         $role2->givePermissionTo('read');
-        $role2->givePermissionTo('رفع');
+        $role2->givePermissionTo('upload');
 
         // gets all permissions via Gate::before rule; see AuthServiceProvider
 
