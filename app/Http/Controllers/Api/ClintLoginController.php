@@ -106,23 +106,26 @@ class ClintLoginController extends Controller
             'device_name' => 'required',
         ]);
 
-        $user = User::where('phone', $request->phone)->first();
-        $user_id = User::where(['phone' => $request->phone, 'type' => 1])->value('id');
+        if ($request->type == 1) {
+            $user = User::where('phone', $request->phone)->first();
+            $user_id = User::where('phone', $request->phone)->value('id');
 
-        $token = Token::where('tokenable_id', $user_id)->count();
-        if ($token != 0) {
-            $user->tokens()->delete();
+            $token = Token::where('tokenable_id', $user_id)->count();
+            if ($token != 0) {
+                $user->tokens()->delete();
+            }
+
+            if (!$user || !Hash::check($request->password, $user->password)) {
+                throw ValidationException::withMessages([
+                    'phone' => ['The provided phone number are incorrect.'],
+                ]);
+            }
+
+            $token = $user->createToken($request->device_name)->plainTextToken;
+            return response()->json(['token' => $token, 'Data' => $user], 200);
+        } else {
+            return response()->json(['Stutus' => false, 'Message' => 'This App Only For Clint'], 200);
         }
-
-        if (!$user || !Hash::check($request->password, $user->password)) {
-            throw ValidationException::withMessages([
-                'phone' => ['The provided phone number are incorrect.'],
-            ]);
-        }
-
-        $token = $user->createToken($request->device_name)->plainTextToken;
-        return response()->json(['token' => $token, 'Data' => $user], 200);
-
     }
 
     public function login_seller(Request $request)
@@ -134,23 +137,26 @@ class ClintLoginController extends Controller
             'device_name' => 'required',
         ]);
 
-        $user = User::where('phone', $request->phone)->first();
-        $user_id = User::where(['phone' => $request->phone, 'type' => 2])->value('id');
+        if ($request->type == 2) {
+            $user = User::where('phone', $request->phone)->first();
+            $user_id = User::where('phone', $request->phone)->value('id');
 
-        $token = Token::where('tokenable_id', $user_id)->count();
-        if ($token != 0) {
-            $user->tokens()->delete();
+            $token = Token::where('tokenable_id', $user_id)->count();
+            if ($token != 0) {
+                $user->tokens()->delete();
+            }
+
+            if (!$user || !Hash::check($request->password, $user->password)) {
+                throw ValidationException::withMessages([
+                    'phone' => ['The provided phone number are incorrect.'],
+                ]);
+            }
+
+            $token = $user->createToken($request->device_name)->plainTextToken;
+            return response()->json(['token' => $token, 'Data' => $user], 200);
+        } else {
+            return response()->json(['Stutus' => false, 'Message' => 'This App Only For Seller'], 200);
         }
-
-        if (!$user || !Hash::check($request->password, $user->password)) {
-            throw ValidationException::withMessages([
-                'phone' => ['The provided phone number are incorrect.'],
-            ]);
-        }
-
-        $token = $user->createToken($request->device_name)->plainTextToken;
-        return response()->json(['token' => $token, 'Data' => $user], 200);
-
     }
 
     public function login_deliver(Request $request)
@@ -162,23 +168,26 @@ class ClintLoginController extends Controller
             'device_name' => 'required',
         ]);
 
-        $user = User::where('phone', $request->phone)->first();
-        $user_id = User::where(['phone' => $request->phone, 'type' => 3])->value('id');
+        if ($request->type == 3) {
+            $user = User::where('phone', $request->phone)->first();
+            $user_id = User::where('phone', $request->phone)->value('id');
 
-        $token = Token::where('tokenable_id', $user_id)->count();
-        if ($token != 0) {
-            $user->tokens()->delete();
+            $token = Token::where('tokenable_id', $user_id)->count();
+            if ($token != 0) {
+                $user->tokens()->delete();
+            }
+
+            if (!$user || !Hash::check($request->password, $user->password)) {
+                throw ValidationException::withMessages([
+                    'phone' => ['The provided phone number are incorrect.'],
+                ]);
+            }
+
+            $token = $user->createToken($request->device_name)->plainTextToken;
+            return response()->json(['token' => $token, 'Data' => $user], 200);
+        } else {
+            return response()->json(['Stutus' => false, 'Message' => 'This App Only For Delivery'], 200);
         }
-
-        if (!$user || !Hash::check($request->password, $user->password)) {
-            throw ValidationException::withMessages([
-                'phone' => ['The provided phone number are incorrect.'],
-            ]);
-        }
-
-        $token = $user->createToken($request->device_name)->plainTextToken;
-        return response()->json(['token' => $token, 'Data' => $user], 200);
-
     }
 
     public function logout()
