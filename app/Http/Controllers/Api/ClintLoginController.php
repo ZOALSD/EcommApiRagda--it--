@@ -102,11 +102,68 @@ class ClintLoginController extends Controller
         $request->validate([
             'password' => 'required',
             'phone' => 'required',
+            'type' => 'required',
             'device_name' => 'required',
         ]);
 
         $user = User::where('phone', $request->phone)->first();
-        $user_id = User::where('phone', $request->phone)->value('id');
+        $user_id = User::where(['phone' => $request->phone, 'type' => 1])->value('id');
+
+        $token = Token::where('tokenable_id', $user_id)->count();
+        if ($token != 0) {
+            $user->tokens()->delete();
+        }
+
+        if (!$user || !Hash::check($request->password, $user->password)) {
+            throw ValidationException::withMessages([
+                'phone' => ['The provided phone number are incorrect.'],
+            ]);
+        }
+
+        $token = $user->createToken($request->device_name)->plainTextToken;
+        return response()->json(['token' => $token, 'Data' => $user], 200);
+
+    }
+
+    public function login_seller(Request $request)
+    {
+        $request->validate([
+            'password' => 'required',
+            'phone' => 'required',
+            'type' => 'required',
+            'device_name' => 'required',
+        ]);
+
+        $user = User::where('phone', $request->phone)->first();
+        $user_id = User::where(['phone' => $request->phone, 'type' => 2])->value('id');
+
+        $token = Token::where('tokenable_id', $user_id)->count();
+        if ($token != 0) {
+            $user->tokens()->delete();
+        }
+
+        if (!$user || !Hash::check($request->password, $user->password)) {
+            throw ValidationException::withMessages([
+                'phone' => ['The provided phone number are incorrect.'],
+            ]);
+        }
+
+        $token = $user->createToken($request->device_name)->plainTextToken;
+        return response()->json(['token' => $token, 'Data' => $user], 200);
+
+    }
+
+    public function login_deliver(Request $request)
+    {
+        $request->validate([
+            'password' => 'required',
+            'phone' => 'required',
+            'type' => 'required',
+            'device_name' => 'required',
+        ]);
+
+        $user = User::where('phone', $request->phone)->first();
+        $user_id = User::where(['phone' => $request->phone, 'type' => 3])->value('id');
 
         $token = Token::where('tokenable_id', $user_id)->count();
         if ($token != 0) {
