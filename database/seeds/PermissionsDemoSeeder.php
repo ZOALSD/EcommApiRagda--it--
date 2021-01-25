@@ -60,6 +60,31 @@ class PermissionsDemoSeeder extends Seeder
 
         $role3 = Role::create(['guard_name' => 'admin', 'name' => 'super-admin']);
 
+        $role3->givePermissionTo('read');
+        $role3->givePermissionTo('invoce_clint');
+        $role3->givePermissionTo('invoce_seller');
+        $role3->givePermissionTo('invoce_delivery');
+        $role3->givePermissionTo('clint');
+        $role3->givePermissionTo('delivery');
+        $role3->givePermissionTo('order_done');
+        $role3->givePermissionTo('order_in_delivery');
+        $role3->givePermissionTo('order_in_seller');
+        $role3->givePermissionTo('new_order');
+        $role3->givePermissionTo('village');
+        $role3->givePermissionTo('area');
+        $role3->givePermissionTo('ads');
+        $role3->givePermissionTo('size');
+        $role3->givePermissionTo('produact');
+        $role3->givePermissionTo('categor');
+        $role3->givePermissionTo('manager');
+        $role3->givePermissionTo('seller');
+        $role3->givePermissionTo('permisson');
+        $role3->givePermissionTo('print');
+        $role3->givePermissionTo('edit');
+        $role3->givePermissionTo('remove');
+        $role3->givePermissionTo('upload');
+        $role3->givePermissionTo('read');
+
         $role3->givePermissionTo('ProImageChange');
         $role3->givePermissionTo('ProDelete');
         $role3->givePermissionTo('puse_pro');
