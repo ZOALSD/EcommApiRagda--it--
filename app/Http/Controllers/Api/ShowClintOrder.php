@@ -41,7 +41,7 @@ class ShowClintOrder extends Controller
             } else {
                 $data = CardData::where([
                     'clint_id' => Auth::id(),
-                    'admin_stutus' => 1,
+                    //'admin_stutus' => null,
                     'clint_stutus' => 1,
                 ])->get();
 
