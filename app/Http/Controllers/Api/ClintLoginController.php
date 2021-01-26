@@ -135,7 +135,6 @@ class ClintLoginController extends Controller
         $request->validate([
             'password' => 'required',
             'phone' => 'required',
-            'type' => 'required',
             'device_name' => 'required',
         ]);
 
