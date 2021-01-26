@@ -21,11 +21,11 @@ class DatabaseSeeder extends Seeder
             PermissionsDemoSeeder::class,
             AdsSeeder::class,
             //QRcodeOrderSeeder::class,
-            CardSeeder::class,
+            // CardSeeder::class,
             AreaSeeder::class,
             VillageSeeder::class,
             CardRequestSeeder::class,
-            CardDataSeeder::class,
+            // CardDataSeeder::class,
 
         ]);
     }
