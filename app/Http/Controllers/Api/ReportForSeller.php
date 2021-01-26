@@ -8,6 +8,7 @@ class ReportForSeller extends Controller
 {
     public function Report()
     {
+        SellerOrder::get();
 
     }
 }
