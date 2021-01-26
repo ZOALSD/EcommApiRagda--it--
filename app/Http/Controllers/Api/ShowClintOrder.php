@@ -14,42 +14,53 @@ class ShowClintOrder extends Controller
     {
         $wait = CardData::where([
             'clint_id' => Auth::id(),
-            //'admin_stutus' => 1,
+            'admin_stutus' => null,
             'clint_stutus' => 1,
         ])->count();
 
         if ($wait != 0) {
 
-            $admin = CardData::where([
+            $data = CardData::where([
+                'clint_id' => Auth::id(),
+                'admin_stutus' => null,
+                'clint_stutus' => 1,
+            ])->with('deliver')->get();
+
+            return response()->json([
+                'stutus' => true,
+                'message' => 'Your Order Wait To Accept',
+                'data' => $data], 200);
+
+        } else {
+            return response()->json([
+                'stutus' => false,
+                'message' => 'You Don\'t have Now Order',
+                'data' => null,
+            ], 200);
+        }
+
+    }
+
+    public function OrderAccept()
+    {
+        $wait = CardData::where([
+            'clint_id' => Auth::id(),
+            'admin_stutus' => 1,
+            'clint_stutus' => 1,
+        ])->count();
+
+        if ($wait != 0) {
+
+            $data = CardData::where([
                 'clint_id' => Auth::id(),
                 'admin_stutus' => 1,
                 'clint_stutus' => 1,
-            ])->count();
+            ])->with('deliver')->get();
 
-            if ($admin != 0) {
-
-                $data = CardData::where([
-                    'clint_id' => Auth::id(),
-                    'admin_stutus' => 1,
-                    'clint_stutus' => 1,
-                ])->with('deliver')->get();
-
-                return response()->json([
-                    'stutus' => true,
-                    'message' => 'Okay Your Order Done',
-                    'data' => $data], 200);
-            } else {
-                $data = CardData::where([
-                    'clint_id' => Auth::id(),
-                    //'admin_stutus' => null,
-                    'clint_stutus' => 1,
-                ])->get();
-
-                return response()->json([
-                    'stutus' => true,
-                    'message' => 'Your Order Wait Admin To Check',
-                    'data' => $data], 200);
-            }
+            return response()->json([
+                'stutus' => true,
+                'message' => 'Okay Your Order Done',
+                'data' => $data], 200);
 
         } else {
             return response()->json([

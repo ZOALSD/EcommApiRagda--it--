@@ -72,7 +72,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('DeleteProCard/{id}', 'Api\CardControllerApi@DeleteProCard');
     Route::put('EditProCard/{id}', 'Api\CardControllerApi@EditProCard');
 
-    Route::get('ClintProTitelDone', 'Api\ShowClintOrder@OrderWaitAccept');
+    Route::get('ClintProTitelDone', 'Api\ShowClintOrder@OrderAccept');
+    Route::get('ClintProTitelWait', 'Api\ShowClintOrder@OrderWaitAccept');
     Route::get('ClintProTitelCanceled', 'Api\ShowClintOrder@ClintProTitelCanceled');
     Route::get('ClintProData/{id}', 'Api\ShowClintOrder@ClintProData');
 
