@@ -89,4 +89,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('ScanfromSeller/{qu}', 'Api\CodeScanContrller@ScanfromSeller');
     Route::get('ScanfromClint/{qu}', 'Api\CodeScanContrller@ScanfromClint');
 
+    //Report For Seller ReportForSeller
+    Route::get('ReportSeller', 'Api\ReportForSeller@Report');
+    Route::get('ReportSellerDetils/{id}', 'Api\ReportForSeller@ReportDetils');
+
 });
