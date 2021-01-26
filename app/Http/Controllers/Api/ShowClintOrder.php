@@ -14,21 +14,42 @@ class ShowClintOrder extends Controller
     {
         $wait = CardData::where([
             'clint_id' => Auth::id(),
-            // 'admin_stutus' => null,
+            //'admin_stutus' => 1,
             'clint_stutus' => 1,
         ])->count();
 
         if ($wait != 0) {
-            $data = CardData::where([
-                'clint_id' => Auth::id(),
-                // 'admin_stutus' => null,
-                'clint_stutus' => 1,
-            ])->with('deliver')->get();
 
-            return response()->json([
-                'stutus' => true,
-                'message' => 'Welcome Lady Well Respons Soon',
-                'data' => $data], 200);
+            $admin = CardData::where([
+                'clint_id' => Auth::id(),
+                'admin_stutus' => 1,
+                'clint_stutus' => 1,
+            ])->count();
+
+            if ($admin != 0) {
+
+                $data = CardData::where([
+                    'clint_id' => Auth::id(),
+                    'admin_stutus' => 1,
+                    'clint_stutus' => 1,
+                ])->with('deliver')->get();
+
+                return response()->json([
+                    'stutus' => true,
+                    'message' => 'Okay Your Order Done',
+                    'data' => $data], 200);
+            } else {
+                $data = CardData::where([
+                    'clint_id' => Auth::id(),
+                    'admin_stutus' => 1,
+                    'clint_stutus' => 1,
+                ])->get();
+
+                return response()->json([
+                    'stutus' => true,
+                    'message' => 'Your Order Wait Admin To Check',
+                    'data' => $data], 200);
+            }
 
         } else {
             return response()->json([
@@ -39,6 +60,7 @@ class ShowClintOrder extends Controller
         }
 
     }
+
     public function OrderDeliverd()
     {
         $wait = CardData::where([
