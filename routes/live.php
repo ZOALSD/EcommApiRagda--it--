@@ -16,19 +16,19 @@ use App\Http\Livewire\SellerManage;
 Route::group(['middleware' => 'admin:admin'], function () {
 
     Route::get('/', MainDashbrod::class)->name('MainDashBord');
-    Route::get('/Order', DashbordOrder::class)->name('Order'); //
-    Route::get('/OrderNotR', OrderNotReady::class)->name('OrderNotReadyy');
-    Route::get('/OrderInderDeliver', OrderInDelivering::class)->name('OrderInderDelivering');
-    Route::get('/OrderSuccessfullyDelivered', OrderSuccessfullyDelivered::class)->name('OrderSuccessfullyDelivery');
+    Route::get('/Order', DashbordOrder::class)->name('Order')->middleware('permission:new_order');
+    Route::get('/OrderNotR', OrderNotReady::class)->name('OrderNotReadyy')->middleware('permission:order_in_seller');
+    Route::get('/OrderInderDeliver', OrderInDelivering::class)->name('OrderInderDelivering')->middleware('permission:order_in_delivery');
+    Route::get('/OrderSuccessfullyDelivered', OrderSuccessfullyDelivered::class)->name('OrderSuccessfullyDelivery')->middleware('permission:order_done');
 
-    Route::get('/Clints', Clints::class)->name('Clints');
-    Route::get('/Deliveres', Deliveres::class)->name('Deliveres');
-    Route::get('/Selleres', Selleres::class)->name('Sellers');
+    Route::get('/Clints', Clints::class)->name('Clints')->middleware('permission:clint');
+    Route::get('/Deliveres', Deliveres::class)->name('Deliveres')->middleware('permission:delivery');
+    Route::get('/Selleres', Selleres::class)->name('Sellers')->middleware('permission:seller');
 
-    Route::get('/deliverOrdeNum', DeliverOrderNum::class)->name('deliverOrdeNum');
-    Route::get('/clintOrdeNum', ClintOrderNum::class)->name('clinteOrderNum');
-    Route::get('/InvoceSeller', SellerOrderNum::class)->name('InvoceSeller');
+    Route::get('/deliverOrdeNum', DeliverOrderNum::class)->name('deliverOrdeNum')->middleware('permission:invoce_delivery');
+    Route::get('/clintOrdeNum', ClintOrderNum::class)->name('clinteOrderNum')->middleware('permission:invoce_clint');
+    Route::get('/InvoceSeller', SellerOrderNum::class)->name('InvoceSeller')->middleware('permission:invoce_seller');
 
-    Route::get('/SellerManage', SellerManage::class);
+    Route::get('/SellerManage', SellerManage::class)->middleware('permission:seller');
 
 });

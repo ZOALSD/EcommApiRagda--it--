@@ -23,7 +23,7 @@ class PermissionsDemoSeeder extends Seeder
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
         // create permissions
-        Permission::create(['guard_name' => 'admin', 'name' => 'read']);
+        // Permission::create(['guard_name' => 'admin', 'name' => 'read']);
         Permission::create(['guard_name' => 'admin', 'name' => 'invoce_clint']);
         Permission::create(['guard_name' => 'admin', 'name' => 'invoce_seller']);
         Permission::create(['guard_name' => 'admin', 'name' => 'invoce_delivery']);
@@ -44,23 +44,23 @@ class PermissionsDemoSeeder extends Seeder
         Permission::create(['guard_name' => 'admin', 'name' => 'permisson']);
         Permission::create(['guard_name' => 'admin', 'name' => 'print']);
 //       Permission::create(['guard_name' => 'admin' , 'name' => 'report']);
-        Permission::create(['guard_name' => 'admin', 'name' => 'edit']);
-        Permission::create(['guard_name' => 'admin', 'name' => 'remove']);
-        Permission::create(['guard_name' => 'admin', 'name' => 'upload']);
+        //   Permission::create(['guard_name' => 'admin', 'name' => 'edit']);
+        //  Permission::create(['guard_name' => 'admin', 'name' => 'remove']);
+        //  Permission::create(['guard_name' => 'admin', 'name' => 'upload']);
         Permission::create(['guard_name' => 'admin', 'name' => 'puse_pro']);
         Permission::create(['guard_name' => 'admin', 'name' => 'ProDelete']);
         Permission::create(['guard_name' => 'admin', 'name' => 'ProImageChange']);
 
         $role1 = Role::create(['guard_name' => 'admin', 'name' => 'writer']);
-        $role1->givePermissionTo('read');
-        $role1->givePermissionTo('edit');
-        $role1->givePermissionTo('remove');
+        // $role1->givePermissionTo('read');
+        // $role1->givePermissionTo('edit');
+        // $role1->givePermissionTo('remove');
 
         // create roles and assign existing permissions
 
         $role3 = Role::create(['guard_name' => 'admin', 'name' => 'super-admin']);
 
-        $role3->givePermissionTo('read');
+        // $role3->givePermissionTo('read');
         $role3->givePermissionTo('invoce_clint');
         $role3->givePermissionTo('invoce_seller');
         $role3->givePermissionTo('invoce_delivery');
@@ -80,10 +80,10 @@ class PermissionsDemoSeeder extends Seeder
         $role3->givePermissionTo('seller');
         $role3->givePermissionTo('permisson');
         $role3->givePermissionTo('print');
-        $role3->givePermissionTo('edit');
-        $role3->givePermissionTo('remove');
-        $role3->givePermissionTo('upload');
-        $role3->givePermissionTo('read');
+        //  $role3->givePermissionTo('edit');
+        //  $role3->givePermissionTo('remove');
+        // $role3->givePermissionTo('upload');
+        //   $role3->givePermissionTo('read');
 
         $role3->givePermissionTo('ProImageChange');
         $role3->givePermissionTo('ProDelete');
@@ -92,9 +92,9 @@ class PermissionsDemoSeeder extends Seeder
         ///*/*//===============================//
 
         $role2 = Role::create(['guard_name' => 'admin', 'name' => 'admin']);
-        $role2->givePermissionTo('print');
-        $role2->givePermissionTo('read');
-        $role2->givePermissionTo('upload');
+        // $role2->givePermissionTo('print');
+        // $role2->givePermissionTo('read');
+        //$role2->givePermissionTo('upload');
 
         // gets all permissions via Gate::before rule; see AuthServiceProvider
 
