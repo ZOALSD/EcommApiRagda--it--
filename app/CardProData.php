@@ -28,7 +28,7 @@ class CardProData extends Model
         return $this->belongsTo('App\Model\Produact', 'produact_id');
     }
 
-    public function prod()
+    public function Pro_Name()
     {
         return $this->belongsTo('App\Model\Produact', 'produact_id')->select(['id', 'cate_name']);
     }
