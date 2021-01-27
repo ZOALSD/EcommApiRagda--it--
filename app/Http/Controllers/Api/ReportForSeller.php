@@ -26,7 +26,7 @@ class ReportForSeller extends Controller
 
         $total = CardProData::where(['card_data_id' => $invoce->card_cata_id, 'seller_id' => Auth::id()])->sum('total');
 
-        return response()->json(['stutus' => true, 'Inovce' => $Invoce_Seller, 'Produacts' => $CardPro, 'Total' => $total], 200);
+        return response()->json(['stutus' => true, 'Produacts' => $CardPro, 'Total' => $total], 200);
 
     }
 }
