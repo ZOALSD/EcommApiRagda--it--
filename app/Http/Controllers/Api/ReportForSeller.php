@@ -20,9 +20,9 @@ class ReportForSeller extends Controller
     public function ReportDetils($id)
     {
 
-        $Invoce_Seller = SellerOrder::where('id', $id)->with(['seller', 'deliver'])->get();
+        $Invoce_Seller = SellerOrder::select('id')->where('id', $id)->with(['seller', 'deliver'])->get();
         $invoce = SellerOrder::where('id', $id)->first();
-        $CardPro = CardProData::where(['card_data_id' => $invoce->card_cata_id, 'seller_id' => Auth::id()])->get();
+        $CardPro = CardProData::select('id', 'quantity', 'price', 'total')->where(['card_data_id' => $invoce->card_cata_id, 'seller_id' => Auth::id()])->with('prod')->get();
 
         $total = CardProData::where(['card_data_id' => $invoce->card_cata_id, 'seller_id' => Auth::id()])->sum('total');
 

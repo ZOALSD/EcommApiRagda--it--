@@ -28,6 +28,11 @@ class CardProData extends Model
         return $this->belongsTo('App\Model\Produact', 'produact_id');
     }
 
+    public function prod()
+    {
+        return $this->belongsTo('App\Model\Produact', 'produact_id')->select(['id', 'cate_name']);
+    }
+
     public function ClintReq()
     {
         return $this->belongsTo('App\Model\CardData', 'card_data_id');
