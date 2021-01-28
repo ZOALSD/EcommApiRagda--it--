@@ -31,4 +31,14 @@ class SellerReqApi extends Controller
         return response()->json($data, 200);
     }
 
+    //تم التجهيز
+
+    public function SellerDoneOrder($id)
+    {
+        //this is Rong Stutus Show Changed After Check
+        $data = SellerOrder::where('id', $id)->update(['stutus_seller' => 1]);
+        return response()->json(['stuts' => true, 'Message' => 'Ordre Ready',
+        ], 200);
+    }
+
 }
