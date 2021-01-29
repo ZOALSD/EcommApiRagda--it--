@@ -29,4 +29,17 @@ class ReportForSeller extends Controller
         return response()->json($CardPro, 200);
 
     }
+
+    public function ReportDetilsTotal($id)
+    {
+
+        $Invoce_Seller = SellerOrder::select('id', 'deliver_id')->where('id', $id)->with('deliver')->get();
+        $invoce = SellerOrder::where('id', $id)->first();
+        $CardPro = CardProData::select('id', 'quantity', 'produact_id', 'price', 'total')->where(['card_data_id' => $invoce->card_cata_id, 'seller_id' => Auth::id()])->with('Pro_Name')->get();
+
+        $total = CardProData::where(['card_data_id' => $invoce->card_cata_id, 'seller_id' => Auth::id()])->sum('total');
+
+        return response()->json($total, 200);
+
+    }
 }

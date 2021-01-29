@@ -91,5 +91,6 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     //Report For Seller ReportForSeller
     Route::get('ReportSeller', 'Api\ReportForSeller@Report');
     Route::get('ReportSellerDetils/{id}', 'Api\ReportForSeller@ReportDetils');
+    Route::get('ReportDetilsTotal/{id}', 'Api\ReportForSeller@ReportDetilsTotal'); //
 
 });
