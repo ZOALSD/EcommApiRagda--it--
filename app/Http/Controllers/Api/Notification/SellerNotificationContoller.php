@@ -11,7 +11,7 @@ class SellerNotificationContoller extends Controller
     public function notify()
     {
 
-        return SellerOrder::where(['seller_id' => Auth::id(), 'sututs_seller' => null])->conut();
+        return SellerOrder::where(['seller_id' => Auth::id(), 'sututs_seller' => null])->count();
 
     }
 }
