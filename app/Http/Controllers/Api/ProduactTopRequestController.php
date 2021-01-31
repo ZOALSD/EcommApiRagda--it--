@@ -9,6 +9,6 @@ class ProduactTopRequestController extends Controller
 {
     public function top()
     {
-        Produact::where(['request', '!=', null])->orderBy('request', 'desc')->take(15)->get();
+        Produact::where('request', '!=', null)->orderBy('request', 'desc')->take(15)->get();
     }
 }
