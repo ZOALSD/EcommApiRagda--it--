@@ -37,6 +37,7 @@ class CardControllerApi extends Controller
 
         $seller_id = Produact::where('id', $req->produact_id)->value('user_id');
         $pro = Produact::where('id', $req->produact_id)->first();
+        Produact::where('id', $req->produact_id)->update(['request' => $pro->request + 1]);
         $SellerPercent = User::where('id', $pro->user_id)->value('clint_perce');
         $total = $req->quantity * $pro->price;
 
