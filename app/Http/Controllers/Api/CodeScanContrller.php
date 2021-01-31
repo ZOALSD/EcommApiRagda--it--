@@ -20,6 +20,7 @@ class CodeScanContrller extends Controller
             $order = SellerOrder::where(['deliver_id' => Auth::id(), 'qrcode' => $qu])->first();
 
             CardData::where('id', $order->card_cata_id)->update(['order_stutus' => 0]);
+
             CardProData::where(['card_cata_id' => $order->card_cata_id,
                 'seller_id' => $order->seller_id])
                 ->update(['deliver_stutus' => 1]);

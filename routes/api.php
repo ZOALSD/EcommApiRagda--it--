@@ -99,4 +99,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
     //Produact Top Request ===
     Route::get('TopRequestPro', 'Api\ProduactTopRequestController@top');
+
+    ///Stutus
+    Route::get('OrderStutus', 'Api\OrderStutusController@Stutus');
 });
