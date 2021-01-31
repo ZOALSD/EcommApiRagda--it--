@@ -33,7 +33,7 @@
 
 
                             <div class="col-md-6">
-                                <div class="zool-img"></div>
+                                {{-- <div class="zool-img"></div>
 
                                 <br>
                                 <button class="btn btn-main center">تغير الصورة</button>
@@ -44,7 +44,7 @@
                                 <br>
                                 <button wire:click='changeAdminPassword({{ $user->id }})' class="btn btn-success">
                                     تغير الصورة
-                                </button>
+                                </button> --}}
                                 <br>
                                 اسم المشرف :
                                 <div class="text admin-name">
@@ -54,8 +54,9 @@
                                     @endif
 
                                     @if ($EditName)
+
                                         <input wire:model.lazy='name' type="text" value=""
-                                            placeholder="{{ $user->name }}" class="form-control">
+                                            placeholder="{{ $user->name }}" class="form-control" required>
                                         <button wire:click='changeAdminName({{ $user->id }})'
                                             class="btn btn-success">حفــظ</button>
                                     @endif
@@ -128,7 +129,8 @@
                                     <input wire:model.lazy='password_con' class="form-control" type="password">
 
                                     <br>
-                                    <button wire:click='changeAdminPassword({{ $user->id }})' class="btn btn-success">
+                                    <button wire:click='changeAdminPassword({{ $user->id }})'
+                                        class="btn btn-success">
                                         تغير كلمة المرور
                                     </button>
 
