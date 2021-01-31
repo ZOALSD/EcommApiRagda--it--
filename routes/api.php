@@ -102,4 +102,6 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
     ///Stutus
     Route::get('OrderStutus', 'Api\OrderStutusController@Stutus');
+    //Selller Notiy
+    Route::get('SellerNotify', 'Api\Notification\SellerNotificationContoller@notify');
 });

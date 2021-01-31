@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Model\CardData;
+use Illuminate\Support\Facades\Auth;
 
 class OrderStutusController extends Controller
 {
