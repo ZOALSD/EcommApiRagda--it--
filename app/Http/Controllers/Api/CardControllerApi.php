@@ -37,6 +37,7 @@ class CardControllerApi extends Controller
 
         $seller_id = Produact::where('id', $req->produact_id)->value('user_id');
         $pro = Produact::where('id', $req->produact_id)->first();
+
         if ($pro->request == null) {
             Produact::where('id', $req->produact_id)->update(['request' => 1]);
         } else {
