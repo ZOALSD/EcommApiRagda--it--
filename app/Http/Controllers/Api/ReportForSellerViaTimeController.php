@@ -10,7 +10,7 @@ class ReportForSellerViaTimeController extends Controller
 {
     public function ViaDay()
     {
-        $Day = SellerOrder::where('create_at', Carbon::today())->get();
+        $Day = SellerOrder::where('created_at', Carbon::today())->get();
 
         return response()->json($Day, 200);
     }
@@ -21,7 +21,7 @@ class ReportForSellerViaTimeController extends Controller
         $start = $now->startOfWeek()->format('Y-m-d H:i');
         $end = $now->endOfWeek()->format('Y-m-d H:i');
 
-        $Weeky = SellerOrder::whereBetween('create_at', array($start, $end))->get();
+        $Weeky = SellerOrder::whereBetween('created_at', array($start, $end))->get();
 
         return response()->json($Weeky, 200);
     } //Carbon::now()->format('m');
@@ -30,7 +30,7 @@ class ReportForSellerViaTimeController extends Controller
     {
         $month = Carbon::now()->format('Y-m');
 
-        $Weeky = SellerOrder::where('create_at', $month)->get();
+        $Weeky = SellerOrder::where('created_at', $month)->get();
 
         return response()->json($Weeky, 200);
     } //Carbon::now()->format('m');
