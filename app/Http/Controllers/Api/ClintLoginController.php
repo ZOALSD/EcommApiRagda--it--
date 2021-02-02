@@ -32,7 +32,7 @@ class ClintLoginController extends Controller
 
         $dataa = User::where('id', $user->id)->first();
 
-        return response()->json(['token' => $token, 'Data' => $dataa], 200);
+        return response()->json(['stutus' => true, 'token' => $token, 'Data' => $dataa], 200);
 
     }
 
@@ -122,7 +122,7 @@ class ClintLoginController extends Controller
                 }
 
                 $token = $user->createToken($request->device_name)->plainTextToken;
-                return response()->json(['token' => $token, 'Data' => $user], 200);
+                return response()->json(['stutus' => true, 'token' => $token, 'Data' => $user], 200);
             } else {
                 return response()->json(['Stutus' => false, 'Message' => 'This App Only For Clint'], 200);
 
@@ -155,7 +155,7 @@ class ClintLoginController extends Controller
                     ]);
                 }
                 $token = $user->createToken($request->device_name)->plainTextToken;
-                return response()->json(['token' => $token, 'Data' => $user], 200);
+                return response()->json(['stutus' => true, 'token' => $token, 'Data' => $user], 200);
             } else {
                 return response()->json(['Stutus' => false, 'Message' => 'This App Only For Seller'], 200);
             }
@@ -192,7 +192,7 @@ class ClintLoginController extends Controller
                 }
 
                 $token = $user->createToken($request->device_name)->plainTextToken;
-                return response()->json(['token' => $token, 'Data' => $user], 200);
+                return response()->json(['stutus' => true, 'token' => $token, 'Data' => $user], 200);
             } else {
                 return response()->json(['Stutus' => false, 'Message' => 'This App Only For Delivery'], 200);
 
