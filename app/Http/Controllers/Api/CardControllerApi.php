@@ -67,11 +67,13 @@ class CardControllerApi extends Controller
 
             if ($sellerOrder == 0) {
                 $qrcode = Hash::make($cardDataID . time() . 'ZOOLS3D' . Auth::id());
-                SellerOrder::create([
+                $seller = SellerOrder::create([
                     'clint_id' => Auth::id(),
                     'card_cata_id' => $cardDataID,
                     'seller_id' => $seller_id,
                     'qrcode' => $qrcode,
+                    'datee' => date('Y-m-d'),
+                    'houre' => date('H:i:s'),
                 ]);
             }
             $card = CardProData::where('id', $add->id)->with('produact')->first();
@@ -95,6 +97,7 @@ class CardControllerApi extends Controller
         return response()->json([
             'stutus' => 'true',
             'data' => $card,
+            'Seller' => $seller,
             'order_num' => $order_num,
         ], 200, );
     }

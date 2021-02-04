@@ -15,6 +15,8 @@ class SellerOrder extends Model
         'seller_id',
         'deliver_id',
         'qrcode',
+        'datee',
+        'houre',
         'stutus_clint',
         'stutus_seller',
         'stutus_admin',
@@ -39,5 +41,5 @@ class SellerOrder extends Model
         return $this->belongsTo('App\User', 'clint_id')->select(['id', 'name', 'phone']);
     }
 
-    protected $hidden = ['stutus_admin', 'clint_id', 'seller_id', 'stutus_clint', 'stutus_seller', 'updated_at'];
+    protected $hidden = ['stutus_admin', 'clint_id', 'seller_id', 'stutus_clint', 'stutus_seller', 'updated_at', 'created_at'];
 }

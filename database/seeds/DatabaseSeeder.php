@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
             // CardSeeder::class,
             AreaSeeder::class,
             VillageSeeder::class,
-            CardRequestSeeder::class,
+            // CardRequestSeeder::class,
             // CardDataSeeder::class,
 
         ]);

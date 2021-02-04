@@ -28,6 +28,8 @@ class CreateSellerOrdersTable extends Migration
             //1 => Comfirmed
             $table->bigInteger('stutus_seller')->nullable();
             /// 1=> Done Delivered
+            $table->date('datee');
+            $table->time('houre');
             $table->timestamps();
         });
     }

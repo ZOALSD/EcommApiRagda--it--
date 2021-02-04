@@ -11,31 +11,29 @@ class ReportForSellerViaTimeController extends Controller
 {
     public function ViaDay()
     {
-        // $Day = SellerOrder::where('created_at', Carbon::today())->get();
-        //  $Day = SellerOrder::get(); //where('created_at', Carbon::today())->get();
+        //houre
         $Day = SellerOrder::where('seller_id', Auth::id())
-            ->whereDay('created_at', now()->day)->get();
+            ->where('datee', date('Y-m-d'))->get();
         return response()->json($Day, 200);
     }
 
     public function ViaWeek()
     {
         $now = Carbon::now();
-        $start = $now->startOfWeek()->format('Y-m-d H:i');
-        $end = $now->endOfWeek()->format('Y-m-d H:i');
+        $start = $now->startOfWeek()->format('Y-m-d');
+        $end = $now->endOfWeek()->format('Y-m-d');
 
-        $Weeky = SellerOrder::whereBetween('created_at', array($start, $end))->get();
-
+        $Weeky = SellerOrder::where('seller_id', Auth::id())
+            ->where('datee', '>=', $start)->where('datee', '<=', $end)->get();
+        //  ->whereBetween('datee', array($start, $end))->get();
         return response()->json($Weeky, 200);
-    } //Carbon::now()->format('m');
+    }
 
     public function ViaMonth()
     {
-        $month = Carbon::now()->format('Y-m');
-
-        $Weeky = SellerOrder::where('created_at', $month)->get();
-
-        return response()->json($Weeky, 200);
-    } //Carbon::now()->format('m');
+        $month = SellerOrder::where('seller_id', Auth::id())
+            ->whereMonth('created_at', date('m'))->get();
+        return response()->json($month, 200);
+    }
 
 }
