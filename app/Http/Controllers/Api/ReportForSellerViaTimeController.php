@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Model\SellerOrder;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class ReportForSellerViaTimeController extends Controller
 {
