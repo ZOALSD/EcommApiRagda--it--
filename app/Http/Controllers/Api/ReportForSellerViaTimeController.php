@@ -11,8 +11,9 @@ class ReportForSellerViaTimeController extends Controller
     public function ViaDay()
     {
         // $Day = SellerOrder::where('created_at', Carbon::today())->get();
-        $Day = SellerOrder::get(); //where('created_at', Carbon::today())->get();
-
+        //  $Day = SellerOrder::get(); //where('created_at', Carbon::today())->get();
+        $Day = SellerOrder::where('seller_id', Auth::id())
+            ->whereDay('created_at', now()->day)->get();
         return response()->json($Day, 200);
     }
 
