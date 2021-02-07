@@ -25,15 +25,15 @@ class ReportForSellerViaTimeController extends Controller
         $end = $now->endOfWeek()->format('Y-m-d');
 
         $Weeky = SellerOrder::where('seller_id', Auth::id())
-            ->where('datee', '>=', $start)->where('datee', '<=', $end)->get();
-        //  ->whereBetween('datee', array($start, $end))->get();
+            ->where('datee', '>=', $start)->where('datee', '<=', $end)->with(['sell', 'deli'])->get();
+        //  ->whereBetween('datee', array($start, $end))->with(['sell', 'deli'])->get();
         return response()->json($Weeky, 200);
     }
 
     public function ViaMonth()
     {
         $month = SellerOrder::where('seller_id', Auth::id())
-            ->whereMonth('created_at', date('m'))->get();
+            ->whereMonth('created_at', date('m'))->with(['sell', 'deli'])->get();
         return response()->json($month, 200);
     }
 
