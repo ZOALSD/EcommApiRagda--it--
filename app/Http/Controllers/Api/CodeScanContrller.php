@@ -17,8 +17,6 @@ class CodeScanContrller extends Controller
         $count = SellerOrder::where('qrcode', $req->qu)->where(['deliver_id' => Auth::id(), 'stutus_seller' => null])->count();
 
         if ($count == 1) {
-
-            return "Wellcome";
             $order = SellerOrder::where('qrcode', 'like', $req->qu)->where(['deliver_id' => Auth::id()])->first();
 
             CardData::where('id', $order->card_cata_id)->update(['order_stutus' => 0]);
