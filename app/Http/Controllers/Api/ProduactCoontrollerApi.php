@@ -80,7 +80,7 @@ class ProduactCoontrollerApi extends Controller
 
         return response()->json([
             "status" => true,
-            "data" => Produact::where('stutus', 1)->where('stutus_admin', 1)->orderBy('id', 'desc')->get(), //paginate(15)
+            "data" => Produact::where(['stutus' => 1, 'stutus_admin' => 1])->orderBy('id', 'desc')->get(), //paginate(15)
         ]);
     }
 
