@@ -14,7 +14,7 @@ class CodeScanContrller extends Controller
     public function ScanfromSeller(Request $req)
     {
 
-        $count = SellerOrder::where(['qrcode' => $req->qu, 'deliver_id' => Auth::id(), 'stutus_seller' => null])->count();
+        $count = SellerOrder::where(['qrcode' => $req->qu, 'deliver_id' => Auth::id()])->where('stutus_seller', '!=', 1)->count();
 
         if ($count == 1) {
             $order = SellerOrder::where(['qrcode' => $req->qu, 'deliver_id' => Auth::id()])->first();
