@@ -27,6 +27,15 @@ class SellerOrder extends Model
     //     return $this->belongsTo('App\Model\CardData', 'card_cata_id'); //->select(['id', 'area_id', 'created_at']);
     // }
 
+    public function sell()
+    {
+        return $this->belongsTo('App\User', 'seller_id')->select(['id', 'name']);
+    }
+    public function deli()
+    {
+        return $this->belongsTo('App\User', 'deliver_id')->select(['id', 'name']);
+    }
+
     public function seller()
     {
         return $this->belongsTo('App\User', 'seller_id')->select(['id', 'name', 'phone', 'area_id']);
