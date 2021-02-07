@@ -6,6 +6,7 @@ use App\CardProData;
 use App\Http\Controllers\Controller;
 use App\Model\CardData;
 use App\Model\SellerOrder;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
