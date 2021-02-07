@@ -13,12 +13,13 @@ class CodeScanContrller extends Controller
 {
     public function ScanfromSeller(Request $req)
     {
-        //deliver Scan Code From Seller via
-        // Check Code is exit And Seller_Stutus Equal Nulll
-        // And
-        $count = SellerOrder::where('qrcode', 'like', $req->qu)->where(['deliver_id' => Auth::id(), 'stutus_seller' => null]);
+
+        // $count = SellerOrder::where('qrcode', $req->qu)->where(['deliver_id' => Auth::id(), 'stutus_seller' => null]);
+        $count = DB::table('seller_orders')->where('qrcode', $req->qu)->where(['deliver_id' => Auth::id(), 'stutus_seller' => null]);
+
         if ($count == 1) {
 
+            return "Wellcome";
             $order = SellerOrder::where('qrcode', 'like', $req->qu)->where(['deliver_id' => Auth::id()])->first();
 
             CardData::where('id', $order->card_cata_id)->update(['order_stutus' => 0]);
