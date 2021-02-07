@@ -7,16 +7,15 @@ use App\Http\Controllers\Controller;
 use App\Model\CardData;
 use App\Model\SellerOrder;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Request;
 
 class CodeScanContrller extends Controller
 {
-    public function ScanfromSeller(Request $req)
+    public function ScanfromSeller($qu)
     {
         //deliver Scan Code From Seller via
         // Check Code is exit And Seller_Stutus Equal Nulll
         // And
-        $count = SellerOrder::where(['deliver_id' => Auth::id(), 'qrcode' => $req->qu, 'stutus_seller' => null])->dd();
+        $count = SellerOrder::where(['deliver_id' => Auth::id(), 'qrcode' => $qu, 'stutus_seller' => null])->dd();
         if ($count == 1) {
 
             $order = SellerOrder::where(['deliver_id' => Auth::id(), 'qrcode' => $qu])->first();
