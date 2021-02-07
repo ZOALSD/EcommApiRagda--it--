@@ -97,7 +97,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
     Route::get('ReportViaDay', 'Api\ReportForSellerViaTimeController@ViaDay');
     Route::get('ReportViaWeek', 'Api\ReportForSellerViaTimeController@ViaWeek');
-    Route::get('ReportViaMonth', 'Api\ReportForSellerViaTimeController@ViaMonth');
+    Route::get('ReportViaYear', 'Api\ReportForSellerViaTimeController@ViaYear');
 
     //Produact Top Request ===
     Route::get('TopRequestPro', 'Api\ProduactTopRequestController@top');
