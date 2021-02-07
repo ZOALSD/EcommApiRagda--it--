@@ -22,6 +22,7 @@
         "mattlibera/livewire-flash": "^0.4.1",
         "nicolaslopezj/searchable": "^1.13",
         "niklasravnsborg/laravel-pdf": "^4.0",
+        "phpanonymous/it": "1.4.1",
         "phpoffice/phpspreadsheet": "^1.15",
         "pusher/pusher-php-server": "~4.0",
         "spatie/laravel-permission": "^3.18",

@@ -85,7 +85,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('DeliverOrderDeliveredDone', 'Api\DeliveryReqApi@DeliverOrderDeliveredDone'); //
     Route::get('DeliverOrderDetils/{id}', 'Api\DeliveryReqApi@DeliverOrderDetils');
 
-    Route::get('ScanfromSeller/{qu}', 'Api\CodeScanContrller@ScanfromSeller');
+    Route::post('ScanfromSeller', 'Api\CodeScanContrller@ScanfromSeller');
     Route::get('ScanfromClint/{qu}', 'Api\CodeScanContrller@ScanfromClint');
 
     //Report For Seller ReportForSeller

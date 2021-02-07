@@ -110,5 +110,8 @@
 		"village"	=>		"المناطق",
 		"area_id"	=>		"المحلية",
 		"village_name"	=>		"اسم المنطقة",
+		"ireshif"	=>		"ألإرشيف",
+		"seller_order_id"	=>		"رقم الفاتورة",
+		"invoce_image"	=>		"صورة الفاتورة",
 
 ];

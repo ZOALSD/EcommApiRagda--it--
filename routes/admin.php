@@ -93,7 +93,9 @@ Route::group(['middleware' => 'Lang'], function () {
         Route::post('area/multi_delete', 'Admin\AreaController@multi_delete')->middleware('permission:area');
         Route::resource('village', 'Admin\VillageController')->middleware('permission:village');
         Route::post('village/multi_delete', 'Admin\VillageController@multi_delete')->middleware('permission:village');
-        //////// Admin Routes /* End */ //////////////
+        Route::resource('ireshif','Admin\IreshifController'); 
+Route::post('ireshif/multi_delete','Admin\IreshifController@multi_delete'); 
+				//////// Admin Routes /* End */ //////////////
 
         Route::get('manger', function () {
             return view('admin.admins', ['title' => 'إدارة المشرفين']);

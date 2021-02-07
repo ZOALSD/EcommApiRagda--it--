@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "eda50d3ba2a73ef1f899ca7060f3ffd7",
+    "content-hash": "a7315e306c8732b06be08cd540bbf154",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2897,6 +2897,64 @@
                 "source": "https://github.com/paragonie/sodium_compat/tree/v1.14.0"
             },
             "time": "2020-12-03T16:26:19+00:00"
+        },
+        {
+            "name": "phpanonymous/it",
+            "version": "1.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/arabnewscms/it.git",
+                "reference": "b6fd89e0d1518bcecd74bb9b3e2c6835e39d6884"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/arabnewscms/it/zipball/b6fd89e0d1518bcecd74bb9b3e2c6835e39d6884",
+                "reference": "b6fd89e0d1518bcecd74bb9b3e2c6835e39d6884",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^7.0",
+                "php": ">= 7.2"
+            },
+            "type": "package",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.4.1.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Phpanonymous\\It\\ItApplication"
+                    ],
+                    "aliases": []
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Phpanonymous\\It\\": "it/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mahmoud Ibrahim",
+                    "email": "it@phpanonymous.com",
+                    "homepage": "https://it.phpanonymous.com"
+                }
+            ],
+            "description": "A Simple Track to make sense by TagatSoft",
+            "keywords": [
+                "It application With It-platinum",
+                "laravel",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/arabnewscms/it/issues",
+                "source": "https://github.com/arabnewscms/it/tree/master"
+            },
+            "time": "2020-04-28T16:15:14+00:00"
         },
         {
             "name": "phpoffice/phpspreadsheet",
