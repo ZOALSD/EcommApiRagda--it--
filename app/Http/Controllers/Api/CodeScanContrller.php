@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Model\CardData;
 use App\Model\SellerOrder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CodeScanContrller extends Controller
 {
