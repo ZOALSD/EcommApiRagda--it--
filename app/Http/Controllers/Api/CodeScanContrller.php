@@ -16,10 +16,10 @@ class CodeScanContrller extends Controller
         //deliver Scan Code From Seller via
         // Check Code is exit And Seller_Stutus Equal Nulll
         // And
-        $count = SellerOrder::where(['deliver_id' => Auth::id(), 'qrcode' => $req->qu, 'stutus_seller' => null]);
+        $count = SellerOrder::where('qrcode', 'like', $req->qu)->where(['deliver_id' => Auth::id(), 'stutus_seller' => null]);
         if ($count == 1) {
 
-            $order = SellerOrder::where(['deliver_id' => Auth::id(), 'qrcode' => $qu])->first();
+            $order = SellerOrder::where('qrcode', 'like', $req->qu)->where(['deliver_id' => Auth::id()])->first();
 
             CardData::where('id', $order->card_cata_id)->update(['order_stutus' => 0]);
 
