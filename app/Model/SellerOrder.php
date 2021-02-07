@@ -2,6 +2,7 @@
 
 namespace App\Model;
 
+use App\Model\SellerOrder;
 use Illuminate\Database\Eloquent\Model;
 
 class SellerOrder extends Model
