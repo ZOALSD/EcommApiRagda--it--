@@ -6,7 +6,6 @@ use App\CardProData;
 use App\Http\Controllers\Controller;
 use App\Model\CardData;
 use App\Model\SellerOrder;
-use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,8 +14,7 @@ class CodeScanContrller extends Controller
     public function ScanfromSeller(Request $req)
     {
 
-        // $count = SellerOrder::where('qrcode', $req->qu)->where(['deliver_id' => Auth::id(), 'stutus_seller' => null]);
-        $count = DB::table('seller_orders')->where('qrcode', $req->qu)->where(['deliver_id' => Auth::id(), 'stutus_seller' => null]);
+        $count = SellerOrder::where('qrcode', $req->qu)->where(['deliver_id' => Auth::id(), 'stutus_seller' => null])->count();
 
         if ($count == 1) {
 
