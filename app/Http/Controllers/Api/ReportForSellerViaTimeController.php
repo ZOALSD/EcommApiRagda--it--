@@ -13,7 +13,7 @@ class ReportForSellerViaTimeController extends Controller
     {
         //houre
         $Day = SellerOrder::select('id')->where('seller_id', Auth::id())
-            ->where('datee', date('Y-m-d'))->with(['seller', 'deliver', 'clint'])->get();
+            ->where('datee', date('Y-m-d'))->with(['sell', 'deli'])->get();
         return response()->json($Day, 200);
     }
 
