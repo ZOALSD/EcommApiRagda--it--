@@ -163,6 +163,7 @@
             </td>
         </tr>
     </table>
+    <img src="{{url('img/noorders.png')}}" alt="">
 
 </body>
 

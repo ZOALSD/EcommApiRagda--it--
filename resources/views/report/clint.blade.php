@@ -95,6 +95,7 @@
             </tr>
         @endforeach
     </table>
+
     <h4 class="left">
         تاريخ اليوم : {{ date('Y/m/d') }}<br />
         T {{ date('H:i:s') }}
