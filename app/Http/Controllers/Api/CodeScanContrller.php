@@ -14,10 +14,10 @@ class CodeScanContrller extends Controller
     public function ScanfromSeller(Request $req)
     {
 
-        $count = SellerOrder::where('qrcode', $req->qu)->where(['deliver_id' => Auth::id(), 'stutus_seller' => null])->count();
+        $count = SellerOrder::where(['qrcode' => $req->qu, 'deliver_id' => Auth::id(), 'stutus_seller' => null])->count();
 
         if ($count == 1) {
-            $order = SellerOrder::where('qrcode', 'like', $req->qu)->where(['deliver_id' => Auth::id()])->first();
+            $order = SellerOrder::where(['qrcode' => $req->qu, 'deliver_id' => Auth::id()])->first();
 
             CardData::where('id', $order->card_cata_id)->update(['order_stutus' => 0]);
 
