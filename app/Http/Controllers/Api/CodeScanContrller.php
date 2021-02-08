@@ -26,7 +26,7 @@ class CodeScanContrller extends Controller
                 'seller_id' => $order->seller_id,
             ])->update(['deliver_stutus' => 1]);
 
-            SellerOrder::find($order->id)->update(['stutus_seller' => 1, 'stutus_deliver' => 1]);
+            SellerOrder::where('id', $order->id)->update(['stutus_seller' => 1, 'stutus_deliver' => 1]);
 
             return response()->json(
                 [
