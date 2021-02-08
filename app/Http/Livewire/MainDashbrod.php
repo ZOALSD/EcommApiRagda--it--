@@ -26,9 +26,9 @@ class MainDashbrod extends Component
         $this->SellerCount = User::where('type', 2)->count();
         $this->DeliveryCount = User::where('type', 3)->count();
 
-        $this->InderDeliverCount = CardData::where('deliver_stutus', 0)->count();
+        $this->InderDeliverCount = CardData::where('order_stutus', 0)->count();
         $this->SuccessflluCount = CardData::where('order_stutus', 1)->count();
-        $this->NotReadyCount = CardData::where(['admin_stutus' => 1, 'deliver_stutus' => null])->count();
+        $this->NotReadyCount = CardData::where(['order_stutus' => null, 'deliver_stutus' => null])->count();
         $this->orderCount = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->count();
 
         $this->SellerMonyCount = SellerOrder::where('stutus_admin', 1)->count();

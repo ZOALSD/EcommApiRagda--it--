@@ -19,7 +19,7 @@ class SellerReqApi extends Controller
     public function SellerOrderDone()
     {
         //this is Rong Stutus Show Changed After Check
-        $data = SellerOrder::where(['seller_id' => Auth::id(), 'stutus_seller' => null])->with('deliver')->get();
+        $data = SellerOrder::where(['seller_id' => Auth::id(), 'stutus_deliver' => 1])->with('deliver')->get();
         return response()->json(['stuts' => true, 'Data' => $data,
         ], 200);
     }

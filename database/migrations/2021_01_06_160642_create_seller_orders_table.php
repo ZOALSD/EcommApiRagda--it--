@@ -26,8 +26,12 @@ class CreateSellerOrdersTable extends Migration
             $table->bigInteger('stutus_clint')->nullable();
             //null => not Confirm
             //1 => Comfirmed
+            $table->bigInteger('stutus_deliver')->nullable();
+            //null => Note Taket From Seller And Note Scan QRcode
+            //1 => Done Taket From Seller And Scan QRcode
             $table->bigInteger('stutus_seller')->nullable();
-            /// 1=> Done Delivered
+            /// 0=> Done Accept it
+            /// 1=> Done Ready
             $table->date('datee');
             $table->time('houre');
             $table->timestamps();
