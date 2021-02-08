@@ -81,11 +81,7 @@ class PermissionsDemoSeeder extends Seeder
         $role3->givePermissionTo('seller');
         $role3->givePermissionTo('permisson');
         $role3->givePermissionTo('print');
-        //  $role3->givePermissionTo('edit');
-        //  $role3->givePermissionTo('remove');
-        // $role3->givePermissionTo('upload');
-        //   $role3->givePermissionTo('read');
-
+        $role3->givePermissionTo('ireshif');
         $role3->givePermissionTo('ProImageChange');
         $role3->givePermissionTo('ProDelete');
         $role3->givePermissionTo('puse_pro');
