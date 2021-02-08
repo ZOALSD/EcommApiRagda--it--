@@ -28,7 +28,7 @@ class SellerOrderNum extends Component
 
     public function render()
     {
-        $InvrceSeler = SellerOrder::where('stutus_admin', 1)->get();
+        $InvrceSeler = SellerOrder::where('stutus_admin', 1)->orderBy('id', 'desc')->get();
         $area = Area::get();
         $this->village = Village::where('area_id', $this->AreaVar)->get();
         $this->Clint = User::where('type', 2)->get();
