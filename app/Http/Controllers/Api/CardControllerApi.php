@@ -97,7 +97,6 @@ class CardControllerApi extends Controller
         return response()->json([
             'stutus' => 'true',
             'data' => $card,
-            'Seller' => $seller,
             'order_num' => $order_num,
         ], 200, );
     }
