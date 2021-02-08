@@ -32,7 +32,7 @@ class MainDashbrod extends Component
 
         $this->orderCount = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->count();
         $this->SellerMonyCount = SellerOrder::where('stutus_admin', 1)->count();
-        $this->ClintMonyCount = CardData::where('clint_stutus', 1)->count();
+        $this->ClintMonyCount = CardData::where(['clint_stutus' => 1, 'admin_stutus' => 1])->count();
 
         return view('livewire.main-dashbrod')
             ->extends('admin.index')
