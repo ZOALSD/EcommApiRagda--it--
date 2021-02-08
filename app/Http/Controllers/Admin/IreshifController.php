@@ -40,12 +40,14 @@ class IreshifController extends Controller
      * @param  \Illuminate\Http\Request  $r
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $req)
     {
+
         $rules = [
             'seller_order_id' => 'required|numeric',
             'invoce_image' => 'required|image|mimes:jpeg,jpg,png',
         ];
+
         $data = $this->validate(request(), $rules, [], [
             'seller_order_id' => trans('admin.seller_order_id'),
             'invoce_image' => trans('admin.invoce_image'),

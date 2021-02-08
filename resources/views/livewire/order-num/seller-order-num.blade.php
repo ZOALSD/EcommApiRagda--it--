@@ -143,6 +143,36 @@
                                             <td colspan="2">{{ $CardInfo->time_respact }}</td>
 
                                         </tr>
+
+                                        <tr>
+                                            <td colspan="4"></td>
+                                        </tr>
+                                    <tr>
+
+                                        <th>رقم الفاتورة </th>
+
+                                        @if($EditReceiptVar)
+                                        <td>
+                                            
+                                              <input wire:model.defer='receipt' type="text" class="form-control" placeholder ="{{$invoceSeller->num_receipt}}">
+                                              <button wire:click='SaveReceipt({{ $invoceSeller->id }})' class="btn btn-success">حفظ</button>
+                                             
+                                        </td>
+                                        @else
+                                        <th>{{$invoceSeller->num_receipt}}</th>
+                                        @if(session('reload'))
+                                        <td wire:poll>
+                                            @else
+                                            <td>
+                                                @endif
+                                            <button wire:click='EditReceipt' class="btn btn-info">تعديل رقم الفاتورة</button>
+                                        </td>
+                                        
+                                        @endif
+
+                                        
+                                    </tr>
+
                                     @endif
 
                                 </table>

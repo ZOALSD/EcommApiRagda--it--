@@ -93,7 +93,7 @@ Route::group(['middleware' => 'Lang'], function () {
         Route::post('area/multi_delete', 'Admin\AreaController@multi_delete')->middleware('permission:area');
         Route::resource('village', 'Admin\VillageController')->middleware('permission:village');
         Route::post('village/multi_delete', 'Admin\VillageController@multi_delete')->middleware('permission:village');
-        Route::resource('ireshif', 'Admin\IreshifController');
+        Route::resource('ireshif', 'Admin\IreshifController')->middleware('permission:ireshif');
 // Route::post('ireshif/multi_delete','Admin\IreshifController@multi_delete');
         //////// Admin Routes /* End */ //////////////
 

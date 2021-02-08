@@ -42,7 +42,7 @@ class IreshifDataTable extends DataTable
      */
     public function query()
     {
-        return Ireshif::query()->select("ireshifs.*");
+        return Ireshif::query()->orderBy('id', 'desc')->select("ireshifs.*")->with('seller_order');
 
     }
 
@@ -145,9 +145,14 @@ class IreshifDataTable extends DataTable
                 'aaSorting' => 'none',
             ],
 
+            // [
+            //     'name' => 'seller_order_id',
+            //     'data' => 'seller_order_id',
+            //     'title' => trans('admin.seller_order_id'),
+            // ],
             [
-                'name' => 'seller_order_id',
-                'data' => 'seller_order_id',
+                'name' => 'seller_order.num_receipt',
+                'data' => 'seller_order.num_receipt',
                 'title' => trans('admin.seller_order_id'),
             ],
             [

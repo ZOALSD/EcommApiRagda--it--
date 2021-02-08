@@ -43,7 +43,8 @@ class PermissionsDemoSeeder extends Seeder
         Permission::create(['guard_name' => 'admin', 'name' => 'seller']);
         Permission::create(['guard_name' => 'admin', 'name' => 'permisson']);
         Permission::create(['guard_name' => 'admin', 'name' => 'print']);
-//       Permission::create(['guard_name' => 'admin' , 'name' => 'report']);
+        Permission::create(['guard_name' => 'admin', 'name' => 'ireshif']); //
+        //       Permission::create(['guard_name' => 'admin' , 'name' => 'report']);
         //   Permission::create(['guard_name' => 'admin', 'name' => 'edit']);
         //  Permission::create(['guard_name' => 'admin', 'name' => 'remove']);
         //  Permission::create(['guard_name' => 'admin', 'name' => 'upload']);

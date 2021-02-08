@@ -25,6 +25,9 @@ class SellerOrderNum extends Component
     public $IdInvce;
     public $Seller;
     public $CardInfo;
+    public $receipt;
+
+    public $EditReceiptVar = true;
 
     public function render()
     {
@@ -45,6 +48,7 @@ class SellerOrderNum extends Component
 
     public function InvoceDetiles($id)
     {
+
         $this->IdInvce = $id;
 
         $invoce = SellerOrder::where('id', $id)->first();
@@ -52,6 +56,26 @@ class SellerOrderNum extends Component
         $this->CardPro = CardProData::where(['card_data_id' => $invoce->card_cata_id, 'seller_id' => $invoce->seller_id])->get();
         $this->CardInfo = CardData::where('id', $invoce->card_cata_id)->first();
         $this->TitleInvoce = false;
+
+        if ($invoce->num_receipt == null) {
+            $this->EditReceiptVar = true;
+        } else {
+            $this->EditReceiptVar = false;
+        }
+
+    }
+
+    public function SaveReceipt($id)
+    {
+        SellerOrder::where('id', $id)->update(['num_receipt' => $this->receipt]);
+        $this->EditReceiptVar = false;
+        session()->flash('reload');
+
+    }
+
+    public function EditReceipt()
+    {
+        $this->EditReceiptVar = true;
 
     }
 }

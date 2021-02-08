@@ -5,7 +5,7 @@
 		<div class="widget-extra body-req portlet light bordered">
 				<div class="portlet-title">
 						<div class="caption">
-								<span class="caption-subject bold uppercase font-dark">{{$title}}</span>
+								<span class="uppercase caption-subject bold font-dark">{{$title}}</span>
 						</div>
 						<div class="actions">
 								<a  href="{{aurl('ireshif')}}"
@@ -28,7 +28,7 @@
 <div class="form-group">
 		{!! Form::label('seller_order_id',trans('admin.seller_order_id'),['class'=>'col-md-3 control-label']) !!}
 		<div class="col-md-9">
-{!! Form::select('seller_order_id',App\Model\SellerOrder::pluck('id'),old('seller_order_id'),['class'=>'form-control','placeholder'=>trans('admin.seller_order_id')]) !!}
+{!! Form::select('seller_order_id',App\Model\SellerOrder::where('num_receipt','!=',null)->pluck('num_receipt','id'),old('seller_order_id'),['class'=>'form-control','placeholder'=>trans('admin.seller_order_id')]) !!}
 		</div>
 </div>
 <br>

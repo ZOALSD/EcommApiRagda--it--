@@ -2,7 +2,6 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 // Auto Models By Baboon Script
 // Baboon Maker has been Created And Developed By  [It V 1.2 | https://it.phpanonymous.com]
@@ -10,14 +9,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Ireshif extends Model
 {
 
-    use SoftDeletes;
-    protected $dates = ['deleted_at'];
+    // use SoftDeletes;
 
     protected $table = 'ireshifs';
     protected $fillable = [
         'id',
         'admin_id',
-        'seller_order_id',
         'seller_order_id',
         'invoce_image',
         'created_at',
@@ -30,4 +27,8 @@ class Ireshif extends Model
         return $this->hasOne(\App\Model\SellerOrder::class, 'id', 'seller_order_id');
     }
 
+    public function seller_order()
+    {
+        return $this->belongsTo('App\Model\SellerOrder', 'seller_order_id');
+    }
 }
