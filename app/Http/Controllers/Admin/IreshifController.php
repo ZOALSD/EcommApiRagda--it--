@@ -44,7 +44,7 @@ class IreshifController extends Controller
     {
         $rules = [
             'seller_order_id' => 'required|numeric',
-            'invoce_image' => 'required' . it()->image() . '',
+            'invoce_image' => 'required|image|mimes:jpeg,jpg,png',
         ];
         $data = $this->validate(request(), $rules, [], [
             'seller_order_id' => trans('admin.seller_order_id'),
@@ -95,7 +95,7 @@ class IreshifController extends Controller
     {
         $rules = [
             'seller_order_id' => 'required|numeric',
-            'invoce_image' => 'required|' . it()->image() . '',
+            'invoce_image' => 'required|image|mimes:jpeg,jpg,png',
 
         ];
         $data = $this->validate(request(), $rules, [], [
