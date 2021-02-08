@@ -21,7 +21,7 @@ class OrderInDelivering extends Component
 
         $ClintData = $this->ClintDataa;
         $NotReDetils = $this->DetlisOrder;
-        $NotReady = CardData::where('deliver_stutus', 1)->paginate(9);
+        $NotReady = CardData::where('order_stutus', 0)->paginate(9);
 
         return view('livewire.request.order-in-delivering'
             , compact('NotReady', 'NotReDetils', 'ClintData'))
