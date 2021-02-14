@@ -42,26 +42,54 @@ class ClintLoginController extends Controller
 
         $request->validate([
             'name' => 'nullable|string|min:3',
-            'email' => 'nullable|email|', //unique:users',
+            'email' => 'nullable|email|unique:users,email,' . $id,
             'password' => 'nullable',
-            'phone' => 'required|unique:users|numeric',
-            'year' => 'required|numeric',
+            'phone' => 'nullable|numeric|unique:users,phone,' . $id,
+            'year' => 'nullable|numeric',
         ]);
 
         // $data['password'] = Hash::make($request->password);
         // $user = User::create($data);
 
+        if ($request->email == null) {
+            $email = User::where('id', $id)->value('email');
+        } else {
+            $email = $request->email;
+        }
+
+        if ($request->name == null) {
+            $name = User::where('id', $id)->value('name');
+        } else {
+            $name = $request->name;
+        }
+
+        if ($request->phone == null) {
+            $phone = User::where('id', $id)->value('phone');
+        } else {
+            $phone = $request->phone;
+        }
+
+        if ($request->year == null) {
+            $year = User::where('id', $id)->value('year');
+        } else {
+            $year = $request->year;
+        }
+
         if ($request->old_password) {
             $user = User::where('id', $id)->first();
+
             $check = Hash::check($request->old_password, $user->password);
+
             if ($check) {
 
                 $user = User::find($id);
-                $user->name = $request->name;
-                $user->email = $request->email;
-                $user->phone = $request->phone;
-                $user->year = $request->year;
-                $user->password = Hash::make($request->new_password);
+                $user->name = $name;
+                $user->email = $email;
+                $user->phone = $phone;
+                $user->year = $year;
+                if ($request->new_password) {
+                    $user->password = Hash::make($request->new_password);
+                }
                 $user->save();
 
                 return response(['stuts' => 'Success Data Updated', 'Data' => $user]);
@@ -72,10 +100,10 @@ class ClintLoginController extends Controller
 
         } else {
             $user = User::find($id);
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->phone = $request->phone;
-            $user->year = $request->year;
+            $user->name = $name;
+            $user->email = $email;
+            $user->phone = $phone;
+            $user->year = $year;
             $user->save();
 
             return response(['stuts' => 'Success Data Updated', 'Data' => $user]);

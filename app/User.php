@@ -65,8 +65,13 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password', 'remember_token', 'updated_at', 'email_verified_at',
-        'village_id',
+
         'stuts',
         'stuts_delivery',
+        'clint_order_num',
+        'clint_order_num',
+        'seller_order_num',
+        'clint_perce',
+        'deliver_order_num',
     ];
 }
