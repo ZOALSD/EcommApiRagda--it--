@@ -22,7 +22,7 @@ class DeliveryNotifiaction
 
     public function __construct()
     {
-        $this->count = $count;
+        $this->count = "hello Pusher";
     }
 
     /**
