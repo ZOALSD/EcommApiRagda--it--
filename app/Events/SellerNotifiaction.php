@@ -8,21 +8,21 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class DeliveryNotifiaction
+class SellerNotifiaction
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    public $count;
     /**
      * Create a new event instance.
      *
      * @return void
      */
 
-    public $count;
-
-    public function __construct($conut)
+    public function __construct($count)
     {
         $this->count = $count;
+
     }
 
     /**
@@ -32,6 +32,6 @@ class DeliveryNotifiaction
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('delivery-notify');
+        return new PrivateChannel('channel-name');
     }
 }

@@ -188,6 +188,8 @@ return [
         ////
         // Barryvdh\DomPDF\ServiceProvider::class,
 
+        App\Providers\BroadcastServiceProvider::class, // uncomment this
+        // Spatie\ServerMonitor\ServerMonitorServiceProvider::class, // add this
     ],
 
     /*

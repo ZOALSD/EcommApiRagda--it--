@@ -18,5 +18,7 @@ class SellerNotificationContoller extends Controller
             return $notiy;
         }
 
+        event(new App\Events\SellerNotifiaction($notiy));
+
     }
 }
