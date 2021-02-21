@@ -23,6 +23,7 @@ class DeliveryNotificationContoller extends Controller
         } else {
             return $notiy;
         }
+        event(new App\Events\DeliveryNotifiaction($notiy));
 
     }
 }
