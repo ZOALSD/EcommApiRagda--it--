@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\CardProData;
+use App\Events\SellerNotifiaction;
 use App\Model\Area;
 use App\Model\CardData;
 use App\Model\CardRequest;
