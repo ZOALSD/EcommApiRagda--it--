@@ -185,12 +185,11 @@ class DashbordOrder extends Component
                         'stutus_admin' => 1]);
 
                 ////======================>>>>>>>>>>>>
-                $seller = SellerOrder::where('card_cata_id', $id)
-                    ->select('id', 'seller_id')
+                $seller = SellerOrder::select('id', 'seller_id')
+                    ->where('card_cata_id', $id)
                     ->first();
 
                 event(new SellerNotify($seller));
-                return $seller;
 
                 ////=================
                 session()->flash('successuflly', 'تم ارسال الطلب بنجاح');
