@@ -113,7 +113,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 });
 
 Route::get('test', function () {
-    event(new App\Events\SellerNotifiaction("wellcome"));
+    event(new App\Events\SellerNotify("wellcome"));
 
     event(new App\Events\StatusLiked('Someone'));
     return "Event has been sent!";
