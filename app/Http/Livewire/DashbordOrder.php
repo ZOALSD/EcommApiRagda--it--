@@ -183,6 +183,16 @@ class DashbordOrder extends Component
                         'deliver_id' => $CheckDeliver,
                         'stutus_admin' => 1]);
 
+                ////======================>>>>>>>>>>>>
+                $notiy = SellerOrder::where(['seller_id' => Auth::id(), 'stutus_seller' => null])->count();
+                if ($notiy == null) {
+                    return 0;
+                } else {
+                    return $notiy;
+                }
+
+                event(new App\Events\SellerNotifiaction($notiy));
+////=================
                 session()->flash('successuflly', 'تم ارسال الطلب بنجاح');
                 return redirect()->to('/Order');
 
