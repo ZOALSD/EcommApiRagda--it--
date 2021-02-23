@@ -175,7 +175,7 @@ class DashbordOrder extends Component
                 }
                 $this->orderData = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->get();
 
-                SellerOrder::where([
+                $seller = SellerOrder::where([
                     'card_cata_id' => $id,
                     'stutus_clint' => 1,
                     'stutus_admin' => null])
@@ -185,7 +185,7 @@ class DashbordOrder extends Component
 
                 ////======================>>>>>>>>>>>>
 
-                event(new App\Events\SellerNotifiaction('Wellcome'));
+                event(new SellerNotifiaction($seller));
                 ////=================
                 session()->flash('successuflly', 'تم ارسال الطلب بنجاح');
                 return redirect()->to('/Order');
