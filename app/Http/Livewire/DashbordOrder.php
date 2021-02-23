@@ -8,6 +8,7 @@ use App\Model\CardData;
 use App\Model\CardRequest;
 use App\Model\SellerOrder;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
 
