@@ -176,7 +176,7 @@ class DashbordOrder extends Component
                 }
                 $this->orderData = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->get();
 
-                $seller = SellerOrder::where([
+                SellerOrder::where([
                     'card_cata_id' => $id,
                     'stutus_clint' => 1,
                     'stutus_admin' => null])
@@ -185,7 +185,7 @@ class DashbordOrder extends Component
                         'stutus_admin' => 1]);
 
                 ////======================>>>>>>>>>>>>
-
+                $seller = SellerOrder::where('card_cata_id', $id)->get();
                 event(new SellerNotify($seller));
 
                 ////=================

@@ -14,8 +14,6 @@ class SellerNotify implements ShouldBroadcast
 
     public $Seller;
 
-    public $message;
-
     /**
      * Create a new event instance.
      *
