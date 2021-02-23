@@ -185,7 +185,9 @@ class DashbordOrder extends Component
                         'stutus_admin' => 1]);
 
                 ////======================>>>>>>>>>>>>
-                $seller = SellerOrder::where('card_cata_id', $id)->first();
+                $seller = SellerOrder::where('card_cata_id', $id)
+                    ->select('id', 'seller_id')
+                    ->first();
 
                 event(new SellerNotify($seller));
                 return $seller;
