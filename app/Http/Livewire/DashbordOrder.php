@@ -3,7 +3,6 @@
 namespace App\Http\Livewire;
 
 use App\CardProData;
-use App\Events\SellerNotifiaction;
 use App\Model\Area;
 use App\Model\CardData;
 use App\Model\CardRequest;
@@ -186,7 +185,7 @@ class DashbordOrder extends Component
 
                 ////======================>>>>>>>>>>>>
 
-                event(new App\Events\SellerNotifiaction($seller));
+                //   event(new App\Events\SellerNotifiaction($seller));
                 ////=================
                 session()->flash('successuflly', 'تم ارسال الطلب بنجاح');
                 return redirect()->to('/Order');
