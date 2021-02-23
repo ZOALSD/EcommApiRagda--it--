@@ -8,7 +8,6 @@ use App\Model\CardData;
 use App\Model\CardRequest;
 use App\Model\SellerOrder;
 use App\User;
-use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -176,7 +175,7 @@ class DashbordOrder extends Component
                 }
                 $this->orderData = CardData::where('clint_stutus', 1)->where('admin_stutus', null)->get();
 
-                SellerOrder::where([
+                $seller = SellerOrder::where([
                     'card_cata_id' => $id,
                     'stutus_clint' => 1,
                     'stutus_admin' => null])
@@ -185,15 +184,9 @@ class DashbordOrder extends Component
                         'stutus_admin' => 1]);
 
                 ////======================>>>>>>>>>>>>
-                $notiy = SellerOrder::where(['seller_id' => Auth::id(), 'stutus_seller' => null])->count();
-                if ($notiy == null) {
-                    return 0;
-                } else {
-                    return $notiy;
-                }
 
-                event(new App\Events\SellerNotifiaction($notiy));
-////=================
+                event(new App\Events\SellerNotifiaction($seller));
+                ////=================
                 session()->flash('successuflly', 'تم ارسال الطلب بنجاح');
                 return redirect()->to('/Order');
 

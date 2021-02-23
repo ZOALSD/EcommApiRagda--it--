@@ -19,10 +19,12 @@ class DeliveryNotifiaction
      */
 
     public $count;
+    public $UserID;
 
-    public function __construct($conut)
+    public function __construct($conut, $UserID)
     {
         $this->count = $count;
+        $this->UserID = $UserID;
     }
 
     /**
@@ -33,5 +35,10 @@ class DeliveryNotifiaction
     public function broadcastOn()
     {
         return new PrivateChannel('delivery-notify');
+    }
+
+    public function broadcastAs()
+    {
+        return 'delivery-notify';
     }
 }

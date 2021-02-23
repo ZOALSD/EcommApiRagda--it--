@@ -32,6 +32,12 @@ class SellerNotifiaction
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('channel-name');
+        return new PrivateChannel('seller-notify');
     }
+
+    public function broadcastAs()
+    {
+        return 'seller-notify';
+    }
+
 }
