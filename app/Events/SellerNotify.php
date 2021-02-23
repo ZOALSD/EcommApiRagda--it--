@@ -12,7 +12,7 @@ class SellerNotify implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $username;
+    public $Seller;
 
     public $message;
 
@@ -21,10 +21,9 @@ class SellerNotify implements ShouldBroadcast
      *
      * @return void
      */
-    public function __construct($username)
+    public function __construct($Seller)
     {
-        $this->username = $username;
-        $this->message = "{$username} liked your status";
+        $this->Seller = $Seller;
     }
 
     /**
