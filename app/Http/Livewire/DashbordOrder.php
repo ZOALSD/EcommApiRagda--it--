@@ -187,7 +187,7 @@ class DashbordOrder extends Component
                 ////======================>>>>>>>>>>>>
                 $seller = SellerOrder::select('id', 'seller_id')
                     ->where('card_cata_id', $id)
-                    ->first();
+                    ->get();
 
                 event(new SellerNotify($seller));
 
