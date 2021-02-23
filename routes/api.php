@@ -1,7 +1,5 @@
 <?php
 
-use App\Events\SellerNotifiaction;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -115,6 +113,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 });
 
 Route::get('test', function () {
-    event(new SellerNotifiaction("Wellcome"));
+    event(new App\Events\SellerNotifiaction("wellcome"));
+
+    event(new App\Events\StatusLiked('Someone'));
     return "Event has been sent!";
 });
