@@ -121,6 +121,10 @@ class CardControllerApi extends Controller
             $QRCode = Hash::make($value);
             $id = CardData::where('clint_id', Auth::id())->where('clint_stutus', null)->value('id');
 
+            $id = CardData::where(['clint_id' => Auth::id(), 'clint_stutus' => null])
+                ->value('id');
+
+            $total = CardProData::where('card_data_id', $id)->sum('total');
             $card = CardData::find($id);
             $card->area_id = $req->area_id;
             $card->village_id = $req->village_id;
@@ -128,6 +132,7 @@ class CardControllerApi extends Controller
             $card->qr_code = $QRCode;
             $card->clint_phone = $req->clint_phone;
             $card->clint_stutus = 1; //   تم تأكيد الطلب
+            $card->total = $total; //   تم تأكيد الطلب
             $card->save();
 
             $clintOderNum = User::where('id', Auth::id())->value('clint_order_num');

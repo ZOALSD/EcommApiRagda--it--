@@ -167,7 +167,7 @@
 
 
                                 </div>
-                                {{--==-**--------*===///////////=*===**----------==--}}
+                                {{-- ==-**--------*===///////////=*===**----------== --}}
                                 @if ($FoundOrder)
 
                                     <div class="col-md-3">
@@ -255,7 +255,10 @@
                                 <th>الاسم</th>
                                 <th>رقم الهاتف</th>
                                 <th>المحلية</th>
+                                <th>الرصيد الحالي</th>
+                                <th>الحد الاقصى</th>
                                 <th>الحالة</th>
+
                                 <th>اختيار</th>
                             </tr>
                             @foreach ($delive as $i)
@@ -264,7 +267,23 @@
                                     <td>{{ $i->name }}</td>
                                     <td>{{ $i->phone }}</td>
                                     <td>{{ $i->area->area_name }}</td>
-                                    @if ($i->stuts_delivery == null)
+
+                                    <td>
+                                        @php
+                                            $total = App\Model\CardData::where('deliver_id', $i->id)
+                                                ->where('deliver_recive', null)
+                                                ->sum('total');
+                                        @endphp
+                                        {{ $total }}
+                                    </td>
+                                    <td>{{ $i->max_value }}</td>
+                                    <!--User Check-->
+                                    @php
+                                        $check = App\Model\CardData::where('deliver_id', $i->id)
+                                            ->where('order_stutus', null)
+                                            ->count();
+                                    @endphp
+                                    @if ($check == 0)
                                         <td>غير مشغول</td>
 
                                         <td>
@@ -283,17 +302,31 @@
                                             <a wire:click='DeliveReqDetile({{ $i->id }})'
                                                 class="btn btn-scandary">مشغول</a>
                                         </td>
+                                        @php
+                                            $total = App\Model\CardData::where('deliver_id', $i->id)
+                                                ->where('deliver_recive', null)
+                                                ->sum('total');
+                                        @endphp
+                                        @if ($total < $i->max_value)
 
-                                        <td>
-                                            <a wire:click='selectDelivery({{ $i->id }})' class="btn btn-info">
-                                                @if ($DeliverySelectedChangeBtn == $i->id)
-                                                    تـم التحـديد
-                                                @else
-                                                    تحـديـد
-                                                @endif
+                                            <td>
+                                                <a wire:click='selectDelivery({{ $i->id }})'
+                                                    class="btn btn-info">
+                                                    @if ($DeliverySelectedChangeBtn == $i->id)
+                                                        تـم التحـديد
+                                                    @else
+                                                        تحـديـد
+                                                    @endif
 
-                                            </a>
-                                        </td>
+                                                </a>
+                                            </td>
+                                        @else
+                                            <td>
+                                                غير متاح
+                                            </td>
+                                        @endif
+
+
                                         @if ($detelis == $i->id)
                                             <div>
                                                 @foreach ($ReqDelDetlises as $ReqDelDetlis)

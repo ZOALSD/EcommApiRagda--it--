@@ -132,11 +132,11 @@ class ClintLoginController extends Controller
             'phone' => 'required',
             'device_name' => 'required',
         ]);
-
-        $user = User::where('phone', $request->phone)->first();
+//====
+        $user = User::where(['phone' => $request->phone, 'stuts' => 1])->first();
         if ($user != null) {
             if ($user->type == 1) {
-                $user_id = User::where('phone', $request->phone)->value('id');
+                $user_id = User::where(['phone' => $request->phone, 'stuts' => 1])->value('id');
 
                 $token = Token::where('tokenable_id', $user_id)->count();
                 if ($token != 0) {
@@ -169,10 +169,10 @@ class ClintLoginController extends Controller
             'phone' => 'required',
             'device_name' => 'required',
         ]);
-        $user = User::where('phone', $request->phone)->first();
+        $user = User::where(['phone' => $request->phone, 'stuts' => 1])->first();
         if ($user != null) {
             if ($user->type == 2) {
-                $user_id = User::where('phone', $request->phone)->value('id');
+                $user_id = User::where(['phone' => $request->phone, 'stuts' => 1])->value('id');
                 $token = Token::where('tokenable_id', $user_id)->count();
                 if ($token != 0) {
                     $user->tokens()->delete();
@@ -202,11 +202,10 @@ class ClintLoginController extends Controller
             'device_name' => 'required',
         ]);
 
-        $user = User::where('phone', $request->phone)->first();
-        $user = User::where('phone', $request->phone)->first();
+        $user = User::where(['phone' => $request->phone, 'stuts' => 1])->first();
         if ($user != null) {
             if ($user->type == 3) {
-                $user_id = User::where('phone', $request->phone)->value('id');
+                $user_id = User::where(['phone' => $request->phone, 'stuts' => 1])->value('id');
 
                 $token = Token::where('tokenable_id', $user_id)->count();
                 if ($token != 0) {

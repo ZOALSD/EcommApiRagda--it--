@@ -144,7 +144,6 @@ class DashbordOrder extends Component
             $this->title = "لا يـوجد طلبــات جــديدة";
 
         }
-
     }
     public function ShowRequestDetils($id)
     {
@@ -232,9 +231,12 @@ class DashbordOrder extends Component
     {
         // User::where('id', $id)->update(['stuts_delivery' => 1]);
         //ReQNumber
+
+        ////-=====================-------------
+
         CardData::where('id', $this->IdOFFirstReQORSelected)->update(['deliver_id' => $id]);
         $this->DeliverySelectedChangeBtn = $id;
-        User::where('id', $id)->update(['stuts_delivery' => 1]);
+        // User::where('id', $id)->update(['stuts_delivery' => 1]);
         $this->clintDataa = CardData::where('id', $this->IdOFFirstReQORSelected)->first();
         $this->emit('DeliverySelectedHide');
 

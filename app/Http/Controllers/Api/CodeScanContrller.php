@@ -50,18 +50,22 @@ class CodeScanContrller extends Controller
 
     public function ScanfromClint(Request $req)
     {
-        $conn = CardData::where(['qr_code' => $req->qu, 'order_stutus' => 1])->count();
 
-        if ($conn == 1) {
-            return response()->json(['stutus' => false, 'Message' => 'ALready Delivered'], 200);
-        } else {
-            $con = CardData::where('order_stutus', '!=', 1)->where(['qr_code' => $req->qu])->count();
-            if ($con == 1) {
+        $CheckFound = CardData::where('qr_code', $req->qu)->count();
+        if ($CheckFound == 1) {
+            $conn = CardData::where(['qr_code' => $req->qu, 'order_stutus' => 1])->count();
+
+            if ($conn == 0) {
+
                 CardData::where('qr_code', $req->qu)->update(['order_stutus' => 1]);
                 return response()->json(['stutus' => true, 'Message' => 'Done Delivered Order'], 200);
+
+            } else {
+                return response()->json(['stutus' => false, 'Message' => 'ALready Delivered'], 200);
             }
 
+        } else {
+            return response()->json('QRCode Not Found !!', 200);
         }
-
     }
 }

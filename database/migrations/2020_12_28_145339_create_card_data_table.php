@@ -42,6 +42,12 @@ class CreateCardDataTable extends Migration
             //null => Not Delivered
             //zero => تم استلم الطلب من التأجر وحاليا عند المندوب
             // own => Delivered
+            $table->bigInteger('total')->nullable();
+
+            //
+            $table->bigInteger('deliver_recive')->nullable();
+
+            /// 1 في حالات التحصيل
 
             $table->timestamps();
         });

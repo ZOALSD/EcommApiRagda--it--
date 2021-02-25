@@ -14,7 +14,7 @@ class CardData extends Model
         'order_num',
         'deliver_id',
         'qr_code',
-        'stutus',
+        'order_stutus',
     ];
 
     public function clint()

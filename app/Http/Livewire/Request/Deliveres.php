@@ -9,6 +9,9 @@ class Deliveres extends Component
 {
 
     public $title = "قائمة مناديب الؤصـيل";
+    public $MaxValue;
+    public $Edit;
+
     public function render()
     {
         $clintsData = User::where('type', 3)->get();
@@ -27,9 +30,22 @@ class Deliveres extends Component
     {
         User::where('id', $id)->update(['stuts' => 1]);
     }
+    public function ChangeMax($id)
+    {
+        if (!$this->MaxValue == null) {
+            User::where('id', $id)->update(['max_value' => $this->MaxValue]);
+        }
 
+        $this->Edit = 0;
+    }
     public function SellerPdf()
     {
         return redirect('SellerPdf');
     }
+
+    public function EnbleEditMax($id)
+    {
+        $this->Edit = $id;
+    }
+
 }
